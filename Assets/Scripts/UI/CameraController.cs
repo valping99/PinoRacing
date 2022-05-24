@@ -13,14 +13,21 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] Vector3 m_MoveOffset;
     [SerializeField] Vector3 m_RotationOffset;
-    [SerializeField] float m_SmoothSpeed;
-    [SerializeField] float m_RotationSpeed;
+    [SerializeField] float m_SmoothSpeed = 1f;
+    [SerializeField] float m_RotationSpeed = 1f;
     [SerializeField] Transform m_Target;
+    CharacterInputController m_Player;
 
 
     #endregion
 
     #region Unity Methods
+
+    void Start()
+    {
+        m_Player = m_Target.GetComponent<CharacterInputController>();
+    }
+
     void FixedUpdate()
     {
         HandleTranslation();
@@ -37,7 +44,14 @@ public class CameraController : MonoBehaviour
         Vector3 _TargetPos = new Vector3();
         _TargetPos = m_Target.TransformPoint(m_MoveOffset);
 
+        //if user collect 6 crystal, camera will move to crystal position 
+        // if (m_Player.IsFullCrystal)
+        // {
+        //     //Boost effect
+        //     transform.position = Vector3.Lerp(transform.position, _TargetPos, m_SmoothSpeed * Time.deltaTime);
+        // }
         transform.position = Vector3.Lerp(transform.position, _TargetPos, m_SmoothSpeed * Time.deltaTime);
+
     }
 
     void HandleRotation()
@@ -49,6 +63,6 @@ public class CameraController : MonoBehaviour
 
         transform.rotation = Quaternion.Lerp(transform.rotation, _Rotation, m_RotationSpeed * Time.deltaTime);
     }
-    
+
     #endregion
 }
