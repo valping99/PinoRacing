@@ -106,16 +106,7 @@ public class TrackSegment : MonoBehaviour
         }
     }
 
-    public void Cleanup()
-    {
-        while (collectibleTransform.childCount > 0)
-        {
-            Transform t = collectibleTransform.GetChild(0);
-            t.SetParent(null);
-        }
-
-        Addressables.ReleaseInstance(gameObject);
-    }
+    
 
 #if UNITY_EDITOR
     void OnDrawGizmos()
