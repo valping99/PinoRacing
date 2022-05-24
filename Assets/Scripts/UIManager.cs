@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     public bool checkGameOver;
     public bool checkPlaying;
 
+    public GameObject m_Player;
+
     public GameObject mainSceneUI;
     public GameObject pauseUI;
     public GameObject gameOverUI;
@@ -35,6 +37,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI messageText;
 
     public int score;
+    public float currentScore;
 
     public float toRankS;
     public float toRankA;
@@ -127,7 +130,7 @@ public class UIManager : MonoBehaviour
         score += scoreToAdd;
         scoreText.text = score + " m";
         gameOverScoreText.text = score + "m";
-        if(score >= toRankS)
+        if (score >= toRankS)
         {
             rankText.text = "S-Rank";
             messageText.text = "Perfect";
