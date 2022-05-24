@@ -12,6 +12,7 @@ public class LoopBackground : MonoBehaviour
     {
         m_startPos = transform.position;
         m_repeatPositionZ = GetComponent<BoxCollider>().size.z / 2;
+        
     }
 
     // Update is called once per frame
@@ -23,7 +24,12 @@ public class LoopBackground : MonoBehaviour
         }
         
     }
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Player"))
+        {
+            transform.position = m_Player.position
+        }
     }
 }
