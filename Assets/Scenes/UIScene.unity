@@ -1230,6 +1230,13 @@ MonoBehaviour:
   rankText: {fileID: 338811891}
   messageText: {fileID: 2111688245}
   score: 0
+  toRankS: 150
+  toRankA: 120
+  toRankB: 100
+  toRankC: 80
+  toRankD: 60
+  toRankE: 40
+  toRankF: 20
 --- !u!114 &1946690189 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2102611282715500188, guid: f2a2f13b1e2eef9478295b537a8fe8b6, type: 3}
@@ -1275,12 +1282,24 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 588664365}
     m_Modifications:
+    - target: {fileID: 2102611281410649127, guid: f2a2f13b1e2eef9478295b537a8fe8b6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2102611281884077314, guid: f2a2f13b1e2eef9478295b537a8fe8b6, type: 3}
       propertyPath: managers
       value: 
       objectReference: {fileID: 1885719431}
     - target: {fileID: 2102611282090088299, guid: f2a2f13b1e2eef9478295b537a8fe8b6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102611282090088299, guid: f2a2f13b1e2eef9478295b537a8fe8b6, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102611282090088299, guid: f2a2f13b1e2eef9478295b537a8fe8b6, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2102611282311860342, guid: f2a2f13b1e2eef9478295b537a8fe8b6, type: 3}
@@ -1380,8 +1399,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1885719431}
     - target: {fileID: 2102611282862945693, guid: f2a2f13b1e2eef9478295b537a8fe8b6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102611282862945693, guid: f2a2f13b1e2eef9478295b537a8fe8b6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102611283286720418, guid: f2a2f13b1e2eef9478295b537a8fe8b6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102611283509529659, guid: f2a2f13b1e2eef9478295b537a8fe8b6, type: 3}
+      propertyPath: m_Value
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102611283509529659, guid: f2a2f13b1e2eef9478295b537a8fe8b6, type: 3}
+      propertyPath: m_MaxValue
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8041325481944930091, guid: f2a2f13b1e2eef9478295b537a8fe8b6, type: 3}
       propertyPath: managers

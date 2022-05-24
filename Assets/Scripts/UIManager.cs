@@ -36,6 +36,14 @@ public class UIManager : MonoBehaviour
 
     public int score;
 
+    public float toRankS;
+    public float toRankA;
+    public float toRankB;
+    public float toRankC;
+    public float toRankD;
+    public float toRankE;
+    public float toRankF;
+
 
     void Start()
     {
@@ -48,6 +56,8 @@ public class UIManager : MonoBehaviour
         {
             PauseGame();
         }
+        UpdateScore(0);
+        HealthUpdate();
         
     }
 
@@ -55,6 +65,8 @@ public class UIManager : MonoBehaviour
     public void StartGame()
     {
         checkPlaying = true;
+        pauseUI.gameObject.SetActive(false);
+        gameOverUI.gameObject.SetActive(false);
     }
 
     public void PauseGame()
@@ -65,6 +77,7 @@ public class UIManager : MonoBehaviour
             {
                 pauseUI.gameObject.SetActive(true);
                 mainSceneUI.gameObject.SetActive(false);
+                gameOverUI.gameObject.SetActive(false);
                 checkPause = !checkPause;
                 Time.timeScale = 0f;
                 Debug.Log("Pause");
@@ -73,49 +86,34 @@ public class UIManager : MonoBehaviour
             {
                 pauseUI.gameObject.SetActive(false);
                 mainSceneUI.gameObject.SetActive(true);
+                gameOverUI.gameObject.SetActive(false);
                 checkPause = !checkPause;
                 Time.timeScale = 1f;
                 Debug.Log("Not pause");
             }
         }
         
-        /**
-        if (checkPlaying)
-        {
-            if (!checkPause)
-            {
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    pauseUI.gameObject.SetActive(true);
-                    mainSceneUI.gameObject.SetActive(false);
-                    checkPause = !checkPause;
-                    Time.timeScale = 0f;
-                    Debug.Log("Pause");
-                }
-            }
-            else
-            {
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    pauseUI.gameObject.SetActive(false);
-                    mainSceneUI.gameObject.SetActive(true);
-                    checkPause = !checkPause;
-                    Time.timeScale = 1f;
-                    Debug.Log("Not pause");
-                }
-            }
-        }
-        **/
     }
 
     
     public void GameOver()
     {
-        if (checkGameOver)
+        if (checkPlaying && !checkPause)
         {
-            gameOverUI.gameObject.SetActive(true);
-            pauseUI.gameObject.SetActive(false);
-            mainSceneUI.gameObject.SetActive(false);
+            if (checkGameOver)
+            {
+                gameOverUI.gameObject.SetActive(true);
+                pauseUI.gameObject.SetActive(false);
+                mainSceneUI.gameObject.SetActive(false);
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                gameOverUI.gameObject.SetActive(false);
+                pauseUI.gameObject.SetActive(false);
+                mainSceneUI.gameObject.SetActive(true);
+                Time.timeScale = 1f;
+            }
         }
     }
 
@@ -128,14 +126,53 @@ public class UIManager : MonoBehaviour
     {
         score += scoreToAdd;
         scoreText.text = score + " m";
+        gameOverScoreText.text = score + "m";
+        if(score >= toRankS)
+        {
+            rankText.text = "S-Rank";
+            messageText.text = "Perfect";
+        }
+        else if(score >= toRankA)
+        {
+            rankText.text = "A-Rank";
+            messageText.text = "Awesome";
+        }
+        else if (score >= toRankB)
+        {
+            rankText.text = "B-Rank";
+            messageText.text = "Cool";
+        }
+        else if (score >= toRankC)
+        {
+            rankText.text = "C-Rank";
+            messageText.text = "Not bad";
+        }
+        else if (score >= toRankD)
+        {
+            rankText.text = "D-Rank";
+            messageText.text = "One more time";
+        }
+        else if (score >= toRankE)
+        {
+            rankText.text = "E-Rank";
+            messageText.text = "Try again";
+        }
+        else
+        {
+            rankText.text = "F-Rank";
+            messageText.text = "Never give up";
+        }
     }
 
     public void HealthUpdate()
     {
-        if(healthPoint)
+        if(healthPoint.value <= 0)
         {
-
+            checkGameOver = true;
+            GameOver();
         }
     }
+
+
    
 }

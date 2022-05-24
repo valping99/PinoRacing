@@ -2000,7 +2000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &405479676
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2077,7 +2077,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &457370830
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8294,24 +8294,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a80f280a55ceb14c944bc48087494cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene_01: {fileID: 0}
-  scene_02: {fileID: 0}
-  scene_03: {fileID: 0}
-  scene_04: {fileID: 0}
-  selectStage_01: {fileID: 0}
-  selectStage_02: {fileID: 0}
-  selectStage_03: {fileID: 0}
-  selectStage: 0
-  typeOfPino_01: {fileID: 0}
-  nameOfPino_01: {fileID: 0}
-  typeOfPino_02: {fileID: 0}
-  nameOfPino_02: {fileID: 0}
-  typeOfPino_03: {fileID: 0}
-  nameOfPino_03: {fileID: 0}
-  statusOfPino_01: {fileID: 0}
-  statusOfPino_02: {fileID: 0}
-  statusOfPino_03: {fileID: 0}
-  Text_TapToStart: {fileID: 0}
+  isSelectScene_01: 0
+  isSelectScene_02: 0
+  isSelectScene_03: 0
+  isSelectScene_04: 0
+  scene_01: {fileID: 405479675}
+  scene_02: {fileID: 98743410}
+  scene_03: {fileID: 579840268}
+  scene_04: {fileID: 457370829}
+  selectStage_01: {fileID: 1433630581}
+  selectStage_02: {fileID: 1354764337}
+  selectStage_03: {fileID: 131914285}
+  typeOfPino_01: {fileID: 316436813}
+  nameOfPino_01: {fileID: 754525741}
+  typeOfPino_02: {fileID: 1701490995}
+  nameOfPino_02: {fileID: 215374242}
+  typeOfPino_03: {fileID: 1890393292}
+  nameOfPino_03: {fileID: 1240728615}
+  statusOfPino_01: {fileID: 1475203510}
+  statusOfPino_02: {fileID: 626703131}
+  statusOfPino_03: {fileID: 580660057}
+  Text_TapToStart: {fileID: 1362604159}
+  selectedStage: 0
+  selectedPino: 0
 --- !u!4 &2036843012
 Transform:
   m_ObjectHideFlags: 0
