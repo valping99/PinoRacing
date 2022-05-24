@@ -357,10 +357,6 @@ MonoBehaviour:
     m_Address: Assets/Models/Daytime/DumpsterGreen.fbx
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: c8c02decebafb7246953032df24e5c77
-    m_Address: Assets/Materials/BlobShadow.mat
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: c9414c650f62e5e409ece9f19b6fceed
     m_Address: Assets/Textures/Particle01.png
     m_ReadOnly: 0

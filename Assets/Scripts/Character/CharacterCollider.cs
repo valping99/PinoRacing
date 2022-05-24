@@ -48,6 +48,24 @@ public class CharacterCollider : MonoBehaviour
 
     }
 
+    void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.tag == "Obstacle")
+        {
+            Debug.Log("Collision with obstacle");
+        }
+
+        if(other.gameObject.tag == "Item")
+        {
+            Debug.Log("Collision with Item");
+        }
+
+        if(other.gameObject.tag == "Crystal")
+        {
+            Debug.Log("Collision with Crystal");
+        }
+    }
+
 
     #endregion
 

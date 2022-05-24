@@ -55,6 +55,14 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/UI/Score.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: c8c02decebafb7246953032df24e5c77
+    m_Address: Assets/Materials/BlobShadow.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f1e84f069bd3a6d44ba8070fba940ec8
+    m_Address: Assets/Material/Sky.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 735e874f947d0e143a6b4e83f8a7283a, type: 2}
   m_SchemaSet:
