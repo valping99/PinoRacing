@@ -189,7 +189,6 @@ GameObject:
   - component: {fileID: 326140431}
   - component: {fileID: 326140430}
   - component: {fileID: 326140429}
-  - component: {fileID: 326140428}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -212,23 +211,6 @@ Transform:
   m_Father: {fileID: 1633018681}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &326140428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326140426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01f851de0838a694fb7e7d1c86d24626, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 909665149}
-  m_LPositionZ: 0
-  RoadPieces:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!65 &326140429
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -425,7 +407,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576886099}
   m_LocalRotation: {x: 0.17923743, y: -0, z: -0, w: 0.98380584}
-  m_LocalPosition: {x: 0, y: 2.78, z: -14.48}
+  m_LocalPosition: {x: 0, y: 2.78, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -549,7 +531,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909665149}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10.83}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -660,7 +642,6 @@ GameObject:
   - component: {fileID: 932495396}
   - component: {fileID: 932495395}
   - component: {fileID: 932495394}
-  - component: {fileID: 932495392}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -683,23 +664,6 @@ Transform:
   m_Father: {fileID: 1633018681}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &932495392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 932495390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01f851de0838a694fb7e7d1c86d24626, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 909665150}
-  m_LPositionZ: 15
-  RoadPieces:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!65 &932495394
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1057,7 +1021,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633018680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 25.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1124,6 +1088,7 @@ MonoBehaviour:
   checkPause: 0
   checkGameOver: 0
   checkPlaying: 0
+  m_Player: {fileID: 0}
   mainSceneUI: {fileID: 992298790}
   pauseUI: {fileID: 1274807219}
   gameOverUI: {fileID: 1002541110}
@@ -1141,6 +1106,7 @@ MonoBehaviour:
   rankText: {fileID: 338811891}
   messageText: {fileID: 2111688245}
   score: 0
+  currentScore: 0
   toRankS: 150
   toRankA: 120
   toRankB: 100
