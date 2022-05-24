@@ -16,7 +16,9 @@ public class UIManager : MonoBehaviour
     public GameObject pauseUI;
     public GameObject gameOverUI;
 
+    public Slider healthPoint;
     public Button boostSpeedButton;
+    public Button pauseButton;
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI kphText;
@@ -31,7 +33,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI rankText;
     public TextMeshProUGUI messageText;
 
-    private int score;
+    public int score;
 
 
     void Start()
@@ -40,6 +42,18 @@ public class UIManager : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
+    {
+        UpdateScore(0);
+        
+    }
+
+
+    public void StartGame()
+    {
+        checkPlaying = true;
+    }
+
+    public void PauseGame()
     {
         if (checkPlaying)
         {
@@ -50,7 +64,7 @@ public class UIManager : MonoBehaviour
                     pauseUI.gameObject.SetActive(true);
                     mainSceneUI.gameObject.SetActive(false);
                     checkPause = !checkPause;
-                    PauseGame();
+                    Time.timeScale = 0f;
                     Debug.Log("Pause");
                 }
             }
@@ -61,27 +75,10 @@ public class UIManager : MonoBehaviour
                     pauseUI.gameObject.SetActive(false);
                     mainSceneUI.gameObject.SetActive(true);
                     checkPause = !checkPause;
-                    PauseGame();
+                    Time.timeScale = 1f;
                     Debug.Log("Not pause");
                 }
             }
-        } 
-    }
-
-    public void StartGame()
-    {
-        checkPlaying = true;
-    }
-
-    public void PauseGame()
-    {
-        if (checkPause)
-        {
-            Time.timeScale = 0f;
-        }
-        else
-        {
-            Time.timeScale = 1f;
         }
     }
 
@@ -92,6 +89,25 @@ public class UIManager : MonoBehaviour
             gameOverUI.gameObject.SetActive(true);
             pauseUI.gameObject.SetActive(false);
             mainSceneUI.gameObject.SetActive(false);
+        }
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void UpdateScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+        scoreText.text = score + " m";
+    }
+
+    public void HealthUpdate()
+    {
+        if(healthPoint)
+        {
+
         }
     }
    
