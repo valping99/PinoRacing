@@ -16,6 +16,11 @@ public class CharacterCollider : MonoBehaviour
 
     #region Variables
 
+    [Header("Variables")]
+
+    int m_InitialCrystal;
+    public int m_CurrentCrystal;
+
     public CharacterInputController controller;
 
     // [Header("Sound")]
@@ -29,11 +34,16 @@ public class CharacterCollider : MonoBehaviour
 
     #region Unity Methods
 
-    // Start is called before the first frame update
+    void Awake()
+    {
+        m_InitialCrystal = 0;
+        m_CurrentCrystal = m_InitialCrystal;
+    }
+
 
     public void Init()
     {
-        
+
     }
 
     void Start()
@@ -45,24 +55,36 @@ public class CharacterCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        BoostAvailable();
     }
 
     void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.tag == "Obstacle")
+        if (other.gameObject.tag == "Obstacle")
         {
             Debug.Log("Collision with obstacle");
         }
 
-        if(other.gameObject.tag == "Item")
+        if (other.gameObject.tag == "Item")
         {
             Debug.Log("Collision with Item");
+
+            if (other.gameObject.name == "Milk")
+            {
+                controller.m_CurrentSpeed += 2;
+            }
+            if (other.gameObject.name == "Chocolate")
+            {
+                // Refill health
+            }
+            Destroy(other.gameObject);
         }
 
-        if(other.gameObject.tag == "Crystal")
+        if (other.gameObject.tag == "Crystal")
         {
             Debug.Log("Collision with Crystal");
+            Destroy(other.gameObject);
+            m_CurrentCrystal += 1;
         }
     }
 
@@ -71,5 +93,13 @@ public class CharacterCollider : MonoBehaviour
 
     #region Class
 
+    void BoostAvailable()
+    {
+        if (m_CurrentCrystal != 16)
+            return;
+
+        controller.m_CurrentSpeed *= 2;
+
+    }
     #endregion
 }
