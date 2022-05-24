@@ -4,32 +4,32 @@ using UnityEngine;
 
 public class LoopBackground : MonoBehaviour
 {
-    public Transform m_Player;
-    public float m_limitedRange;
+    public GameObject Player;
+    public float m_LPositionZ;
+    private Vector3 m_limitedRange;
     private Vector3 m_startPos;
-    public float m_repeatPositionZ;
+    private Vector3 PlayerPos;
     void Start()
     {
-        m_startPos = transform.position;
-        m_repeatPositionZ = GetComponent<BoxCollider>().size.z / 2;
-        
+        PlayerPos = Player.transform.position;
+        m_startPos = this.transform.position;
+        m_limitedRange = new Vector3(0, 0, m_LPositionZ);
+        //m_repeatPositionZ = GetComponent<BoxCollider>().size.z / 2;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.z < m_startPos.z - m_limitedRange)
+        /**
+        if (m_startPos.z < PlayerPos.z + m_LPositionZ)
         {
-            transform.position = m_startPos;
+            m_startPos = PlayerPos;
         }
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        **/
+        while(m_startPos.z < PlayerPos.z)
         {
-            transform.position = m_Player.position
+            m_startPos = PlayerPos;
         }
     }
 }
