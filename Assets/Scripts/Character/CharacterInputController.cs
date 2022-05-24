@@ -16,13 +16,14 @@ public class CharacterInputController : MonoBehaviour
     // Scripts ====
     [SerializeField] CharacterCollider m_CharacterCollider;
     // Variables ====
-    float m_Position;
+    float m_CharacterPosition;
 
     [Header("Controls")]
 
     float m_InitialSpeed = 10f;
+    int laneNumber = 2;
     public float m_CurrentSpeed;
-    public float slideLength = 7f;
+    public int slideLength = 5;
 
     // Get - set Items ====
 
@@ -37,7 +38,7 @@ public class CharacterInputController : MonoBehaviour
 
     void Awake()
     {
-        m_Position = 0;
+        m_CharacterPosition = 0;
         m_CurrentSpeed = m_InitialSpeed;
     }
 
@@ -98,7 +99,7 @@ public class CharacterInputController : MonoBehaviour
     IEnumerator StopMoving()
     {
         yield return new WaitForSeconds(0.5f);
-        m_Position = 0;
+        m_CharacterPosition = 0;
 
         //stop track
 
@@ -110,26 +111,27 @@ public class CharacterInputController : MonoBehaviour
         // Delete something... 
     }
 
-    public void ChangeLane(float _direction)
+    public void ChangeLane(int _direction)
     {
-        m_Position = _direction;
+        m_CharacterPosition = _direction;
+        StartCoroutine(StopMoving());
     }
 
     void MoveInput()
     {
-        m_CharacterCollider.GetComponent<Rigidbody>().velocity = new Vector3(m_Position, 0, m_CurrentSpeed);
+        m_CharacterCollider.GetComponent<Rigidbody>().velocity = new Vector3(m_CharacterPosition, 0, m_CurrentSpeed);
 
 #if UNITY_EDITOR || UNITY_STANDALONE
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1)
         {
             ChangeLane(-slideLength);
-            StartCoroutine(StopMoving());
+            laneNumber -= 1;
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3)
         {
             ChangeLane(slideLength);
-            StartCoroutine(StopMoving());
+            laneNumber += 1;
         }
 
 #else
@@ -148,15 +150,13 @@ public class CharacterInputController : MonoBehaviour
 				{
 					else if(TutorialMoveCheck(0))
 					{
-						if(diff.x < 0)
+						if(diff.x < 0 && laneNumber > 1)
 						{
 							ChangeLane(-slideLength);
-                            StartCoroutine(StopMoving());
 						}
-						else
+						else if (diff.x >= 0 && laneNumber < 3)
 						{
 							ChangeLane(slideLength);
-                            StartCoroutine(StopMoving());
 						}
 					}
 						
