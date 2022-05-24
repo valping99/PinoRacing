@@ -9,9 +9,12 @@ using UnityEngine.EventSystems;
 public class UIManager : MonoBehaviour
 {
     // Start is called before the first frame update
+    CharacterInputController charInput;
+
     public bool checkPause;
     public bool checkGameOver;
     public bool checkPlaying;
+    public bool checkBoost;
 
     public GameObject m_Player;
 
@@ -20,7 +23,10 @@ public class UIManager : MonoBehaviour
     public GameObject gameOverUI;
 
     public Slider healthPoint;
+    public GameObject boostSpeedGObj;
     public Button boostSpeedButton;
+    public GameObject lockSpeedGObj;
+    public Button LockBoostButton;
     public Button pauseButton;
 
     public TextMeshProUGUI scoreText;
@@ -38,6 +44,8 @@ public class UIManager : MonoBehaviour
 
     public int score;
     public float currentScore;
+    public int crystalCollected;
+    public double speedRun;
 
     public float toRankS;
     public float toRankA;
@@ -60,6 +68,7 @@ public class UIManager : MonoBehaviour
             PauseGame();
         }
         UpdateScore(0);
+        BoostSpeed();
         HealthUpdate();
         
     }
@@ -70,6 +79,7 @@ public class UIManager : MonoBehaviour
         checkPlaying = true;
         pauseUI.gameObject.SetActive(false);
         gameOverUI.gameObject.SetActive(false);
+        boostSpeedButton.gameObject.SetActive(false);
     }
 
     public void PauseGame()
@@ -127,9 +137,11 @@ public class UIManager : MonoBehaviour
 
     public void UpdateScore(int scoreToAdd)
     {
+        currentScore = m_Player.transform.position.z;
+        currentScore = Mathf.FloorToInt(currentScore);
         score += scoreToAdd;
-        scoreText.text = score + " m";
-        gameOverScoreText.text = score + "m";
+        scoreText.text = currentScore + " m";
+        gameOverScoreText.text = currentScore + "m";
         if (score >= toRankS)
         {
             rankText.text = "S-Rank";
@@ -175,6 +187,22 @@ public class UIManager : MonoBehaviour
             GameOver();
         }
     }
+
+    public void BoostSpeed()
+    {
+        milkNumberText.text = crystalCollected + ".";
+        if(crystalCollected >= 6)
+        {
+            boostSpeedGObj.gameObject.SetActive(true);
+            lockSpeedGObj.gameObject.SetActive(false);
+        }
+        else
+        {
+            boostSpeedGObj.gameObject.SetActive(false);
+            lockSpeedGObj.gameObject.SetActive(true);
+        }
+    }
+
 
 
    
