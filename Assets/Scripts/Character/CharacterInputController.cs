@@ -21,9 +21,10 @@ public class CharacterInputController : MonoBehaviour
     [Header("Controls")]
 
     float m_InitialSpeed = 10f;
-    int laneNumber = 2;
+    int laneNumber;
     public float m_CurrentSpeed;
     public int slideLength = 5;
+    bool m_IsChangeLine;
 
     // Get - set Items ====
 
@@ -38,8 +39,10 @@ public class CharacterInputController : MonoBehaviour
 
     void Awake()
     {
+        laneNumber = 2;
         m_CharacterPosition = 0;
         m_CurrentSpeed = m_InitialSpeed;
+        m_IsChangeLine = true;
     }
 
 #if !UNITY_STANDALONE
@@ -100,6 +103,7 @@ public class CharacterInputController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         m_CharacterPosition = 0;
+        m_IsChangeLine = true;
 
         //stop track
 
@@ -115,6 +119,7 @@ public class CharacterInputController : MonoBehaviour
     {
         m_CharacterPosition = _direction;
         StartCoroutine(StopMoving());
+        m_IsChangeLine = false;
     }
 
     void MoveInput()
@@ -123,12 +128,12 @@ public class CharacterInputController : MonoBehaviour
 
 #if UNITY_EDITOR || UNITY_STANDALONE
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine)
         {
             ChangeLane(-slideLength);
             laneNumber -= 1;
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3)
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine)
         {
             ChangeLane(slideLength);
             laneNumber += 1;
@@ -150,14 +155,14 @@ public class CharacterInputController : MonoBehaviour
 				{
 					else if(TutorialMoveCheck(0))
 					{
-						if(diff.x < 0 && laneNumber > 1)
+						if(diff.x < 0 && laneNumber > 1 && m_IsChangeLine)
 						{
 							ChangeLane(-slideLength);
-						}
-						else if (diff.x >= 0 && laneNumber < 3)
+                        }
+						else if (diff.x >= 0 && laneNumber < 3 && m_IsChangeLine)
 						{
 							ChangeLane(slideLength);
-						}
+                        }
 					}
 						
 					m_IsSwiping = false;
