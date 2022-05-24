@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -43,7 +44,10 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateScore(0);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
+        }
         
     }
 
@@ -55,6 +59,27 @@ public class UIManager : MonoBehaviour
 
     public void PauseGame()
     {
+        if (checkPlaying)
+        {
+            if (!checkPause)
+            {
+                pauseUI.gameObject.SetActive(true);
+                mainSceneUI.gameObject.SetActive(false);
+                checkPause = !checkPause;
+                Time.timeScale = 0f;
+                Debug.Log("Pause");
+            }
+            else
+            {
+                pauseUI.gameObject.SetActive(false);
+                mainSceneUI.gameObject.SetActive(true);
+                checkPause = !checkPause;
+                Time.timeScale = 1f;
+                Debug.Log("Not pause");
+            }
+        }
+        
+        /**
         if (checkPlaying)
         {
             if (!checkPause)
@@ -80,8 +105,10 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+        **/
     }
 
+    
     public void GameOver()
     {
         if (checkGameOver)
