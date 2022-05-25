@@ -511,6 +511,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPivot
       objectReference: {fileID: 0}
+    - target: {fileID: 2707870872973799691, guid: abf825a928373564ca88ad32e99b68db,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2707870872973799692, guid: abf825a928373564ca88ad32e99b68db,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2707870872973799693, guid: abf825a928373564ca88ad32e99b68db,
         type: 3}
       propertyPath: m_RootOrder
@@ -524,7 +534,7 @@ PrefabInstance:
     - target: {fileID: 2707870872973799693, guid: abf825a928373564ca88ad32e99b68db,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2707870872973799693, guid: abf825a928373564ca88ad32e99b68db,
         type: 3}
@@ -703,12 +713,12 @@ PrefabInstance:
     - target: {fileID: 5665274073895826305, guid: b9c1380a3abf8e5478cfc6ab21c3341f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5665274073895826305, guid: b9c1380a3abf8e5478cfc6ab21c3341f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.799999
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 5665274073895826305, guid: b9c1380a3abf8e5478cfc6ab21c3341f,
         type: 3}
@@ -984,7 +994,7 @@ PrefabInstance:
     - target: {fileID: 4960419482472635629, guid: 416ff0a2c6dbfa540a0e490ac0cde47b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.799999
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 4960419482472635629, guid: 416ff0a2c6dbfa540a0e490ac0cde47b,
         type: 3}
@@ -1157,11 +1167,6 @@ PrefabInstance:
     - target: {fileID: 7609891172901446238, guid: 060aec3ffbb3cad41857bff45860f564,
         type: 3}
       propertyPath: m_Name
-      value: Crystal
-      objectReference: {fileID: 0}
-    - target: {fileID: 7609891172901446238, guid: 060aec3ffbb3cad41857bff45860f564,
-        type: 3}
-      propertyPath: m_TagString
       value: Crystal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
