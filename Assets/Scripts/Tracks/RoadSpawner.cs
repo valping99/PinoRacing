@@ -29,4 +29,12 @@ public class RoadSpawner : MonoBehaviour
         moveRoad.transform.position = new Vector3(0, 0, newPosZ);
         roads.Add(moveRoad);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("SpawnTrigger"))
+        {
+            MoveRoad();
+        }
+    }
 }

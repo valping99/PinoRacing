@@ -23,4 +23,10 @@ public class ButtonSelectedUI : MonoBehaviour
     {
         selected.AcceptPlay();
     }
+
+
+    public void checkScene1()
+    {
+        selected.isSelectScene_02 = true;
+    }
 }

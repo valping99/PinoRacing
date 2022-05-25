@@ -48,8 +48,40 @@ public class SelectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        checkScene();
     }
 
+    public void checkScene()
+    {
+        if (isSelectScene_01)
+        {
+            scene_01.gameObject.SetActive(true);
+            isSelectScene_02 = false;
+            isSelectScene_03 = false;
+            isSelectScene_04 = false;
+        }
+        else if (isSelectScene_02)
+        {
+            scene_02.gameObject.SetActive(true);
+            isSelectScene_01 = false;
+            isSelectScene_03 = false;
+            isSelectScene_04 = false;
+        }
+        else if (isSelectScene_03)
+        {
+            scene_03.gameObject.SetActive(true);
+            isSelectScene_01 = false;
+            isSelectScene_03 = false;
+            isSelectScene_02 = false;
+        }
+        else if (isSelectScene_04)
+        {
+            scene_04.gameObject.SetActive(true);
+            isSelectScene_01 = false;
+            isSelectScene_02 = false;
+            isSelectScene_03 = false;
+        }
+    }
     public void SelectStage()
     {
         isSelectScene_02 = true;
@@ -121,7 +153,7 @@ public class SelectManager : MonoBehaviour
 
     public void AcceptPlay()
     {
-        
+        SceneManager.LoadScene(0);
     }
 
 }
