@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 4954221666565902546}
   - component: {fileID: 4412894092173321804}
   - component: {fileID: 5204949645405813395}
-  - component: {fileID: 2421169707593971765}
+  - component: {fileID: 2009079818}
   m_Layer: 7
   m_Name: Crytal
   m_TagString: Untagged
@@ -137,8 +137,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2421169707593971765
-MeshCollider:
+--- !u!65 &2009079818
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -147,7 +147,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5495902117074765545, guid: 513b73f490e5a2d4b92f30fc5629147f, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 8.522868, y: 8.906578, z: 9.293272}
+  m_Center: {x: 0.5477816, y: -0.56037545, z: 4.2389336}

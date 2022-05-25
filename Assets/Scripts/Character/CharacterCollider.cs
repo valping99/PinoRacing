@@ -27,7 +27,7 @@ public class CharacterCollider : MonoBehaviour
     // public AudioClip milkSound;
     // public AudioClip premiumSound;
 
-    BoxCollider m_Collider;
+    // BoxCollider m_Collider;
     AudioSource m_Audio;
 
     #endregion
@@ -48,7 +48,7 @@ public class CharacterCollider : MonoBehaviour
 
     void Start()
     {
-        m_Collider = GetComponent<BoxCollider>();
+        // m_Collider = GetComponent<BoxCollider>();
         m_Audio = GetComponent<AudioSource>();
     }
 
@@ -57,8 +57,7 @@ public class CharacterCollider : MonoBehaviour
     {
         BoostAvailable();
     }
-
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Obstacle")
         {
@@ -67,25 +66,25 @@ public class CharacterCollider : MonoBehaviour
 
         if (other.gameObject.tag == "Item")
         {
-            Debug.Log("Collision with Item");
+            // Debug.Log("Collision with Item");
 
-            if (other.gameObject.name == "Milk")
+            if (other.gameObject.name == "Loot_Milk")
             {
                 controller.m_CurrentSpeed += 2;
             }
-            if (other.gameObject.name == "Chocolate")
+            if (other.gameObject.name == "Loot_Choco")
             {
                 // Refill health
+                Debug.Log("Pickup_Choco");
             }
-            Destroy(other.gameObject);
+            if (other.gameObject.name == "Loot_Crystal")
+            {
+                Debug.Log("Collision with Crystal");
+                Destroy(other.gameObject);
+                m_CurrentCrystal += 1;
+            }
         }
 
-        if (other.gameObject.tag == "Crystal")
-        {
-            Debug.Log("Collision with Crystal");
-            Destroy(other.gameObject);
-            m_CurrentCrystal += 1;
-        }
     }
 
 
