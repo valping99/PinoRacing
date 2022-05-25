@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class CharacterInputController : MonoBehaviour
 {
-
+    UIManager uiManagers;
     #region Variables
 
     // Animation =====
@@ -23,7 +23,8 @@ public class CharacterInputController : MonoBehaviour
     float m_InitialSpeed = 10f;
     int laneNumber;
     public float m_CurrentSpeed;
-    public int slideLength = 5;
+    public int slideLength = 5
+
     bool m_IsChangeLine;
 
     // Get - set Items ====
@@ -125,7 +126,9 @@ public class CharacterInputController : MonoBehaviour
     void MoveInput()
     {
         m_CharacterCollider.GetComponent<Rigidbody>().velocity = new Vector3(m_CharacterPosition, 0, m_CurrentSpeed);
-
+        Speed = m_CurrentSpeed * 3.6f;
+        uiManagers.speedRun = Speed;
+        uiManagers.kphText.text = Speed + "kph";
 #if UNITY_EDITOR || UNITY_STANDALONE
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine)
