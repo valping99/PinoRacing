@@ -157,37 +157,37 @@ public class UIManager : MonoBehaviour
         gameOverScoreText.text = currentScore + "m";
         if (currentScore >= toRankS)
         {
-            rankText.text = "S-Rank";
+            rankText.text = "Rank S";
             messageText.text = "Perfect";
         }
         else if(currentScore >= toRankA)
         {
-            rankText.text = "A-Rank";
+            rankText.text = "Rank A";
             messageText.text = "Awesome";
         }
         else if (currentScore >= toRankB)
         {
-            rankText.text = "B-Rank";
+            rankText.text = "Rank B";
             messageText.text = "Cool";
         }
         else if (currentScore >= toRankC)
         {
-            rankText.text = "C-Rank";
+            rankText.text = "Rank C";
             messageText.text = "Not bad";
         }
         else if (currentScore >= toRankD)
         {
-            rankText.text = "D-Rank";
+            rankText.text = "Rank D";
             messageText.text = "One more time";
         }
         else if (currentScore >= toRankE)
         {
-            rankText.text = "E-Rank";
+            rankText.text = "Rank E";
             messageText.text = "Try again";
         }
         else
         {
-            rankText.text = "F-Rank";
+            rankText.text = "Rank F";
             messageText.text = "Never give up";
         }
     }
