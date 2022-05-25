@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public CharacterInputController charInput;
+    public CharacterCollider charColl;
+    
 
     public bool checkPause;
     public bool checkGameOver;
@@ -149,6 +151,7 @@ public class UIManager : MonoBehaviour
         int currendSpeed = (int)kphSpeed;
         kphText.text = currendSpeed + "";
 
+
         score += scoreToAdd;
         scoreText.text = currentScore + " m";
         gameOverScoreText.text = currentScore + "m";
@@ -202,8 +205,12 @@ public class UIManager : MonoBehaviour
 
     public void BoostSpeed()
     {
-        milkNumberText.text = crystalCollected + "";
-        if(crystalCollected >= 6)
+        for (int i = 0; i < charInput.m_CurrentSpeed / 10; i++)
+        {
+            milkNumberText.text = i +"";
+        }
+        crystalCollected = charColl.m_CurrentCrystal;
+        if (crystalCollected >= 6)
         {
             crystalCollected = 6;
             checkBoost = true;
