@@ -59,6 +59,8 @@ public class CharacterCollider : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+        
+
         if (other.gameObject.tag == "Obstacle")
         {
             Debug.Log("Collision with obstacle");
@@ -70,7 +72,8 @@ public class CharacterCollider : MonoBehaviour
 
             if (other.gameObject.name == "Loot_Milk")
             {
-                controller.m_CurrentSpeed += 2;
+                MilkPickup milk = other.GetComponent<MilkPickup>();
+                controller.m_CurrentSpeed += milk.amountSpeed;
             }
             if (other.gameObject.name == "Loot_Choco")
             {
