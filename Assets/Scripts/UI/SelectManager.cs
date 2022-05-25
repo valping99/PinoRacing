@@ -99,6 +99,12 @@ public class SelectManager : MonoBehaviour
         }
     }
 
+    public void OnStart()
+    {
+        isSelectScene_02 = true;
+        isSelectScene_01 = false;
+        scene_01.gameObject.SetActive(false);
+    }
     public void isSelectStage()
     {
         if (isSelectStage_01)

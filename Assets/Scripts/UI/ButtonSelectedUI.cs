@@ -27,21 +27,18 @@ public class ButtonSelectedUI : MonoBehaviour
     public void checkScene1()
     {
         selected.isSelectScene_02 = true;
-        selected.isSelectScene_01 = false;
-        selected.checkScene();
+        selected.OnStart();
     }
 
     public void selectedStage01()
     {
         selected.isSelectStage_01 = true;
         selected.isSelectStage();
-        Debug.Log("Stage1");
     }
     public void selectedStage02()
     {
         selected.isSelectStage_02 = true;
         selected.isSelectStage();
-        Debug.Log("Stage2");
     }
     public void selectedStage03()
     {
