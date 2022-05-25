@@ -3182,6 +3182,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 651956115}
     m_Modifications:
+    - target: {fileID: 2134846025066215003, guid: abf825a928373564ca88ad32e99b68db,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 13cfb635642c24446be0f1a6a1efc036, type: 2}
     - target: {fileID: 2707870872973799691, guid: abf825a928373564ca88ad32e99b68db,
         type: 3}
       propertyPath: m_Name
@@ -3252,11 +3257,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3570460828144900646, guid: abf825a928373564ca88ad32e99b68db,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 5791150521579655787, guid: abf825a928373564ca88ad32e99b68db,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+      objectReference: {fileID: 2100000, guid: d91799f7355e85540bb6f6c7b05743c4, type: 2}
+    - target: {fileID: 8887503231821095727, guid: abf825a928373564ca88ad32e99b68db,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abf825a928373564ca88ad32e99b68db, type: 3}
 --- !u!1 &974738598
@@ -5832,6 +5847,7 @@ MonoBehaviour:
   score: 0
   currentScore: 0
   crystalCollected: 0
+  speedRun: 0
   toRankS: 150
   toRankA: 120
   toRankB: 100
