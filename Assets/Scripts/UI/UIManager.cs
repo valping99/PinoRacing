@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 public class UIManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    CharacterInputController charInput;
+    public CharacterInputController charInput;
 
     public bool checkPause;
     public bool checkGameOver;
@@ -29,24 +29,30 @@ public class UIManager : MonoBehaviour
     public Button LockBoostButton;
     public Button pauseButton;
 
+    
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI kphText;
     public TextMeshProUGUI milkNumberText;
-
+    
+    //Pause
     public Button resumeButton;
     public Button mainMenuButton;
 
+    //UI GameOver
     public Button shareScoreButton;
     public Button gameOverMainMenuButton;
     public TextMeshProUGUI gameOverScoreText;
     public TextMeshProUGUI rankText;
     public TextMeshProUGUI messageText;
 
+    //UI Playing
     public int score;
     public float currentScore;
+    public float currentSpeed;
     public int crystalCollected;
     public double speedRun;
-
+    public float healthDown;
+    //Set rank
     public float toRankS;
     public float toRankA;
     public float toRankB;
@@ -139,35 +145,39 @@ public class UIManager : MonoBehaviour
     {
         currentScore = m_Player.transform.position.z;
         currentScore = Mathf.FloorToInt(currentScore);
+        double kphSpeed = charInput.m_CurrentSpeed * 3.6;
+        int currendSpeed = (int)kphSpeed;
+        kphText.text = currendSpeed + "";
+
         score += scoreToAdd;
         scoreText.text = currentScore + " m";
         gameOverScoreText.text = currentScore + "m";
-        if (score >= toRankS)
+        if (currentScore >= toRankS)
         {
             rankText.text = "S-Rank";
             messageText.text = "Perfect";
         }
-        else if(score >= toRankA)
+        else if(currentScore >= toRankA)
         {
             rankText.text = "A-Rank";
             messageText.text = "Awesome";
         }
-        else if (score >= toRankB)
+        else if (currentScore >= toRankB)
         {
             rankText.text = "B-Rank";
             messageText.text = "Cool";
         }
-        else if (score >= toRankC)
+        else if (currentScore >= toRankC)
         {
             rankText.text = "C-Rank";
             messageText.text = "Not bad";
         }
-        else if (score >= toRankD)
+        else if (currentScore >= toRankD)
         {
             rankText.text = "D-Rank";
             messageText.text = "One more time";
         }
-        else if (score >= toRankE)
+        else if (currentScore >= toRankE)
         {
             rankText.text = "E-Rank";
             messageText.text = "Try again";
@@ -181,8 +191,10 @@ public class UIManager : MonoBehaviour
 
     public void HealthUpdate()
     {
+        healthPoint.value -= healthDown * Time.deltaTime;
         if(healthPoint.value <= 0)
         {
+            healthPoint.value = 0;
             checkGameOver = true;
             GameOver();
         }
@@ -190,8 +202,19 @@ public class UIManager : MonoBehaviour
 
     public void BoostSpeed()
     {
-        milkNumberText.text = crystalCollected + ".";
+        milkNumberText.text = crystalCollected + "";
         if(crystalCollected >= 6)
+        {
+            crystalCollected = 6;
+            checkBoost = true;
+        }
+        else if(crystalCollected <=0)
+        {
+            crystalCollected = 0;
+            checkBoost = false;
+        }
+
+        if(checkBoost)
         {
             boostSpeedGObj.gameObject.SetActive(true);
             lockSpeedGObj.gameObject.SetActive(false);

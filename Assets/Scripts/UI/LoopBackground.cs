@@ -5,8 +5,7 @@ using UnityEngine;
 public class LoopBackground : MonoBehaviour
 {
     public GameObject[] RoadPieces;
-    const float RoadLength = 50f; //length of roads
-    const float RoadSpeed = 5f; //speed to scroll roads at
+    public float RoadLength = 30f; //length of roads
     void Update()
     {
         foreach (GameObject road in RoadPieces)

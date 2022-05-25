@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
             m_IsRunning = true;
             StartCoroutine(CountDistance());
         }
-        // Debug.Log(m_Distance);
+        //Debug.Log(m_Distance);
     }
 
 
