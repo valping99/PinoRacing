@@ -6,26 +6,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MilkPickup : Pickup
+public class WaterPickup : Pickup
 {
 
     #region Variables
 
     [Header("Parameters")]
-    [Tooltip("Amount of speed to boost on pickup")]
-    public int amountMilkBottle;
+    [Tooltip("Amount of health to hurt player on pickup")]
+    public float HurtAmount;
+    public float LostSpeed;
 
     #endregion
 
     #region Class
+
     protected override void OnPicked(CharacterCollider player)
     {
-        Milk playerMilkBottle = player.GetComponent<Milk>();
-        if (playerMilkBottle && playerMilkBottle.CanPickup())
+        Water waterPickup = player.GetComponent<Water>();
+        if (waterPickup && waterPickup.CanPickup())
         {
-            playerMilkBottle.Collect(amountMilkBottle);
+            waterPickup.TakeDamage(HurtAmount, gameObject);
+            PlayPickupFeedback();
             Destroy(gameObject);
         }
     }
+
     #endregion
 }

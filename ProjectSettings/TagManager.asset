@@ -6,6 +6,13 @@ TagManager:
   tags:
   - Obstacle
   - Item
+  - SpawnTrigger
+  - Crystal
+  - Milk
+  - Choco
+  - Fire
+  - Water
+  - Stick
   layers:
   - Default
   - TransparentFX

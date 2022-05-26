@@ -17,17 +17,37 @@ public class CharacterCollider : MonoBehaviour
     #region Variables
 
     [Header("Variables")]
+    public CharacterInputController m_CharacterController;
+
+
+
+    [Header("Items")]
+    public int m_CurrentCrystal;
+    public int m_CurrentBottleMilk;
+    public int m_CrystalBoost;
+
+
+    [Header("Initial Values")]
+    [Tooltip("Speed initial of the character")]
+    public float m_InitialSpeed;
+    [Tooltip("Initial Def of the character")]
+    public int m_InitialDef;
+    [Tooltip("Initial Stamina of the character")]
+    public int m_InitialStamina;
+
+    [Header("Controls")]
+    public float m_CurrentSpeed;
+    public int m_CurrentStamina;
+    public bool m_IsEnoughBoost;
 
     int m_InitialCrystal;
-    public int m_CurrentCrystal;
+    GameObject m_RootItem;
+    List<GameObject> crystalList = new List<GameObject>();
 
-    public CharacterInputController controller;
 
     // [Header("Sound")]
     // public AudioClip milkSound;
-    // public AudioClip premiumSound;
 
-    // BoxCollider m_Collider;
     AudioSource m_Audio;
 
     #endregion
@@ -37,13 +57,10 @@ public class CharacterCollider : MonoBehaviour
     void Awake()
     {
         m_InitialCrystal = 0;
+        m_CrystalBoost = 0;
+
         m_CurrentCrystal = m_InitialCrystal;
-    }
-
-
-    public void Init()
-    {
-
+        m_CurrentSpeed = m_InitialSpeed;
     }
 
     void Start()
@@ -55,39 +72,74 @@ public class CharacterCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        BoostAvailable();
+        // m_CharacterController.BoostAvailable();
+        CheckBoostCount();
     }
     void OnTriggerEnter(Collider other)
     {
-        
-
         if (other.gameObject.tag == "Obstacle")
         {
-            Debug.Log("Collision with obstacle");
+            // Debug.Log("Collision with obstacle");
+            m_RootItem = other.gameObject;
+
+            foreach (Transform child in m_RootItem.transform)
+            {
+                if (child.CompareTag("Fire"))
+                {
+                    // Debug.Log("Collision with fire");
+                    FirePickup fire = child.GetComponent<FirePickup>();
+                    Destroy(m_RootItem.gameObject);
+
+
+                }
+                if (child.CompareTag("Water"))
+                {
+                    WaterPickup water = child.GetComponent<WaterPickup>();
+                    // m_CurrentBottleMilk += milk.amountMilkBottle;
+                    // m_CharacterController.ChangeSpeed();
+                    // Debug.Log("Collision with water");
+                    Destroy(m_RootItem.gameObject);
+                }
+                if (child.CompareTag("Stick"))
+                {
+                    StickPickup stick = child.GetComponent<StickPickup>();
+                    // Debug.Log("Collision with stick");
+                    Destroy(m_RootItem.gameObject);
+                }
+
+            }
         }
 
         if (other.gameObject.tag == "Item")
         {
-            // Debug.Log("Collision with Item");
+            m_RootItem = other.gameObject;
 
-            if (other.gameObject.name == "Loot_Milk")
+            foreach (Transform child in m_RootItem.transform)
             {
-                MilkPickup milk = other.GetComponent<MilkPickup>();
-                controller.m_CurrentSpeed += milk.amountSpeed;
-            }
-            if (other.gameObject.name == "Loot_Choco")
-            {
-                // Refill health
-                Debug.Log("Pickup_Choco");
-            }
-            if (other.gameObject.name == "Loot_Crystal")
-            {
-                Debug.Log("Collision with Crystal");
-                Destroy(other.gameObject);
-                m_CurrentCrystal += 1;
+                if (child.CompareTag("Crystal"))
+                {
+                    if (m_CurrentCrystal < 6)
+                    {
+                        m_CurrentCrystal += 1;
+                        Destroy(m_RootItem.gameObject);
+                    }
+                }
+                if (child.CompareTag("Milk"))
+                {
+                    MilkPickup milk = other.GetComponent<MilkPickup>();
+
+                    m_CurrentBottleMilk += milk.amountMilkBottle;
+                    m_CharacterController.ChangeSpeed();
+                    Destroy(m_RootItem.gameObject);
+                }
+                if (child.CompareTag("Choco"))
+                {
+                    // Refill stamina
+                    m_CurrentStamina += 10;
+                    Destroy(m_RootItem.gameObject);
+                }
             }
         }
-
     }
 
 
@@ -95,13 +147,28 @@ public class CharacterCollider : MonoBehaviour
 
     #region Class
 
-    void BoostAvailable()
+    void CheckBoostCount()
     {
-        if (m_CurrentCrystal != 16)
-            return;
+        if (m_CurrentCrystal == 6)
+        {
+            m_IsEnoughBoost = true;
+        }
 
-        controller.m_CurrentSpeed *= 2;
+        if (m_IsEnoughBoost)
+        {
+            StartCoroutine(GetBoost());
+        }
+    }
 
+    IEnumerator GetBoost()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if (m_CrystalBoost == 0)
+        {
+            m_IsEnoughBoost = false;
+            m_CrystalBoost = 16;
+        }
     }
     #endregion
 }
