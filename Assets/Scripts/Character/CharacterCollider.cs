@@ -80,11 +80,38 @@ public class CharacterCollider : MonoBehaviour
         if (other.gameObject.tag == "Obstacle")
         {
             // Debug.Log("Collision with obstacle");
+            m_RootItem = other.gameObject;
+
+            foreach (Transform child in m_RootItem.transform)
+            {
+                if (child.CompareTag("Fire"))
+                {
+                    // Debug.Log("Collision with fire");
+                    FirePickup fire = child.GetComponent<FirePickup>();
+                    Destroy(m_RootItem.gameObject);
+
+
+                }
+                if (child.CompareTag("Water"))
+                {
+                    WaterPickup water = child.GetComponent<WaterPickup>();
+                    // m_CurrentBottleMilk += milk.amountMilkBottle;
+                    // m_CharacterController.ChangeSpeed();
+                    // Debug.Log("Collision with water");
+                    Destroy(m_RootItem.gameObject);
+                }
+                if (child.CompareTag("Stick"))
+                {
+                    StickPickup stick = child.GetComponent<StickPickup>();
+                    // Debug.Log("Collision with stick");
+                    Destroy(m_RootItem.gameObject);
+                }
+
+            }
         }
 
         if (other.gameObject.tag == "Item")
         {
-            // Debug.Log("Collision with Item");
             m_RootItem = other.gameObject;
 
             foreach (Transform child in m_RootItem.transform)
@@ -96,7 +123,6 @@ public class CharacterCollider : MonoBehaviour
                         m_CurrentCrystal += 1;
                         Destroy(m_RootItem.gameObject);
                     }
-
                 }
                 if (child.CompareTag("Milk"))
                 {
@@ -104,7 +130,6 @@ public class CharacterCollider : MonoBehaviour
 
                     m_CurrentBottleMilk += milk.amountMilkBottle;
                     m_CharacterController.ChangeSpeed();
-
                     Destroy(m_RootItem.gameObject);
                 }
                 if (child.CompareTag("Choco"))
@@ -113,7 +138,6 @@ public class CharacterCollider : MonoBehaviour
                     m_CurrentStamina += 10;
                     Destroy(m_RootItem.gameObject);
                 }
-
             }
         }
     }

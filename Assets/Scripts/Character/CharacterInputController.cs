@@ -16,9 +16,12 @@ public class CharacterInputController : MonoBehaviour
     [Header("Variables")]
     UIManager uiManagers;
     [SerializeField] CharacterCollider m_Character;
+    GameObject m_WallClearLag;
     // Variables ====
 
     [Header("Controls")]
+    [Tooltip("The more you press, the faster the character will change lines")]
+    public float m_SecondChangeLine;
     [Tooltip("Range of the character move when you swipe")]
     public int slideLength = 5;
     public float m_BoostSpeed;
@@ -53,6 +56,7 @@ public class CharacterInputController : MonoBehaviour
         m_IsChangeLine = true;
         m_IsBoosting = false;
         m_IsRemainBoost = false;
+        m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
     }
 
 #if !UNITY_STANDALONE
@@ -79,7 +83,7 @@ public class CharacterInputController : MonoBehaviour
 
     IEnumerator StopMoving()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(m_SecondChangeLine);
         m_CharacterPosition = 0;
         m_IsChangeLine = true;
 
@@ -103,6 +107,8 @@ public class CharacterInputController : MonoBehaviour
     void MoveInput()
     {
         m_Character.GetComponent<Rigidbody>().velocity = new Vector3(m_CharacterPosition, 0, m_Character.m_CurrentSpeed);
+        
+        m_WallClearLag.transform.position = new Vector3(m_WallClearLag.transform.position.x, m_WallClearLag.transform.position.y, m_Character.transform.position.z - 15f);
 
         //Test boost in unity editor
         if (Input.GetKeyDown(KeyCode.R))
@@ -190,10 +196,12 @@ public class CharacterInputController : MonoBehaviour
             if (m_Character.m_CurrentBottleMilk == 1)
             {
                 m_MilkCollectSpeed = m_Character.m_InitialSpeed + 5;
+
             }
             else if (m_Character.m_CurrentBottleMilk > 1)
             {
                 m_MilkCollectSpeed = m_Character.m_InitialSpeed * m_Character.m_CurrentBottleMilk;
+
             }
         }
 
@@ -223,6 +231,7 @@ public class CharacterInputController : MonoBehaviour
 
         int _TimePerSec = m_TimeBoost;
         float _temp = (m_BoostSpeed - m_MilkCollectSpeed) / (_TimePerSec * m_TimeBoost); // tempt speed
+
 
         while (m_Character.m_CurrentSpeed > m_MilkCollectSpeed)
         {

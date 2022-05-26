@@ -10,6 +10,9 @@ TagManager:
   - Crystal
   - Milk
   - Choco
+  - Fire
+  - Water
+  - Stick
   layers:
   - Default
   - TransparentFX

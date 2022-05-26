@@ -17,7 +17,7 @@ public class ClearLag : MonoBehaviour
         if (other.gameObject.tag == "Item" || other.gameObject.tag == "Obstacle")
         {
             Destroy(other.gameObject);
-            // Debug.Log("Clear trash name: " + other.name);
+            Debug.Log("Clear trash name: " + other.name);
         }
     }
     

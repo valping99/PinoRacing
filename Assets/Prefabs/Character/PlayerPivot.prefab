@@ -30,6 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 850211505657329856}
+  - {fileID: 4054585821667757163}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46,10 +47,70 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Character: {fileID: 347566439581056165}
-  m_CurrentSpeed: 10
-  slideLength: 7
-  m_IsBoosting: 0
+  m_Wall: {fileID: 3890503010755581792}
+  m_SecondChangeLine: 0.3
+  slideLength: 15
   m_BoostSpeed: 70
+  m_IsBoosting: 0
+  m_IsRemainBoost: 0
+--- !u!1 &3890503010755581792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4054585821667757163}
+  - component: {fileID: 908503237774059630}
+  - component: {fileID: 4407763032919977492}
+  m_Layer: 0
+  m_Name: Wall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4054585821667757163
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3890503010755581792}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -1, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2707870872973799693}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &908503237774059630
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3890503010755581792}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 15, z: 20}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4407763032919977492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3890503010755581792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837685fcc12894b4ab74c59776d687dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4134263911397475122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -116,6 +177,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pino
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435226266236567447, guid: 6694f72b0d8d35f47a1d8d593a8023ab,
+        type: 3}
+      propertyPath: m_InitialDef
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435226266236567447, guid: 6694f72b0d8d35f47a1d8d593a8023ab,
+        type: 3}
+      propertyPath: m_CurrentSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435226266236567447, guid: 6694f72b0d8d35f47a1d8d593a8023ab,
+        type: 3}
+      propertyPath: m_CurrentStamina
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435226266236567447, guid: 6694f72b0d8d35f47a1d8d593a8023ab,
+        type: 3}
+      propertyPath: m_InitialStamina
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4435226266236567447, guid: 6694f72b0d8d35f47a1d8d593a8023ab,
         type: 3}
