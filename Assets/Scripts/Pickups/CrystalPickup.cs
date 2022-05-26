@@ -12,8 +12,12 @@ public class CrystalPickup : Pickup
     #region Variables
 
     [Header("Parameters")]
+
     [Tooltip("Amount of crystal to get on pickup")]
     public int amountCrystal;
+    
+    [Tooltip("Amount of time to wait before reboosting")]
+    public float m_TimeBoost;
     #endregion
 
     #region Class

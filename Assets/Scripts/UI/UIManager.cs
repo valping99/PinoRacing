@@ -145,9 +145,9 @@ public class UIManager : MonoBehaviour
     {
         currentScore = m_Player.transform.position.z;
         currentScore = Mathf.FloorToInt(currentScore);
-        double kphSpeed = charInput.m_CurrentSpeed * 3.6;
-        int currendSpeed = (int)kphSpeed;
-        kphText.text = currendSpeed + "";
+        // double kphSpeed = charInput.m_CurrentSpeed * 3.6;
+        // int currendSpeed = (int)kphSpeed;
+        // kphText.text = currendSpeed + "";
 
         score += scoreToAdd;
         scoreText.text = currentScore + " m";
