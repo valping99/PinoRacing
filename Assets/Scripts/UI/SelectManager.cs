@@ -246,7 +246,7 @@ public class SelectManager : MonoBehaviour
         {
             SceneManager.LoadScene(selectedStage);
         }
-        //Fixing
+        Time.timeScale = 1f;
     }
 
 

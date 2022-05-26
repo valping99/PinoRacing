@@ -46,29 +46,32 @@ public class CharacterSelected : MonoBehaviour
     }
     **/
 
+
+    //Select Pino & add to UIManager
     public void GameStart()
     {
+        //Get Variables in UIManager
         isSelected = UIManager.pinoSelected;
+
+        //If List Pino > 0,check & get Pino by variables in StartScene
         for (int i = 0; i <= isSelected; i++)
         {
             if (i == isSelected)
             {
+                //Get Pino to stage
                 Debug.Log("Instantiate");
                 Instantiate(playerList[i - 1], new Vector3(0, 0, 0), Quaternion.identity);
-                
-                //playerPosition = playerList[i - 1].transform.position;
-                GameObject pino = playerList[i - 1];
+
+                //Get new Variables of the pino
                 nameGameObject = GameObject.Find("Pino");
                 nameCollider = FindObjectOfType<CharacterCollider>();
                 charInput = (CharacterInputController) FindObjectOfType(typeof(CharacterInputController));
-                //nameCharacterCollider = CharacterCollider.FindObjectOfType()
-                Debug.Log(pino);
+
+                //Get Variables to UIManager
                 uiManagers.m_Player = nameGameObject;
                 uiManagers.charColl = nameCollider;
                 uiManagers.charInput = charInput;
-                Debug.Log("Instantiate");
 
-                //RoadFollowPlayer();
 
             }
         }

@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public bool checkGameOver;
     public bool checkPlaying;
     public bool checkBoost;
+    public bool checkRunning = false;
 
     // Get player for get Speed;
     public GameObject m_Player;
@@ -36,7 +37,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI kphText;
     public TextMeshProUGUI milkNumberText;
-    
+    public TextMeshProUGUI countdownTimer_Text;
+    public float timeValue = 5;
+
     //PauseUI
     public Button resumeButton;
     public Button mainMenuButton;
@@ -53,9 +56,9 @@ public class UIManager : MonoBehaviour
     public float currentScore;
     public float currentSpeed;
     public int crystalCollected;
-    public double speedRun;
     public float healthDown;
     public static int pinoSelected;
+    public int Speed;
 
     //Set rank
     public float toRankS;
@@ -77,13 +80,14 @@ public class UIManager : MonoBehaviour
  
     void Update()
     {
+        CountDown();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseGame();
         }
         UpdateScore(0);
         BoostSpeed();
-        HealthUpdate();        
+        HealthUpdate();
     }
 
 
@@ -93,10 +97,15 @@ public class UIManager : MonoBehaviour
     {
         if (checkPlaying)
         {
-            mainSceneUI.gameObject.SetActive(true);
+            //mainSceneUI.gameObject.SetActive(true);
             pauseUI.gameObject.SetActive(false);
             gameOverUI.gameObject.SetActive(false);
             boostSpeedButton.gameObject.SetActive(false);
+        }
+        if (!checkRunning)
+        {
+            charInput.m_CurrentSpeed = 0;
+            mainSceneUI.gameObject.SetActive(false);
         }
 
 
@@ -159,7 +168,6 @@ public class UIManager : MonoBehaviour
     public void BackToMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Time.timeScale = 1f;
     }
 
 
@@ -222,14 +230,18 @@ public class UIManager : MonoBehaviour
     //Set HP Decrease 
     public void HealthUpdate()
     {
-        healthPoint.value -= healthDown * Time.deltaTime;
-        if(healthPoint.value <= 0)
+        if (checkRunning)
         {
-            healthPoint.value = 0;
-            checkGameOver = true;
-            GameOver();
+            healthPoint.value -= healthDown * Time.deltaTime;
+            if (healthPoint.value <= 0)
+            {
+                healthPoint.value = 0;
+                checkGameOver = true;
+                GameOver();
+            }
         }
     }
+
 
 
     //BoostSpeed
@@ -268,7 +280,37 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    //Time to countdown
+    public void CountDown()
+    {
+        if (timeValue > 0)
+        {
+            timeValue -= Time.deltaTime;
+            Debug.Log(timeValue);
+        }
+        else
+        {
+            timeValue = 0;
+        }
+        DisplayTimer(timeValue);
+    }
+
+    public void DisplayTimer(float timeToDisplay)
+    {
+        if (timeToDisplay < 0)
+        {
+            timeToDisplay = 0;
+            countdownTimer_Text.gameObject.SetActive(false);
+            checkRunning = true;
+            mainSceneUI.gameObject.SetActive(true);
+            charInput.m_CurrentSpeed += Speed;
+        }
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+        //countdownTimer_Text.text = string.Format("{0:00}:{1:00}", minutes, seconds);\
+        countdownTimer_Text.text = seconds+"";
+    }
 
 
-   
 }

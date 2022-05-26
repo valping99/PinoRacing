@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6104331992029599447
+--- !u!1 &6161353084638388913
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6104331992029599444}
-  - component: {fileID: 6104331992029599445}
+  - component: {fileID: 6161353084638388914}
+  - component: {fileID: 6161353084638388915}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -17,28 +17,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6104331992029599444
+--- !u!4 &6161353084638388914
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6104331992029599447}
+  m_GameObject: {fileID: 6161353084638388913}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -401.83755, y: -920.67126, z: 79.351616}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6104331992029599445
+--- !u!114 &6161353084638388915
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6104331992029599447}
+  m_GameObject: {fileID: 6161353084638388913}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4c79524454887b4590d165bcb4396ab, type: 3}
@@ -46,11 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charInput: {fileID: 0}
   charColl: {fileID: 0}
-  charSelect: {fileID: 0}
   checkPause: 0
   checkGameOver: 0
   checkPlaying: 0
   checkBoost: 0
+  checkRunning: 0
   m_Player: {fileID: 0}
   mainSceneUI: {fileID: 0}
   pauseUI: {fileID: 0}
@@ -64,6 +64,8 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   kphText: {fileID: 0}
   milkNumberText: {fileID: 0}
+  countdownTimer_Text: {fileID: 0}
+  timeValue: 3
   resumeButton: {fileID: 0}
   mainMenuButton: {fileID: 0}
   shareScoreButton: {fileID: 0}
@@ -73,10 +75,10 @@ MonoBehaviour:
   messageText: {fileID: 0}
   score: 0
   currentScore: 0
-  currentSpeed: 0
+  currentSpeed: 10
   crystalCollected: 0
-  speedRun: 0
   healthDown: 7
+  Speed: 10
   toRankS: 1000
   toRankA: 800
   toRankB: 500
