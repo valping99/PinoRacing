@@ -10,56 +10,48 @@ public class UIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public CharacterInputController charInput;
-    public CharacterCollider charColl;
-    
-    //Check to active UI & button;
+
     public bool checkPause;
     public bool checkGameOver;
     public bool checkPlaying;
     public bool checkBoost;
-    public bool checkRunning = false;
 
-    // Get player for get Speed;
     public GameObject m_Player;
 
-    //Get UI to Active
     public GameObject mainSceneUI;
     public GameObject pauseUI;
     public GameObject gameOverUI;
 
-    //UI Gameplaying
     public Slider healthPoint;
     public GameObject boostSpeedGObj;
-    public GameObject lockSpeedGObj;
     public Button boostSpeedButton;
+    public GameObject lockSpeedGObj;
     public Button LockBoostButton;
     public Button pauseButton;
+
+    
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI kphText;
     public TextMeshProUGUI milkNumberText;
-    public TextMeshProUGUI countdownTimer_Text;
-    public float timeValue = 5;
-
-    //PauseUI
+    
+    //Pause
     public Button resumeButton;
     public Button mainMenuButton;
 
-    //GameOverUI
+    //UI GameOver
     public Button shareScoreButton;
     public Button gameOverMainMenuButton;
     public TextMeshProUGUI gameOverScoreText;
     public TextMeshProUGUI rankText;
     public TextMeshProUGUI messageText;
 
-    //Variables of PlayingUI
+    //UI Playing
     public int score;
     public float currentScore;
     public float currentSpeed;
     public int crystalCollected;
+    public double speedRun;
     public float healthDown;
-    public static int pinoSelected;
-    public int Speed;
-
     //Set rank
     public float toRankS;
     public float toRankA;
@@ -70,17 +62,13 @@ public class UIManager : MonoBehaviour
     public float toRankF;
 
 
-    //Game Start
     void Start()
     {
-        checkPlaying = true;
         StartGame();
     }
-
- 
+    // Update is called once per frame
     void Update()
     {
-        CountDown();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseGame();
@@ -88,13 +76,13 @@ public class UIManager : MonoBehaviour
         UpdateScore(0);
         BoostSpeed();
         HealthUpdate();
+        
     }
 
 
-
-    //Active when game start
     public void StartGame()
     {
+<<<<<<< HEAD
         if (checkPlaying)
         {
             //mainSceneUI.gameObject.SetActive(true);
@@ -109,10 +97,14 @@ public class UIManager : MonoBehaviour
         }
 
 
+=======
+        checkPlaying = true;
+        pauseUI.gameObject.SetActive(false);
+        gameOverUI.gameObject.SetActive(false);
+        boostSpeedButton.gameObject.SetActive(false);
+>>>>>>> parent of 51497b6 (Merge pull request #13 from indigames/DatDiep)
     }
 
-
-    //Active PauseUI
     public void PauseGame()
     {
         if (checkPlaying)
@@ -133,15 +125,13 @@ public class UIManager : MonoBehaviour
                 gameOverUI.gameObject.SetActive(false);
                 checkPause = !checkPause;
                 Time.timeScale = 1f;
-                Debug.Log("Resume");
+                Debug.Log("Not pause");
             }
         }
         
     }
 
     
-
-    //Active GameOverUI
     public void GameOver()
     {
         if (checkPlaying && !checkPause)
@@ -163,90 +153,82 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
-    //Return to GameStart Scene
     public void BackToMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-
-    //Update Score, speed, item...
     public void UpdateScore(int scoreToAdd)
     {
-        //Get score & convert float to int
         currentScore = m_Player.transform.position.z;
         currentScore = Mathf.FloorToInt(currentScore);
+        // double kphSpeed = charInput.m_CurrentSpeed * 3.6;
+        // int currendSpeed = (int)kphSpeed;
+        // kphText.text = currendSpeed + "";
 
+<<<<<<< HEAD
         //Get kph speed
         double kphSpeed = charColl.m_CurrentSpeed * 3.6;
         int currendSpeed = (int)kphSpeed;
         kphText.text = currendSpeed + "";
 
         //Get score
+=======
+>>>>>>> parent of 51497b6 (Merge pull request #13 from indigames/DatDiep)
         score += scoreToAdd;
         scoreText.text = currentScore + " m";
         gameOverScoreText.text = currentScore + "m";
-
-        //Set rank
         if (currentScore >= toRankS)
         {
-            rankText.text = "Rank S";
+            rankText.text = "S-Rank";
             messageText.text = "Perfect";
         }
         else if(currentScore >= toRankA)
         {
-            rankText.text = "Rank A";
+            rankText.text = "A-Rank";
             messageText.text = "Awesome";
         }
         else if (currentScore >= toRankB)
         {
-            rankText.text = "Rank B";
+            rankText.text = "B-Rank";
             messageText.text = "Cool";
         }
         else if (currentScore >= toRankC)
         {
-            rankText.text = "Rank C";
+            rankText.text = "C-Rank";
             messageText.text = "Not bad";
         }
         else if (currentScore >= toRankD)
         {
-            rankText.text = "Rank D";
+            rankText.text = "D-Rank";
             messageText.text = "One more time";
         }
         else if (currentScore >= toRankE)
         {
-            rankText.text = "Rank E";
+            rankText.text = "E-Rank";
             messageText.text = "Try again";
         }
         else
         {
-            rankText.text = "Rank F";
+            rankText.text = "F-Rank";
             messageText.text = "Never give up";
         }
     }
 
-
-    //Set HP Decrease 
     public void HealthUpdate()
     {
-        if (checkRunning)
+        healthPoint.value -= healthDown * Time.deltaTime;
+        if(healthPoint.value <= 0)
         {
-            healthPoint.value -= healthDown * Time.deltaTime;
-            if (healthPoint.value <= 0)
-            {
-                healthPoint.value = 0;
-                checkGameOver = true;
-                GameOver();
-            }
+            healthPoint.value = 0;
+            checkGameOver = true;
+            GameOver();
         }
     }
 
-
-
-    //BoostSpeed
     public void BoostSpeed()
     {
+<<<<<<< HEAD
         //Get Item boost
         for (int i = 0; i < charColl.m_CurrentSpeed / 10; i++)
         {
@@ -256,6 +238,10 @@ public class UIManager : MonoBehaviour
         //Get crystal to unlock boost button
         crystalCollected = charColl.m_CurrentCrystal;
         if (crystalCollected >= 6)
+=======
+        milkNumberText.text = crystalCollected + "";
+        if(crystalCollected >= 6)
+>>>>>>> parent of 51497b6 (Merge pull request #13 from indigames/DatDiep)
         {
             crystalCollected = 6;
             checkBoost = true;
@@ -266,8 +252,6 @@ public class UIManager : MonoBehaviour
             checkBoost = false;
         }
 
-
-        //Check Unlock Button
         if(checkBoost)
         {
             boostSpeedGObj.gameObject.SetActive(true);
@@ -280,6 +264,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     //Time to countdown
     public void CountDown()
     {
@@ -311,6 +296,9 @@ public class UIManager : MonoBehaviour
         //countdownTimer_Text.text = string.Format("{0:00}:{1:00}", minutes, seconds);\
         countdownTimer_Text.text = seconds+"";
     }
+=======
+>>>>>>> parent of 51497b6 (Merge pull request #13 from indigames/DatDiep)
 
 
+   
 }
