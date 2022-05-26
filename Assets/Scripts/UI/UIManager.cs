@@ -104,7 +104,7 @@ public class UIManager : MonoBehaviour
         }
         if (!checkRunning)
         {
-            charInput.m_CurrentSpeed = 0;
+            charColl.m_CurrentSpeed = 0;
             mainSceneUI.gameObject.SetActive(false);
         }
 
@@ -179,7 +179,7 @@ public class UIManager : MonoBehaviour
         currentScore = Mathf.FloorToInt(currentScore);
 
         //Get kph speed
-        double kphSpeed = charInput.m_CurrentSpeed * 3.6;
+        double kphSpeed = charColl.m_CurrentSpeed * 3.6;
         int currendSpeed = (int)kphSpeed;
         kphText.text = currendSpeed + "";
 
@@ -248,7 +248,7 @@ public class UIManager : MonoBehaviour
     public void BoostSpeed()
     {
         //Get Item boost
-        for (int i = 0; i < charInput.m_CurrentSpeed / 10; i++)
+        for (int i = 0; i < charColl.m_CurrentSpeed / 10; i++)
         {
             milkNumberText.text = i +"";
         }
@@ -303,7 +303,7 @@ public class UIManager : MonoBehaviour
             countdownTimer_Text.gameObject.SetActive(false);
             checkRunning = true;
             mainSceneUI.gameObject.SetActive(true);
-            charInput.m_CurrentSpeed += Speed;
+            charColl.m_CurrentSpeed += Speed;
         }
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);

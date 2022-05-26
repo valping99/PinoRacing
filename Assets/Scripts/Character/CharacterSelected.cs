@@ -70,7 +70,7 @@ public class CharacterSelected : MonoBehaviour
                 //Get Variables to UIManager
                 uiManagers.m_Player = nameGameObject;
                 uiManagers.charColl = nameCollider;
-                uiManagers.charInput = charInput;
+                //uiManagers.charInput = charInput;
 
 
             }
