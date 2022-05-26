@@ -85,6 +85,7 @@ MonoBehaviour:
     type: 3}
   m_RootModel: {fileID: 8141146445401497057}
   amountCrystal: 1
+  m_TimeBoost: 0
 --- !u!1 &8141146445401497057
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +99,7 @@ GameObject:
   - component: {fileID: 4933422460085500234}
   m_Layer: 7
   m_Name: Crystal
-  m_TagString: Untagged
+  m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,7 +182,7 @@ GameObject:
   - component: {fileID: 8477358386193335640}
   m_Layer: 7
   m_Name: VFX_Crystal
-  m_TagString: Untagged
+  m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5013,7 +5014,7 @@ GameObject:
   - component: {fileID: 8477358386378126462}
   m_Layer: 7
   m_Name: VFX_CrystalGlow
-  m_TagString: Untagged
+  m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

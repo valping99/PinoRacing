@@ -14,7 +14,6 @@ public class MilkPickup : Pickup
     [Header("Parameters")]
     [Tooltip("Amount of speed to boost on pickup")]
     public int amountMilkBottle;
-    public float amountSpeed;
 
     #endregion
 

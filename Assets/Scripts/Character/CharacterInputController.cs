@@ -8,30 +8,34 @@ using UnityEngine;
 
 public class CharacterInputController : MonoBehaviour
 {
-    UIManager uiManagers;
     #region Variables
 
     // Animation =====
 
     // Scripts ====
-    [SerializeField] CharacterCollider m_CharacterCollider;
+    [Header("Variables")]
+    UIManager uiManagers;
+    [SerializeField] CharacterCollider m_Character;
     // Variables ====
-    float m_CharacterPosition;
 
     [Header("Controls")]
-
-    float m_InitialSpeed = 10f;
-    int laneNumber;
-    public float m_CurrentSpeed;
+    [Tooltip("Range of the character move when you swipe")]
     public int slideLength = 5;
-
-    bool m_IsChangeLine;
+    public float m_BoostSpeed;
+    [Tooltip("Speed of the character when you click boost")]
+    public bool m_IsBoosting;
 
     // Get - set Items ====
 
     // Init number Items ====
+    float m_CharacterPosition;
+    float m_MilkCollectSpeed;
+    int m_TimeBoost;
+    int laneNumber;
 
     // Init Bool ====
+    bool m_IsChangeLine;
+    [SerializeField] bool m_IsRemainBoost;
 
 
     #endregion
@@ -40,10 +44,15 @@ public class CharacterInputController : MonoBehaviour
 
     void Awake()
     {
-        laneNumber = 2;
+        m_MilkCollectSpeed = m_Character.m_InitialSpeed;
+
+        laneNumber = 2; // 1 = left, 0 = middle, 2 = right
         m_CharacterPosition = 0;
-        m_CurrentSpeed = m_InitialSpeed;
+        m_TimeBoost = 3;
+
         m_IsChangeLine = true;
+        m_IsBoosting = false;
+        m_IsRemainBoost = false;
     }
 
 #if !UNITY_STANDALONE
@@ -54,6 +63,7 @@ public class CharacterInputController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ChangeSpeed();
     }
 
     // Update is called once per frame
@@ -66,38 +76,6 @@ public class CharacterInputController : MonoBehaviour
     #endregion
 
     #region Class
-
-    public void Init()
-    {
-
-
-        //Set Hp for Pino
-
-        //Init audio
-
-        //Init obstacle
-    }
-
-
-    public void Begin()
-    {
-        //Set animaton run
-
-        //Init Collider
-
-
-    }
-
-    public void StartMoving()
-    {
-
-    }
-
-    public void StartRunning()
-    {
-
-
-    }
 
     IEnumerator StopMoving()
     {
@@ -124,7 +102,20 @@ public class CharacterInputController : MonoBehaviour
 
     void MoveInput()
     {
-        m_CharacterCollider.GetComponent<Rigidbody>().velocity = new Vector3(m_CharacterPosition, 0, m_CurrentSpeed);
+        m_Character.GetComponent<Rigidbody>().velocity = new Vector3(m_CharacterPosition, 0, m_Character.m_CurrentSpeed);
+
+        //Test boost in unity editor
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (!m_IsRemainBoost)
+            {
+                StartCoroutine(CrystalBoost());
+                m_IsRemainBoost = true;
+                StartCoroutine(CheckRemainBoost());
+            }
+
+        }
+
 #if UNITY_EDITOR || UNITY_STANDALONE
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine)
@@ -181,8 +172,72 @@ public class CharacterInputController : MonoBehaviour
 			}
         }
 #endif
+    }
 
+    public void ChangeSpeed()
+    {
+        if (!m_IsBoosting)
+        {
+            m_Character.m_CurrentSpeed = m_MilkCollectSpeed;
+        }
+        else
+        {
+            m_Character.m_CurrentSpeed += m_BoostSpeed;
+        }
+
+        if (m_Character.m_CurrentBottleMilk > 0)
+        {
+            if (m_Character.m_CurrentBottleMilk == 1)
+            {
+                m_MilkCollectSpeed = m_Character.m_InitialSpeed + 5;
+            }
+            else if (m_Character.m_CurrentBottleMilk > 1)
+            {
+                m_MilkCollectSpeed = m_Character.m_InitialSpeed * m_Character.m_CurrentBottleMilk;
+            }
+        }
 
     }
+
+    public IEnumerator CrystalBoost()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if (m_Character.m_CrystalBoost > 0)
+        {
+            m_IsBoosting = true;
+
+            if (m_IsBoosting)
+            {
+                ChangeSpeed();
+                StartCoroutine(CheckBoost());
+                m_IsBoosting = false;
+            }
+        }
+    }
+
+    IEnumerator CheckBoost()
+    {
+        m_Character.m_CrystalBoost -= 1;
+        m_Character.m_CurrentCrystal = 0;
+
+        int _TimePerSec = m_TimeBoost;
+        float _temp = (m_BoostSpeed - m_MilkCollectSpeed) / (_TimePerSec * m_TimeBoost); // tempt speed
+
+        while (m_Character.m_CurrentSpeed > m_MilkCollectSpeed)
+        {
+            yield return new WaitForSeconds(1f / _TimePerSec);
+            m_Character.m_CurrentSpeed -= _temp;
+        }
+
+        ChangeSpeed();
+    }
+
+    IEnumerator CheckRemainBoost()
+    {
+        yield return new WaitForSeconds(3f);
+        m_IsRemainBoost = false;
+    }
+
     #endregion
 }

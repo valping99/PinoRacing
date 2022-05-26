@@ -85,6 +85,7 @@ MonoBehaviour:
     type: 3}
   m_RootModel: {fileID: 8392449247394691907}
   amountMilkBottle: 1
+  amountSpeed: 10
 --- !u!1 &6864197405021542195
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +99,7 @@ GameObject:
   - component: {fileID: 7526954159012248129}
   m_Layer: 7
   m_Name: VFX_Milk
-  m_TagString: Untagged
+  m_TagString: Milk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
