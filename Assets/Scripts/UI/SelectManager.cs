@@ -48,11 +48,12 @@ public class SelectManager : MonoBehaviour
     public GameObject statusOfPino_02;
     public GameObject statusOfPino_03;
 
-
+    //Text & value
     public TextMeshProUGUI Text_TapToStart;
     public int selectedStage;
     public int selectedPino;
-    // Start is called before the first frame update
+
+    //Onstart to open Scene1
     void Start()
     {
         isSelectScene_01 = true;
@@ -61,12 +62,23 @@ public class SelectManager : MonoBehaviour
         isSelectScene_04 = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         checkScene();
     }
 
+    //StartUI to select stage 
+    public void TapToPlay()
+    {
+        if (isSelectScene_01)
+        {
+            isSelectScene_01 = false;
+            scene_01.gameObject.SetActive(false);
+            isSelectScene_02 = true;
+        }
+    }
+
+    // Check Scene to active gameObject
     public void checkScene()
     {
         if (isSelectScene_01)
@@ -97,14 +109,14 @@ public class SelectManager : MonoBehaviour
             scene_03.gameObject.SetActive(false);
             scene_01.gameObject.SetActive(false);
         }
+        else
+        {
+            isSelectScene_01 = true;
+        }
     }
 
-    public void OnStart()
-    {
-        isSelectScene_02 = true;
-        isSelectScene_01 = false;
-        scene_01.gameObject.SetActive(false);
-    }
+
+    //Select stages
     public void isSelectStage()
     {
         if (isSelectStage_01)
@@ -135,6 +147,8 @@ public class SelectManager : MonoBehaviour
         scene_02.gameObject.SetActive(false);
     }
 
+
+    // Select Pinos
     public void isSelectedPino()
     {
         if (isSelectPino_01)
@@ -164,31 +178,7 @@ public class SelectManager : MonoBehaviour
         scene_03.gameObject.SetActive(false);
     }
 
-
     /**
-    public void SelectStage()
-    {
-        Debug.Log("Begin select stage");
-        if (isSelectScene_02)
-        {
-            isSelectScene_01= false;
-            if (selectStage_01)
-            {
-                selectedStage = 1;
-            }
-            else if (selectStage_02)
-            {
-                selectedStage = 2;
-            }
-            else if(selectStage_03)
-            {
-                selectedStage = 3;
-            }
-        }
-        Debug.Log("After select stage");
-
-    }
-    **/
     public void SelectPino()
     {
         isSelectScene_02 = false;
@@ -212,7 +202,10 @@ public class SelectManager : MonoBehaviour
         ShowStatusPino();
         
     }
+    **/
 
+
+    //Show infomation of Pinos
     public void ShowStatusPino()
     {
         isSelectScene_03 = false;
@@ -242,11 +235,19 @@ public class SelectManager : MonoBehaviour
        
     }
 
+
+    //Press button to play 
     public void AcceptPlay()
     {
-        SceneManager.LoadScene(0);
+        for(int i = 0; i<selectedStage; i++)
+        {
+            SceneManager.LoadScene(selectedStage);
+        }
+        //Fixing
     }
 
+
+    //Return to menu
     public void ReturnMenu()
     {
         scene_04.gameObject.SetActive(false);
@@ -262,6 +263,7 @@ public class SelectManager : MonoBehaviour
         isSelectPino_03 = false;
 
         isSelectScene_02 = true;
+        isSelectScene_04 = false;
     }
 
 }
