@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7649398408529113108
+--- !u!1 &6161353084638388913
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7649398408529113111}
-  - component: {fileID: 7649398408529113110}
+  - component: {fileID: 6161353084638388914}
+  - component: {fileID: 6161353084638388915}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -17,50 +17,55 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7649398408529113111
+--- !u!4 &6161353084638388914
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7649398408529113108}
+  m_GameObject: {fileID: 6161353084638388913}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -401.83755, y: -920.67126, z: 79.351616}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7649398408529113110
+--- !u!114 &6161353084638388915
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7649398408529113108}
+  m_GameObject: {fileID: 6161353084638388913}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4c79524454887b4590d165bcb4396ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charInput: {fileID: 0}
+  charColl: {fileID: 0}
   checkPause: 0
   checkGameOver: 0
   checkPlaying: 0
   checkBoost: 0
+  checkRunning: 0
   m_Player: {fileID: 0}
   mainSceneUI: {fileID: 0}
   pauseUI: {fileID: 0}
   gameOverUI: {fileID: 0}
   healthPoint: {fileID: 0}
   boostSpeedGObj: {fileID: 0}
-  boostSpeedButton: {fileID: 0}
   lockSpeedGObj: {fileID: 0}
+  boostSpeedButton: {fileID: 0}
   LockBoostButton: {fileID: 0}
   pauseButton: {fileID: 0}
   scoreText: {fileID: 0}
   kphText: {fileID: 0}
   milkNumberText: {fileID: 0}
+  countdownTimer_Text: {fileID: 0}
+  timeValue: 3
   resumeButton: {fileID: 0}
   mainMenuButton: {fileID: 0}
   shareScoreButton: {fileID: 0}
@@ -70,13 +75,14 @@ MonoBehaviour:
   messageText: {fileID: 0}
   score: 0
   currentScore: 0
+  currentSpeed: 10
   crystalCollected: 0
-  speedRun: 0
-  healthDown: 2
-  toRankS: 150
-  toRankA: 120
-  toRankB: 100
-  toRankC: 80
-  toRankD: 60
-  toRankE: 40
-  toRankF: 20
+  healthDown: 7
+  Speed: 10
+  toRankS: 1000
+  toRankA: 800
+  toRankB: 500
+  toRankC: 350
+  toRankD: 200
+  toRankE: 100
+  toRankF: 50
