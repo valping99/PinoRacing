@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Character: {fileID: 347566439581056165}
-  m_Wall: {fileID: 3890503010755581792}
   m_SecondChangeLine: 0.3
   slideLength: 15
   m_BoostSpeed: 70
@@ -66,7 +65,7 @@ GameObject:
   - component: {fileID: 4407763032919977492}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: ClearLag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
