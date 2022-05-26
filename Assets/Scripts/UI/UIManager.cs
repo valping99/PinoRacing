@@ -66,6 +66,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        checkPlaying = true;
         StartGame();
     }
     // Update is called once per frame
@@ -84,10 +85,13 @@ public class UIManager : MonoBehaviour
 
     public void StartGame()
     {
-        checkPlaying = true;
-        pauseUI.gameObject.SetActive(false);
-        gameOverUI.gameObject.SetActive(false);
-        boostSpeedButton.gameObject.SetActive(false);
+        if (checkPlaying)
+        {
+            mainSceneUI.gameObject.SetActive(true);
+            pauseUI.gameObject.SetActive(false);
+            gameOverUI.gameObject.SetActive(false);
+            boostSpeedButton.gameObject.SetActive(false);
+        }
     }
 
     public void PauseGame()
