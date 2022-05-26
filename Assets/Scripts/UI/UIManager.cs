@@ -12,48 +12,51 @@ public class UIManager : MonoBehaviour
     public CharacterInputController charInput;
     public CharacterCollider charColl;
     
-
+    //Check to active UI & button;
     public bool checkPause;
     public bool checkGameOver;
     public bool checkPlaying;
     public bool checkBoost;
 
+    // Get player for get Speed;
     public GameObject m_Player;
 
+    //Get UI to Active
     public GameObject mainSceneUI;
     public GameObject pauseUI;
     public GameObject gameOverUI;
 
+    //UI Gameplaying
     public Slider healthPoint;
     public GameObject boostSpeedGObj;
-    public Button boostSpeedButton;
     public GameObject lockSpeedGObj;
+    public Button boostSpeedButton;
     public Button LockBoostButton;
     public Button pauseButton;
-
-    
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI kphText;
     public TextMeshProUGUI milkNumberText;
     
-    //Pause
+    //PauseUI
     public Button resumeButton;
     public Button mainMenuButton;
 
-    //UI GameOver
+    //GameOverUI
     public Button shareScoreButton;
     public Button gameOverMainMenuButton;
     public TextMeshProUGUI gameOverScoreText;
     public TextMeshProUGUI rankText;
     public TextMeshProUGUI messageText;
 
-    //UI Playing
+    //Variables of PlayingUI
     public int score;
     public float currentScore;
     public float currentSpeed;
     public int crystalCollected;
     public double speedRun;
     public float healthDown;
+    public static int pinoSelected;
+
     //Set rank
     public float toRankS;
     public float toRankA;
@@ -64,12 +67,14 @@ public class UIManager : MonoBehaviour
     public float toRankF;
 
 
+    //Game Start
     void Start()
     {
         checkPlaying = true;
         StartGame();
     }
-    // Update is called once per frame
+
+ 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -78,11 +83,12 @@ public class UIManager : MonoBehaviour
         }
         UpdateScore(0);
         BoostSpeed();
-        HealthUpdate();
-        
+        HealthUpdate();        
     }
 
 
+
+    //Active when game start
     public void StartGame()
     {
         if (checkPlaying)
@@ -92,8 +98,12 @@ public class UIManager : MonoBehaviour
             gameOverUI.gameObject.SetActive(false);
             boostSpeedButton.gameObject.SetActive(false);
         }
+
+
     }
 
+
+    //Active PauseUI
     public void PauseGame()
     {
         if (checkPlaying)
@@ -114,13 +124,15 @@ public class UIManager : MonoBehaviour
                 gameOverUI.gameObject.SetActive(false);
                 checkPause = !checkPause;
                 Time.timeScale = 1f;
-                Debug.Log("Not pause");
+                Debug.Log("Resume");
             }
         }
         
     }
 
     
+
+    //Active GameOverUI
     public void GameOver()
     {
         if (checkPlaying && !checkPause)
@@ -142,23 +154,33 @@ public class UIManager : MonoBehaviour
         }
     }
 
+
+    //Return to GameStart Scene
     public void BackToMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
     }
 
+
+    //Update Score, speed, item...
     public void UpdateScore(int scoreToAdd)
     {
+        //Get score & convert float to int
         currentScore = m_Player.transform.position.z;
         currentScore = Mathf.FloorToInt(currentScore);
+
+        //Get kph speed
         double kphSpeed = charInput.m_CurrentSpeed * 3.6;
         int currendSpeed = (int)kphSpeed;
         kphText.text = currendSpeed + "";
 
-
+        //Get score
         score += scoreToAdd;
         scoreText.text = currentScore + " m";
         gameOverScoreText.text = currentScore + "m";
+
+        //Set rank
         if (currentScore >= toRankS)
         {
             rankText.text = "Rank S";
@@ -196,6 +218,8 @@ public class UIManager : MonoBehaviour
         }
     }
 
+
+    //Set HP Decrease 
     public void HealthUpdate()
     {
         healthPoint.value -= healthDown * Time.deltaTime;
@@ -207,12 +231,17 @@ public class UIManager : MonoBehaviour
         }
     }
 
+
+    //BoostSpeed
     public void BoostSpeed()
     {
+        //Get Item boost
         for (int i = 0; i < charInput.m_CurrentSpeed / 10; i++)
         {
             milkNumberText.text = i +"";
         }
+
+        //Get crystal to unlock boost button
         crystalCollected = charColl.m_CurrentCrystal;
         if (crystalCollected >= 6)
         {
@@ -225,6 +254,8 @@ public class UIManager : MonoBehaviour
             checkBoost = false;
         }
 
+
+        //Check Unlock Button
         if(checkBoost)
         {
             boostSpeedGObj.gameObject.SetActive(true);

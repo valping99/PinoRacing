@@ -8,6 +8,8 @@ using UnityEngine.EventSystems;
 
 public class SelectManager : MonoBehaviour
 {
+    public CharacterSelected charSelect;
+    public UIManager uiManagers;
 
     //check scene to active
     public bool isSelectScene_01;
@@ -48,7 +50,7 @@ public class SelectManager : MonoBehaviour
     public GameObject statusOfPino_02;
     public GameObject statusOfPino_03;
 
-    //Text & value
+    //Text & Variables 
     public TextMeshProUGUI Text_TapToStart;
     public int selectedStage;
     public int selectedPino;
@@ -239,6 +241,7 @@ public class SelectManager : MonoBehaviour
     //Press button to play 
     public void AcceptPlay()
     {
+        UIManager.pinoSelected = selectedPino;
         for(int i = 0; i<selectedStage; i++)
         {
             SceneManager.LoadScene(selectedStage);
