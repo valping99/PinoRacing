@@ -128,7 +128,7 @@ public class CharacterCollider : MonoBehaviour
             {
                 if (child.CompareTag("Crystal"))
                 {
-                    if (m_CurrentCrystal < 6)
+                    if (m_CrystalBoost < 1)
                     {
                         m_CurrentCrystal += 1;
                         Destroy(m_RootItem.gameObject);
@@ -159,10 +159,11 @@ public class CharacterCollider : MonoBehaviour
 
     void CheckBoostCount()
     {
-        if (m_CurrentCrystal >= 6)
+        if (m_CurrentCrystal >= 6 && m_CrystalBoost < 1)
         {
+            m_CurrentCrystal = 0;
             m_IsEnoughBoost = true;
-            m_CurrentCrystal = 6;
+            m_CrystalBoost = 16;
         }
 
         if (m_IsEnoughBoost)
@@ -173,12 +174,15 @@ public class CharacterCollider : MonoBehaviour
 
     IEnumerator GetBoost()
     {
-        yield return new WaitForSeconds(0.1f);
 
+        // Set Crystal boost = 16
+
+
+        yield return new WaitForSeconds(0.1f);
         if (m_CrystalBoost == 0)
         {
             m_IsEnoughBoost = false;
-            m_CrystalBoost = 16; // BUG!!
+            // m_CrystalBoost = 16; // BUG!!
         }
     }
 

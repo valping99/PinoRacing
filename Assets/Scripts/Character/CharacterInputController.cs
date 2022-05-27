@@ -56,7 +56,9 @@ public class CharacterInputController : MonoBehaviour
         m_IsChangeLine = true;
         m_IsBoosting = false;
         m_IsRemainBoost = false;
+
         m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
+        m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
     }
 
 #if !UNITY_STANDALONE
@@ -207,7 +209,6 @@ public class CharacterInputController : MonoBehaviour
 
     public IEnumerator CrystalBoost()
     {
-        yield return new WaitForSeconds(1f);
 
         if (m_Character.m_CrystalBoost > 0)
         {
@@ -217,6 +218,7 @@ public class CharacterInputController : MonoBehaviour
             {
                 ChangeSpeed();
                 StartCoroutine(CheckBoost());
+                yield return new WaitForSeconds(1f);
                 m_IsBoosting = false;
             }
         }

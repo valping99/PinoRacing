@@ -16309,13 +16309,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 347566439581056165, guid: abf825a928373564ca88ad32e99b68db,
         type: 3}
+      propertyPath: m_CrystalBoost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 347566439581056165, guid: abf825a928373564ca88ad32e99b68db,
+        type: 3}
       propertyPath: m_InitialSpeed
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 347566439581056165, guid: abf825a928373564ca88ad32e99b68db,
         type: 3}
+      propertyPath: m_CurrentCrystal
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 347566439581056165, guid: abf825a928373564ca88ad32e99b68db,
+        type: 3}
       propertyPath: m_InitialStamina
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902899305888222511, guid: abf825a928373564ca88ad32e99b68db,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2707870872973799691, guid: abf825a928373564ca88ad32e99b68db,
         type: 3}
