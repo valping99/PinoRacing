@@ -4917,6 +4917,7 @@ MonoBehaviour:
     type: 3}
   m_RootModel: {fileID: 3668658117995602592}
   HurtAmount: 10
+  StickAmount: 1
   LostSpeed: 20
 --- !u!1 &2044869778957790354
 GameObject:

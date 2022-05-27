@@ -19070,7 +19070,7 @@ GameObject:
   - component: {fileID: 4134263912402128357}
   - component: {fileID: 4435226266236567447}
   m_Layer: 0
-  m_Name: Pino
+  m_Name: Cream
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19236,9 +19236,9 @@ MonoBehaviour:
   m_CurrentCrystal: 0
   m_CurrentBottleMilk: 0
   m_CrystalBoost: 0
-  m_InitialSpeed: 15
-  m_InitialDef: 10
-  m_InitialStamina: 70
+  m_InitialSpeed: 25
+  m_InitialDef: 5
+  m_InitialStamina: 45
   m_CurrentSpeed: 0
   m_CurrentStamina: 0
   m_IsEnoughBoost: 0

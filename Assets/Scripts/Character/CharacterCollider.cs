@@ -37,7 +37,7 @@ public class CharacterCollider : MonoBehaviour
 
     [Header("Controls")]
     public float m_CurrentSpeed;
-    public int m_CurrentStamina;
+    public float m_CurrentStamina;
     public bool m_IsEnoughBoost;
 
     int m_InitialCrystal;
@@ -61,6 +61,7 @@ public class CharacterCollider : MonoBehaviour
 
         m_CurrentCrystal = m_InitialCrystal;
         m_CurrentSpeed = m_InitialSpeed;
+        m_CurrentStamina = m_InitialStamina;
     }
 
     void Start()
@@ -74,6 +75,7 @@ public class CharacterCollider : MonoBehaviour
     {
         // m_CharacterController.BoostAvailable();
         CheckBoostCount();
+        FixSpeedUpdate();
     }
     void OnTriggerEnter(Collider other)
     {
@@ -86,24 +88,32 @@ public class CharacterCollider : MonoBehaviour
             {
                 if (child.CompareTag("Fire"))
                 {
+                    FirePickup fire = m_RootItem.GetComponent<FirePickup>();
                     // Debug.Log("Collision with fire");
-                    FirePickup fire = child.GetComponent<FirePickup>();
+                    // m_CurrentSpeed -= fire.LostSpeed;
+
+                    m_CurrentStamina -= fire.HurtAmount;
+
+                    // m_CharacterController.ChangeSpeed();
                     Destroy(m_RootItem.gameObject);
-
-
                 }
                 if (child.CompareTag("Water"))
                 {
-                    WaterPickup water = child.GetComponent<WaterPickup>();
-                    // m_CurrentBottleMilk += milk.amountMilkBottle;
-                    // m_CharacterController.ChangeSpeed();
+                    WaterPickup water = m_RootItem.GetComponent<WaterPickup>();
                     // Debug.Log("Collision with water");
+                    // m_CurrentSpeed -= water.LostSpeed;
+
+                    m_CurrentStamina -= water.HurtAmount;
+
+                    // m_CharacterController.ChangeSpeed();
                     Destroy(m_RootItem.gameObject);
                 }
                 if (child.CompareTag("Stick"))
                 {
-                    StickPickup stick = child.GetComponent<StickPickup>();
+                    StickPickup stick = m_RootItem.GetComponent<StickPickup>();
                     // Debug.Log("Collision with stick");
+                    m_CurrentBottleMilk -= stick.StickAmount;
+
                     Destroy(m_RootItem.gameObject);
                 }
 
@@ -149,9 +159,10 @@ public class CharacterCollider : MonoBehaviour
 
     void CheckBoostCount()
     {
-        if (m_CurrentCrystal == 6)
+        if (m_CurrentCrystal >= 6)
         {
             m_IsEnoughBoost = true;
+            m_CurrentCrystal = 6;
         }
 
         if (m_IsEnoughBoost)
@@ -162,12 +173,21 @@ public class CharacterCollider : MonoBehaviour
 
     IEnumerator GetBoost()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
 
         if (m_CrystalBoost == 0)
         {
             m_IsEnoughBoost = false;
             m_CrystalBoost = 16;
+        }
+    }
+
+    void FixSpeedUpdate()
+    {
+
+        if (m_CurrentSpeed <= 0)
+        {
+            m_CurrentSpeed = 5;
         }
     }
     #endregion
