@@ -117,12 +117,14 @@ public class UIManager : MonoBehaviour
     }
 
 
+    //Set Variables when game start
     public void StartStatusOfPino()
     {
         healthPoint.maxValue = charColl.m_InitialStamina;
         healthPoint.value = healthPoint.maxValue;
 
         healthDown -= charColl.m_InitialDef;
+        charColl.m_CurrentStamina = (int) healthPoint.value;
     }
 
 
@@ -134,6 +136,7 @@ public class UIManager : MonoBehaviour
         {
             if (!checkPause)
             {
+                //Enable PauseUI and disable other UI
                 pauseUI.gameObject.SetActive(true);
                 mainSceneUI.gameObject.SetActive(false);
                 gameOverUI.gameObject.SetActive(false);
@@ -143,6 +146,7 @@ public class UIManager : MonoBehaviour
             }
             else
             {
+                //Disable PauseUI and enable other UI
                 pauseUI.gameObject.SetActive(false);
                 mainSceneUI.gameObject.SetActive(true);
                 gameOverUI.gameObject.SetActive(false);
@@ -163,6 +167,7 @@ public class UIManager : MonoBehaviour
         {
             if (checkGameOver)
             {
+                //Enable GameOver UI & Disable other UI
                 gameOverUI.gameObject.SetActive(true);
                 pauseUI.gameObject.SetActive(false);
                 mainSceneUI.gameObject.SetActive(false);
@@ -170,6 +175,7 @@ public class UIManager : MonoBehaviour
             }
             else
             {
+                //Disable GameOver UI & Enable other UI
                 gameOverUI.gameObject.SetActive(false);
                 pauseUI.gameObject.SetActive(false);
                 mainSceneUI.gameObject.SetActive(true);
@@ -189,7 +195,7 @@ public class UIManager : MonoBehaviour
     //Update Score, speed, item...
     public void UpdateScore(int scoreToAdd)
     {
-
+        //Get currentSpeed pino
         currentSpeed = charColl.m_CurrentSpeed;
         //Get score & convert float to int
         currentScore = m_Player.transform.position.z;
@@ -249,9 +255,15 @@ public class UIManager : MonoBehaviour
     {
         if (checkRunning)
         {
-            currentStamina = healthPoint.value;
-            charColl.m_CurrentStamina = (int) currentStamina;
-            healthPoint.value -= healthDown * Time.deltaTime;
+            //HP decrease by time & initial def
+            //charColl.m_CurrentStamina = (int) currentStamina;
+            charColl.m_CurrentStamina -= healthDown * Time.deltaTime;
+            currentStamina = charColl.m_CurrentStamina;
+            healthPoint.value = currentStamina;
+            if (currentStamina > healthPoint.maxValue)
+            {
+                currentStamina = healthPoint.maxValue;
+            }
             if (healthPoint.value <= 0)
             {
                 healthPoint.value = 0;

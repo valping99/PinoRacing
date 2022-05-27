@@ -493,6 +493,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 347566439581056165, guid: abf825a928373564ca88ad32e99b68db,
+        type: 3}
+      propertyPath: m_CurrentCrystal
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2707870872973799691, guid: abf825a928373564ca88ad32e99b68db,
         type: 3}
       propertyPath: m_Name

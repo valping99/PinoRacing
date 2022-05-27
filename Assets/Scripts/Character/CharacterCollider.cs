@@ -37,7 +37,7 @@ public class CharacterCollider : MonoBehaviour
 
     [Header("Controls")]
     public float m_CurrentSpeed;
-    public int m_CurrentStamina;
+    public float m_CurrentStamina;
     public bool m_IsEnoughBoost;
 
     int m_InitialCrystal;
