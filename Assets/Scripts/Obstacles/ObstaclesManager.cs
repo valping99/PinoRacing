@@ -11,6 +11,7 @@ public class ObstaclesManager : MonoBehaviour
 
     #region Variables
 
+    public float m_DistanceZSpawn = 40;
     public Transform[] listObstacles;
 
 
@@ -18,7 +19,6 @@ public class ObstaclesManager : MonoBehaviour
     int m_NextPosition;
     float m_RootPosition = 0;
     float m_SidePositionX = 4.5f;
-    float m_DistanceZSpawn = 40;
     List<float> m_XPosition;
     float m_ZPosition;
 
