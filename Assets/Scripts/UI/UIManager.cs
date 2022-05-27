@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     public CharacterInputController charInput;
     public CharacterCollider charColl;
-    
+
     //Check to active UI & button;
     public bool checkPause;
     public bool checkGameOver;

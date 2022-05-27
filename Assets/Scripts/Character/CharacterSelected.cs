@@ -63,7 +63,7 @@ public class CharacterSelected : MonoBehaviour
                 Instantiate(playerList[i - 1], new Vector3(0, 0, 0), Quaternion.identity);
 
                 //Get new Variables of the pino
-                nameGameObject = GameObject.Find("Pino");
+                nameGameObject = GameObject.FindGameObjectWithTag("Player");
                 nameCollider = FindObjectOfType<CharacterCollider>();
                 charInput = (CharacterInputController) FindObjectOfType(typeof(CharacterInputController));
 

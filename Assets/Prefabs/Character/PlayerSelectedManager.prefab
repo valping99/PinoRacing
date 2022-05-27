@@ -48,8 +48,8 @@ MonoBehaviour:
   nameCollider: {fileID: 0}
   charInput: {fileID: 0}
   playerList:
-  - {fileID: 2707870872973799691, guid: d767699da592f434980cb2c112a431cf, type: 3}
-  - {fileID: 2707870872973799691, guid: 6b24246eda76a2146b8b44cf6cf70ef8, type: 3}
-  - {fileID: 2707870872973799691, guid: 76dd2571adb70854fb6528d973482f49, type: 3}
+  - {fileID: 4168228167028810056, guid: 6694f72b0d8d35f47a1d8d593a8023ab, type: 3}
+  - {fileID: 4168228167028810056, guid: 712cbd3b10c0b444ea677f72e5894ce6, type: 3}
+  - {fileID: 4168228167028810056, guid: 2dfb48cf53621a34e886c8068243d3ba, type: 3}
   uiManagers: {fileID: 0}
   isSelected: 0
