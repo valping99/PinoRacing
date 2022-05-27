@@ -55,6 +55,8 @@ public class UIManager : MonoBehaviour
     public int score;
     public float currentScore;
     public float currentSpeed;
+    public float currentMilk;
+    public float currentStamina;
     public int crystalCollected;
     public float healthDown;
     public static int pinoSelected;
@@ -75,12 +77,16 @@ public class UIManager : MonoBehaviour
     {
         checkPlaying = true;
         StartGame();
+        StartStatusOfPino();
     }
 
  
     void Update()
     {
-        CountDown();
+        if (!checkRunning)
+        {
+            CountDown();
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseGame();
@@ -104,12 +110,21 @@ public class UIManager : MonoBehaviour
         }
         if (!checkRunning)
         {
-            charInput.m_CurrentSpeed = 0;
+            charColl.m_CurrentSpeed = 0;
             mainSceneUI.gameObject.SetActive(false);
         }
 
-
     }
+
+
+    public void StartStatusOfPino()
+    {
+        healthPoint.maxValue = charColl.m_InitialStamina;
+        healthPoint.value = healthPoint.maxValue;
+
+        healthDown -= charColl.m_InitialDef;
+    }
+
 
 
     //Active PauseUI
@@ -174,12 +189,14 @@ public class UIManager : MonoBehaviour
     //Update Score, speed, item...
     public void UpdateScore(int scoreToAdd)
     {
+
+        currentSpeed = charColl.m_CurrentSpeed;
         //Get score & convert float to int
         currentScore = m_Player.transform.position.z;
         currentScore = Mathf.FloorToInt(currentScore);
 
         //Get kph speed
-        double kphSpeed = charInput.m_CurrentSpeed * 3.6;
+        double kphSpeed = charColl.m_CurrentSpeed * 3.6;
         int currendSpeed = (int)kphSpeed;
         kphText.text = currendSpeed + "";
 
@@ -232,6 +249,8 @@ public class UIManager : MonoBehaviour
     {
         if (checkRunning)
         {
+            currentStamina = healthPoint.value;
+            charColl.m_CurrentStamina = (int) currentStamina;
             healthPoint.value -= healthDown * Time.deltaTime;
             if (healthPoint.value <= 0)
             {
@@ -244,14 +263,12 @@ public class UIManager : MonoBehaviour
 
 
 
+
     //BoostSpeed
     public void BoostSpeed()
     {
-        //Get Item boost
-        for (int i = 0; i < charInput.m_CurrentSpeed / 10; i++)
-        {
-            milkNumberText.text = i +"";
-        }
+        currentMilk = charColl.m_CurrentBottleMilk;
+        milkNumberText.text = currentMilk + "";
 
         //Get crystal to unlock boost button
         crystalCollected = charColl.m_CurrentCrystal;
@@ -286,7 +303,7 @@ public class UIManager : MonoBehaviour
         if (timeValue > 0)
         {
             timeValue -= Time.deltaTime;
-            Debug.Log(timeValue);
+            charColl.m_CurrentSpeed = 0;
         }
         else
         {
@@ -303,7 +320,7 @@ public class UIManager : MonoBehaviour
             countdownTimer_Text.gameObject.SetActive(false);
             checkRunning = true;
             mainSceneUI.gameObject.SetActive(true);
-            charInput.m_CurrentSpeed += Speed;
+            charColl.m_CurrentSpeed += charColl.m_InitialSpeed;
         }
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);

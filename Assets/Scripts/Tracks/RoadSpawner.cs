@@ -6,20 +6,29 @@ using UnityEngine;
 public class RoadSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameObject MainRoad;
     public List<GameObject> roads;
+    public CharacterCollider charColl;
+
+    private Vector3 charPosition;
+    private Vector3 charRotaion;
     public float offset = 10;
     void Start()
     {
+        charColl = FindObjectOfType<CharacterCollider>();
         if (roads != null && roads.Count > 0)
         {
             roads = roads.OrderBy(r => r.transform.position.z).ToList();
         }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        charPosition = new Vector3(charColl.transform.position.x, charColl.transform.position.y+1, charColl.transform.position.z + 3);
+        //charPosition = charColl.transform.position;
+        MainRoad.transform.position = charPosition;
     }
     public void MoveRoad()
     {
