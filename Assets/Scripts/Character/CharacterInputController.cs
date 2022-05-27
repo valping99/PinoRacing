@@ -107,7 +107,7 @@ public class CharacterInputController : MonoBehaviour
     void MoveInput()
     {
         m_Character.GetComponent<Rigidbody>().velocity = new Vector3(m_CharacterPosition, 0, m_Character.m_CurrentSpeed);
-        
+
         m_WallClearLag.transform.position = new Vector3(m_WallClearLag.transform.position.x, m_WallClearLag.transform.position.y, m_Character.transform.position.z - 15f);
 
         //Test boost in unity editor
@@ -191,19 +191,17 @@ public class CharacterInputController : MonoBehaviour
             m_Character.m_CurrentSpeed += m_BoostSpeed;
         }
 
-        if (m_Character.m_CurrentBottleMilk > 0)
+        if (m_Character.m_CurrentBottleMilk <= 1)
         {
-            if (m_Character.m_CurrentBottleMilk == 1)
-            {
-                m_MilkCollectSpeed = m_Character.m_InitialSpeed + 5;
+            m_MilkCollectSpeed = m_Character.m_InitialSpeed + 5;
 
-            }
-            else if (m_Character.m_CurrentBottleMilk > 1)
-            {
-                m_MilkCollectSpeed = m_Character.m_InitialSpeed * m_Character.m_CurrentBottleMilk;
-
-            }
         }
+        else if (m_Character.m_CurrentBottleMilk > 1)
+        {
+            m_MilkCollectSpeed = m_Character.m_InitialSpeed * m_Character.m_CurrentBottleMilk;
+
+        }
+
 
     }
 
@@ -227,7 +225,10 @@ public class CharacterInputController : MonoBehaviour
     IEnumerator CheckBoost()
     {
         m_Character.m_CrystalBoost -= 1;
-        m_Character.m_CurrentCrystal = 0;
+        if (m_Character.m_CrystalBoost <= 0)
+        {
+            m_Character.m_CurrentCrystal = 0;
+        }
 
         int _TimePerSec = m_TimeBoost;
         float _temp = (m_BoostSpeed - m_MilkCollectSpeed) / (_TimePerSec * m_TimeBoost); // tempt speed
