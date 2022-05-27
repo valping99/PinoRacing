@@ -14,7 +14,7 @@ public class StickPickup : Pickup
     [Header("Parameters")]
     [Tooltip("Amount of health to hurt player on pickup")]
     public float HurtAmount;
-    public float LostSpeed;
+    public int StickAmount;
 
     #endregion
 

@@ -61,6 +61,11 @@ public class ObstaclesManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             // Debug.Log("Spawn 0.5s");
         }
+        else if (m_CharacterCollider.m_CurrentSpeed < 10)
+        {
+            yield return new WaitForSeconds(2.5f);
+            // Debug.Log("Spawn 2.5s");
+        }
         else
         {
             yield return new WaitForSeconds(1f);
