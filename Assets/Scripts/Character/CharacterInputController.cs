@@ -15,7 +15,7 @@ public class CharacterInputController : MonoBehaviour
     // Scripts ====
     [Header("Variables")]
     UIManager uiManagers;
-    [SerializeField] CharacterCollider m_Character;
+    public CharacterCollider m_Character;
     GameObject m_WallClearLag;
     // Variables ====
 
