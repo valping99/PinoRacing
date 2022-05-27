@@ -38,6 +38,8 @@ public class CharacterInputController : MonoBehaviour
 
     // Init Bool ====
     bool m_IsChangeLine;
+    bool m_IsGotMilk;
+    bool IsFirstTime;
     [SerializeField] bool m_IsRemainBoost;
 
 
@@ -56,6 +58,8 @@ public class CharacterInputController : MonoBehaviour
         m_IsChangeLine = true;
         m_IsBoosting = false;
         m_IsRemainBoost = false;
+        m_IsGotMilk = false;
+        IsFirstTime = true;
 
         m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
         m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
@@ -124,6 +128,11 @@ public class CharacterInputController : MonoBehaviour
 
         }
 
+        if (m_IsGotMilk)
+        {
+            m_Character.m_CurrentSpeed = m_MilkCollectSpeed;
+        }
+
 #if UNITY_EDITOR || UNITY_STANDALONE
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine)
@@ -184,30 +193,37 @@ public class CharacterInputController : MonoBehaviour
 
     public void ChangeSpeed()
     {
-        if (!m_IsBoosting)
-        {
-            m_Character.m_CurrentSpeed = m_MilkCollectSpeed;
-        }
-        else
+        if (m_IsBoosting)
         {
             m_Character.m_CurrentSpeed += m_BoostSpeed;
         }
 
-        if (m_Character.m_CurrentBottleMilk <= 1)
+        if (m_Character.m_CurrentBottleMilk >= 1)
         {
-            m_MilkCollectSpeed = m_Character.m_InitialSpeed + 5;
+            if (IsFirstTime)
+            {
+                m_MilkCollectSpeed = m_Character.m_InitialSpeed + 5;
+                IsFirstTime = false;
+            }
+            else
+            {
+                m_MilkCollectSpeed = (m_Character.m_InitialSpeed + (m_Character.m_CurrentBottleMilk * 5));
+            }
 
+            m_IsGotMilk = true;
+            Debug.Log("Speed up: " + m_Character.m_CurrentSpeed);
         }
-        else if (m_Character.m_CurrentBottleMilk > 1)
-        {
-            m_MilkCollectSpeed = m_Character.m_InitialSpeed * m_Character.m_CurrentBottleMilk;
-
-        }
+        // else if (m_Character.m_CurrentBottleMilk >= 2)
+        // {
+        //     m_MilkCollectSpeed = m_Character.m_InitialSpeed * m_Character.m_CurrentBottleMilk;
+        //     m_IsGotMilk = true;
+        //     Debug.Log("Speed up: " + m_Character.m_CurrentSpeed);
+        // }
 
 
     }
 
-    public IEnumerator CrystalBoost()
+    IEnumerator CrystalBoost()
     {
 
         if (m_Character.m_CrystalBoost > 0)
