@@ -10,9 +10,9 @@ public class GetCharacterSpawn : MonoBehaviour
 
     void Start()
     {
-        checkCharacterCollider();
-        charInput = GetComponent<CharacterInputController>();
+        charInput = FindObjectOfType<CharacterInputController>();
         charColl = FindObjectOfType<CharacterCollider>();
+        checkCharacterCollider();
     }
 
     // Update is called once per frame
@@ -23,9 +23,20 @@ public class GetCharacterSpawn : MonoBehaviour
 
     public void checkCharacterCollider()
     {
-        if (charInput.GetComponent<CharacterCollider>() == null)
+        /**
+        if (charInput.m_Character == null)
         {
-
+            if(charInput.gameObject.activeSelf == false)
+            {
+                charInput.gameObject.SetActive(true);
+                charInput.m_Character = charColl;
+                Debug.Log("Add controller");
+            }
         }
+        else
+        {
+            Debug.Log("Dont add");
+        }
+        **/
     }
 }
