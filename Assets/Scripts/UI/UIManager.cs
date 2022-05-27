@@ -38,7 +38,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI kphText;
     public TextMeshProUGUI milkNumberText;
     public TextMeshProUGUI countdownTimer_Text;
+    public TextMeshProUGUI limitedTimer_Text;
     public float timeValue = 5;
+    public float timeValueCountdown = 300;
 
     //PauseUI
     public Button resumeButton;
@@ -171,6 +173,7 @@ public class UIManager : MonoBehaviour
                 gameOverUI.gameObject.SetActive(true);
                 pauseUI.gameObject.SetActive(false);
                 mainSceneUI.gameObject.SetActive(false);
+
                 Time.timeScale = 0f;
             }
             else
@@ -255,6 +258,7 @@ public class UIManager : MonoBehaviour
     {
         if (checkRunning)
         {
+            CountDownMinutes();
             //HP decrease by time & initial def
             //charColl.m_CurrentStamina = (int) currentStamina;
             charColl.m_CurrentStamina -= healthDown * Time.deltaTime;
@@ -263,6 +267,7 @@ public class UIManager : MonoBehaviour
             if (currentStamina > healthPoint.maxValue)
             {
                 currentStamina = healthPoint.maxValue;
+                healthPoint.value = healthPoint.maxValue;
             }
             if (healthPoint.value <= 0)
             {
@@ -324,6 +329,7 @@ public class UIManager : MonoBehaviour
         DisplayTimer(timeValue);
     }
 
+    //DisplayTimer
     public void DisplayTimer(float timeToDisplay)
     {
         if (timeToDisplay < 0)
@@ -341,5 +347,31 @@ public class UIManager : MonoBehaviour
         countdownTimer_Text.text = seconds+"";
     }
 
+    //TimeOver
+    public void CountDownMinutes()
+    {
+        if (timeValueCountdown > 0)
+        {
+            timeValueCountdown -= Time.deltaTime;
+        }
+        else
+        {
+            timeValueCountdown = 0;
+        }
+        DisplayTimerCountDown(timeValueCountdown);
+    }
 
+    //Display TimeOver
+    public void DisplayTimerCountDown(float timeToDisplay)
+    {
+        if (timeToDisplay < 0)
+        {
+            timeToDisplay = 0;
+            GameOver();
+        }
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+        limitedTimer_Text.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
 }

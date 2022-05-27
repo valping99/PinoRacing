@@ -5,8 +5,9 @@ using UnityEngine;
 public class CharacterSelected : MonoBehaviour
 {
     //SelectManager selectManager;
-    public GameObject nameGameObject;
+    //public GameObject nameGameObject;
     public CharacterCollider nameCollider;
+    public CharacterCollider nameGameObject;
     public CharacterInputController charInput;
     public List<GameObject> playerList;
     public UIManager uiManagers;
@@ -63,12 +64,13 @@ public class CharacterSelected : MonoBehaviour
                 Instantiate(playerList[i - 1], new Vector3(0, 0, 0), Quaternion.identity);
 
                 //Get new Variables of the pino
-                nameGameObject = GameObject.FindGameObjectWithTag("Player");
+                nameGameObject = FindObjectOfType<CharacterCollider>();
+                GameObject PinoGameObject = nameGameObject.gameObject;
                 nameCollider = FindObjectOfType<CharacterCollider>();
                 charInput = (CharacterInputController) FindObjectOfType(typeof(CharacterInputController));
 
                 //Get Variables to UIManager
-                uiManagers.m_Player = nameGameObject;
+                uiManagers.m_Player = PinoGameObject;
                 uiManagers.charColl = nameCollider;
                 uiManagers.charInput = charInput;
 

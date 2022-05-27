@@ -5,13 +5,13 @@ using UnityEngine;
 public class GetCharacterSpawn : MonoBehaviour
 {
     // Start is called before the first frame update
-    public CharacterInputController charInput;
     public CharacterCollider charColl;
+    public CharacterInputController charInput;
 
     void Start()
     {
-        charInput = FindObjectOfType<CharacterInputController>();
         charColl = FindObjectOfType<CharacterCollider>();
+        charInput = FindObjectOfType<CharacterInputController>();
         checkCharacterCollider();
     }
 
@@ -21,22 +21,12 @@ public class GetCharacterSpawn : MonoBehaviour
         
     }
 
-    public void checkCharacterCollider()
+    void checkCharacterCollider()
     {
-        /**
         if (charInput.m_Character == null)
         {
-            if(charInput.gameObject.activeSelf == false)
-            {
-                charInput.gameObject.SetActive(true);
-                charInput.m_Character = charColl;
-                Debug.Log("Add controller");
-            }
+            charInput.m_Character = charColl;
+            
         }
-        else
-        {
-            Debug.Log("Dont add");
-        }
-        **/
     }
 }

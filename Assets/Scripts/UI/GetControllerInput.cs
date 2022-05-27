@@ -10,9 +10,9 @@ public class GetControllerInput : MonoBehaviour
     public CharacterCollider charColl;
     void Start()
     {
-        charInput = FindObjectOfType<CharacterInputController>();
-        charColl = FindObjectOfType<CharacterCollider>();
-        checkInput();
+        //charInput = FindObjectOfType<CharacterInputController>();
+        //charColl = FindObjectOfType<CharacterCollider>();
+        //checkInput();
     }
 
     // Update is called once per frame
@@ -26,11 +26,6 @@ public class GetControllerInput : MonoBehaviour
         if(charColl.m_CharacterController == null)
         {
             charColl.m_CharacterController = charInput;
-            Debug.Log("Add controller");
-        }
-        else
-        {
-            Debug.Log("Dont add");
         }
     }
 }
