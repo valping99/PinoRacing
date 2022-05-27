@@ -56,7 +56,9 @@ public class CharacterInputController : MonoBehaviour
         m_IsChangeLine = true;
         m_IsBoosting = false;
         m_IsRemainBoost = false;
+
         m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
+        m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
     }
 
 #if !UNITY_STANDALONE
