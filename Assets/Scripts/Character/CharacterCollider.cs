@@ -178,7 +178,7 @@ public class CharacterCollider : MonoBehaviour
         if (m_CrystalBoost == 0)
         {
             m_IsEnoughBoost = false;
-            m_CrystalBoost = 16;
+            m_CrystalBoost = 16; // BUG!!
         }
     }
 
