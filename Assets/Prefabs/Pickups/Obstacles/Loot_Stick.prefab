@@ -4909,6 +4909,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb31bb285d796344481784c3aed0a5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CharacterCollider: {fileID: 0}
+  m_CharacterController: {fileID: 0}
   VerticalBobFrequency: 1
   BobbingAmount: 2
   RotatingSpeed: 360
@@ -4918,6 +4920,8 @@ MonoBehaviour:
   m_RootModel: {fileID: 3668658117995602592}
   HurtAmount: 10
   StickAmount: 1
+  m_Distance: 10
+  m_DropSpeed: 5
 --- !u!1 &2044869778957790354
 GameObject:
   m_ObjectHideFlags: 0

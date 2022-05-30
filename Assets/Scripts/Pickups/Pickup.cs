@@ -12,6 +12,12 @@ public class Pickup : MonoBehaviour
 
     #region Variables
 
+    [Header("Scripts")]
+    public CharacterCollider m_CharacterCollider;
+    public CharacterInputController m_CharacterController;
+
+    [Header("Effects")]
+
     [Tooltip("Frequency at which the item will move up and down")]
     public float VerticalBobFrequency = 1f;
 
@@ -40,6 +46,9 @@ public class Pickup : MonoBehaviour
         PickupRigidbody = GetComponent<Rigidbody>();
         m_Collider = GetComponent<Collider>();
 
+        m_CharacterController = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInputController>();
+        m_CharacterCollider = m_CharacterController.GetComponentInChildren<CharacterCollider>();
+
         // ensure the physics setup is a kinematic rigidbody trigger
         PickupRigidbody.isKinematic = true;
         m_Collider.isTrigger = true;
@@ -57,6 +66,8 @@ public class Pickup : MonoBehaviour
 
         // Handle rotating
         m_RootModel.transform.Rotate(Vector3.up, RotatingSpeed * Time.deltaTime, Space.World);
+
+        CheckDistance(m_CharacterCollider.gameObject.transform);
     }
 
     void OnTriggerEnter(Collider other)
@@ -76,6 +87,11 @@ public class Pickup : MonoBehaviour
     protected virtual void OnPicked(CharacterCollider playerController)
     {
         PlayPickupFeedback();
+    }
+
+    protected virtual void CheckDistance(Transform m_PlayerPosition)
+    {
+
     }
 
     public void PlayPickupFeedback()

@@ -9958,6 +9958,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7529341927632577005, guid: 915014a88b530494b9082a7520ea240b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8304665496361079347, guid: 915014a88b530494b9082a7520ea240b,
         type: 3}
       propertyPath: looping

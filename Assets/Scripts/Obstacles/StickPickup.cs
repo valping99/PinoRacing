@@ -5,7 +5,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class StickPickup : Pickup
 {
 
@@ -15,6 +15,10 @@ public class StickPickup : Pickup
     [Tooltip("Amount of health to hurt player on pickup")]
     public float HurtAmount;
     public int StickAmount;
+
+    [Tooltip("Distance form player to object")]
+    public float m_Distance;
+    public float m_DropSpeed;
 
     #endregion
 
@@ -28,6 +32,21 @@ public class StickPickup : Pickup
             stickPickup.TakeDamage(HurtAmount, gameObject);
             PlayPickupFeedback();
             Destroy(gameObject);
+        }
+    }
+
+    protected override void CheckDistance(Transform m_PlayerPosition)
+    {
+        try
+        {
+            if (Vector3.Distance(transform.position, m_PlayerPosition.position) < m_Distance)
+            {
+                Debug.Log("Distance: SOS ");
+            }
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log(e.Message);
         }
     }
 

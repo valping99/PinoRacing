@@ -54,7 +54,7 @@ public class ObstaclesManager : MonoBehaviour
     #region Class
     IEnumerator SpawnObstacles()
     {
-        Debug.Log("Range: " + (listObstacles.Length - 1));
+        // Debug.Log("Range: " + (listObstacles.Length - 1));
 
         if (m_CharacterCollider.m_CurrentSpeed > 100)
         {
@@ -80,8 +80,8 @@ public class ObstaclesManager : MonoBehaviour
         m_ItemPosition = Random.Range(0, listObstacles.Length);
         m_NextPosition = Random.Range(0, m_XPosition.Count);
 
-        Debug.Log("X Position: " + m_XPosition[m_NextPosition]);
-        Debug.Log("Z Position: " + m_ZPosition);
+        // Debug.Log("X Position: " + m_XPosition[m_NextPosition]);
+        // Debug.Log("Z Position: " + m_ZPosition);
 
         // if X = 0 -> is root position
         // if X = 4.5|-4.5 -> is side position
