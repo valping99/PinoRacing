@@ -85,7 +85,6 @@ MonoBehaviour:
     type: 3}
   m_RootModel: {fileID: 8392449247394691907}
   amountMilkBottle: 1
-  amountSpeed: 10
 --- !u!1 &6864197405021542195
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +135,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -373,7 +372,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.1
+      scalar: 0.02
       minScalar: 0.05
       maxCurve:
         serializedVersion: 2
@@ -9947,6 +9946,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529341927632577005, guid: 915014a88b530494b9082a7520ea240b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8304665496361079347, guid: 915014a88b530494b9082a7520ea240b,
         type: 3}

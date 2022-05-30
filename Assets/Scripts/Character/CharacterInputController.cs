@@ -38,6 +38,8 @@ public class CharacterInputController : MonoBehaviour
 
     // Init Bool ====
     bool m_IsChangeLine;
+    bool m_IsGotMilk;
+    bool IsFirstTime;
     [SerializeField] bool m_IsRemainBoost;
 
 
@@ -45,8 +47,17 @@ public class CharacterInputController : MonoBehaviour
 
     #region Unity Methods
 
-    void Awake()
+
+#if !UNITY_STANDALONE
+    protected Vector2 m_StartingTouch;
+    protected bool m_IsSwiping = false;
+#endif
+
+    // Start is called before the first frame update
+    void Start()
     {
+        ChangeSpeed();
+
         m_MilkCollectSpeed = m_Character.m_InitialSpeed;
 
         laneNumber = 2; // 1 = left, 0 = middle, 2 = right
@@ -56,26 +67,18 @@ public class CharacterInputController : MonoBehaviour
         m_IsChangeLine = true;
         m_IsBoosting = false;
         m_IsRemainBoost = false;
+        m_IsGotMilk = false;
+        IsFirstTime = true;
 
         m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
         m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
-    }
-
-#if !UNITY_STANDALONE
-    protected Vector2 m_StartingTouch;
-	protected bool m_IsSwiping = false;
-#endif
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        ChangeSpeed();
     }
 
     // Update is called once per frame
     void Update()
     {
         MoveInput();
+
     }
 
 
@@ -124,6 +127,11 @@ public class CharacterInputController : MonoBehaviour
 
         }
 
+        if (m_IsGotMilk)
+        {
+            m_Character.m_CurrentSpeed = m_MilkCollectSpeed;
+        }
+
 #if UNITY_EDITOR || UNITY_STANDALONE
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine)
@@ -149,10 +157,9 @@ public class CharacterInputController : MonoBehaviour
                 // axes (otherwise we would have to swipe more vertically...)
 				diff = new Vector2(diff.x/Screen.width, diff.y/Screen.width);
 
-				if(diff.magnitude > 0.01f) //we set the swip distance to trigger movement to 1% of the screen width
+                //we set the swip distance to trigger movement to 1% of the screen width
+				if(diff.magnitude > 0.01f) 
 				{
-					else if(TutorialMoveCheck(0))
-					{
 						if(diff.x < 0 && laneNumber > 1 && m_IsChangeLine)
 						{
 							ChangeLane(-slideLength);
@@ -161,8 +168,6 @@ public class CharacterInputController : MonoBehaviour
 						{
 							ChangeLane(slideLength);
                         }
-					}
-						
 					m_IsSwiping = false;
 				}
             }
@@ -184,30 +189,37 @@ public class CharacterInputController : MonoBehaviour
 
     public void ChangeSpeed()
     {
-        if (!m_IsBoosting)
-        {
-            m_Character.m_CurrentSpeed = m_MilkCollectSpeed;
-        }
-        else
+        if (m_IsBoosting)
         {
             m_Character.m_CurrentSpeed += m_BoostSpeed;
         }
 
-        if (m_Character.m_CurrentBottleMilk <= 1)
+        if (m_Character.m_CurrentBottleMilk >= 1)
         {
-            m_MilkCollectSpeed = m_Character.m_InitialSpeed + 5;
+            if (IsFirstTime)
+            {
+                m_MilkCollectSpeed = m_Character.m_InitialSpeed + 5;
+                IsFirstTime = false;
+            }
+            else
+            {
+                m_MilkCollectSpeed = (m_Character.m_InitialSpeed + (m_Character.m_CurrentBottleMilk * 5));
+            }
 
+            m_IsGotMilk = true;
+            Debug.Log("Speed up: " + m_Character.m_CurrentSpeed);
         }
-        else if (m_Character.m_CurrentBottleMilk > 1)
-        {
-            m_MilkCollectSpeed = m_Character.m_InitialSpeed * m_Character.m_CurrentBottleMilk;
-
-        }
+        // else if (m_Character.m_CurrentBottleMilk >= 2)
+        // {
+        //     m_MilkCollectSpeed = m_Character.m_InitialSpeed * m_Character.m_CurrentBottleMilk;
+        //     m_IsGotMilk = true;
+        //     Debug.Log("Speed up: " + m_Character.m_CurrentSpeed);
+        // }
 
 
     }
 
-    public IEnumerator CrystalBoost()
+    IEnumerator CrystalBoost()
     {
 
         if (m_Character.m_CrystalBoost > 0)

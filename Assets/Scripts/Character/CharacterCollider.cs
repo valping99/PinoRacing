@@ -21,6 +21,7 @@ public class CharacterCollider : MonoBehaviour
 
 
 
+
     [Header("Items")]
     public int m_CurrentCrystal;
     public int m_CurrentBottleMilk;
@@ -76,6 +77,8 @@ public class CharacterCollider : MonoBehaviour
         // m_CharacterController.BoostAvailable();
         CheckBoostCount();
         FixSpeedUpdate();
+
+
     }
     void OnTriggerEnter(Collider other)
     {
@@ -114,6 +117,14 @@ public class CharacterCollider : MonoBehaviour
                     // Debug.Log("Collision with stick");
                     m_CurrentBottleMilk -= stick.StickAmount;
 
+                    if (m_CurrentBottleMilk <= 0)
+                    {
+                        m_CurrentBottleMilk = 0;
+                        m_CurrentSpeed = m_InitialSpeed;
+                    }
+                    m_CurrentSpeed -= stick.HurtAmount;
+                    // m_CharacterController.ChangeSpeed();
+
                     Destroy(m_RootItem.gameObject);
                 }
 
@@ -140,6 +151,7 @@ public class CharacterCollider : MonoBehaviour
 
                     m_CurrentBottleMilk += milk.amountMilkBottle;
                     m_CharacterController.ChangeSpeed();
+
                     Destroy(m_RootItem.gameObject);
                 }
                 if (child.CompareTag("Choco"))
@@ -174,10 +186,6 @@ public class CharacterCollider : MonoBehaviour
 
     IEnumerator GetBoost()
     {
-
-        // Set Crystal boost = 16
-
-
         yield return new WaitForSeconds(0.1f);
         if (m_CrystalBoost == 0)
         {
