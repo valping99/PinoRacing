@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
+    #region UIVariables
     // Start is called before the first frame update
     public CharacterInputController charInput;
     public CharacterCollider charColl;
@@ -72,6 +73,7 @@ public class UIManager : MonoBehaviour
     public float toRankE;
     public float toRankF;
 
+    #endregion
 
     //Game Start
     void Start()
@@ -141,6 +143,7 @@ public class UIManager : MonoBehaviour
                 pauseUI.gameObject.SetActive(true);
                 mainSceneUI.gameObject.SetActive(false);
                 gameOverUI.gameObject.SetActive(false);
+                countdownTimer_Text.gameObject.SetActive(false);
                 checkPause = !checkPause;
                 Time.timeScale = 0f;
                 Debug.Log("Pause");
@@ -153,6 +156,10 @@ public class UIManager : MonoBehaviour
                 gameOverUI.gameObject.SetActive(false);
                 checkPause = !checkPause;
                 Time.timeScale = 1f;
+                if (!checkRunning)
+                {
+                    countdownTimer_Text.gameObject.SetActive(true);
+                }
                 Debug.Log("Resume");
             }
         }

@@ -27,16 +27,6 @@ public class GetControllerInput : MonoBehaviour
         {
             charInput.m_Character = charColl;
             charColl.m_CharacterController = charInput;
-            Debug.Log("Collider input");
-        }
-        if(charInput.isActiveAndEnabled == true)
-        {
-            Debug.Log("true");
-        }
-        else
-        {
-            //charInput.GetComponent<CharacterInputController>().enabled = true;
-            Debug.Log("False");
         }
     }
 }

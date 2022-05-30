@@ -6,16 +6,11 @@ public class ButtonSelectedUI : MonoBehaviour
 {
     public SelectManager selected;
 
-    /// <summary>
-    /// //////////////////////////
-    /// </summary>
     public void OnStart()
     {
         selected.TapToPlay();
     }
 
-    /// //////////////////////////
-    /// 
     /**
     public void SelectStage()
     {
@@ -27,8 +22,6 @@ public class ButtonSelectedUI : MonoBehaviour
     }
     
     **/
-
-    /// Select Stage
 
     public void selectedStage01()
     {

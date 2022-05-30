@@ -28,26 +28,8 @@ public class CharacterSelected : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.position = playerPosition;
 
     }
-
-    /**
-
-    public void RoadFollowPlayer()
-    {
-        for(int i = 0;i < roadToSpawn.Count; i++)
-        {
-            Debug.Log("SpawnRoad" + positionZToRespawn);
-            Debug.Log(i);
-            Instantiate(playerList[i], new Vector3(0, 0, 0), Quaternion.identity);
-            positionZToRespawn += roadLength;
-            newRoad = new Vector3(0, 0, positionZToRespawn);
-            Debug.Log("SpawnRoad" + positionZToRespawn);
-        }
-    }
-    **/
-
 
     //Select Pino & add to UIManager
     public void GameStart()
