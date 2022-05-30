@@ -85,7 +85,6 @@ MonoBehaviour:
     type: 3}
   m_RootModel: {fileID: 8392449247394691907}
   amountMilkBottle: 1
-  amountSpeed: 10
 --- !u!1 &6864197405021542195
 GameObject:
   m_ObjectHideFlags: 0

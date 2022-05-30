@@ -12,7 +12,7 @@ public class ObstaclesManager : MonoBehaviour
     #region Variables
 
     public float m_DistanceZSpawn = 40;
-    public Transform[] listObstacles;
+    public GameObject[] listObstacles;
 
 
     int m_ItemPosition;
@@ -20,37 +20,42 @@ public class ObstaclesManager : MonoBehaviour
     float m_RootPosition = 0;
     float m_SidePositionX = 4.5f;
     List<float> m_XPosition;
+    List<string> m_ItemLoad;
     float m_ZPosition;
 
-    CharacterInputController m_Character;
-    CharacterCollider m_CharacterCollider;
+    public CharacterInputController m_Character;
+    public CharacterCollider m_CharacterCollider;
     #endregion
 
     #region Unity Methods
+
+    void Awake()
+    {
+#if UNITY_EDITOR || UNITY_STANDALONE
+
+#else
+    StartCoroutine(SpawnObstacles());
+#endif
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         m_Character = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInputController>();
-        m_CharacterCollider = m_Character.GetComponentInChildren<CharacterCollider>();
+        m_CharacterCollider = m_Character.gameObject.GetComponentInChildren<CharacterCollider>();
 
-        m_XPosition = new List<float>() { -m_SidePositionX, m_RootPosition, m_SidePositionX };
-
+        m_XPosition = new List<float> { -m_SidePositionX, m_RootPosition, m_SidePositionX };
         StartCoroutine(SpawnObstacles());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
-
 
     #endregion
 
     #region Class
     IEnumerator SpawnObstacles()
     {
+        Debug.Log("Range: " + (listObstacles.Length - 1));
+
         if (m_CharacterCollider.m_CurrentSpeed > 100)
         {
             yield return new WaitForSeconds(0.3f);
@@ -71,9 +76,12 @@ public class ObstaclesManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
             // Debug.Log("Spawn 1s");
         }
+
         m_ItemPosition = Random.Range(0, listObstacles.Length);
         m_NextPosition = Random.Range(0, m_XPosition.Count);
 
+        Debug.Log("X Position: " + m_XPosition[m_NextPosition]);
+        Debug.Log("Z Position: " + m_ZPosition);
 
         // if X = 0 -> is root position
         // if X = 4.5|-4.5 -> is side position
@@ -82,6 +90,8 @@ public class ObstaclesManager : MonoBehaviour
         m_ZPosition = m_CharacterCollider.transform.position.z + m_DistanceZSpawn;
 
         Instantiate(listObstacles[m_ItemPosition], new Vector3(m_XPosition[m_NextPosition], 0.5f, m_ZPosition), Quaternion.identity);
+
+
         StartCoroutine(SpawnObstacles());
     }
     #endregion
