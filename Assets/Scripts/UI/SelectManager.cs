@@ -160,6 +160,11 @@ public class SelectManager : MonoBehaviour
             isSelectPino_03 = false;
             isSelectScene_03 = false;
             isSelectScene_04 = true;
+
+            //Enable isSelectedPino & Disable unSelectedPino
+            statusOfPino_01.gameObject.SetActive(true);
+            statusOfPino_02.gameObject.SetActive(false);
+            statusOfPino_03.gameObject.SetActive(false);
         }
         else if (isSelectPino_02)
         {
@@ -168,6 +173,11 @@ public class SelectManager : MonoBehaviour
             isSelectPino_03 = false;
             isSelectScene_03 = false;
             isSelectScene_04 = true;
+
+            //Enable isSelectedPino & Disable unSelectedPino
+            statusOfPino_01.gameObject.SetActive(false);
+            statusOfPino_02.gameObject.SetActive(true);
+            statusOfPino_03.gameObject.SetActive(false);
         }
         else if (isSelectPino_03)
         {
@@ -176,6 +186,11 @@ public class SelectManager : MonoBehaviour
             isSelectPino_01 = false;
             isSelectScene_03 = false;
             isSelectScene_04 = true;
+
+            //Enable isSelectedPino & Disable unSelectedPino
+            statusOfPino_01.gameObject.SetActive(false);
+            statusOfPino_02.gameObject.SetActive(false);
+            statusOfPino_03.gameObject.SetActive(true);
         }
         scene_03.gameObject.SetActive(false);
     }
@@ -207,11 +222,13 @@ public class SelectManager : MonoBehaviour
     **/
 
 
+    /**
     //Show infomation of Pinos
     public void ShowStatusPino()
     {
         isSelectScene_03 = false;
         isSelectScene_04 = true;
+
         if (isSelectScene_04)
         {
             scene_03.gameObject.SetActive(false);
@@ -236,6 +253,7 @@ public class SelectManager : MonoBehaviour
         }
        
     }
+    **/
 
 
     //Press button to play 

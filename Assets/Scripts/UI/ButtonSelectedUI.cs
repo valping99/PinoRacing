@@ -21,12 +21,12 @@ public class ButtonSelectedUI : MonoBehaviour
     {
         selected.SelectPino();
     }
-    **/
     public void SelectPino()
     {
         selected.ShowStatusPino();
     }
-
+    
+    **/
 
     /// Select Stage
 

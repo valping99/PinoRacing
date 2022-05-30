@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6161353084638388913
+--- !u!1 &7718282832915221415
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6161353084638388914}
-  - component: {fileID: 6161353084638388915}
+  - component: {fileID: 7718282832915221412}
+  - component: {fileID: 7718282832915221413}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6161353084638388914
+--- !u!4 &7718282832915221412
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6161353084638388913}
+  m_GameObject: {fileID: 7718282832915221415}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,13 +32,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6161353084638388915
+--- !u!114 &7718282832915221413
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6161353084638388913}
+  m_GameObject: {fileID: 7718282832915221415}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4c79524454887b4590d165bcb4396ab, type: 3}
@@ -65,7 +65,9 @@ MonoBehaviour:
   kphText: {fileID: 0}
   milkNumberText: {fileID: 0}
   countdownTimer_Text: {fileID: 0}
+  limitedTimer_Text: {fileID: 0}
   timeValue: 3
+  timeValueCountdown: 300
   resumeButton: {fileID: 0}
   mainMenuButton: {fileID: 0}
   shareScoreButton: {fileID: 0}
@@ -73,12 +75,12 @@ MonoBehaviour:
   gameOverScoreText: {fileID: 0}
   rankText: {fileID: 0}
   messageText: {fileID: 0}
-  score: 0
   currentScore: 0
   currentSpeed: 10
+  currentMilk: 0
+  currentStamina: 0
   crystalCollected: 0
-  healthDown: 7
-  Speed: 10
+  healthDown: 10
   toRankS: 1000
   toRankA: 800
   toRankB: 500

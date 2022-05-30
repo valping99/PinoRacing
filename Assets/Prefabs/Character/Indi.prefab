@@ -19069,7 +19069,7 @@ GameObject:
   - component: {fileID: 8819108625063688369}
   - component: {fileID: 4134263912402128357}
   - component: {fileID: 4435226266236567447}
-  - component: {fileID: 5559696372505656615}
+  - component: {fileID: 3144827233363433985}
   m_Layer: 0
   m_Name: Indi
   m_TagString: Player
@@ -19237,13 +19237,13 @@ MonoBehaviour:
   m_CurrentCrystal: 0
   m_CurrentBottleMilk: 0
   m_CrystalBoost: 0
-  m_InitialSpeed: 5
-  m_InitialDef: 20
+  m_InitialSpeed: 15
+  m_InitialDef: 4
   m_InitialStamina: 100
   m_CurrentSpeed: 0
   m_CurrentStamina: 0
   m_IsEnoughBoost: 0
---- !u!114 &5559696372505656615
+--- !u!114 &3144827233363433985
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

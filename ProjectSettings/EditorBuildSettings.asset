@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SelectScene.unity
     guid: 4ba6a72335927444383639520b541d04
   - enabled: 1
-    path: Assets/Scenes/UIScene.unity
-    guid: a03e5c28c9bf1a3429aa231b6915767d
+    path: Assets/Scenes/Stage_01.unity
+    guid: c7521bdce474af7418a89b62a7fe317f
   - enabled: 1
     path: Assets/Scenes/Stage_02.unity
-    guid: 4345492ae7387d847b3612aea6d348d6
+    guid: abe43a7542abd414cad8738a2c76b190
   - enabled: 1
     path: Assets/Scenes/Stage_03.unity
-    guid: a6bdc3356a2a95f4996f47cc6f141091
+    guid: c34a5af579685434eb41ca7cf0422523
   m_configObjects: {}

@@ -8,11 +8,11 @@ public class GetControllerInput : MonoBehaviour
 
     public CharacterInputController charInput;
     public CharacterCollider charColl;
-    void Start()
+    void Awake()
     {
-        //charInput = FindObjectOfType<CharacterInputController>();
-        //charColl = FindObjectOfType<CharacterCollider>();
-        //checkInput();
+        charColl = FindObjectOfType<CharacterCollider>();
+        charInput = (CharacterInputController)FindObjectOfType(typeof(CharacterInputController));
+        checkInput();
     }
 
     // Update is called once per frame
@@ -23,9 +23,20 @@ public class GetControllerInput : MonoBehaviour
 
     void checkInput()
     {
-        if(charColl.m_CharacterController == null)
+        if(charColl.m_CharacterController == null && charInput.m_Character == null)
         {
+            charInput.m_Character = charColl;
             charColl.m_CharacterController = charInput;
+            Debug.Log("Collider input");
+        }
+        if(charInput.isActiveAndEnabled == true)
+        {
+            Debug.Log("true");
+        }
+        else
+        {
+            //charInput.GetComponent<CharacterInputController>().enabled = true;
+            Debug.Log("False");
         }
     }
 }

@@ -19237,9 +19237,9 @@ MonoBehaviour:
   m_CurrentCrystal: 0
   m_CurrentBottleMilk: 0
   m_CrystalBoost: 0
-  m_InitialSpeed: 25
-  m_InitialDef: 5
-  m_InitialStamina: 45
+  m_InitialSpeed: 5
+  m_InitialDef: 8
+  m_InitialStamina: 100
   m_CurrentSpeed: 0
   m_CurrentStamina: 0
   m_IsEnoughBoost: 0
@@ -19255,6 +19255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ac9aca5393ef9478f6cc6f545c2455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charInput: {fileID: 0}
+  charColl: {fileID: 0}
 --- !u!1 &4190562591476469283
 GameObject:
   m_ObjectHideFlags: 0

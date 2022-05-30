@@ -54,7 +54,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI messageText;
 
     //Variables of PlayingUI
-    public int score;
+    private int score;
     public float currentScore;
     public float currentSpeed;
     public float currentMilk;
@@ -62,7 +62,6 @@ public class UIManager : MonoBehaviour
     public int crystalCollected;
     public float healthDown;
     public static int pinoSelected;
-    public int Speed;
 
     //Set rank
     public float toRankS;
@@ -289,14 +288,14 @@ public class UIManager : MonoBehaviour
 
         //Get crystal to unlock boost button
         crystalCollected = charColl.m_CurrentCrystal;
-        if (crystalCollected >= 6)
+        if (charColl.m_IsEnoughBoost == true)
         {
-            crystalCollected = 6;
+            //crystalCollected = 6;
             checkBoost = true;
         }
-        else if(crystalCollected <=0)
+        else if(charColl.m_IsEnoughBoost == false)
         {
-            crystalCollected = 0;
+            //crystalCollected = 0;
             checkBoost = false;
         }
 
@@ -321,6 +320,7 @@ public class UIManager : MonoBehaviour
         {
             timeValue -= Time.deltaTime;
             charColl.m_CurrentSpeed = 0;
+            charInput.GetComponent<CharacterInputController>().enabled = false;
         }
         else
         {
@@ -338,9 +338,10 @@ public class UIManager : MonoBehaviour
             countdownTimer_Text.gameObject.SetActive(false);
             checkRunning = true;
             mainSceneUI.gameObject.SetActive(true);
+            charInput.GetComponent<CharacterInputController>().enabled = true;
             charColl.m_CurrentSpeed += charColl.m_InitialSpeed;
         }
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        //float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         //countdownTimer_Text.text = string.Format("{0:00}:{1:00}", minutes, seconds);\

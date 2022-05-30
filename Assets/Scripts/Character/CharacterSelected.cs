@@ -6,6 +6,7 @@ public class CharacterSelected : MonoBehaviour
 {
     //SelectManager selectManager;
     //public GameObject nameGameObject;
+    public Transform transformParent;
     public CharacterCollider nameCollider;
     public CharacterCollider nameGameObject;
     public CharacterInputController charInput;
@@ -61,13 +62,14 @@ public class CharacterSelected : MonoBehaviour
             {
                 //Get Pino to stage
                 Debug.Log("Instantiate");
-                Instantiate(playerList[i - 1], new Vector3(0, 0, 0), Quaternion.identity);
+                Instantiate(playerList[i - 1], new Vector3(0, 0, 0), Quaternion.identity, transformParent);
+
 
                 //Get new Variables of the pino
                 nameGameObject = FindObjectOfType<CharacterCollider>();
                 GameObject PinoGameObject = nameGameObject.gameObject;
                 nameCollider = FindObjectOfType<CharacterCollider>();
-                charInput = (CharacterInputController) FindObjectOfType(typeof(CharacterInputController));
+                charInput = (CharacterInputController)FindObjectOfType(typeof(CharacterInputController));
 
                 //Get Variables to UIManager
                 uiManagers.m_Player = PinoGameObject;
