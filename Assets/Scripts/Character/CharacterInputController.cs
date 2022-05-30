@@ -47,8 +47,17 @@ public class CharacterInputController : MonoBehaviour
 
     #region Unity Methods
 
-    void Awake()
+
+#if !UNITY_STANDALONE
+    protected Vector2 m_StartingTouch;
+    protected bool m_IsSwiping = false;
+#endif
+
+    // Start is called before the first frame update
+    void Start()
     {
+        ChangeSpeed();
+
         m_MilkCollectSpeed = m_Character.m_InitialSpeed;
 
         laneNumber = 2; // 1 = left, 0 = middle, 2 = right
@@ -65,21 +74,11 @@ public class CharacterInputController : MonoBehaviour
         m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
     }
 
-#if !UNITY_STANDALONE
-    protected Vector2 m_StartingTouch;
-    protected bool m_IsSwiping = false;
-#endif
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        ChangeSpeed();
-    }
-
     // Update is called once per frame
     void Update()
     {
         MoveInput();
+
     }
 
 
