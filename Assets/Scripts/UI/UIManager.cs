@@ -270,6 +270,10 @@ public class UIManager : MonoBehaviour
             charColl.m_CurrentStamina -= healthDown * Time.deltaTime;
             currentStamina = charColl.m_CurrentStamina;
             healthPoint.value = currentStamina;
+            if(charColl.m_CurrentStamina >= healthPoint.maxValue)
+            {
+                charColl.m_CurrentStamina = healthPoint.maxValue;
+            }
             if (currentStamina > healthPoint.maxValue)
             {
                 currentStamina = healthPoint.maxValue;

@@ -18,8 +18,8 @@ RenderSettings:
   m_FogColor: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 0}
   m_FogMode: 1
   m_FogDensity: 0.06
-  m_LinearFogStart: 40
-  m_LinearFogEnd: 70
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 100
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.16788375, g: 0.21073635, b: 0.28994125, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1311,12 +1311,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DistanceZSpawn: 80
   listObstacles:
-  - {fileID: 3152101557841408550, guid: 1d74bf6f0542dd240a4e5d35d75029bf, type: 3}
-  - {fileID: 5622174703786204978, guid: a3834821a6f496642ad311795a9d26eb, type: 3}
-  - {fileID: 5552194623000244913, guid: 1218f3cb31f26404f896a755ddc08a32, type: 3}
-  - {fileID: 8077980517131866233, guid: 98963e14ad200ff44bb873b7942d69a8, type: 3}
-  - {fileID: 2044869778130598221, guid: c91090ad5cfdcc8438f83e051c55f511, type: 3}
-  - {fileID: 9190342416473158997, guid: b022aff247dd09c4a8fb062d433d7ca4, type: 3}
+  - {fileID: 6787243661026355974, guid: 1d74bf6f0542dd240a4e5d35d75029bf, type: 3}
+  - {fileID: 7338466080698589575, guid: a3834821a6f496642ad311795a9d26eb, type: 3}
+  - {fileID: 1154960059834158301, guid: 1218f3cb31f26404f896a755ddc08a32, type: 3}
+  - {fileID: 8077980517131866237, guid: 98963e14ad200ff44bb873b7942d69a8, type: 3}
+  - {fileID: 2044869778130598217, guid: c91090ad5cfdcc8438f83e051c55f511, type: 3}
+  - {fileID: 5450491063609210307, guid: b022aff247dd09c4a8fb062d433d7ca4, type: 3}
+  m_Character: {fileID: 2707870873483165894}
+  m_CharacterCollider: {fileID: 0}
 --- !u!1 &588664364
 GameObject:
   m_ObjectHideFlags: 0
@@ -5950,6 +5952,7 @@ GameObject:
   - component: {fileID: 4191881348078074669}
   - component: {fileID: 4191881348078074668}
   - component: {fileID: 580801095}
+  - component: {fileID: 4191881348078074671}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5957,6 +5960,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4191881348078074671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4191881348078074670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 237fe0346bc4df843ba80d5a61d10a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacles: {fileID: 580801095}
+  uiManagers: {fileID: 1885719431}
 --- !u!114 &4407763033500590046
 MonoBehaviour:
   m_ObjectHideFlags: 0
