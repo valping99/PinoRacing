@@ -13,6 +13,8 @@ public class RoadSpawner : MonoBehaviour
     private Vector3 charPosition;
     private Vector3 charRotaion;
     public float offset = 10;
+
+    public bool onGround;
     void Start()
     {
         charColl = FindObjectOfType<CharacterCollider>();
@@ -27,6 +29,7 @@ public class RoadSpawner : MonoBehaviour
     void Update()
     {
         charPosition = new Vector3(charColl.transform.position.x, charColl.transform.position.y+1, charColl.transform.position.z + 3);
+        CheckOnGround();
         //charPosition = charColl.transform.position;
         MainRoad.transform.position = charPosition;
     }
@@ -38,7 +41,7 @@ public class RoadSpawner : MonoBehaviour
         moveRoad.transform.position = new Vector3(0, 0, newPosZ);
         roads.Add(moveRoad);
     }
-
+    /**
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("SpawnTrigger"))
@@ -46,13 +49,34 @@ public class RoadSpawner : MonoBehaviour
             MoveRoad();
         }
     }
+    **/
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("CheckGround"))
         {
-            Debug.Log("OutTrigger");
             MoveRoad();
         }
     }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("CheckGround"))
+        {
+            onGround = true;
+        }
+        else
+        {
+            onGround = false;
+        }
+    }
+
+    public void CheckOnGround()
+    {
+        if (!onGround)
+        {
+            MainRoad.transform.position = charPosition;
+            //MoveRoad();
+        }
+    }
+
 }
