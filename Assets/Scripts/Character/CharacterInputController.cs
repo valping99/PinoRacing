@@ -106,7 +106,14 @@ public class CharacterInputController : MonoBehaviour
 
     public void ChangeLane(int _direction)
     {
+        // if (laneNumber == 2)
+        // {
+        //     m_CharacterPosition = 0;
+        // }
+        // else
+        // {
         m_CharacterPosition = _direction;
+        // }
         StartCoroutine(StopMoving());
         m_IsChangeLine = false;
     }
@@ -239,7 +246,7 @@ public class CharacterInputController : MonoBehaviour
             }
         }
 
-        Debug.Log("Speed up: " + m_Character.m_CurrentSpeed);
+        // Debug.Log("Speed up: " + m_Character.m_CurrentSpeed);
 
     }
 

@@ -77,6 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb629d30a57d95f42a9deccae2c9cb9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CharacterCollider: {fileID: 0}
+  m_CharacterController: {fileID: 0}
   VerticalBobFrequency: 0.2
   BobbingAmount: 1
   RotatingSpeed: 15
@@ -84,6 +86,7 @@ MonoBehaviour:
   PickupVfxPrefab: {fileID: 7529341927632577005, guid: 915014a88b530494b9082a7520ea240b,
     type: 3}
   m_RootModel: {fileID: 7820985099596640666}
+  m_Distance: 10
   HurtAmount: 5
   LostSpeed: 25
 --- !u!1 &7331465064201371122

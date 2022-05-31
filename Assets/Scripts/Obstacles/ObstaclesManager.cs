@@ -89,7 +89,14 @@ public class ObstaclesManager : MonoBehaviour
 
         m_ZPosition = m_CharacterCollider.transform.position.z + m_DistanceZSpawn;
 
-        Instantiate(listObstacles[m_ItemPosition], new Vector3(m_XPosition[m_NextPosition], 0.5f, m_ZPosition), Quaternion.identity);
+        if (m_ItemPosition == 1)
+        {
+            Instantiate(listObstacles[m_ItemPosition], new Vector3(m_XPosition[m_NextPosition], 7f, m_ZPosition), Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(listObstacles[m_ItemPosition], new Vector3(m_XPosition[m_NextPosition], 0.5f, m_ZPosition), Quaternion.identity);
+        }
 
 
         StartCoroutine(SpawnObstacles());

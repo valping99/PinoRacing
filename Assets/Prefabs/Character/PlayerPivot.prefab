@@ -62,7 +62,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4054585821667757163}
   - component: {fileID: 908503237774059630}
-  - component: {fileID: 4407763032919977492}
+  - component: {fileID: 4090336068600034249}
   m_Layer: 0
   m_Name: Wall
   m_TagString: ClearLag
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20, y: 15, z: 20}
   m_Center: {x: 5, y: 0, z: 0}
---- !u!114 &4407763032919977492
+--- !u!114 &4090336068600034249
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
