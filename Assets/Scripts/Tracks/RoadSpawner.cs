@@ -6,20 +6,32 @@ using UnityEngine;
 public class RoadSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameObject MainRoad;
     public List<GameObject> roads;
+    public CharacterCollider charColl;
+
+    private Vector3 charPosition;
+    private Vector3 charRotaion;
     public float offset = 10;
+
+    public bool onGround;
     void Start()
     {
+        charColl = FindObjectOfType<CharacterCollider>();
         if (roads != null && roads.Count > 0)
         {
             roads = roads.OrderBy(r => r.transform.position.z).ToList();
         }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        charPosition = new Vector3(charColl.transform.position.x, charColl.transform.position.y+1, charColl.transform.position.z + 3);
+        CheckOnGround();
+        //charPosition = charColl.transform.position;
+        MainRoad.transform.position = charPosition;
     }
     public void MoveRoad()
     {
@@ -29,7 +41,7 @@ public class RoadSpawner : MonoBehaviour
         moveRoad.transform.position = new Vector3(0, 0, newPosZ);
         roads.Add(moveRoad);
     }
-
+    /**
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("SpawnTrigger"))
@@ -37,35 +49,36 @@ public class RoadSpawner : MonoBehaviour
             MoveRoad();
         }
     }
+    **/
 
-#if UNITY_EDITOR
-    void OnDrawGizmos()
+    private void OnTriggerExit(Collider other)
     {
-        if (roads == null)
-            return;
-
-        Color c = Gizmos.color;
-        Gizmos.color = Color.yellow;
-        for (int i = 1; i < roads.Count; ++i)
+        if (other.CompareTag("CheckGround"))
         {
-            Transform orig = roads.ElementAt(i - 1).transform;
-            Transform end = roads.ElementAt(i).transform;
-
-            Gizmos.DrawLine(new Vector3(orig.position.x, 2f, orig.position.z), new Vector3(end.position.x, 2f, end.position.z));
-            Gizmos.DrawLine(new Vector3(orig.position.x - 5f, 2f, orig.position.z), new Vector3(end.position.x - 5f, 2f, end.position.z));
-            Gizmos.DrawLine(new Vector3(orig.position.x + 5f, 2f, orig.position.z), new Vector3(end.position.x + 5f, 2f, end.position.z));
+            MoveRoad();
         }
-
-        // Gizmos.color = Color.blue;
-        // for (int i = 0; i < roads.Count; ++i)
-        // {
-        //     Vector3 pos;
-        //     Quaternion rot;
-        //     GetPointAt(oPositions[i], out pos, out rot);
-        //     Gizmos.DrawSphere(pos, 0.5f);
-        // }
-
-        Gizmos.color = c;
     }
-#endif
+    /**
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("CheckGround"))
+        {
+            onGround = true;
+        }
+        else
+        {
+            onGround = false;
+        }
+    }
+
+    public void CheckOnGround()
+    {
+        if (!onGround)
+        {
+            MainRoad.transform.position = charPosition;
+            //MoveRoad();
+        }
+    }
+    **/
+
 }
