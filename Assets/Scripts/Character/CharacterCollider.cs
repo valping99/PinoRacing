@@ -117,8 +117,12 @@ public class CharacterCollider : MonoBehaviour
                     {
                         m_CurrentBottleMilk = 0;
                         // m_CurrentSpeed = m_InitialSpeed;
-                        m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_InitialSpeed, 3f);
+                        m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_InitialSpeed, 5f);
+                        m_CharacterController.m_MilkCollectSpeed = Mathf.Lerp(m_CharacterController.m_MilkCollectSpeed, m_InitialSpeed, 5f);
+                        // Debug.Log("Speed is " + m_CurrentSpeed);
+                        // Debug.Log("Speed:  " + m_CharacterController.m_MilkCollectSpeed);
                     }
+
                     if (m_CurrentSpeed > m_InitialSpeed)
                     {
                         m_CurrentSpeed -= stick.HurtAmount;
