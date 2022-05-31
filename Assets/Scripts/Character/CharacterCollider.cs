@@ -75,7 +75,6 @@ public class CharacterCollider : MonoBehaviour
         CheckBoostCount();
         FixSpeedUpdate();
 
-
     }
     void OnTriggerEnter(Collider other)
     {
@@ -120,7 +119,10 @@ public class CharacterCollider : MonoBehaviour
                         // m_CurrentSpeed = m_InitialSpeed;
                         m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_InitialSpeed, 3f);
                     }
-                    m_CurrentSpeed -= stick.HurtAmount;
+                    if (m_CurrentSpeed > m_InitialSpeed)
+                    {
+                        m_CurrentSpeed -= stick.HurtAmount;
+                    }
                     m_CharacterController.ChangeSpeed();
 
                     Destroy(m_RootItem.gameObject);
@@ -194,10 +196,9 @@ public class CharacterCollider : MonoBehaviour
 
     void FixSpeedUpdate()
     {
-
         if (m_CurrentSpeed <= 0)
         {
-            m_CurrentSpeed = 5;
+            m_CurrentSpeed = m_InitialSpeed;
         }
     }
     #endregion
