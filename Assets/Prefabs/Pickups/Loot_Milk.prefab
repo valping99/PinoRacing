@@ -77,6 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76adb1ac0083bf14490c3eb5e6aaf645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CharacterCollider: {fileID: 0}
+  m_CharacterController: {fileID: 0}
   VerticalBobFrequency: 1
   BobbingAmount: 0.4
   RotatingSpeed: 360
@@ -84,6 +86,7 @@ MonoBehaviour:
   PickupVfxPrefab: {fileID: 8929146388027618498, guid: 7468cd18030a0204ab08baf7ac36ff1e,
     type: 3}
   m_RootModel: {fileID: 8392449247394691907}
+  m_Distance: 10
   amountMilkBottle: 1
 --- !u!1 &6864197405021542195
 GameObject:
