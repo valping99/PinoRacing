@@ -19,9 +19,6 @@ public class CharacterCollider : MonoBehaviour
     [Header("Variables")]
     public CharacterInputController m_CharacterController;
 
-
-
-
     [Header("Items")]
     public int m_CurrentCrystal;
     public int m_CurrentBottleMilk;

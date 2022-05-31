@@ -24,7 +24,7 @@ public class CharacterInputController : MonoBehaviour
     [Tooltip("The more you press, the faster the character will change lines")]
     public float m_SecondChangeLine;
     [Tooltip("Range of the character move when you swipe")]
-    public int slideLength = 5;
+    public int slideLength;
     public float m_BoostSpeed;
     [Tooltip("Speed of the character when you click boost")]
     public bool m_IsBoosting;
@@ -106,21 +106,24 @@ public class CharacterInputController : MonoBehaviour
 
     public void ChangeLane(int _direction)
     {
-        // if (laneNumber == 2)
-        // {
-        //     m_CharacterPosition = 0;
-        // }
-        // else
-        // {
         m_CharacterPosition = _direction;
-        // }
         StartCoroutine(StopMoving());
         m_IsChangeLine = false;
+        // Debug.Log("Change lane: " + laneNumber);
     }
 
     void MoveInput()
     {
-        m_Character.GetComponent<Rigidbody>().velocity = new Vector3(m_CharacterPosition, 0, m_Character.m_CurrentSpeed);
+        m_Character.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, m_Character.m_CurrentSpeed);
+
+        if (laneNumber == 1 && laneNumber == 3)
+        {
+
+        }
+        else
+        {
+            m_Character.transform.Translate(Vector3.right * Time.deltaTime * m_CharacterPosition);
+        }
 
         m_WallClearLag.transform.position = new Vector3(m_WallClearLag.transform.position.x, m_WallClearLag.transform.position.y, m_Character.transform.position.z - 15f);
 
@@ -195,10 +198,12 @@ public class CharacterInputController : MonoBehaviour
 						if(diff.x < 0 && laneNumber > 1 && m_IsChangeLine)
 						{
 							ChangeLane(-slideLength);
+                            laneNumber -= 1;
                         }
 						else if (diff.x >= 0 && laneNumber < 3 && m_IsChangeLine)
 						{
 							ChangeLane(slideLength);
+                            laneNumber += 1;
                         }
 					m_IsSwiping = false;
 				}
