@@ -29,7 +29,7 @@ public class RoadSpawner : MonoBehaviour
     void Update()
     {
         charPosition = new Vector3(charColl.transform.position.x, charColl.transform.position.y+1, charColl.transform.position.z + 3);
-        CheckOnGround();
+        //CheckOnGround();
         //charPosition = charColl.transform.position;
         MainRoad.transform.position = charPosition;
     }
