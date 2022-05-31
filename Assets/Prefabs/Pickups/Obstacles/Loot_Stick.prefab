@@ -50,7 +50,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -4909,6 +4909,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb31bb285d796344481784c3aed0a5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CharacterCollider: {fileID: 0}
+  m_CharacterController: {fileID: 0}
   VerticalBobFrequency: 1
   BobbingAmount: 2
   RotatingSpeed: 360
@@ -4918,7 +4920,8 @@ MonoBehaviour:
   m_RootModel: {fileID: 3668658117995602592}
   HurtAmount: 10
   StickAmount: 1
-  LostSpeed: 20
+  m_Distance: 10
+  m_DropSpeed: 5
 --- !u!1 &2044869778957790354
 GameObject:
   m_ObjectHideFlags: 0
@@ -10042,6 +10045,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529341927632577005, guid: 915014a88b530494b9082a7520ea240b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8304665496361079347, guid: 915014a88b530494b9082a7520ea240b,
         type: 3}

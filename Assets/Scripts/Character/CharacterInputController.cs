@@ -1,3 +1,4 @@
+using System;
 /*
 * Create by William (c)
 * https://github.com/Long18
@@ -47,8 +48,17 @@ public class CharacterInputController : MonoBehaviour
 
     #region Unity Methods
 
-    void Awake()
+
+#if !UNITY_STANDALONE
+    protected Vector2 m_StartingTouch;
+    protected bool m_IsSwiping = false;
+#endif
+
+    // Start is called before the first frame update
+    void Start()
     {
+        ChangeSpeed();
+
         m_MilkCollectSpeed = m_Character.m_InitialSpeed;
 
         laneNumber = 2; // 1 = left, 0 = middle, 2 = right
@@ -65,21 +75,12 @@ public class CharacterInputController : MonoBehaviour
         m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
     }
 
-#if !UNITY_STANDALONE
-    protected Vector2 m_StartingTouch;
-	protected bool m_IsSwiping = false;
-#endif
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        ChangeSpeed();
-    }
-
     // Update is called once per frame
     void Update()
     {
         MoveInput();
+        // Debug.Log(m_IsBoosting);
+
     }
 
 
@@ -125,12 +126,35 @@ public class CharacterInputController : MonoBehaviour
                 m_IsRemainBoost = true;
                 StartCoroutine(CheckRemainBoost());
             }
-
         }
 
         if (m_IsGotMilk)
         {
-            m_Character.m_CurrentSpeed = m_MilkCollectSpeed;
+            if (!m_IsBoosting)
+            {
+                if (m_Character.m_CurrentSpeed < m_MilkCollectSpeed)
+                {
+
+                    m_Character.m_CurrentSpeed = m_MilkCollectSpeed;
+                }
+                else
+                {
+
+                    int _TimePerSec = m_TimeBoost;
+                    float _temp = (m_BoostSpeed - m_MilkCollectSpeed) / (_TimePerSec * m_TimeBoost); // tempt speed
+
+
+                    while (m_Character.m_CurrentSpeed > m_MilkCollectSpeed)
+                    {
+                        m_Character.m_CurrentSpeed -= _temp;
+                        if (m_Character.m_CurrentSpeed < m_MilkCollectSpeed)
+                        {
+                            m_Character.m_CurrentSpeed = m_MilkCollectSpeed;
+                        }
+                    }
+                }
+
+            }
         }
 
 #if UNITY_EDITOR || UNITY_STANDALONE
@@ -158,10 +182,9 @@ public class CharacterInputController : MonoBehaviour
                 // axes (otherwise we would have to swipe more vertically...)
 				diff = new Vector2(diff.x/Screen.width, diff.y/Screen.width);
 
-				if(diff.magnitude > 0.01f) //we set the swip distance to trigger movement to 1% of the screen width
+                //we set the swip distance to trigger movement to 1% of the screen width
+				if(diff.magnitude > 0.01f) 
 				{
-					else if(TutorialMoveCheck(0))
-					{
 						if(diff.x < 0 && laneNumber > 1 && m_IsChangeLine)
 						{
 							ChangeLane(-slideLength);
@@ -170,8 +193,6 @@ public class CharacterInputController : MonoBehaviour
 						{
 							ChangeLane(slideLength);
                         }
-					}
-						
 					m_IsSwiping = false;
 				}
             }
@@ -196,30 +217,29 @@ public class CharacterInputController : MonoBehaviour
         if (m_IsBoosting)
         {
             m_Character.m_CurrentSpeed += m_BoostSpeed;
-        }
 
-        if (m_Character.m_CurrentBottleMilk >= 1)
+        }
+        else
         {
-            if (IsFirstTime)
+            if (m_Character.m_CurrentBottleMilk >= 1)
             {
-                m_MilkCollectSpeed = m_Character.m_InitialSpeed + 5;
-                IsFirstTime = false;
-            }
-            else
-            {
-                m_MilkCollectSpeed = (m_Character.m_InitialSpeed + (m_Character.m_CurrentBottleMilk * 5));
-            }
+                if (IsFirstTime)
+                {
+                    m_MilkCollectSpeed = m_Character.m_InitialSpeed + 5;
+                    IsFirstTime = false;
+                }
+                else
+                {
+                    m_MilkCollectSpeed = (m_Character.m_InitialSpeed + (m_Character.m_CurrentBottleMilk * 5));
 
-            m_IsGotMilk = true;
-            Debug.Log("Speed up: " + m_Character.m_CurrentSpeed);
+                    // m_MilkCollectSpeed = Mathf.Lerp(m_Character.m_CurrentSpeed, (m_Character.m_InitialSpeed + (m_Character.m_CurrentBottleMilk * 5)), 1f);
+                }
+
+                m_IsGotMilk = true;
+            }
         }
-        // else if (m_Character.m_CurrentBottleMilk >= 2)
-        // {
-        //     m_MilkCollectSpeed = m_Character.m_InitialSpeed * m_Character.m_CurrentBottleMilk;
-        //     m_IsGotMilk = true;
-        //     Debug.Log("Speed up: " + m_Character.m_CurrentSpeed);
-        // }
 
+        Debug.Log("Speed up: " + m_Character.m_CurrentSpeed);
 
     }
 
@@ -234,7 +254,7 @@ public class CharacterInputController : MonoBehaviour
             {
                 ChangeSpeed();
                 StartCoroutine(CheckBoost());
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(m_TimeBoost);
                 m_IsBoosting = false;
             }
         }
@@ -257,8 +277,6 @@ public class CharacterInputController : MonoBehaviour
             yield return new WaitForSeconds(1f / _TimePerSec);
             m_Character.m_CurrentSpeed -= _temp;
         }
-
-        ChangeSpeed();
     }
 
     IEnumerator CheckRemainBoost()

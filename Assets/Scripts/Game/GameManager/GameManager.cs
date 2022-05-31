@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
         // m_DisplayDistance.GetComponent<TextMesh>().text = "" + m_Distance.ToString();
         yield return new WaitForSeconds(0.2f);
         m_IsRunning = true;
+        StartCoroutine(CountDistance());
 
     }
     #endregion

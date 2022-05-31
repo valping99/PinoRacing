@@ -14,7 +14,7 @@ GameObject:
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -60,10 +60,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310e5e3379bd19c41b6209926939a848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_DistanceZSpawn: 40
   listObstacles:
-  - {fileID: 3152101557841408550, guid: 1d74bf6f0542dd240a4e5d35d75029bf, type: 3}
-  - {fileID: 5622174703786204978, guid: a3834821a6f496642ad311795a9d26eb, type: 3}
-  - {fileID: 5552194623000244913, guid: 1218f3cb31f26404f896a755ddc08a32, type: 3}
-  - {fileID: 8077980517131866233, guid: 98963e14ad200ff44bb873b7942d69a8, type: 3}
-  - {fileID: 2044869778130598221, guid: c91090ad5cfdcc8438f83e051c55f511, type: 3}
-  - {fileID: 9190342416473158997, guid: b022aff247dd09c4a8fb062d433d7ca4, type: 3}
+  - {fileID: 8077980517131866237, guid: 98963e14ad200ff44bb873b7942d69a8, type: 3}
+  - {fileID: 2044869778130598217, guid: c91090ad5cfdcc8438f83e051c55f511, type: 3}
+  - {fileID: 5450491063609210307, guid: b022aff247dd09c4a8fb062d433d7ca4, type: 3}
+  - {fileID: 6787243661026355974, guid: 1d74bf6f0542dd240a4e5d35d75029bf, type: 3}
+  - {fileID: 7338466080698589575, guid: a3834821a6f496642ad311795a9d26eb, type: 3}
+  - {fileID: 1154960059834158301, guid: 1218f3cb31f26404f896a755ddc08a32, type: 3}

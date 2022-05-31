@@ -117,6 +117,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2707870872973799693}
     m_Modifications:
+    - target: {fileID: 2537690195895930397, guid: 6694f72b0d8d35f47a1d8d593a8023ab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3644350822100761586, guid: 6694f72b0d8d35f47a1d8d593a8023ab,
         type: 3}
       propertyPath: m_RootOrder
@@ -177,15 +182,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pino
       objectReference: {fileID: 0}
+    - target: {fileID: 4168228167028810056, guid: 6694f72b0d8d35f47a1d8d593a8023ab,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4435226266236567447, guid: 6694f72b0d8d35f47a1d8d593a8023ab,
         type: 3}
       propertyPath: m_InitialDef
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4435226266236567447, guid: 6694f72b0d8d35f47a1d8d593a8023ab,
         type: 3}
       propertyPath: m_CurrentSpeed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435226266236567447, guid: 6694f72b0d8d35f47a1d8d593a8023ab,
+        type: 3}
+      propertyPath: m_InitialSpeed
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4435226266236567447, guid: 6694f72b0d8d35f47a1d8d593a8023ab,
         type: 3}
@@ -195,7 +210,7 @@ PrefabInstance:
     - target: {fileID: 4435226266236567447, guid: 6694f72b0d8d35f47a1d8d593a8023ab,
         type: 3}
       propertyPath: m_InitialStamina
-      value: 50
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 4435226266236567447, guid: 6694f72b0d8d35f47a1d8d593a8023ab,
         type: 3}
