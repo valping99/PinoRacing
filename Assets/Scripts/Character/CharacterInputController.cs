@@ -33,7 +33,7 @@ public class CharacterInputController : MonoBehaviour
 
     // Init number Items ====
     float m_CharacterPosition;
-    float m_MilkCollectSpeed;
+    [HideInInspector] public float m_MilkCollectSpeed;
     int m_TimeBoost;
     int laneNumber;
 
@@ -248,6 +248,10 @@ public class CharacterInputController : MonoBehaviour
                 }
 
                 m_IsGotMilk = true;
+            }
+            if (m_Character.m_CurrentBottleMilk == 0)
+            {
+                m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
             }
         }
 
