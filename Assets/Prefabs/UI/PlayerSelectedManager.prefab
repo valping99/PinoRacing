@@ -51,6 +51,6 @@ MonoBehaviour:
   playerList:
   - {fileID: 4168228167028810056, guid: 2dfb48cf53621a34e886c8068243d3ba, type: 3}
   - {fileID: 4168228167028810056, guid: 712cbd3b10c0b444ea677f72e5894ce6, type: 3}
-  - {fileID: 4168228167028810056, guid: 6694f72b0d8d35f47a1d8d593a8023ab, type: 3}
+  - {fileID: 4168228167028810056, guid: 294ba0dea74a2964bbdefc99abb0397a, type: 3}
   uiManagers: {fileID: 0}
   isSelected: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StopRespawn : MonoBehaviour
 {
-    public ObstaclesManager obstacles;
+    public GameManager gameManagers;
     public UIManager uiManagers;
     // Start is called before the first frame update
     void Start()
@@ -17,12 +17,12 @@ public class StopRespawn : MonoBehaviour
     {
         if(uiManagers.checkRunning == false)
         {
-            obstacles.GetComponent<ObstaclesManager>().enabled = false;
+            gameManagers.gameObject.SetActive(false);
             Debug.Log("False");
         }
         else
         {
-            obstacles.GetComponent<ObstaclesManager>().enabled = true;
+            gameManagers.gameObject.SetActive(true);
             Debug.Log("True");
         }
     }

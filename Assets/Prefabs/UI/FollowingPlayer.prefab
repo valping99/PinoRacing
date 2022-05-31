@@ -60,11 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainRoad: {fileID: 5700011495006251104}
-  roads:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  roads: []
   charColl: {fileID: 0}
   offset: 100
 --- !u!54 &5700011495006251098
