@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     public CharacterInputController charInput;
     public CharacterCollider charColl;
 
+    private HiresScreenShots screenShot;
+
     //Check to active UI & button;
     public bool checkPause;
     public bool checkGameOver;
@@ -81,6 +83,7 @@ public class UIManager : MonoBehaviour
         checkPlaying = true;
         StartGame();
         StartStatusOfPino();
+        screenShot = FindObjectOfType<HiresScreenShots>();
     }
 
  
@@ -179,6 +182,7 @@ public class UIManager : MonoBehaviour
                 gameOverUI.gameObject.SetActive(true);
                 pauseUI.gameObject.SetActive(false);
                 mainSceneUI.gameObject.SetActive(false);
+                screenShot.checkUI();
 
                 Time.timeScale = 0f;
             }

@@ -46,4 +46,13 @@ public class RoadSpawner : MonoBehaviour
             MoveRoad();
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("CheckGround"))
+        {
+            Debug.Log("OutTrigger");
+            MoveRoad();
+        }
+    }
 }

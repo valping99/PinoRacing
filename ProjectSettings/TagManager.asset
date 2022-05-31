@@ -15,6 +15,7 @@ TagManager:
   - Water
   - Fire
   - Road
+  - CheckGround
   layers:
   - Default
   - TransparentFX
