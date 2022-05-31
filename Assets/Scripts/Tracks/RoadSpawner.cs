@@ -58,6 +58,7 @@ public class RoadSpawner : MonoBehaviour
             MoveRoad();
         }
     }
+    /**
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("CheckGround"))
@@ -78,5 +79,6 @@ public class RoadSpawner : MonoBehaviour
             //MoveRoad();
         }
     }
+    **/
 
 }
