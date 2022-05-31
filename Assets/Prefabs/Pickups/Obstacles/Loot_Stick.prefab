@@ -4859,7 +4859,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044869778130598217}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: 35}
+  m_LocalPosition: {x: -5, y: 10, z: 35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4909,15 +4909,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb31bb285d796344481784c3aed0a5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VerticalBobFrequency: 1
-  BobbingAmount: 2
+  m_CharacterCollider: {fileID: 0}
+  m_CharacterController: {fileID: 0}
+  VerticalBobFrequency: 0
+  BobbingAmount: 0
   RotatingSpeed: 360
   PickupSfx: {fileID: 8300000, guid: 7b83d61917ac1224f942a0609b1221f2, type: 3}
   PickupVfxPrefab: {fileID: 8929146388027618498, guid: 7468cd18030a0204ab08baf7ac36ff1e,
     type: 3}
   m_RootModel: {fileID: 3668658117995602592}
+  m_Distance: 10
   HurtAmount: 10
   StickAmount: 1
+  m_DropSpeed: 7
 --- !u!1 &2044869778957790354
 GameObject:
   m_ObjectHideFlags: 0

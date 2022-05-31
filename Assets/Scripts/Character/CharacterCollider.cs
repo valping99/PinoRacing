@@ -120,10 +120,11 @@ public class CharacterCollider : MonoBehaviour
                     if (m_CurrentBottleMilk <= 0)
                     {
                         m_CurrentBottleMilk = 0;
-                        m_CurrentSpeed = m_InitialSpeed;
+                        // m_CurrentSpeed = m_InitialSpeed;
+                        m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_InitialSpeed, 3f);
                     }
                     m_CurrentSpeed -= stick.HurtAmount;
-                    // m_CharacterController.ChangeSpeed();
+                    m_CharacterController.ChangeSpeed();
 
                     Destroy(m_RootItem.gameObject);
                 }

@@ -12,6 +12,12 @@ public class Pickup : MonoBehaviour
 
     #region Variables
 
+    [Header("Scripts")]
+    public CharacterCollider m_CharacterCollider;
+    public CharacterInputController m_CharacterController;
+
+    [Header("Effects")]
+
     [Tooltip("Frequency at which the item will move up and down")]
     public float VerticalBobFrequency = 1f;
 
@@ -26,6 +32,7 @@ public class Pickup : MonoBehaviour
     public Rigidbody PickupRigidbody { get; private set; }
 
     public GameObject m_RootModel;
+    public float m_Distance;
 
     Collider m_Collider;
     Vector3 m_StartPosition;
@@ -40,6 +47,9 @@ public class Pickup : MonoBehaviour
         PickupRigidbody = GetComponent<Rigidbody>();
         m_Collider = GetComponent<Collider>();
 
+        m_CharacterController = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInputController>();
+        m_CharacterCollider = m_CharacterController.GetComponentInChildren<CharacterCollider>();
+
         // ensure the physics setup is a kinematic rigidbody trigger
         PickupRigidbody.isKinematic = true;
         m_Collider.isTrigger = true;
@@ -51,12 +61,10 @@ public class Pickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Handle bobbing
-        float bobbingAnimationPhase = ((Mathf.Sin(Time.time * VerticalBobFrequency) * 0.5f) + 0.5f) * BobbingAmount;
-        m_RootModel.transform.position = m_StartPosition + Vector3.up * bobbingAnimationPhase;
+        HandleBobbing();
+        HandleRotation();
 
-        // Handle rotating
-        m_RootModel.transform.Rotate(Vector3.up, RotatingSpeed * Time.deltaTime, Space.World);
+        CheckDistance(m_CharacterCollider.gameObject.transform, m_RootModel);
     }
 
     void OnTriggerEnter(Collider other)
@@ -73,9 +81,27 @@ public class Pickup : MonoBehaviour
     #endregion
 
     #region Class
+
+    protected virtual void HandleBobbing()
+    {
+        // Handle bobbing
+        float bobbingAnimationPhase = ((Mathf.Sin(Time.time * VerticalBobFrequency) * 0.5f) + 0.5f) * BobbingAmount;
+        m_RootModel.transform.position = m_StartPosition + Vector3.up * bobbingAnimationPhase;
+    }
+    protected virtual void HandleRotation()
+    {
+        // Handle rotating
+        m_RootModel.transform.Rotate(Vector3.up, RotatingSpeed * Time.deltaTime, Space.World);
+    }
     protected virtual void OnPicked(CharacterCollider playerController)
     {
+        // Play pickup sound
         PlayPickupFeedback();
+    }
+
+    protected virtual void CheckDistance(Transform m_PlayerPosition, GameObject _RootModel)
+    {
+        // Check distance
     }
 
     public void PlayPickupFeedback()
@@ -95,5 +121,18 @@ public class Pickup : MonoBehaviour
 
         m_HasPlayedFeedback = true;
     }
+
+#if UNITY_EDITOR
+    void OnDrawGizmos()
+    {
+        if (m_RootModel == null)
+            return;
+
+        Color c = Gizmos.color;
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawWireSphere(m_RootModel.transform.position, m_Distance);
+    }
+#endif
     #endregion
 }

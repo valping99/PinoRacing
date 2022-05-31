@@ -9779,6 +9779,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21624458c7054a24694fe8cd98117cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CharacterCollider: {fileID: 0}
+  m_CharacterController: {fileID: 0}
   VerticalBobFrequency: 1
   BobbingAmount: 0.4
   RotatingSpeed: 360
@@ -9786,6 +9788,7 @@ MonoBehaviour:
   PickupVfxPrefab: {fileID: 18133231791472539, guid: e44fc97440f45e946a0bdbdd460acfb9,
     type: 3}
   m_RootModel: {fileID: 1018727948728334367}
+  m_Distance: 10
   HealAmount: 10
 --- !u!1001 &207823631554430286
 PrefabInstance:
@@ -9928,6 +9931,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4081768eaa624774e8752c00e0093e4f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4081768eaa624774e8752c00e0093e4f, type: 3}
