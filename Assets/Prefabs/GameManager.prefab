@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310e5e3379bd19c41b6209926939a848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DistanceZSpawn: 40
+  m_DistanceZSpawn: 100
   listObstacles:
   - {fileID: 8077980517131866237, guid: 98963e14ad200ff44bb873b7942d69a8, type: 3}
   - {fileID: 2044869778130598217, guid: c91090ad5cfdcc8438f83e051c55f511, type: 3}
@@ -68,3 +68,5 @@ MonoBehaviour:
   - {fileID: 6787243661026355974, guid: 1d74bf6f0542dd240a4e5d35d75029bf, type: 3}
   - {fileID: 7338466080698589575, guid: a3834821a6f496642ad311795a9d26eb, type: 3}
   - {fileID: 1154960059834158301, guid: 1218f3cb31f26404f896a755ddc08a32, type: 3}
+  m_Character: {fileID: 0}
+  m_CharacterCollider: {fileID: 0}

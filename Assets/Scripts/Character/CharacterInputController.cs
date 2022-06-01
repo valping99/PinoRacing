@@ -71,13 +71,23 @@ public class CharacterInputController : MonoBehaviour
         m_IsGotMilk = false;
         IsFirstTime = true;
 
-        m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
+
         m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
+        if (!m_Character)
+        {
+            m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
+        }
+
+        if (!m_WallClearLag)
+        {
+            m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
+        }
+
         MoveInput();
         // Debug.Log(m_IsBoosting);
 
