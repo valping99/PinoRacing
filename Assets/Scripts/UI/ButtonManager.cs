@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
+    public CharacterInputController charInput;
+    public CharacterCollider charColl;
     public UIManager managers;
     void Start()
     {
@@ -25,4 +27,5 @@ public class ButtonManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
 }
