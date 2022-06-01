@@ -316,7 +316,6 @@ public class UIManager : MonoBehaviour
             checkBoost = false;
         }
 
-
         //Check Unlock Button
         if(checkBoost)
         {

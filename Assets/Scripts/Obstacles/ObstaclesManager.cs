@@ -60,11 +60,32 @@ public class ObstaclesManager : MonoBehaviour
     {
         // Debug.Log("Range: " + (listObstacles.Length - 1));
 
-        if (m_CharacterCollider.m_CurrentSpeed > 100)
+       
+        /// Đạt ///
+        if (m_Character.m_IsBoosting)
         {
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.75f);
+        }
+        ////
+        else if (m_CharacterCollider.m_CurrentSpeed > 100)
+        {
+            yield return new WaitForSeconds(1.75f);
             // Debug.Log("Spawn 0.3s");
         }
+        ////
+        else if (m_CharacterCollider.m_CurrentSpeed >= 50)
+        {
+            yield return new WaitForSeconds(2f);
+        }
+        else if(m_CharacterCollider.m_CurrentSpeed >= 25)
+        {
+            yield return new WaitForSeconds(1.75f);
+        }
+        else if(m_CharacterCollider.m_CurrentSpeed >= 10)
+        {
+            yield return new WaitForSeconds(1.5f);
+        }
+        /// Đạt ///
         else if (m_CharacterCollider.m_CurrentSpeed > m_Character.m_BoostSpeed)
         {
             yield return new WaitForSeconds(0.5f);
