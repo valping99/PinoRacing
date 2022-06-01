@@ -9,6 +9,7 @@ public class HiresScreenShots : MonoBehaviour
     public int captureHeight = 1080;
 
     private Canvas canvas;
+    private Camera camera;
 
     private UIManager uimanagers;
 
@@ -195,6 +196,7 @@ public class HiresScreenShots : MonoBehaviour
         {
             canvas.renderMode = RenderMode.ScreenSpaceCamera;
             canvas.planeDistance = 0.4f;
+
         }
         else
         {

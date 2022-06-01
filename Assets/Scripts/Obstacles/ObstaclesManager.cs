@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Create by William (c)
 * https://github.com/Long18
 */
@@ -20,7 +20,6 @@ public class ObstaclesManager : MonoBehaviour
     float m_RootPosition = 0;
     float m_SidePositionX = 4.5f;
     List<float> m_XPosition;
-    List<string> m_ItemLoad;
     float m_ZPosition;
 
     public CharacterInputController m_Character;
@@ -45,8 +44,13 @@ public class ObstaclesManager : MonoBehaviour
         m_CharacterCollider = m_Character.gameObject.GetComponentInChildren<CharacterCollider>();
 
         m_XPosition = new List<float> { -m_SidePositionX, m_RootPosition, m_SidePositionX };
-        StartCoroutine(SpawnObstacles());
+        //StartCoroutine(SpawnObstacles());
 
+    }
+
+    public void StartSpawnObjects()
+    {
+        StartCoroutine(SpawnObstacles());
     }
 
     #endregion
@@ -58,23 +62,23 @@ public class ObstaclesManager : MonoBehaviour
 
         if (m_CharacterCollider.m_CurrentSpeed > 100)
         {
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(0.3f);
             // Debug.Log("Spawn 0.3s");
         }
         else if (m_CharacterCollider.m_CurrentSpeed > m_Character.m_BoostSpeed)
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(0.5f);
             // Debug.Log("Spawn 0.5s");
         }
         else if (m_CharacterCollider.m_CurrentSpeed < 10)
         {
-            yield return new WaitForSeconds(3.5f);
-            // Debug.Log("Spawn 2.5s");
+            yield return new WaitForSeconds(0.5f);
+            //Debug.Log("Spawn 2.5s");
         }
         else
         {
-            yield return new WaitForSeconds(2f);
-            // Debug.Log("Spawn 1s");
+            yield return new WaitForSeconds(1f);
+            //Debug.Log("Spawn 1s");
         }
 
         m_ItemPosition = Random.Range(0, listObstacles.Length);
