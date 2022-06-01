@@ -28,11 +28,4 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void BoostSpeed()
-    {
-        if (managers.checkBoost)
-        {
-            //charInput.BoostSpeed();
-        }
-    }
 }
