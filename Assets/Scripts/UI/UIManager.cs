@@ -8,64 +8,50 @@ using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
-    #region UIVariables
     // Start is called before the first frame update
     public CharacterInputController charInput;
-    public CharacterCollider charColl;
 
-    private HiresScreenShots screenShot;
-
-    //Check to active UI & button;
     public bool checkPause;
     public bool checkGameOver;
     public bool checkPlaying;
     public bool checkBoost;
-    public bool checkRunning = false;
 
-    // Get player for get Speed;
     public GameObject m_Player;
 
-    //Get UI to Active
     public GameObject mainSceneUI;
     public GameObject pauseUI;
     public GameObject gameOverUI;
 
-    //UI Gameplaying
     public Slider healthPoint;
     public GameObject boostSpeedGObj;
-    public GameObject lockSpeedGObj;
     public Button boostSpeedButton;
+    public GameObject lockSpeedGObj;
     public Button LockBoostButton;
     public Button pauseButton;
+
+    
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI kphText;
     public TextMeshProUGUI milkNumberText;
-    public TextMeshProUGUI countdownTimer_Text;
-    public TextMeshProUGUI limitedTimer_Text;
-    public float timeValue = 5;
-    public float timeValueCountdown = 300;
-
-    //PauseUI
+    
+    //Pause
     public Button resumeButton;
     public Button mainMenuButton;
 
-    //GameOverUI
+    //UI GameOver
     public Button shareScoreButton;
     public Button gameOverMainMenuButton;
     public TextMeshProUGUI gameOverScoreText;
     public TextMeshProUGUI rankText;
     public TextMeshProUGUI messageText;
 
-    //Variables of PlayingUI
-    private int score;
+    //UI Playing
+    public int score;
     public float currentScore;
     public float currentSpeed;
-    public float currentMilk;
-    public float currentStamina;
     public int crystalCollected;
+    public double speedRun;
     public float healthDown;
-    public static int pinoSelected;
-
     //Set rank
     public float toRankS;
     public float toRankA;
@@ -75,24 +61,14 @@ public class UIManager : MonoBehaviour
     public float toRankE;
     public float toRankF;
 
-    #endregion
 
-    //Game Start
     void Start()
     {
-        checkPlaying = true;
         StartGame();
-        StartStatusOfPino();
-        screenShot = FindObjectOfType<HiresScreenShots>();
     }
-
- 
+    // Update is called once per frame
     void Update()
     {
-        if (!checkRunning)
-        {
-            CountDown();
-        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseGame();
@@ -100,95 +76,58 @@ public class UIManager : MonoBehaviour
         UpdateScore(0);
         BoostSpeed();
         HealthUpdate();
+        
     }
 
 
-
-    //Active when game start
     public void StartGame()
     {
-        if (checkPlaying)
-        {
-            //mainSceneUI.gameObject.SetActive(true);
-            pauseUI.gameObject.SetActive(false);
-            gameOverUI.gameObject.SetActive(false);
-            boostSpeedButton.gameObject.SetActive(false);
-        }
-        if (!checkRunning)
-        {
-            charColl.m_CurrentSpeed = 0;
-            mainSceneUI.gameObject.SetActive(false);
-        }
-
+        checkPlaying = true;
+        pauseUI.gameObject.SetActive(false);
+        gameOverUI.gameObject.SetActive(false);
+        boostSpeedButton.gameObject.SetActive(false);
     }
 
-
-    //Set Variables when game start
-    public void StartStatusOfPino()
-    {
-        healthPoint.maxValue = charColl.m_InitialStamina;
-        healthPoint.value = healthPoint.maxValue;
-
-        healthDown -= charColl.m_InitialDef;
-        charColl.m_CurrentStamina = (int) healthPoint.value;
-    }
-
-
-
-    //Active PauseUI
     public void PauseGame()
     {
         if (checkPlaying)
         {
             if (!checkPause)
             {
-                //Enable PauseUI and disable other UI
                 pauseUI.gameObject.SetActive(true);
                 mainSceneUI.gameObject.SetActive(false);
                 gameOverUI.gameObject.SetActive(false);
-                countdownTimer_Text.gameObject.SetActive(false);
                 checkPause = !checkPause;
                 Time.timeScale = 0f;
                 Debug.Log("Pause");
             }
             else
             {
-                //Disable PauseUI and enable other UI
                 pauseUI.gameObject.SetActive(false);
                 mainSceneUI.gameObject.SetActive(true);
                 gameOverUI.gameObject.SetActive(false);
                 checkPause = !checkPause;
                 Time.timeScale = 1f;
-                if (!checkRunning)
-                {
-                    countdownTimer_Text.gameObject.SetActive(true);
-                }
-                Debug.Log("Resume");
+                Debug.Log("Not pause");
             }
         }
         
     }
 
     
-
-    //Active GameOverUI
     public void GameOver()
     {
         if (checkPlaying && !checkPause)
         {
             if (checkGameOver)
             {
-                //Enable GameOver UI & Disable other UI
                 gameOverUI.gameObject.SetActive(true);
                 pauseUI.gameObject.SetActive(false);
                 mainSceneUI.gameObject.SetActive(false);
-                screenShot.checkUI();
-
                 Time.timeScale = 0f;
             }
             else
             {
-                //Disable GameOver UI & Enable other UI
                 gameOverUI.gameObject.SetActive(false);
                 pauseUI.gameObject.SetActive(false);
                 mainSceneUI.gameObject.SetActive(true);
@@ -197,125 +136,84 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
-    //Return to GameStart Scene
     public void BackToMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-
-    //Update Score, speed, item...
     public void UpdateScore(int scoreToAdd)
     {
-        //Get currentSpeed pino
-        currentSpeed = charColl.m_CurrentSpeed;
-        //Get score & convert float to int
         currentScore = m_Player.transform.position.z;
         currentScore = Mathf.FloorToInt(currentScore);
+        // double kphSpeed = charInput.m_CurrentSpeed * 3.6;
+        // int currendSpeed = (int)kphSpeed;
+        // kphText.text = currendSpeed + "";
 
-        //Get kph speed
-        double kphSpeed = charColl.m_CurrentSpeed * 3.6;
-        int currendSpeed = (int)kphSpeed;
-        kphText.text = currendSpeed + "";
-
-        //Get score
         score += scoreToAdd;
         scoreText.text = currentScore + " m";
         gameOverScoreText.text = currentScore + "m";
-
-        //Set rank
         if (currentScore >= toRankS)
         {
-            rankText.text = "Rank S";
+            rankText.text = "S-Rank";
             messageText.text = "Perfect";
         }
         else if(currentScore >= toRankA)
         {
-            rankText.text = "Rank A";
+            rankText.text = "A-Rank";
             messageText.text = "Awesome";
         }
         else if (currentScore >= toRankB)
         {
-            rankText.text = "Rank B";
+            rankText.text = "B-Rank";
             messageText.text = "Cool";
         }
         else if (currentScore >= toRankC)
         {
-            rankText.text = "Rank C";
+            rankText.text = "C-Rank";
             messageText.text = "Not bad";
         }
         else if (currentScore >= toRankD)
         {
-            rankText.text = "Rank D";
+            rankText.text = "D-Rank";
             messageText.text = "One more time";
         }
         else if (currentScore >= toRankE)
         {
-            rankText.text = "Rank E";
+            rankText.text = "E-Rank";
             messageText.text = "Try again";
         }
         else
         {
-            rankText.text = "Rank F";
+            rankText.text = "F-Rank";
             messageText.text = "Never give up";
         }
     }
 
-
-    //Set HP Decrease 
     public void HealthUpdate()
     {
-        if (checkRunning)
+        healthPoint.value -= healthDown * Time.deltaTime;
+        if(healthPoint.value <= 0)
         {
-            CountDownMinutes();
-            //HP decrease by time & initial def
-            //charColl.m_CurrentStamina = (int) currentStamina;
-            charColl.m_CurrentStamina -= healthDown * Time.deltaTime;
-            currentStamina = charColl.m_CurrentStamina;
-            healthPoint.value = currentStamina;
-            if(charColl.m_CurrentStamina >= healthPoint.maxValue)
-            {
-                charColl.m_CurrentStamina = healthPoint.maxValue;
-            }
-            if (currentStamina > healthPoint.maxValue)
-            {
-                currentStamina = healthPoint.maxValue;
-                healthPoint.value = healthPoint.maxValue;
-            }
-            if (healthPoint.value <= 0)
-            {
-                healthPoint.value = 0;
-                checkGameOver = true;
-                GameOver();
-            }
+            healthPoint.value = 0;
+            checkGameOver = true;
+            GameOver();
         }
     }
 
-
-
-
-    //BoostSpeed
     public void BoostSpeed()
     {
-        currentMilk = charColl.m_CurrentBottleMilk;
-        milkNumberText.text = currentMilk + "";
-
-        //Get crystal to unlock boost button
-        crystalCollected = charColl.m_CurrentCrystal;
-        if (charColl.m_IsEnoughBoost == true)
+        milkNumberText.text = crystalCollected + "";
+        if(crystalCollected >= 6)
         {
-            //crystalCollected = 6;
+            crystalCollected = 6;
             checkBoost = true;
         }
-        else if(charColl.m_IsEnoughBoost == false)
+        else if(crystalCollected <=0)
         {
-            //crystalCollected = 0;
+            crystalCollected = 0;
             checkBoost = false;
         }
 
-
-        //Check Unlock Button
         if(checkBoost)
         {
             boostSpeedGObj.gameObject.SetActive(true);
@@ -328,66 +226,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    //Time to countdown
-    public void CountDown()
-    {
-        if (timeValue > 0)
-        {
-            timeValue -= Time.deltaTime;
-            charColl.m_CurrentSpeed = 0;
-            charInput.GetComponent<CharacterInputController>().enabled = false;
-        }
-        else
-        {
-            timeValue = 0;
-        }
-        DisplayTimer(timeValue);
-    }
 
-    //DisplayTimer
-    public void DisplayTimer(float timeToDisplay)
-    {
-        if (timeToDisplay < 0)
-        {
-            timeToDisplay = 0;
-            countdownTimer_Text.gameObject.SetActive(false);
-            checkRunning = true;
-            mainSceneUI.gameObject.SetActive(true);
-            charInput.GetComponent<CharacterInputController>().enabled = true;
-            charColl.m_CurrentSpeed += charColl.m_InitialSpeed;
-        }
-        //float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
-        //countdownTimer_Text.text = string.Format("{0:00}:{1:00}", minutes, seconds);\
-        countdownTimer_Text.text = seconds+"";
-    }
-
-    //TimeOver
-    public void CountDownMinutes()
-    {
-        if (timeValueCountdown > 0)
-        {
-            timeValueCountdown -= Time.deltaTime;
-        }
-        else
-        {
-            timeValueCountdown = 0;
-        }
-        DisplayTimerCountDown(timeValueCountdown);
-    }
-
-    //Display TimeOver
-    public void DisplayTimerCountDown(float timeToDisplay)
-    {
-        if (timeToDisplay < 0)
-        {
-            timeToDisplay = 0;
-            GameOver();
-        }
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-
-        limitedTimer_Text.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-    }
+   
 }
