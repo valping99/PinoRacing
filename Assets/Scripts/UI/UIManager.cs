@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     public CharacterInputController charInput;
     public CharacterCollider charColl;
+    public ObstaclesManager obstacles;
 
     private HiresScreenShots screenShot;
 
@@ -84,6 +85,7 @@ public class UIManager : MonoBehaviour
         StartGame();
         StartStatusOfPino();
         screenShot = FindObjectOfType<HiresScreenShots>();
+        obstacles = FindObjectOfType<ObstaclesManager>();
     }
 
  
@@ -336,6 +338,7 @@ public class UIManager : MonoBehaviour
             timeValue -= Time.deltaTime;
             charColl.m_CurrentSpeed = 0;
             charInput.GetComponent<CharacterInputController>().enabled = false;
+            //obstacles.GetComponent<ObstaclesManager>().enabled = false;
         }
         else
         {
@@ -353,7 +356,9 @@ public class UIManager : MonoBehaviour
             countdownTimer_Text.gameObject.SetActive(false);
             checkRunning = true;
             mainSceneUI.gameObject.SetActive(true);
+            obstacles.StartSpawnObjects();
             charInput.GetComponent<CharacterInputController>().enabled = true;
+            //obstacles.GetComponent<ObstaclesManager>().enabled = true;
             charColl.m_CurrentSpeed += charColl.m_InitialSpeed;
         }
         //float minutes = Mathf.FloorToInt(timeToDisplay / 60);
