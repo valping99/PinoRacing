@@ -29,14 +29,14 @@ public class ObstaclesManager : MonoBehaviour
 
     #region Unity Methods
 
-    void Awake()
-    {
-#if UNITY_EDITOR || UNITY_STANDALONE
+    //     void Awake()
+    //     {
+    // #if UNITY_EDITOR || UNITY_STANDALONE
 
-#else
-    StartCoroutine(SpawnObstacles());
-#endif
-    }
+    // #else
+    //     StartCoroutine(SpawnObstacles());
+    // #endif
+    //     }
 
     // Start is called before the first frame update
     void Start()

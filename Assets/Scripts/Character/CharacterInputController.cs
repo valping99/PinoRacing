@@ -100,7 +100,7 @@ public class CharacterInputController : MonoBehaviour
 
     IEnumerator StopMoving()
     {
-        yield return new WaitForSeconds(m_SecondChangeLine);
+        yield return new WaitForSeconds(0f);
         m_CharacterPosition = 0;
         m_IsChangeLine = true;
 
@@ -140,12 +140,7 @@ public class CharacterInputController : MonoBehaviour
         //Test boost in unity editor
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (!m_IsRemainBoost)
-            {
-                StartCoroutine(CrystalBoost());
-                m_IsRemainBoost = true;
-                StartCoroutine(CheckRemainBoost());
-            }
+            ClickBoost();
         }
 
         if (m_IsGotMilk)
@@ -268,6 +263,16 @@ public class CharacterInputController : MonoBehaviour
 
         // Debug.Log("Speed up: " + m_Character.m_CurrentSpeed);
 
+    }
+
+    public void ClickBoost()
+    {
+        if (!m_IsRemainBoost)
+        {
+            StartCoroutine(CrystalBoost());
+            m_IsRemainBoost = true;
+            StartCoroutine(CheckRemainBoost());
+        }
     }
 
     IEnumerator CrystalBoost()

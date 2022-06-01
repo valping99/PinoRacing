@@ -17,20 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: a8fe4e1fa1fea394a996ab4b4963537b
   m_SerializeEntries:
-  - m_GUID: 61242e7b68c333746862afde9cdaf181
-    m_Address: Assets/Shaders/CurvedUnlitCloud.shader
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 93d8fc18fdc65dd4aa903210d93f3343
-    m_Address: Assets/Shaders/CurvedUnlit.shader
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: d7581ae65f6321447a66ee3ae24fe8a1
     m_Address: Assets/Textures/BlobShadow.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e678ec0f80695014392e78a0142dfd2f
-    m_Address: Assets/Shaders/CurvedUnlitAlpha.shader
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
