@@ -48,7 +48,7 @@ public class HiresScreenShots : MonoBehaviour
                 var stringPath = folder + "/..";
                 folder = Path.GetFullPath(stringPath);
             }
-            folder += "/screenshots";
+            folder += "/Resources";
 
             // make sure directoroy exists
             System.IO.Directory.CreateDirectory(folder);

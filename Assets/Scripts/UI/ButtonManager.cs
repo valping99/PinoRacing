@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
+    public CharacterInputController charInput;
+    public CharacterCollider charColl;
     public UIManager managers;
     void Start()
     {
@@ -24,5 +26,13 @@ public class ButtonManager : MonoBehaviour
     public void BackToMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void BoostSpeed()
+    {
+        if (managers.checkBoost)
+        {
+            //charInput.BoostSpeed();
+        }
     }
 }
