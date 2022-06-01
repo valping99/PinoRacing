@@ -183,15 +183,43 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6997543005810922206, guid: 2dfb48cf53621a34e886c8068243d3ba,
+        type: 3}
+      propertyPath: far clip plane
+      value: 112.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dfb48cf53621a34e886c8068243d3ba, type: 3}
+--- !u!1 &38102959134335610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4904226534809087215, guid: 2dfb48cf53621a34e886c8068243d3ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 4938212918111030933}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &711992886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38102959134335610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62d1b03d7995414ab5683ab6322088f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roads:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  offset: 50
 --- !u!114 &347566439581056165 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4637233900946698800, guid: 2dfb48cf53621a34e886c8068243d3ba,
     type: 3}
   m_PrefabInstance: {fileID: 4938212918111030933}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 38102959134335610}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2125f156f4b48741a081da7e7b48888, type: 3}

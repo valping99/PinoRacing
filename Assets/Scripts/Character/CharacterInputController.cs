@@ -76,7 +76,7 @@ public class CharacterInputController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         MoveInput();
         // Debug.Log(m_IsBoosting);
@@ -184,6 +184,7 @@ public class CharacterInputController : MonoBehaviour
  // Use touch input on mobile
         if (Input.touchCount == 1)
         {
+            
 			if(m_IsSwiping)
 			{
 				Vector2 diff = Input.GetTouch(0).position - m_StartingTouch;
