@@ -8,7 +8,10 @@ public class ButtonSelectedUI : MonoBehaviour
 
     public void OnStart()
     {
+        selected.TapToPlay();
     }
+
+    /**
     public void SelectStage()
     {
         selected.SelectPino();
@@ -17,18 +20,8 @@ public class ButtonSelectedUI : MonoBehaviour
     {
         selected.ShowStatusPino();
     }
-
-    public void GamePlay()
-    {
-        selected.AcceptPlay();
-    }
-
-
-    public void checkScene1()
-    {
-        selected.isSelectScene_02 = true;
-        selected.OnStart();
-    }
+    
+    **/
 
     public void selectedStage01()
     {
@@ -47,6 +40,7 @@ public class ButtonSelectedUI : MonoBehaviour
     }
 
 
+    // Select Pino
 
 
     public void selectedPino_01()
@@ -65,9 +59,15 @@ public class ButtonSelectedUI : MonoBehaviour
         selected.isSelectedPino();
     }
 
-
+    /// Return button
     public void returnMenu()
     {
         selected.ReturnMenu();
+    }
+    /// Play button
+
+    public void GamePlay()
+    {
+        selected.AcceptPlay();
     }
 }
