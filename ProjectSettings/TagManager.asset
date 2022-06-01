@@ -16,6 +16,7 @@ TagManager:
   - Fire
   - Road
   - CheckGround
+  - Character
   layers:
   - Default
   - TransparentFX

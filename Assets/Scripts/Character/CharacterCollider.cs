@@ -66,6 +66,7 @@ public class CharacterCollider : MonoBehaviour
     {
         // m_Collider = GetComponent<BoxCollider>();
         m_Audio = GetComponent<AudioSource>();
+        m_CharacterController = GetComponentInParent<CharacterInputController>();
     }
 
     // Update is called once per frame
