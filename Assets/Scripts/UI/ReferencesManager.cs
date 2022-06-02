@@ -7,7 +7,7 @@ public class ReferencesManager : MonoBehaviour
 {
     private UIManager managers;
     private string shareNameParameter = "Come and play with me!";
-    private string shareDescriptionParam = "My scores is: ";
+    private string shareDescriptionParam = "My scores: ";
     private const string share_Address = "http://twitter.com/intent/tweet";
     private const string share_Language = "en";
 
@@ -27,11 +27,11 @@ public class ReferencesManager : MonoBehaviour
     {
         //string folderpath = Application.streamingAssetsPath + @"/Resources";
         /**
-        Object[] images = Resources.LoadAll(folderpath);
-        for(int i = 0; i < images.Length; i++)
+        object[] images = resources.loadall(folderpath);
+        for(int i = 0; i < images.length; i++)
         {
-            Texture2D texture = (images[i] as Texture2D);
-            Debug.Log(texture);            
+            texture2d texture = (images[i] as texture2d);
+            debug.log(texture);            
         }
         **/
     }

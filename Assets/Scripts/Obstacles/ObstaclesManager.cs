@@ -64,18 +64,18 @@ public class ObstaclesManager : MonoBehaviour
         /// Đạt ///
         if (m_Character.m_IsBoosting)
         {
-            yield return new WaitForSeconds(0.75f);
+            yield return new WaitForSeconds(0.5f);
         }
         ////
         else if (m_CharacterCollider.m_CurrentSpeed > 100)
         {
-            yield return new WaitForSeconds(1.75f);
+            yield return new WaitForSeconds(1.25f);
             // Debug.Log("Spawn 0.3s");
         }
         ////
         else if (m_CharacterCollider.m_CurrentSpeed >= 50)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.5f);
         }
         else if(m_CharacterCollider.m_CurrentSpeed >= 25)
         {

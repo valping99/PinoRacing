@@ -34,6 +34,7 @@ public class UIManager : MonoBehaviour
     //UI Gameplaying
     public Slider healthPoint;
     public GameObject boostSpeedGObj;
+    public GameObject isBoosting;
     public GameObject lockSpeedGObj;
     public Button boostSpeedButton;
     public Button LockBoostButton;
@@ -302,7 +303,7 @@ public class UIManager : MonoBehaviour
     {
         currentMilk = charColl.m_CurrentBottleMilk;
         milkNumberText.text = currentMilk + "";
-
+        IsBoostingSpeed();
         //Get crystal to unlock boost button
         crystalCollected = charColl.m_CurrentCrystal;
         if (charColl.m_IsEnoughBoost == true)
@@ -393,5 +394,19 @@ public class UIManager : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         limitedTimer_Text.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    void IsBoostingSpeed()
+    {
+        if (charInput.m_IsBoosting)
+        {
+            isBoosting.gameObject.SetActive(true);
+            boostSpeedGObj.gameObject.SetActive(false);
+        }
+        else
+        {
+            isBoosting.gameObject.SetActive(false);
+            boostSpeedGObj.gameObject.SetActive(true);
+        }
     }
 }
