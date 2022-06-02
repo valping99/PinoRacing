@@ -224,7 +224,7 @@ PrefabInstance:
     - target: {fileID: 1044387865819280624, guid: ddc6ff2a4cacf084d9ae7580f8ca42a7,
         type: 3}
       propertyPath: m_Size.z
-      value: 1.1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 1044387865819280624, guid: ddc6ff2a4cacf084d9ae7580f8ca42a7,
         type: 3}
@@ -3780,8 +3780,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ccb7441406f3f4a80468b0cc319ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shareNameParameter: My Highest scored!
-  shareDescriptionParam: Come and play with me!!!
 --- !u!1 &1274807219
 GameObject:
   m_ObjectHideFlags: 0
@@ -4520,7 +4518,7 @@ PrefabInstance:
     - target: {fileID: 1044387865819280624, guid: ddc6ff2a4cacf084d9ae7580f8ca42a7,
         type: 3}
       propertyPath: m_Size.z
-      value: 1.1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 1044387865819280624, guid: ddc6ff2a4cacf084d9ae7580f8ca42a7,
         type: 3}
@@ -5636,7 +5634,7 @@ PrefabInstance:
     - target: {fileID: 1044387865819280624, guid: ddc6ff2a4cacf084d9ae7580f8ca42a7,
         type: 3}
       propertyPath: m_Size.z
-      value: 1.1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 1044387865819280624, guid: ddc6ff2a4cacf084d9ae7580f8ca42a7,
         type: 3}
@@ -5989,7 +5987,7 @@ PrefabInstance:
     - target: {fileID: 4674368143726452434, guid: 85d6fae4f12eafd40b7abed3dd374c5a,
         type: 3}
       propertyPath: m_Size.z
-      value: 1.1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 4674368143726452434, guid: 85d6fae4f12eafd40b7abed3dd374c5a,
         type: 3}
@@ -6049,7 +6047,7 @@ PrefabInstance:
     - target: {fileID: 4674368144241416174, guid: 85d6fae4f12eafd40b7abed3dd374c5a,
         type: 3}
       propertyPath: m_Size.z
-      value: 1.1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 4674368144241416174, guid: 85d6fae4f12eafd40b7abed3dd374c5a,
         type: 3}
@@ -6079,7 +6077,7 @@ PrefabInstance:
     - target: {fileID: 4674368144547303433, guid: 85d6fae4f12eafd40b7abed3dd374c5a,
         type: 3}
       propertyPath: m_Size.z
-      value: 1.1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 4674368144547303433, guid: 85d6fae4f12eafd40b7abed3dd374c5a,
         type: 3}
@@ -6119,7 +6117,7 @@ PrefabInstance:
     - target: {fileID: 4674368144755127819, guid: 85d6fae4f12eafd40b7abed3dd374c5a,
         type: 3}
       propertyPath: m_Size.z
-      value: 1.1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 4674368144755127819, guid: 85d6fae4f12eafd40b7abed3dd374c5a,
         type: 3}

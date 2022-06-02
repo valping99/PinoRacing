@@ -76,11 +76,12 @@ public class SelectManager : MonoBehaviour
         {
             isSelectScene_01 = false;
             scene_01.gameObject.SetActive(false);
-            isSelectScene_02 = true;
+            isSelectScene_03 = true;
         }
     }
 
     // Check Scene to active gameObject
+    // Remove this function
     public void checkScene()
     {
         if (isSelectScene_01)
@@ -144,6 +145,10 @@ public class SelectManager : MonoBehaviour
             isSelectStage_01 = false;
             isSelectScene_02 = false;
             isSelectScene_03 = true;
+        }
+        else
+        {
+            selectedStage = 1;
         }
 
         scene_02.gameObject.SetActive(false);
@@ -260,10 +265,12 @@ public class SelectManager : MonoBehaviour
     public void AcceptPlay()
     {
         UIManager.pinoSelected = selectedPino;
-        for(int i = 0; i<selectedStage; i++)
-        {
-            SceneManager.LoadScene(selectedStage);
-        }
+        SceneManager.LoadScene(1);
+        //Remote select scene
+        //for(int i = 0; i<selectedStage; i++)
+        //{
+        //    SceneManager.LoadScene(selectedStage);
+        //}
         Time.timeScale = 1f;
     }
 
@@ -283,7 +290,7 @@ public class SelectManager : MonoBehaviour
         isSelectPino_02 = false;
         isSelectPino_03 = false;
 
-        isSelectScene_02 = true;
+        isSelectScene_03 = true;
         isSelectScene_04 = false;
     }
 

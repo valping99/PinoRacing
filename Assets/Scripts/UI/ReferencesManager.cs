@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ReferencesManager : MonoBehaviour
 {
     private UIManager managers;
@@ -24,13 +25,14 @@ public class ReferencesManager : MonoBehaviour
 
     public void getImages()
     {
-        string folderpath = Application.streamingAssetsPath + @"/Resources";
+        //string folderpath = Application.streamingAssetsPath + @"/Resources";
+        /**
         Object[] images = Resources.LoadAll(folderpath);
         for(int i = 0; i < images.Length; i++)
         {
             Texture2D texture = (images[i] as Texture2D);
-            Debug.Log(texture);
-            
+            Debug.Log(texture);            
         }
+        **/
     }
 }
