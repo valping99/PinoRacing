@@ -5129,12 +5129,18 @@ MonoBehaviour:
   charInput: {fileID: 0}
   charColl: {fileID: 0}
   obstacles: {fileID: 0}
+  m_Player: {fileID: 0}
+  currentScore: 0
+  currentSpeed: 10
+  currentMilk: 0
+  currentStamina: 0
+  crystalCollected: 0
+  healthDown: 10
   checkPause: 0
   checkGameOver: 0
   checkPlaying: 0
   checkBoost: 0
   checkRunning: 0
-  m_Player: {fileID: 0}
   mainSceneUI: {fileID: 992298790}
   pauseUI: {fileID: 1274807219}
   gameOverUI: {fileID: 1002541110}
@@ -5145,33 +5151,27 @@ MonoBehaviour:
   boostSpeedButton: {fileID: 320466037}
   LockBoostButton: {fileID: 621439011}
   pauseButton: {fileID: 202976356}
+  timeValue: 3
+  timeValueCountdown: 300
+  shareScoreButton: {fileID: 1252680293}
+  gameOverMainMenuButton: {fileID: 664379664}
+  resumeButton: {fileID: 1760652695}
+  mainMenuButton: {fileID: 1475763592}
   scoreText: {fileID: 1967700003}
   kphText: {fileID: 1914613743}
   milkNumberText: {fileID: 1946690189}
   countdownTimer_Text: {fileID: 729728946}
   limitedTimer_Text: {fileID: 757635522}
-  timeValue: 3
-  timeValueCountdown: 300
-  resumeButton: {fileID: 1760652695}
-  mainMenuButton: {fileID: 1475763592}
-  shareScoreButton: {fileID: 1252680293}
-  gameOverMainMenuButton: {fileID: 664379664}
   gameOverScoreText: {fileID: 928269237}
   rankText: {fileID: 338811891}
   messageText: {fileID: 2111688245}
-  currentScore: 0
-  currentSpeed: 10
-  currentMilk: 0
-  currentStamina: 0
-  crystalCollected: 0
-  healthDown: 10
-  toRankS: 1000
-  toRankA: 800
-  toRankB: 500
-  toRankC: 350
-  toRankD: 200
-  toRankE: 100
-  toRankF: 50
+  toRankS: 5000
+  toRankA: 3500
+  toRankB: 1500
+  toRankC: 750
+  toRankD: 500
+  toRankE: 250
+  toRankF: 100
 --- !u!114 &1885719432
 MonoBehaviour:
   m_ObjectHideFlags: 0
