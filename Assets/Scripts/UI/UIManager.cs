@@ -10,55 +10,16 @@ public class UIManager : MonoBehaviour
 {
     #region UIVariables
     // Start is called before the first frame update
+
+    [Header("Set Object player")]
     public CharacterInputController charInput;
     public CharacterCollider charColl;
     public ObstaclesManager obstacles;
-
-    private HiresScreenShots screenShot;
-
-    //Check to active UI & button;
-    public bool checkPause;
-    public bool checkGameOver;
-    public bool checkPlaying;
-    public bool checkBoost;
-    public bool checkRunning = false;
-
     // Get player for get Speed;
     public GameObject m_Player;
 
-    //Get UI to Active
-    public GameObject mainSceneUI;
-    public GameObject pauseUI;
-    public GameObject gameOverUI;
 
-    //UI Gameplaying
-    public Slider healthPoint;
-    public GameObject boostSpeedGObj;
-    public GameObject lockSpeedGObj;
-    public Button boostSpeedButton;
-    public Button LockBoostButton;
-    public Button pauseButton;
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI kphText;
-    public TextMeshProUGUI milkNumberText;
-    public TextMeshProUGUI countdownTimer_Text;
-    public TextMeshProUGUI limitedTimer_Text;
-    public float timeValue = 5;
-    public float timeValueCountdown = 300;
-
-    //PauseUI
-    public Button resumeButton;
-    public Button mainMenuButton;
-
-    //GameOverUI
-    public Button shareScoreButton;
-    public Button gameOverMainMenuButton;
-    public TextMeshProUGUI gameOverScoreText;
-    public TextMeshProUGUI rankText;
-    public TextMeshProUGUI messageText;
-
-    //Variables of PlayingUI
-    private int score;
+    [Header("Player Variables")]
     public float currentScore;
     public float currentSpeed;
     public float currentMilk;
@@ -67,7 +28,54 @@ public class UIManager : MonoBehaviour
     public float healthDown;
     public static int pinoSelected;
 
+    //Check to active UI & button;
+    [Header("Check active")]
+    public bool checkPause;
+    public bool checkGameOver;
+    public bool checkPlaying;
+    public bool checkBoost;
+    public bool checkRunning = false;
+
+    [Header("Object UI")]
+    //Get UI to Active
+    public GameObject mainSceneUI;
+    public GameObject pauseUI;
+    public GameObject gameOverUI;
+
+    [Header("PlayingUI")]
+    //UI Gameplaying
+    public Slider healthPoint;
+    public GameObject boostSpeedGObj;
+    public GameObject isBoosting;
+    public GameObject lockSpeedGObj;
+    public Button boostSpeedButton;
+    public Button LockBoostButton;
+    public Button pauseButton;
+    public float timeValue = 5;
+    public float timeValueCountdown = 300;
+
+
+    [Header("Button")]
+    //GameOverUI
+    public Button shareScoreButton;
+    public Button gameOverMainMenuButton;
+    //PauseUI
+    public Button resumeButton;
+    public Button mainMenuButton;
+
+
+    [Header("TextMesh")]
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI kphText;
+    public TextMeshProUGUI milkNumberText;
+    public TextMeshProUGUI countdownTimer_Text;
+    public TextMeshProUGUI limitedTimer_Text;
+    public TextMeshProUGUI gameOverScoreText;
+    public TextMeshProUGUI rankText;
+    public TextMeshProUGUI messageText;
+
     //Set rank
+    [Header("Set Rank")]
     public float toRankS;
     public float toRankA;
     public float toRankB;
@@ -76,6 +84,8 @@ public class UIManager : MonoBehaviour
     public float toRankE;
     public float toRankF;
 
+    private HiresScreenShots screenShot;
+    private int score;
     #endregion
 
     //Game Start
@@ -302,7 +312,7 @@ public class UIManager : MonoBehaviour
     {
         currentMilk = charColl.m_CurrentBottleMilk;
         milkNumberText.text = currentMilk + "";
-
+        IsBoostingSpeed();
         //Get crystal to unlock boost button
         crystalCollected = charColl.m_CurrentCrystal;
         if (charColl.m_IsEnoughBoost == true)
@@ -315,7 +325,6 @@ public class UIManager : MonoBehaviour
             //crystalCollected = 0;
             checkBoost = false;
         }
-
 
         //Check Unlock Button
         if(checkBoost)
@@ -394,5 +403,19 @@ public class UIManager : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         limitedTimer_Text.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    void IsBoostingSpeed()
+    {
+        if (charInput.m_IsBoosting)
+        {
+            isBoosting.gameObject.SetActive(true);
+            boostSpeedGObj.gameObject.SetActive(false);
+        }
+        else
+        {
+            isBoosting.gameObject.SetActive(false);
+            boostSpeedGObj.gameObject.SetActive(true);
+        }
     }
 }
