@@ -15,18 +15,18 @@ public class CrystalPickup : Pickup
 
     [Tooltip("Amount of crystal to get on pickup")]
     public int amountCrystal;
-    
-    [Tooltip("Amount of time to wait before reboosting")]
+
+    [Tooltip("Amount of time to wait before re-boosting")]
     public float m_TimeBoost;
     #endregion
 
     #region Class
     protected override void OnPicked(CharacterCollider player)
     {
-        Crystal playerCrystalable = player.GetComponent<Crystal>();
-        if (playerCrystalable && playerCrystalable.CanPickup())
+        Crystal playerCrystal = player.GetComponent<Crystal>();
+        if (playerCrystal && playerCrystal.CanPickup())
         {
-            playerCrystalable.Collect(amountCrystal);
+            playerCrystal.Collect(amountCrystal);
             Destroy(gameObject);
         }
     }
