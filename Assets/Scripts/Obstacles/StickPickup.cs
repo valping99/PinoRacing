@@ -45,8 +45,6 @@ public class StickPickup : Pickup
             // Time = Distance / Velocity
             float _tempTime = _Distance / m_DropSpeed;
 
-            // Debug.Log("Time: " + _tempTime);
-
             if (Vector3.Distance(transform.position, _PlayerPosition.position) < m_Distance)
             {
                 // if distance of player to object is less than m_Distance, make object move down
