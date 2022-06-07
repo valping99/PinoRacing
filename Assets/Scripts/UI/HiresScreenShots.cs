@@ -8,8 +8,10 @@ public class HiresScreenShots : MonoBehaviour
     public int captureWidth = 1920;
     public int captureHeight = 1080;
 
+    private ReferencesManager references;
+
     private Canvas canvas;
-    private Camera camera;
+    //private Camera camera;
 
     private UIManager uimanagers;
 
@@ -49,7 +51,7 @@ public class HiresScreenShots : MonoBehaviour
                 var stringPath = folder + "/..";
                 folder = Path.GetFullPath(stringPath);
             }
-            folder += "/Resources";
+            folder += "/Assets/Resources/Screenshot";
 
             // make sure directoroy exists
             System.IO.Directory.CreateDirectory(folder);
@@ -187,8 +189,6 @@ public class HiresScreenShots : MonoBehaviour
         }
     //}
     }
-
-
     //Change mode ScreenCamera to get Canvas
     public void checkUI()
     {
