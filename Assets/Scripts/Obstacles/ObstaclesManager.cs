@@ -35,6 +35,7 @@ public class ObstaclesManager : MonoBehaviour
         m_CharacterCollider = m_Character.gameObject.GetComponentInChildren<CharacterCollider>();
 
         m_XPosition = new List<float> { -m_SidePositionX, m_RootPosition, m_SidePositionX };
+        StartCoroutine(SpawnObstacles());
 
     }
 

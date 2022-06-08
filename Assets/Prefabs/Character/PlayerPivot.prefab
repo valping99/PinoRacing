@@ -120,6 +120,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4637233900946698800, guid: 2dfb48cf53621a34e886c8068243d3ba,
         type: 3}
+      propertyPath: rootObject
+      value: 
+      objectReference: {fileID: 6166311126057596778}
+    - target: {fileID: 4637233900946698800, guid: 2dfb48cf53621a34e886c8068243d3ba,
+        type: 3}
       propertyPath: m_CharacterController
       value: 
       objectReference: {fileID: 2707870872973799692}
@@ -185,6 +190,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dfb48cf53621a34e886c8068243d3ba, type: 3}
+--- !u!1 &6166311126057596778 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8207103121139610427, guid: 2dfb48cf53621a34e886c8068243d3ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 2627392445804250193}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7218316014082504289 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4637233900946698800, guid: 2dfb48cf53621a34e886c8068243d3ba,
