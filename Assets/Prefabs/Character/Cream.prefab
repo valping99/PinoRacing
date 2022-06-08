@@ -393,6 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CharacterController: {fileID: 0}
+  rootObject: {fileID: 7581620218286507511}
   m_CurrentCrystal: 0
   m_CurrentBottleMilk: 0
   m_CrystalBoost: 0
@@ -553,6 +554,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 64951533508584616, guid: efe9d543c2ae84b788677c86878a94a3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: efe9d543c2ae84b788677c86878a94a3, type: 3}
+--- !u!1 &7581620218286507511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1725382423300112, guid: efe9d543c2ae84b788677c86878a94a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 7579965347484290535}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7583983835558265945 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4164191419304382, guid: efe9d543c2ae84b788677c86878a94a3,
