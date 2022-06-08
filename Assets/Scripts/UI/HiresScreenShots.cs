@@ -36,8 +36,8 @@ public class HiresScreenShots : MonoBehaviour
     private int counter = 0; // image #
 
     // commands
-    private bool captureScreenshot = false;
-    private bool captureVideo = false;
+    //private bool captureScreenshot = false;
+    //private bool captureVideo = false;
 
     #endregion
     // create a unique filename using a one-up variable
@@ -75,10 +75,10 @@ public class HiresScreenShots : MonoBehaviour
         return filename;
     }
 
-    public void CaptureScreenshot()
-    {
-        captureScreenshot = true;
-    }
+    //public void CaptureScreenshot()
+    //{
+    //    captureScreenshot = true;
+    //}
 
     void Update()
     {
@@ -107,7 +107,7 @@ public class HiresScreenShots : MonoBehaviour
 
     //if (captureScreenshot || captureVideo)
     //{
-        captureScreenshot = false;
+        //captureScreenshot = false;
 
         // hide optional game object if set
         if (hideGameObject != null) hideGameObject.SetActive(false);

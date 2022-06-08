@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public ObstaclesManager obstacles;
     // Get player for get Speed;
     public GameObject m_Player;
+    public BoostCount b_count;
 
 
     [Header("Player Variables")]
@@ -27,6 +28,7 @@ public class UIManager : MonoBehaviour
     public int crystalCollected;
     public float healthDown;
     public static int pinoSelected;
+    public int boostCount = 0;
 
     //Check to active UI & button;
     [Header("Check active")]
@@ -54,7 +56,7 @@ public class UIManager : MonoBehaviour
     public Button LockBoostButton;
     public Button pauseButton;
     private float timeValue = 5;
-    private float timeValueCountdown = 300;
+    //private float timeValueCountdown = 300;
     public float timeValueUp = 0;
     public float maxTimeValue = 300;
 
@@ -100,23 +102,13 @@ public class UIManager : MonoBehaviour
         StartStatusOfPino();
         screenShot = FindObjectOfType<HiresScreenShots>();
         obstacles = FindObjectOfType<ObstaclesManager>();
+        b_count = FindObjectOfType<BoostCount>();
     }
 
  
     void Update()
     {
-        if (!checkRunning)
-        {
-            CountDown();
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            PauseGame();
-        }
-        UpdateScore(0);
-        BoostSpeed();
-        //HealthUpdate();
-        TimeOut();
+        GamePlaying();
     }
 
 
@@ -129,11 +121,13 @@ public class UIManager : MonoBehaviour
             //mainSceneUI.gameObject.SetActive(true);
             pauseUI.gameObject.SetActive(false);
             gameOverUI.gameObject.SetActive(false);
-            boostSpeedButton.gameObject.SetActive(false);
             gameClearUI.gameObject.SetActive(false);
+            boostSpeedGObj.gameObject.SetActive(false);
         }
         if (!checkRunning)
         {
+            boostSpeedGObj.gameObject.SetActive(true);
+            BoostStart();
             charColl.m_CurrentSpeed = 0;
             mainSceneUI.gameObject.SetActive(false);
         }
@@ -187,7 +181,33 @@ public class UIManager : MonoBehaviour
         
     }
 
-    
+    private void GamePlaying()
+    {
+        if (checkRunning)
+        {
+            //BoostSpeed();
+            //HealthUpdate();
+            TimeUp();
+            UpdateScore(0);
+
+            mainSceneUI.gameObject.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                PauseGame();
+            }
+        }
+        else
+        {
+            CountDown();
+            mainSceneUI.gameObject.SetActive(false);
+        }
+
+        if (checkGameClear)
+        {
+            TimeOut();
+        }
+    }
 
     //Active GameOverUI
     private void GameOver()
@@ -249,6 +269,14 @@ public class UIManager : MonoBehaviour
     }
 
 
+
+    public void BoostStart()
+    {
+        if(b_count.boostCount >= 16)
+        {
+            Debug.Log("BoostStart");
+        }
+    }
     //Update Score, speed, item...
     public void UpdateScore(int scoreToAdd)
     {
@@ -258,7 +286,6 @@ public class UIManager : MonoBehaviour
         currentScore = m_Player.transform.position.z;
         currentScore = Mathf.FloorToInt(currentScore);
         //TimeCountUp
-        TimeUp();
         //Get kph speed
         double kphSpeed = charColl.m_CurrentSpeed * 3.6;
         int currendSpeed = (int)kphSpeed;
@@ -320,6 +347,7 @@ public class UIManager : MonoBehaviour
             //HP decrease by time & initial def
             //charColl.m_CurrentStamina = (int) currentStamina;
 
+            //TimeUp();
             charColl.m_CurrentStamina -= healthDown * Time.deltaTime;
             currentStamina = charColl.m_CurrentStamina;
             healthPoint.value = currentStamina;
@@ -383,12 +411,16 @@ public class UIManager : MonoBehaviour
         {
             timeValue -= Time.deltaTime;
             charColl.m_CurrentSpeed = 0;
+            mainSceneUI.gameObject.SetActive(false);
             charInput.GetComponent<CharacterInputController>().enabled = false;
             //obstacles.GetComponent<ObstaclesManager>().enabled = false;
         }
         else
         {
+            checkRunning = true;
             timeValue = 0;
+
+            mainSceneUI.gameObject.SetActive(true);
         }
         DisplayTimer(timeValue);
     }
@@ -396,15 +428,10 @@ public class UIManager : MonoBehaviour
     //DisplayTimer
     public void DisplayTimer(float timeToDisplay)
     {
-        if(timeToDisplay == 1)
-        {
-            countdownTimer_Text.text = "GO";
-        }
         if (timeToDisplay < 0)
         {
             timeToDisplay = 0;
             countdownTimer_Text.gameObject.SetActive(false);
-            checkRunning = true;
             mainSceneUI.gameObject.SetActive(true);
             obstacles.StartSpawnObjects();
             charInput.GetComponent<CharacterInputController>().enabled = true;
@@ -462,6 +489,20 @@ public class UIManager : MonoBehaviour
         DisplayTimerCountUp(timeValueUp);
     }
 
+    private void DisplayTimerCountUp(float timeToDisplayCountUp)
+    {
+        if (timeToDisplayCountUp == maxTimeValue)
+        {
+            timeToDisplayCountUp = 0;
+            //GameOver();
+        }
+        float minutes = Mathf.FloorToInt(timeToDisplayCountUp / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplayCountUp % 60);
+        float milliSeconds = (timeToDisplayCountUp % 1) * 1000;
+
+        limitedTimer_Text.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds,milliSeconds);
+    }
+
     private void TimeOut()
     {
         if (checkGameClear)
@@ -481,20 +522,6 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 1f;
         }
     }
-    public void DisplayTimerCountUp(float timeToDisplayCountUp)
-    {
-        if (timeToDisplayCountUp == maxTimeValue)
-        {
-            timeToDisplayCountUp = 0;
-            //GameOver();
-        }
-        float minutes = Mathf.FloorToInt(timeToDisplayCountUp / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplayCountUp % 60);
-        float milliSeconds = (timeToDisplayCountUp % 1) * 1000;
-
-        limitedTimer_Text.text = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds,milliSeconds);
-    }
-
     void IsBoostingSpeed()
     {
         if (charInput.m_IsBoosting)
