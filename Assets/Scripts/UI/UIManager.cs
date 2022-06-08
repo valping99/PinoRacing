@@ -115,7 +115,7 @@ public class UIManager : MonoBehaviour
     }
 
 
-
+    #region
     //Active when game start
     public void StartGame()
     {
@@ -418,4 +418,6 @@ public class UIManager : MonoBehaviour
             boostSpeedGObj.gameObject.SetActive(true);
         }
     }
+
+    #endregion
 }
