@@ -13,6 +13,7 @@ public class CharacterCollider : MonoBehaviour
 
     [Header("Variables")]
     public CharacterInputController m_CharacterController;
+    public GameObject rootObject;
 
     [Header("Items")]
     public int m_CurrentCrystal;
