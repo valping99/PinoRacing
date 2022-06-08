@@ -9,14 +9,14 @@ TagManager:
   - Crystal
   - SpawnTrigger
   - ClearLag
-  - Choco
   - Milk
   - Stick
-  - Water
   - Fire
   - Road
   - CheckGround
   - Character
+  - Water
+  - Choco
   layers:
   - Default
   - TransparentFX

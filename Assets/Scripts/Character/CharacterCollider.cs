@@ -85,13 +85,6 @@ public class CharacterCollider : MonoBehaviour
                     m_CurrentStamina -= fire.HurtAmount;
                     Destroy(m_RootItem.gameObject);
                 }
-                if (child.CompareTag("Water"))
-                {
-                    WaterPickup water = m_RootItem.GetComponent<WaterPickup>();
-
-                    m_CurrentStamina -= water.HurtAmount;
-                    Destroy(m_RootItem.gameObject);
-                }
                 if (child.CompareTag("Stick"))
                 {
                     StickPickup stick = m_RootItem.GetComponent<StickPickup>();
@@ -122,14 +115,7 @@ public class CharacterCollider : MonoBehaviour
 
             foreach (Transform child in m_RootItem.transform)
             {
-                if (child.CompareTag("Crystal"))
-                {
-                    if (m_CrystalBoost < 1)
-                    {
-                        m_CurrentCrystal += 1;
-                        Destroy(m_RootItem.gameObject);
-                    }
-                }
+
                 if (child.CompareTag("Milk"))
                 {
                     MilkPickup milk = other.GetComponent<MilkPickup>();
@@ -138,11 +124,7 @@ public class CharacterCollider : MonoBehaviour
                     m_CharacterController.ChangeSpeed();
                     Destroy(m_RootItem.gameObject);
                 }
-                if (child.CompareTag("Choco"))
-                {
-                    m_CurrentStamina += 10;
-                    Destroy(m_RootItem.gameObject);
-                }
+
             }
         }
     }
