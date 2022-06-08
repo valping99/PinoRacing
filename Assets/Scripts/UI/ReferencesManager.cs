@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class ReferencesManager : MonoBehaviour
 {
+    #region Variables
     private UIManager managers;
     private string shareNameParameter = "Come and play with me!";
     private string shareDescriptionParam = "My scores: ";
     private const string share_Address = "http://twitter.com/intent/tweet";
     private const string share_Language = "en";
 
+    #endregion
     //private string path = Application.persistentDataPath + "/Resources/test.png";
 
+    #region ShareToTwitter
     void Start()
     {
         managers = FindObjectOfType<UIManager>();
@@ -35,4 +38,5 @@ public class ReferencesManager : MonoBehaviour
         }
         **/
     }
+    #endregion
 }

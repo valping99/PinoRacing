@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class HiresScreenShots : MonoBehaviour
 {
+    #region Variables
     public int captureWidth = 1920;
     public int captureHeight = 1080;
 
@@ -38,7 +39,10 @@ public class HiresScreenShots : MonoBehaviour
     private bool captureScreenshot = false;
     private bool captureVideo = false;
 
+    #endregion
     // create a unique filename using a one-up variable
+
+    #region Take a picture
     private string uniqueFilename(int width, int height)
     {
         // if folder not specified by now use a good default
@@ -203,4 +207,5 @@ public class HiresScreenShots : MonoBehaviour
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         }
     }
+    #endregion
 }

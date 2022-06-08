@@ -6,6 +6,7 @@ public class ButtonSelectedUI : MonoBehaviour
 {
     public SelectManager selected;
 
+    #region Select Variables
     public void OnStart()
     {
         selected.TapToPlay();
@@ -70,4 +71,5 @@ public class ButtonSelectedUI : MonoBehaviour
     {
         selected.AcceptPlay();
     }
+    #endregion
 }

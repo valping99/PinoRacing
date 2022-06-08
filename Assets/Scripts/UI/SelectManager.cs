@@ -8,37 +8,44 @@ using UnityEngine.EventSystems;
 
 public class SelectManager : MonoBehaviour
 {
+    #region Variables & GameObjects
+    [Header("Get Scripts")]
     public CharacterSelected charSelect;
     public UIManager uiManagers;
 
-    //check scene to active
+    [Header("Variables")]
+    public int selectedStage;
+    public int selectedPino;
+
+    [Header("Selected Scene")]
     public bool isSelectScene_01;
     public bool isSelectScene_02;
     public bool isSelectScene_03;
     public bool isSelectScene_04;
 
-    //check stage to play
+
+    [Header("Selected Stage")]
     public bool isSelectStage_01;
     public bool isSelectStage_02;
     public bool isSelectStage_03;
 
-    //check pino to play
+    [Header("Selected Pino")]
     public bool isSelectPino_01;
     public bool isSelectPino_02;
     public bool isSelectPino_03;
 
     // to set active scene
+    [Header("G_Scenes ")]
     public GameObject scene_01;
     public GameObject scene_02;
     public GameObject scene_03;
     public GameObject scene_04;
-
-    // to set active select stages
+    [Header("G_Stages")]
     public GameObject selectStage_01;
     public GameObject selectStage_02;
     public GameObject selectStage_03;
 
-    //Show status of Pino
+    [Header("Pino Variables")]
     public GameObject typeOfPino_01;
     public TextMeshProUGUI nameOfPino_01;
     public GameObject typeOfPino_02;
@@ -46,15 +53,15 @@ public class SelectManager : MonoBehaviour
     public GameObject typeOfPino_03;
     public TextMeshProUGUI nameOfPino_03;
 
+    [Header("GameObject Pino Status")]
     public GameObject statusOfPino_01;
     public GameObject statusOfPino_02;
     public GameObject statusOfPino_03;
 
     //Text & Variables 
     public TextMeshProUGUI Text_TapToStart;
-    public int selectedStage;
-    public int selectedPino;
 
+    #endregion
     //Onstart to open Scene1
     void Start()
     {
@@ -69,6 +76,7 @@ public class SelectManager : MonoBehaviour
         checkScene();
     }
 
+    #region Selected
     //StartUI to select stage 
     public void TapToPlay()
     {
@@ -76,7 +84,7 @@ public class SelectManager : MonoBehaviour
         {
             isSelectScene_01 = false;
             scene_01.gameObject.SetActive(false);
-            isSelectScene_03 = true;
+            isSelectScene_02 = true;
         }
     }
 
@@ -290,8 +298,9 @@ public class SelectManager : MonoBehaviour
         isSelectPino_02 = false;
         isSelectPino_03 = false;
 
-        isSelectScene_03 = true;
+        isSelectScene_02 = true;
         isSelectScene_04 = false;
     }
 
+    #endregion
 }

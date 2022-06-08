@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
+    #region GetScripts
     public CharacterInputController charInput;
     public CharacterCollider charColl;
     public UIManager managers;
+    #endregion
     void Start()
     {
     }

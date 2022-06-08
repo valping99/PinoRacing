@@ -389,7 +389,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &98743411
 RectTransform:
   m_ObjectHideFlags: 0
@@ -509,7 +509,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &131914286
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1452,6 +1452,7 @@ GameObject:
   - component: {fileID: 399185231}
   - component: {fileID: 399185230}
   - component: {fileID: 399185229}
+  - component: {fileID: 399185232}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -1545,6 +1546,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!225 &399185232
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399185227}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &405479675
 GameObject:
   m_ObjectHideFlags: 0
@@ -7281,8 +7294,8 @@ Camera:
   m_GameObject: {fileID: 2027898296}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 4
+  m_BackGroundColor: {r: 0.4716981, g: 0.40272337, b: 0.40272337, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -7469,6 +7482,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charSelect: {fileID: 0}
   uiManagers: {fileID: 0}
+  selectedStage: 0
+  selectedPino: 0
   isSelectScene_01: 0
   isSelectScene_02: 0
   isSelectScene_03: 0
@@ -7496,8 +7511,6 @@ MonoBehaviour:
   statusOfPino_02: {fileID: 626703131}
   statusOfPino_03: {fileID: 580660057}
   Text_TapToStart: {fileID: 1362604159}
-  selectedStage: 0
-  selectedPino: 0
 --- !u!4 &2036843012
 Transform:
   m_ObjectHideFlags: 0

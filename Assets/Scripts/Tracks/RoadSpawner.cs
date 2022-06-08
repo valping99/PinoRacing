@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class RoadSpawner : MonoBehaviour
 {
+    #region Variables
     // Start is called before the first frame update
     public GameObject MainRoad;
     public List<GameObject> roads;
@@ -15,6 +16,7 @@ public class RoadSpawner : MonoBehaviour
     public float offset = 10;
 
     public bool onGround;
+    #endregion
     void Start()
     {
         charColl = FindObjectOfType<CharacterCollider>();
@@ -33,6 +35,8 @@ public class RoadSpawner : MonoBehaviour
         //charPosition = charColl.transform.position;
         MainRoad.transform.position = charPosition;
     }
+
+    #region Function
     public void MoveRoad()
     {
         GameObject moveRoad = roads[0];
@@ -58,27 +62,5 @@ public class RoadSpawner : MonoBehaviour
             MoveRoad();
         }
     }
-    /**
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("CheckGround"))
-        {
-            onGround = true;
-        }
-        else
-        {
-            onGround = false;
-        }
-    }
-
-    public void CheckOnGround()
-    {
-        if (!onGround)
-        {
-            MainRoad.transform.position = charPosition;
-            //MoveRoad();
-        }
-    }
-    **/
-
+    #endregion
 }
