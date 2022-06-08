@@ -41,6 +41,8 @@ public class CharacterInputController : MonoBehaviour
     bool IsFirstTime;
     [SerializeField] bool m_IsRemainBoost;
 
+    Vector3 m_Direction;
+    Quaternion m_Rotation;
     #endregion
 
     #region Unity Methods
@@ -93,9 +95,12 @@ public class CharacterInputController : MonoBehaviour
 
     public void ChangeLane(int _direction)
     {
+        Rotation(_direction);
+
         m_CharacterPosition = _direction;
         StartCoroutine(StopMoving());
         m_IsChangeLine = false;
+        StartCoroutine(ReturnRotation());
     }
 
     void MoveInput()
@@ -202,6 +207,10 @@ public class CharacterInputController : MonoBehaviour
 #endif
     }
 
+    void Rotation(int _direction)
+    {
+        m_Character.rootObject.transform.rotation = Quaternion.Euler(0, _direction * 2f, 0);
+    }
     public void ClickBoost()
     {
         if (!m_IsRemainBoost)
@@ -293,5 +302,13 @@ public class CharacterInputController : MonoBehaviour
 
         //Set animation die
     }
+
+    IEnumerator ReturnRotation()
+    {
+        yield return new WaitForSeconds(m_SecondChangeLine);
+
+        m_Character.rootObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
     #endregion
 }
