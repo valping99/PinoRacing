@@ -22,19 +22,23 @@ public class CharacterCollider : MonoBehaviour
 
 
     [Header("Initial Values")]
-    [Tooltip("Speed initial of the character")]
+
+    [Tooltip("Max speed of the character")]
+    public float m_MaxSpeed;
+    [Tooltip("Initial Velocity of the character")]
+    public int m_InitialVelocity;
+    [Tooltip("Speed initial of the character - min speed")]
     public float m_InitialSpeed;
-    [Tooltip("Initial Def of the character")]
-    public int m_InitialDef;
-    [Tooltip("Initial Stamina of the character")]
-    public int m_InitialStamina;
+    // [Tooltip("Initial Stamina of the character")]
+    [HideInInspector] public int m_InitialDef;
+    [HideInInspector] public int m_InitialStamina;
 
     [Header("Controls")]
     public float m_CurrentSpeed;
+    public float m_MinSpeed;
     public float m_CurrentStamina;
     public bool m_IsEnoughBoost;
 
-    int m_InitialCrystal;
     GameObject m_RootItem;
     List<GameObject> crystalList = new List<GameObject>();
 
@@ -49,12 +53,9 @@ public class CharacterCollider : MonoBehaviour
 
     void Awake()
     {
-        m_InitialCrystal = 0;
-        m_CrystalBoost = 0;
+        m_MaxSpeed = 100f;
 
-        m_CurrentCrystal = m_InitialCrystal;
         m_CurrentSpeed = m_InitialSpeed;
-        m_CurrentStamina = m_InitialStamina;
     }
 
     void Start()
@@ -82,7 +83,6 @@ public class CharacterCollider : MonoBehaviour
                 {
                     FirePickup fire = m_RootItem.GetComponent<FirePickup>();
 
-                    m_CurrentStamina -= fire.HurtAmount;
                     Destroy(m_RootItem.gameObject);
                 }
                 if (child.CompareTag("Stick"))
@@ -124,9 +124,10 @@ public class CharacterCollider : MonoBehaviour
                     m_CharacterController.ChangeSpeed();
                     Destroy(m_RootItem.gameObject);
                 }
-
             }
         }
+
+        Debug.Log("Object: " + other.gameObject.name);
     }
 
     #endregion
@@ -136,25 +137,25 @@ public class CharacterCollider : MonoBehaviour
     IEnumerator GetBoost()
     {
         yield return new WaitForSeconds(0.1f);
-        if (m_CrystalBoost == 0)
-        {
-            m_IsEnoughBoost = false;
-        }
+        // if (m_CrystalBoost == 0)
+        // {
+        //     m_IsEnoughBoost = false;
+        // }
     }
 
     void CheckBoostCount()
     {
-        if (m_CurrentCrystal >= 6 && m_CrystalBoost < 1)
-        {
-            m_CurrentCrystal = 0;
-            m_IsEnoughBoost = true;
-            m_CrystalBoost = 16;
-        }
+        // if (m_CurrentCrystal >= 6 && m_CrystalBoost < 1)
+        // {
+        //     m_CurrentCrystal = 0;
+        //     m_IsEnoughBoost = true;
+        //     m_CrystalBoost = 16;
+        // }
 
-        if (m_IsEnoughBoost)
-        {
-            StartCoroutine(GetBoost());
-        }
+        // if (m_IsEnoughBoost)
+        // {
+        //     StartCoroutine(GetBoost());
+        // }
     }
 
     void FixSpeedUpdate()
@@ -162,6 +163,11 @@ public class CharacterCollider : MonoBehaviour
         if (m_CurrentSpeed <= 0)
         {
             m_CurrentSpeed = m_InitialSpeed;
+        }
+
+        if (m_CurrentSpeed > m_MaxSpeed)
+        {
+            m_CurrentSpeed = m_MaxSpeed;
         }
     }
     #endregion
