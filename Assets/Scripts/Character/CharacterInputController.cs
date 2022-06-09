@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PathCreation;
 
 public class CharacterInputController : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class CharacterInputController : MonoBehaviour
     [Header("Variables")]
     UIManager uiManagers;
     public CharacterCollider m_Character;
+    public PathCreator m_PathCreator;
+    // public PathCreator m_PathCreator1;
+    // public PathCreator m_PathCreator2;
     GameObject m_WallClearLag;
     // Variables ====
 
@@ -39,10 +43,13 @@ public class CharacterInputController : MonoBehaviour
     bool m_IsChangeLine;
     bool m_IsGotMilk;
     bool IsFirstTime;
+    bool change;
     [SerializeField] bool m_IsRemainBoost;
 
     Vector3 m_Direction;
     Quaternion m_Rotation;
+
+    float speed;
     #endregion
 
     #region Unity Methods
@@ -68,12 +75,13 @@ public class CharacterInputController : MonoBehaviour
         m_IsRemainBoost = false;
         m_IsGotMilk = false;
         IsFirstTime = true;
+        change = false;
 
         m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (!m_Character)
         {
@@ -96,27 +104,77 @@ public class CharacterInputController : MonoBehaviour
     public void ChangeLane(int _direction)
     {
         Rotation(_direction);
+        StartCoroutine(ReturnRotation());
+        change = true;
 
         m_CharacterPosition = _direction;
         StartCoroutine(StopMoving());
         m_IsChangeLine = false;
-        StartCoroutine(ReturnRotation());
     }
 
     void MoveInput()
     {
-        m_Character.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, m_Character.m_CurrentSpeed);
+        // m_Character.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, m_Character.m_CurrentSpeed);
 
-        if (laneNumber == 1 && laneNumber == 3)
+        // if (laneNumber == 1 && laneNumber == 3)
+        // {
+
+        // }
+        // else
+        // {
+        //     m_Character.transform.Translate(Vector3.right * Time.deltaTime * m_CharacterPosition);
+        // }
+        speed += (m_Character.m_CurrentSpeed * Time.deltaTime) / 10;
+        // if (laneNumber == 1)
+        // {
+
+
+        // }
+        Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(speed);
+        Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(speed);
+
+        if (change)
         {
-
+            m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(m_CharacterPosition, 0, 0), 2f * Time.deltaTime);
         }
         else
         {
-            m_Character.transform.Translate(Vector3.right * Time.deltaTime * m_CharacterPosition);
+            if (m_Character.rootObject.transform.localPosition.x < -3)
+            {
+                m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(-5, 0, 0), 2f * Time.deltaTime);
+            }
+            else if (m_Character.rootObject.transform.localPosition.x > 3)
+            {
+                m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(5, 0, 0), 2f * Time.deltaTime);
+            }
+            else
+            {
+                m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(0, 0, 0), 2f * Time.deltaTime);
+            }
         }
 
-        m_WallClearLag.transform.position = new Vector3(m_WallClearLag.transform.position.x, m_WallClearLag.transform.position.y, m_Character.transform.position.z - 15f);
+
+        m_Character.transform.localPosition = Vector3.Lerp(m_Character.transform.localPosition, _tempDistance, 2f * Time.deltaTime);
+        m_Character.transform.localRotation = Quaternion.Lerp(m_Character.transform.localRotation, _tempRotation, 2f * Time.deltaTime);
+        // else if (laneNumber == 3)
+        // {
+        //     Vector3 _tempDistance = m_PathCreator1.path.GetPointAtDistance(speed);
+        //     Quaternion _tempRotation = m_PathCreator1.path.GetRotationAtDistance(speed);
+
+        //     m_Character.transform.position = Vector3.Lerp(m_Character.transform.position, _tempDistance, 3f * Time.deltaTime);
+        //     m_Character.transform.rotation = Quaternion.Lerp(m_Character.transform.rotation, _tempRotation, 3f * Time.deltaTime);
+
+        // }
+        // else
+        // {
+        //     Vector3 _tempDistance = m_PathCreator2.path.GetPointAtDistance(speed);
+        //     Quaternion _tempRotation = m_PathCreator2.path.GetRotationAtDistance(speed);
+
+        //     m_Character.transform.position = Vector3.Lerp(m_Character.transform.position, _tempDistance, 3f * Time.deltaTime);
+        //     m_Character.transform.rotation = Quaternion.Lerp(m_Character.transform.rotation, _tempRotation, 3f * Time.deltaTime);
+        // }
+
+        // m_WallClearLag.transform.position = new Vector3(m_WallClearLag.transform.position.x, m_WallClearLag.transform.position.y, m_Character.transform.position.z - 15f);
 
         //Test boost in unity editor
         if (Input.GetKeyDown(KeyCode.R))
@@ -209,16 +267,17 @@ public class CharacterInputController : MonoBehaviour
 
     void Rotation(int _direction)
     {
-        m_Character.rootObject.transform.rotation = Quaternion.Euler(0, _direction * 2f, 0);
+        m_Character.rootObject.transform.localRotation = Quaternion.Euler(0, _direction * 2f, 0);
     }
     public void ClickBoost()
     {
         if (!m_IsRemainBoost)
         {
-            StartCoroutine(CrystalBoost());
-            m_IsRemainBoost = true;
-            StartCoroutine(CheckRemainBoost());
+
         }
+        StartCoroutine(CrystalBoost());
+        m_IsRemainBoost = true;
+        StartCoroutine(CheckRemainBoost());
     }
 
     public void ChangeSpeed()
@@ -251,11 +310,11 @@ public class CharacterInputController : MonoBehaviour
 
     IEnumerator CheckBoost()
     {
-        m_Character.m_CrystalBoost -= 1;
-        if (m_Character.m_CrystalBoost <= 0)
-        {
-            m_Character.m_CurrentCrystal = 0;
-        }
+        // m_Character.m_CrystalBoost -= 1;
+        // if (m_Character.m_CrystalBoost <= 0)
+        // {
+        //     m_Character.m_CurrentCrystal = 0;
+        // }
 
         int _TimePerSec = m_TimeBoost;
         // tempt speed
@@ -278,18 +337,20 @@ public class CharacterInputController : MonoBehaviour
     IEnumerator CrystalBoost()
     {
 
-        if (m_Character.m_CrystalBoost > 0)
-        {
-            m_IsBoosting = true;
+        // if (m_Character.m_CrystalBoost > 0)
+        // {
+        //     m_IsBoosting = true;
 
-            if (m_IsBoosting)
-            {
-                ChangeSpeed();
-                StartCoroutine(CheckBoost());
-                yield return new WaitForSeconds(m_TimeBoost);
-                m_IsBoosting = false;
-            }
-        }
+        //     if (m_IsBoosting)
+        //     {
+
+        //     }
+        // }
+
+        ChangeSpeed();
+        StartCoroutine(CheckBoost());
+        yield return new WaitForSeconds(m_TimeBoost);
+        m_IsBoosting = false;
     }
 
     IEnumerator StopMoving()
@@ -297,6 +358,7 @@ public class CharacterInputController : MonoBehaviour
         yield return new WaitForSeconds(m_SecondChangeLine);
         m_CharacterPosition = 0;
         m_IsChangeLine = true;
+        change = false;
 
         //stop track
 
@@ -307,7 +369,7 @@ public class CharacterInputController : MonoBehaviour
     {
         yield return new WaitForSeconds(m_SecondChangeLine);
 
-        m_Character.rootObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        m_Character.rootObject.transform.localRotation = Quaternion.identity;
     }
 
     #endregion
