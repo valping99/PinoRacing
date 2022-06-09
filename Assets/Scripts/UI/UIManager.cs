@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
     public int crystalCollected;
     public float healthDown;
     public static int pinoSelected;
-    public int boostCount = 0;
+    public int boostCount = 16;
 
     //Check to active UI & button;
     [Header("Check active")]
@@ -53,12 +53,14 @@ public class UIManager : MonoBehaviour
     public GameObject isBoosting;
     public GameObject lockSpeedGObj;
     public Button boostSpeedButton;
+    public Button changeToRocketStart;
     public Button LockBoostButton;
     public Button pauseButton;
-    private float timeValue = 5;
-    //private float timeValueCountdown = 300;
+    private float timeValue = 3;
+    public float currentTime;
     public float timeValueUp = 0;
     public float maxTimeValue = 300;
+    //private float timeValueCountdown = 300;
 
 
     [Header("Button")]
@@ -79,6 +81,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI gameOverScoreText;
     public TextMeshProUGUI rankText;
     public TextMeshProUGUI messageText;
+    public TextMeshProUGUI countBoostNumber_Text;
+    public TextMeshProUGUI popUpNumber_Text;
 
     //Set rank
     [Header("Set Rank (Seconds)")]
@@ -90,8 +94,12 @@ public class UIManager : MonoBehaviour
     public float toRankE;
     public float toRankF;
 
+    [Header("Minimap")]
+    public GameObject miniMap;
+
     private HiresScreenShots screenShot;
     private int score;
+    private int lapsToGameOver;
     #endregion
 
     //Game Start
@@ -127,8 +135,8 @@ public class UIManager : MonoBehaviour
         if (!checkRunning)
         {
             boostSpeedGObj.gameObject.SetActive(true);
-            BoostStart();
-            charColl.m_CurrentSpeed = 0;
+            boostSpeedButton.gameObject.SetActive(true);
+            //charColl.m_CurrentSpeed = 0;
             mainSceneUI.gameObject.SetActive(false);
         }
 
@@ -181,16 +189,59 @@ public class UIManager : MonoBehaviour
         
     }
 
+    private void setRank()
+    {
+        if (currentTime <= toRankS)
+        {
+            rankText.text = "Rank S";
+            messageText.text = "Perfect";
+        }
+        else if (currentTime <= toRankA)
+        {
+            rankText.text = "Rank A";
+            messageText.text = "Awesome";
+        }
+        else if (currentTime <= toRankB)
+        {
+            rankText.text = "Rank B";
+            messageText.text = "Cool";
+        }
+        else if (currentTime <= toRankC)
+        {
+            rankText.text = "Rank C";
+            messageText.text = "Not bad";
+        }
+        else if (currentTime <= toRankD)
+        {
+            rankText.text = "Rank D";
+            messageText.text = "One more time";
+        }
+        else if (currentTime <= toRankE)
+        {
+            rankText.text = "Rank E";
+            messageText.text = "Try again";
+        }
+        else
+        {
+            rankText.text = "Rank F";
+            messageText.text = "Never give up";
+        }
+    }
+
     private void GamePlaying()
     {
         if (checkRunning)
         {
             //BoostSpeed();
             //HealthUpdate();
+            //UpdateScore(0);
             TimeUp();
-            UpdateScore(0);
+            GetVariables();
 
             mainSceneUI.gameObject.SetActive(true);
+            charInput.GetComponent<CharacterInputController>().enabled = true;
+            boostSpeedButton.gameObject.SetActive(false);
+            changeToRocketStart.gameObject.SetActive(false);
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -199,41 +250,66 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            //popUpNumber_Text.text = boostCount + "";
+            //countBoostNumber_Text.text = boostCount + "";
+
+            BoostStart();
+            //charColl.m_CurrentSpeed = 0;
             CountDown();
             mainSceneUI.gameObject.SetActive(false);
+            charInput.GetComponent<CharacterInputController>().enabled = false;
         }
 
         if (checkGameClear)
         {
             TimeOut();
         }
+
+        if (checkGameOver)
+        {
+            GameOver();
+        }
+    }
+
+    private void GetVariables()
+    {
+        //Get kph speed
+        double kphSpeed = charColl.m_CurrentSpeed * 3.6;
+        int currendSpeed = (int)kphSpeed;
+        kphText.text = currendSpeed + "";
+
+        //Get current milk
+        currentMilk = charColl.m_CurrentBottleMilk;
+        milkNumberText.text = currentMilk + "";
+
+
     }
 
     //Active GameOverUI
     private void GameOver()
     {
-        if (checkPlaying && !checkPause)
+        if (checkGameOver)
         {
-            if (checkGameOver)
-            {
-                //Enable GameOver UI & Disable other UI
-                gameOverUI.gameObject.SetActive(true);
-                pauseUI.gameObject.SetActive(false);
-                mainSceneUI.gameObject.SetActive(false);
-                gameClearUI.gameObject.SetActive(false);
-                screenShot.checkUI();
+            //Enable GameOver UI & Disable other UI
+            gameOverUI.gameObject.SetActive(true);
+            pauseUI.gameObject.SetActive(false);
+            mainSceneUI.gameObject.SetActive(false);
+            gameClearUI.gameObject.SetActive(false);
+            miniMap.gameObject.SetActive(false);
+            screenShot.checkUI();
+            setRank();
 
-                Time.timeScale = 0f;
-            }
-            else
-            {
-                //Disable GameOver UI & Enable other UI
-                gameOverUI.gameObject.SetActive(false);
-                pauseUI.gameObject.SetActive(false);
-                gameClearUI.gameObject.SetActive(false);
-                mainSceneUI.gameObject.SetActive(true);
-                Time.timeScale = 1f;
-            }
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            //Disable GameOver UI & Enable other UI
+            gameOverUI.gameObject.SetActive(false);
+            pauseUI.gameObject.SetActive(false);
+            miniMap.gameObject.SetActive(true);
+            gameClearUI.gameObject.SetActive(false);
+            mainSceneUI.gameObject.SetActive(true);
+            Time.timeScale = 1f;
         }
     }
     //private void GameClear()
@@ -272,11 +348,25 @@ public class UIManager : MonoBehaviour
 
     public void BoostStart()
     {
-        if(b_count.boostCount >= 16)
+        boostCount = b_count.boostCount;
+        popUpNumber_Text.text = boostCount + "";
+        countBoostNumber_Text.text = boostCount + "";
+        if(boostCount == 0)
         {
-            Debug.Log("BoostStart");
+            boostSpeedButton.gameObject.SetActive(false);
+            changeToRocketStart.gameObject.SetActive(true);
+            //popUpNumber_Text.gameObject.SetActive(false);
+            //countBoostNumber_Text.gameObject.SetActive(false);
+            Debug.Log("BoostActive");
+        }
+        else
+        {
+            boostSpeedButton.gameObject.SetActive(true);
+            changeToRocketStart.gameObject.SetActive(false);
         }
     }
+
+    /**
     //Update Score, speed, item...
     public void UpdateScore(int scoreToAdd)
     {
@@ -296,7 +386,9 @@ public class UIManager : MonoBehaviour
         scoreText.text = currentScore + " m";
         gameOverScoreText.text = currentScore + "m";
 
-        /**
+
+
+
         //Set rank
         if (currentScore >= toRankS)
         {
@@ -333,9 +425,8 @@ public class UIManager : MonoBehaviour
             rankText.text = "Rank F";
             messageText.text = "Never give up";
         }
-        **/
     }
-
+    **/
 
     //Set HP Decrease 
     public void HealthUpdate()
@@ -411,8 +502,8 @@ public class UIManager : MonoBehaviour
         {
             timeValue -= Time.deltaTime;
             charColl.m_CurrentSpeed = 0;
+            charColl.GetComponent<CharacterCollider>().enabled = false;
             mainSceneUI.gameObject.SetActive(false);
-            charInput.GetComponent<CharacterInputController>().enabled = false;
             //obstacles.GetComponent<ObstaclesManager>().enabled = false;
         }
         else
@@ -420,7 +511,6 @@ public class UIManager : MonoBehaviour
             checkRunning = true;
             timeValue = 0;
 
-            mainSceneUI.gameObject.SetActive(true);
         }
         DisplayTimer(timeValue);
     }
@@ -434,12 +524,13 @@ public class UIManager : MonoBehaviour
             countdownTimer_Text.gameObject.SetActive(false);
             mainSceneUI.gameObject.SetActive(true);
             obstacles.StartSpawnObjects();
-            charInput.GetComponent<CharacterInputController>().enabled = true;
+            charColl.GetComponent<CharacterCollider>().enabled = true;
+            //charInput.GetComponent<CharacterInputController>().enabled = true;
             //obstacles.GetComponent<ObstaclesManager>().enabled = true;
-            charColl.m_CurrentSpeed += charColl.m_InitialSpeed;
+            //charColl.m_CurrentSpeed += charColl.m_InitialSpeed;
         }
         //float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60) + 1;
 
         //countdownTimer_Text.text = string.Format("{0:00}:{1:00}", minutes, seconds);\
         countdownTimer_Text.text = seconds+"";
@@ -500,7 +591,10 @@ public class UIManager : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplayCountUp % 60);
         float milliSeconds = (timeToDisplayCountUp % 1) * 1000;
 
-        limitedTimer_Text.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds,milliSeconds);
+        currentTime = timeToDisplayCountUp;
+
+        limitedTimer_Text.text = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds,milliSeconds);
+        gameOverScoreText.text = string.Format("{0:00}:{1:00}",minutes, seconds);
     }
 
     private void TimeOut()

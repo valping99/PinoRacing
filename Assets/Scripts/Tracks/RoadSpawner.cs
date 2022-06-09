@@ -10,6 +10,7 @@ public class RoadSpawner : MonoBehaviour
     public GameObject MainRoad;
     public List<GameObject> roads;
     public CharacterCollider charColl;
+    public GameObject playerMinimap;
 
     private Vector3 charPosition;
     private Vector3 charRotaion;
@@ -25,15 +26,19 @@ public class RoadSpawner : MonoBehaviour
             roads = roads.OrderBy(r => r.transform.position.z).ToList();
         }
 
+
     }
 
     // Update is called once per frame
     void Update()
     {
         charPosition = new Vector3(charColl.transform.position.x, charColl.transform.position.y+1, charColl.transform.position.z + 3);
+        Vector3 playerPosition = charColl.transform.position;
         //CheckOnGround();
         //charPosition = charColl.transform.position;
         MainRoad.transform.position = charPosition;
+        playerMinimap.transform.position = playerPosition;
+        playerMinimap.transform.eulerAngles = new Vector3(90, charColl.transform.eulerAngles.y, charColl.transform.eulerAngles.z);
     }
 
     #region Function

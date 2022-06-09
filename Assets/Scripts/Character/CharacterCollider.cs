@@ -53,12 +53,12 @@ public class CharacterCollider : MonoBehaviour
         m_CrystalBoost = 0;
 
         m_CurrentCrystal = m_InitialCrystal;
-        m_CurrentSpeed = m_InitialSpeed;
         m_CurrentStamina = m_InitialStamina;
     }
 
     void Start()
     {
+        m_CurrentSpeed = m_InitialSpeed;
         m_Audio = GetComponent<AudioSource>();
         m_CharacterController = GetComponentInParent<CharacterInputController>();
     }
