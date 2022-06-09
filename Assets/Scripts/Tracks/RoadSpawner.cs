@@ -39,6 +39,7 @@ public class RoadSpawner : MonoBehaviour
         MainRoad.transform.position = charPosition;
         playerMinimap.transform.position = playerPosition;
         playerMinimap.transform.eulerAngles = new Vector3(90, charColl.transform.eulerAngles.y, charColl.transform.eulerAngles.z);
+        transform.eulerAngles = charColl.transform.eulerAngles;
     }
 
     #region Function
