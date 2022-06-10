@@ -16,48 +16,42 @@ public class CharacterInputController : MonoBehaviour
 
     // Scripts ====
     [Header("Variables")]
-    UIManager uiManagers;
     public CharacterCollider m_Character;
     public PathCreator m_PathCreator;
-    // public PathCreator m_PathCreator1;
-    // public PathCreator m_PathCreator2;
+    public GameObject spawnerObject;
     GameObject m_WallClearLag;
+    UIManager uiManagers;
     // Variables ====
 
     [Header("Controls")]
     [Tooltip("The more you press, the faster the character will change lines")]
     public float m_SecondChangeLine;
+    [Tooltip("Speed of the character when you click boost")]
+    public float m_BoostSpeed;
     [Tooltip("Range of the character move when you swipe")]
     public int slideLength;
-    public float m_BoostSpeed;
-    [Tooltip("Speed of the character when you click boost")]
-    public bool m_IsBoosting;
+    [HideInInspector] public bool m_IsBoosting;
 
     // Init number Items ====
-    float m_CharacterPosition;
     [HideInInspector] public float m_MilkCollectSpeed;
+    float m_CharacterPosition;
+    float m_DriveSpeed;
     int m_TimeBoost;
     int laneNumber;
 
     // Init Bool ====
+    bool m_IsRemainBoost;
     bool m_IsChangeLine;
     bool m_IsGotMilk;
     bool IsFirstTime;
-    bool change;
-    [SerializeField] bool m_IsRemainBoost;
+    bool m_IsChangePosition;
 
     Vector3 m_Direction;
     Quaternion m_Rotation;
 
-    float speed;
     #endregion
 
     #region Unity Methods
-
-#if !UNITY_STANDALONE
-    protected Vector2 m_StartingTouch;
-    protected bool m_IsSwiping = false;
-#endif
 
     // Start is called before the first frame update
     void Start()
@@ -66,7 +60,7 @@ public class CharacterInputController : MonoBehaviour
 
         m_MilkCollectSpeed = m_Character.m_InitialSpeed;
 
-        laneNumber = 2; // 1 = left, 0 = middle, 2 = right
+        laneNumber = 2;
         m_CharacterPosition = 0;
         m_TimeBoost = 3;
 
@@ -75,23 +69,16 @@ public class CharacterInputController : MonoBehaviour
         m_IsRemainBoost = false;
         m_IsGotMilk = false;
         IsFirstTime = true;
-        change = false;
+        m_IsChangePosition = false;
 
-        m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
+        GetComponentInGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!m_Character)
-        {
-            m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
-        }
-
-        if (!m_WallClearLag)
-        {
-            m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
-        }
+        if (!spawnerObject && !m_Character && !m_WallClearLag)
+            GetComponentInGame();
 
         MoveInput();
 
@@ -101,86 +88,30 @@ public class CharacterInputController : MonoBehaviour
 
     #region Class
 
-    public void ChangeLane(int _direction)
+    void GetComponentInGame()
     {
-        Rotation(_direction);
-        StartCoroutine(ReturnRotation());
-        change = true;
-
-        m_CharacterPosition = _direction;
-        StartCoroutine(StopMoving());
-        m_IsChangeLine = false;
+        spawnerObject = GameObject.FindGameObjectWithTag("Spawner");
+        m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
+        m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
     }
-
     void MoveInput()
     {
-        // m_Character.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, m_Character.m_CurrentSpeed);
+        m_DriveSpeed += (m_Character.m_CurrentSpeed * Time.deltaTime) / 10;
 
-        // if (laneNumber == 1 && laneNumber == 3)
-        // {
+        Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed);
+        Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed - 3f);
+        Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed + 7f);
 
-        // }
-        // else
-        // {
-        //     m_Character.transform.Translate(Vector3.right * Time.deltaTime * m_CharacterPosition);
-        // }
-        speed += (m_Character.m_CurrentSpeed * Time.deltaTime) / 10;
-        // if (laneNumber == 1)
-        // {
-
-
-        // }
-        Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(speed);
-        Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(speed);
-
-        if (change)
-        {
-            m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(m_CharacterPosition, 0, 0), 2f * Time.deltaTime);
-        }
-        else
-        {
-            if (m_Character.rootObject.transform.localPosition.x < -3)
-            {
-                m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(-5, 0, 0), 2f * Time.deltaTime);
-            }
-            else if (m_Character.rootObject.transform.localPosition.x > 3)
-            {
-                m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(5, 0, 0), 2f * Time.deltaTime);
-            }
-            else
-            {
-                m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(0, 0, 0), 2f * Time.deltaTime);
-            }
-        }
-
+        Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed);
+        Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed);
 
         m_Character.transform.localPosition = Vector3.Lerp(m_Character.transform.localPosition, _tempDistance, 2f * Time.deltaTime);
+        spawnerObject.transform.localPosition = Vector3.Lerp(spawnerObject.transform.localPosition, _tempDistanceSpawner, 2f * Time.deltaTime);
+        m_WallClearLag.transform.localPosition = Vector3.Lerp(m_WallClearLag.transform.localPosition, _tempDistanceClearLag, 2f * Time.deltaTime);
+
         m_Character.transform.localRotation = Quaternion.Lerp(m_Character.transform.localRotation, _tempRotation, 2f * Time.deltaTime);
-        // else if (laneNumber == 3)
-        // {
-        //     Vector3 _tempDistance = m_PathCreator1.path.GetPointAtDistance(speed);
-        //     Quaternion _tempRotation = m_PathCreator1.path.GetRotationAtDistance(speed);
+        m_WallClearLag.transform.localRotation = Quaternion.Lerp(m_WallClearLag.transform.localRotation, _tempRotationSpawner, 2f * Time.deltaTime);
 
-        //     m_Character.transform.position = Vector3.Lerp(m_Character.transform.position, _tempDistance, 3f * Time.deltaTime);
-        //     m_Character.transform.rotation = Quaternion.Lerp(m_Character.transform.rotation, _tempRotation, 3f * Time.deltaTime);
-
-        // }
-        // else
-        // {
-        //     Vector3 _tempDistance = m_PathCreator2.path.GetPointAtDistance(speed);
-        //     Quaternion _tempRotation = m_PathCreator2.path.GetRotationAtDistance(speed);
-
-        //     m_Character.transform.position = Vector3.Lerp(m_Character.transform.position, _tempDistance, 3f * Time.deltaTime);
-        //     m_Character.transform.rotation = Quaternion.Lerp(m_Character.transform.rotation, _tempRotation, 3f * Time.deltaTime);
-        // }
-
-        // m_WallClearLag.transform.position = new Vector3(m_WallClearLag.transform.position.x, m_WallClearLag.transform.position.y, m_Character.transform.position.z - 15f);
-
-        //Test boost in unity editor
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ClickBoost();
-        }
 
         if (m_IsGotMilk)
         {
@@ -208,6 +139,27 @@ public class CharacterInputController : MonoBehaviour
             }
         }
 
+        if (m_IsChangePosition)
+        {
+            m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(m_CharacterPosition, 0, 0), 2f * Time.deltaTime);
+        }
+        else
+        {
+            if (laneNumber == 1)
+            {
+                m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(-5, 0, 0), 2f * Time.deltaTime);
+            }
+            else if (laneNumber == 3)
+            {
+                m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(5, 0, 0), 2f * Time.deltaTime);
+            }
+            else
+            {
+                m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(0, 0, 0), 2f * Time.deltaTime);
+            }
+        }
+
+
 #if UNITY_EDITOR || UNITY_STANDALONE
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine)
@@ -219,6 +171,12 @@ public class CharacterInputController : MonoBehaviour
         {
             ChangeLane(slideLength);
             laneNumber += 1;
+        }
+
+        //Test boost in unity editor
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ClickBoost();
         }
 
 #else
@@ -265,7 +223,7 @@ public class CharacterInputController : MonoBehaviour
 #endif
     }
 
-    void Rotation(int _direction)
+    void ChangeRotation(int _direction)
     {
         m_Character.rootObject.transform.localRotation = Quaternion.Euler(0, _direction * 2f, 0);
     }
@@ -279,7 +237,6 @@ public class CharacterInputController : MonoBehaviour
         m_IsRemainBoost = true;
         StartCoroutine(CheckRemainBoost());
     }
-
     public void ChangeSpeed()
     {
         if (m_IsBoosting)
@@ -307,7 +264,16 @@ public class CharacterInputController : MonoBehaviour
             }
         }
     }
+    public void ChangeLane(int _direction)
+    {
+        ChangeRotation(_direction);
+        StartCoroutine(ReturnRotation());
+        m_IsChangePosition = true;
 
+        m_CharacterPosition = _direction;
+        StartCoroutine(StopMoving());
+        m_IsChangeLine = false;
+    }
     IEnumerator CheckBoost()
     {
         // m_Character.m_CrystalBoost -= 1;
@@ -327,13 +293,11 @@ public class CharacterInputController : MonoBehaviour
             m_Character.m_CurrentSpeed -= _temp;
         }
     }
-
     IEnumerator CheckRemainBoost()
     {
         yield return new WaitForSeconds(3f);
         m_IsRemainBoost = false;
     }
-
     IEnumerator CrystalBoost()
     {
 
@@ -352,19 +316,17 @@ public class CharacterInputController : MonoBehaviour
         yield return new WaitForSeconds(m_TimeBoost);
         m_IsBoosting = false;
     }
-
     IEnumerator StopMoving()
     {
         yield return new WaitForSeconds(m_SecondChangeLine);
         m_CharacterPosition = 0;
         m_IsChangeLine = true;
-        change = false;
+        m_IsChangePosition = false;
 
         //stop track
 
         //Set animation die
     }
-
     IEnumerator ReturnRotation()
     {
         yield return new WaitForSeconds(m_SecondChangeLine);

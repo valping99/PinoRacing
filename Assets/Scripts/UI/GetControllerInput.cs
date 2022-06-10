@@ -18,12 +18,12 @@ public class GetControllerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void checkInput()
     {
-        if(charColl.m_CharacterController == null && charInput.m_Character == null)
+        if (charColl.m_CharacterController == null && charInput.m_Character == null)
         {
             charInput.m_Character = charColl;
             charColl.m_CharacterController = charInput;

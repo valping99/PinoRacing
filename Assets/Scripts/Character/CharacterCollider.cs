@@ -29,9 +29,6 @@ public class CharacterCollider : MonoBehaviour
     public int m_InitialVelocity;
     [Tooltip("Speed initial of the character - min speed")]
     public float m_InitialSpeed;
-    // [Tooltip("Initial Stamina of the character")]
-    [HideInInspector] public int m_InitialDef;
-    [HideInInspector] public int m_InitialStamina;
 
     [Header("Controls")]
     public float m_CurrentSpeed;
@@ -127,7 +124,7 @@ public class CharacterCollider : MonoBehaviour
             }
         }
 
-        Debug.Log("Object: " + other.gameObject.name);
+        // Debug.Log("Object: " + other.gameObject.name);
     }
 
     #endregion
@@ -142,7 +139,6 @@ public class CharacterCollider : MonoBehaviour
         //     m_IsEnoughBoost = false;
         // }
     }
-
     void CheckBoostCount()
     {
         // if (m_CurrentCrystal >= 6 && m_CrystalBoost < 1)
@@ -157,7 +153,6 @@ public class CharacterCollider : MonoBehaviour
         //     StartCoroutine(GetBoost());
         // }
     }
-
     void FixSpeedUpdate()
     {
         if (m_CurrentSpeed <= 0)

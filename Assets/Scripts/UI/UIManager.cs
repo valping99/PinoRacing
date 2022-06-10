@@ -113,7 +113,7 @@ public class UIManager : MonoBehaviour
         b_count = FindObjectOfType<BoostCount>();
     }
 
- 
+
     void Update()
     {
         GamePlaying();
@@ -146,11 +146,8 @@ public class UIManager : MonoBehaviour
     //Set Variables when game start
     private void StartStatusOfPino()
     {
-        healthPoint.maxValue = charColl.m_InitialStamina;
         healthPoint.value = healthPoint.maxValue;
 
-        healthDown -= charColl.m_InitialDef;
-        charColl.m_CurrentStamina = (int) healthPoint.value;
     }
 
 
@@ -186,7 +183,7 @@ public class UIManager : MonoBehaviour
                 Debug.Log("Resume");
             }
         }
-        
+
     }
 
     private void setRank()
@@ -351,7 +348,7 @@ public class UIManager : MonoBehaviour
         boostCount = b_count.boostCount;
         popUpNumber_Text.text = boostCount + "";
         countBoostNumber_Text.text = boostCount + "";
-        if(boostCount == 0)
+        if (boostCount == 0)
         {
             boostSpeedButton.gameObject.SetActive(false);
             changeToRocketStart.gameObject.SetActive(true);
@@ -442,7 +439,7 @@ public class UIManager : MonoBehaviour
             charColl.m_CurrentStamina -= healthDown * Time.deltaTime;
             currentStamina = charColl.m_CurrentStamina;
             healthPoint.value = currentStamina;
-            if(charColl.m_CurrentStamina >= healthPoint.maxValue)
+            if (charColl.m_CurrentStamina >= healthPoint.maxValue)
             {
                 charColl.m_CurrentStamina = healthPoint.maxValue;
             }
@@ -476,14 +473,14 @@ public class UIManager : MonoBehaviour
             //crystalCollected = 6;
             checkBoost = true;
         }
-        else if(charColl.m_IsEnoughBoost == false)
+        else if (charColl.m_IsEnoughBoost == false)
         {
             //crystalCollected = 0;
             checkBoost = false;
         }
 
         //Check Unlock Button
-        if(checkBoost)
+        if (checkBoost)
         {
             boostSpeedGObj.gameObject.SetActive(true);
             lockSpeedGObj.gameObject.SetActive(false);
@@ -533,7 +530,7 @@ public class UIManager : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60) + 1;
 
         //countdownTimer_Text.text = string.Format("{0:00}:{1:00}", minutes, seconds);\
-        countdownTimer_Text.text = seconds+"";
+        countdownTimer_Text.text = seconds + "";
     }
 
     /**
@@ -571,7 +568,7 @@ public class UIManager : MonoBehaviour
         if (timeValueUp < maxTimeValue)
         {
             timeValueUp += Time.deltaTime;
-            
+
         }
         else
         {
@@ -593,8 +590,8 @@ public class UIManager : MonoBehaviour
 
         currentTime = timeToDisplayCountUp;
 
-        limitedTimer_Text.text = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds,milliSeconds);
-        gameOverScoreText.text = string.Format("{0:00}:{1:00}",minutes, seconds);
+        limitedTimer_Text.text = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliSeconds);
+        gameOverScoreText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     private void TimeOut()
