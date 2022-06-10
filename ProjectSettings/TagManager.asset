@@ -17,7 +17,7 @@ TagManager:
   - Character
   - Water
   - Choco
-  - LAP
+  - Spawner
   layers:
   - Default
   - TransparentFX
