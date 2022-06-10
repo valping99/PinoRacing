@@ -52,6 +52,7 @@ public class UIManager : MonoBehaviour
     public GameObject boostSpeedGObj;
     public GameObject isBoosting;
     public GameObject lockSpeedGObj;
+    public GameObject finishLap;
     public Button boostSpeedButton;
     public Button changeToRocketStart;
     public Button LockBoostButton;
@@ -83,6 +84,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI messageText;
     public TextMeshProUGUI countBoostNumber_Text;
     public TextMeshProUGUI popUpNumber_Text;
+    public TextMeshProUGUI numberLaps;
 
     //Set rank
     [Header("Set Rank (Seconds)")]
@@ -99,7 +101,8 @@ public class UIManager : MonoBehaviour
 
     private HiresScreenShots screenShot;
     private int score;
-    private int lapsToGameOver;
+    public int lapsToGameOver;
+    float timeGo = 0.5f;
     #endregion
 
     //Game Start
@@ -235,6 +238,15 @@ public class UIManager : MonoBehaviour
             //BoostSpeed();
             //HealthUpdate();
             //UpdateScore(0);
+            if (timeGo > 0)
+            {
+                countdownTimer_Text.text = "GO";
+                timeGo -= Time.deltaTime;
+            }
+            else
+            {
+                Destroy(countdownTimer_Text);
+            }
             TimeUp();
             GetVariables();
 
@@ -271,12 +283,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
+
     private void GetVariables()
     {
         //Get kph speed
         double kphSpeed = charColl.m_CurrentSpeed * 3.6;
         int currendSpeed = (int)kphSpeed;
         kphText.text = currendSpeed + "";
+        numberLaps.text = lapsToGameOver + "/3";
 
         //Get current milk
         currentMilk = charColl.m_CurrentBottleMilk;
@@ -521,7 +535,7 @@ public class UIManager : MonoBehaviour
         if (timeToDisplay < 0)
         {
             timeToDisplay = 0;
-            countdownTimer_Text.gameObject.SetActive(false);
+            
             mainSceneUI.gameObject.SetActive(true);
             obstacles.StartSpawnObjects();
             charColl.GetComponent<CharacterCollider>().enabled = true;

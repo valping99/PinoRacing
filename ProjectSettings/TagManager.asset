@@ -17,6 +17,7 @@ TagManager:
   - Character
   - Water
   - Choco
+  - LAP
   layers:
   - Default
   - TransparentFX

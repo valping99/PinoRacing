@@ -6,9 +6,10 @@ using UnityEngine;
 public class ReferencesManager : MonoBehaviour
 {
     #region Variables
+    int currentTime;
     private UIManager managers;
     private string shareNameParameter = "Come and play with me!";
-    private string shareDescriptionParam = "My scores: ";
+    private string shareDescriptionParam = "I'm finished this game with: ";
     private const string share_Address = "http://twitter.com/intent/tweet";
     private const string share_Language = "en";
 
@@ -22,8 +23,9 @@ public class ReferencesManager : MonoBehaviour
     }
     public void PressedShareButton()
     {
+        currentTime = (int) managers.currentTime;
         Application.OpenURL(share_Address + "?text=" + WWW.EscapeURL(shareNameParameter + "\n" +
-            shareDescriptionParam + managers.currentScore));
+            shareDescriptionParam + currentTime + " Seconds"));
     }
 
     public void getImages()
