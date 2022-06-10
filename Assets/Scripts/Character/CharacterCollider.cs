@@ -64,7 +64,7 @@ public class CharacterCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckBoostCount();
+        // CheckBoostCount();
         FixSpeedUpdate();
     }
 
