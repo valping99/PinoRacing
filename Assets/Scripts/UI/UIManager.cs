@@ -57,6 +57,7 @@ public class UIManager : MonoBehaviour
     public Button changeToRocketStart;
     public Button LockBoostButton;
     public Button pauseButton;
+    public string countText;
     private float timeValue = 3;
     public float currentTime;
     public float timeValueUp = 0;
@@ -83,7 +84,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI rankText;
     public TextMeshProUGUI messageText;
     public TextMeshProUGUI countBoostNumber_Text;
-    public TextMeshProUGUI popUpNumber_Text;
+    //public TextMeshProUGUI popUpNumber_Text;
     public TextMeshProUGUI numberLaps;
 
     //Set rank
@@ -137,6 +138,7 @@ public class UIManager : MonoBehaviour
         }
         if (!checkRunning)
         {
+            countText = boostCount.ToString();
             boostSpeedGObj.gameObject.SetActive(true);
             boostSpeedButton.gameObject.SetActive(true);
             //charColl.m_CurrentSpeed = 0;
@@ -242,7 +244,7 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                Destroy(countdownTimer_Text);
+                countdownTimer_Text.gameObject.SetActive(false);
             }
             TimeUp();
             GetVariables();
@@ -360,7 +362,7 @@ public class UIManager : MonoBehaviour
     public void BoostStart()
     {
         boostCount = b_count.boostCount;
-        popUpNumber_Text.text = boostCount + "";
+        //popUpNumber_Text.text = boostCount + "";
         countBoostNumber_Text.text = boostCount + "";
         if (boostCount == 0)
         {

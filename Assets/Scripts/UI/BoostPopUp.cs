@@ -5,13 +5,22 @@ using TMPro;
 
 public class BoostPopUp : MonoBehaviour
 {
-    private TextMeshProUGUI textMesh;
-    private void Awake()
+    public TextMeshProUGUI text;
+    public UIManager uiManagers;
+
+    private void Start()
     {
-        textMesh = transform.GetComponent<TextMeshProUGUI>();
+        uiManagers = FindObjectOfType<UIManager>();
     }
-    public void Setup(int boostNumber)
+    private void Update()
     {
-        textMesh.SetText(boostNumber.ToString());
+        text = uiManagers.countBoostNumber_Text;
+
     }
+    public void DestroyParent()
+    {
+        GameObject parent = gameObject.transform.parent.gameObject;
+        Destroy(parent);
+    }
+
 }
