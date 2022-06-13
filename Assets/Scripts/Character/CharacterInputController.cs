@@ -32,6 +32,7 @@ public class CharacterInputController : MonoBehaviour
     public int slideLength;
     [HideInInspector] public bool m_IsBoosting;
     [HideInInspector] public bool m_PadsIsBoosting;
+    [HideInInspector] public bool m_Stuns;
 
     // Init number Items ====
     [HideInInspector] public float m_MilkCollectSpeed;
@@ -72,6 +73,7 @@ public class CharacterInputController : MonoBehaviour
         IsFirstTime = true;
         m_IsChangePosition = false;
         m_PadsIsBoosting = false;
+        m_Stuns = false;
 
         GetComponentInGame();
     }
@@ -117,7 +119,7 @@ public class CharacterInputController : MonoBehaviour
 
         if (m_IsGotMilk)
         {
-            if (!m_IsBoosting && !m_PadsIsBoosting)
+            if (!m_IsBoosting && !m_PadsIsBoosting && !m_Stuns)
             {
                 if (m_Character.m_CurrentSpeed < m_MilkCollectSpeed)
                 {
@@ -161,14 +163,19 @@ public class CharacterInputController : MonoBehaviour
         }
 
 
+        if (m_Stuns)
+        {
+            m_Character.rootObject.transform.Rotate(Vector3.up, 360 * Time.deltaTime, Space.Self);
+            StartCoroutine(ReturnRotationStun());
+        }
 #if UNITY_EDITOR || UNITY_STANDALONE
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns)
         {
             ChangeLane(-slideLength);
             laneNumber -= 1;
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine)
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_Stuns)
         {
             ChangeLane(slideLength);
             laneNumber += 1;
@@ -195,12 +202,12 @@ public class CharacterInputController : MonoBehaviour
                 //we set the swip distance to trigger movement to 1% of the screen width
                 if (diff.magnitude > 0.01f)
                 {
-                    if (diff.x < 0 && laneNumber > 1 && m_IsChangeLine)
+                    if (!m_Stuns && diff.x < 0 && laneNumber > 1 && m_IsChangeLine)
                     {
                         ChangeLane(-slideLength);
                         laneNumber -= 1;
                     }
-                    else if (diff.x >= 0 && laneNumber < 3 && m_IsChangeLine)
+                    else if (!m_Stuns && diff.x >= 0 && laneNumber < 3 && m_IsChangeLine)
                     {
                         ChangeLane(slideLength);
                         laneNumber += 1;
@@ -240,13 +247,14 @@ public class CharacterInputController : MonoBehaviour
     }
     public void ChangeSpeed()
     {
-        if (m_PadsIsBoosting)
+        if (m_PadsIsBoosting || m_Stuns)
         {
             StartCoroutine(CheckRemainBoost());
         }
         else
         {
             m_PadsIsBoosting = false;
+            // m_Stuns = false;
             if (m_Character.m_CurrentBottleMilk >= 1)
             {
                 if (IsFirstTime)
@@ -300,6 +308,7 @@ public class CharacterInputController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         m_PadsIsBoosting = false;
+        // m_Stuns = false;
         // Debug.Log("CheckRemainBoost");
         ChangeSpeed();
     }
@@ -337,6 +346,13 @@ public class CharacterInputController : MonoBehaviour
         yield return new WaitForSeconds(m_SecondChangeLine);
 
         m_Character.rootObject.transform.localRotation = Quaternion.identity;
+    }
+    IEnumerator ReturnRotationStun()
+    {
+        yield return new WaitForSeconds(1f);
+
+        m_Character.rootObject.transform.localRotation = Quaternion.identity;
+        m_Stuns = false;
     }
 
     #endregion
