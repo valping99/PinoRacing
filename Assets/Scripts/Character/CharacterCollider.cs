@@ -116,11 +116,34 @@ public class CharacterCollider : MonoBehaviour
                 if (child.CompareTag("Milk"))
                 {
                     MilkPickup milk = other.GetComponent<MilkPickup>();
-
-                    m_CurrentBottleMilk += milk.amountMilkBottle;
-                    m_CharacterController.ChangeSpeed();
+                    if (m_CurrentSpeed > m_MaxSpeed)
+                    {
+                        m_CurrentBottleMilk += milk.amountMilkBottle;
+                    }
+                    else
+                    {
+                        m_CurrentBottleMilk += milk.amountMilkBottle;
+                        m_CharacterController.ChangeSpeed();
+                    }
                     Destroy(m_RootItem.gameObject);
                 }
+
+                if (child.CompareTag("SpeedPads"))
+                {
+                    SpeedPads crystal = other.GetComponent<SpeedPads>();
+
+                    if (!m_CharacterController.m_PadsIsBoosting)
+                    {
+                        m_CurrentSpeed = m_MaxSpeed;
+                        m_CharacterController.m_PadsIsBoosting = true;
+                        m_CharacterController.ChangeSpeed();
+                        Debug.Log("Boosting");
+                    }
+
+                    Destroy(m_RootItem.gameObject);
+                    // Debug.Log("Boosting");
+                }
+
             }
         }
 
@@ -158,11 +181,13 @@ public class CharacterCollider : MonoBehaviour
         if (m_CurrentSpeed <= 0)
         {
             m_CurrentSpeed = m_InitialSpeed;
+            Debug.Log("Speed is 0");
         }
 
         if (m_CurrentSpeed > m_MaxSpeed)
         {
             m_CurrentSpeed = m_MaxSpeed;
+            Debug.Log("Speed is max");
         }
     }
     #endregion

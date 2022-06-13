@@ -18,6 +18,7 @@ public class RoadSpawner : MonoBehaviour
 
     public bool onGround;
     #endregion
+    #region Unity Method
     void Start()
     {
         charColl = FindObjectOfType<CharacterCollider>();
@@ -41,7 +42,7 @@ public class RoadSpawner : MonoBehaviour
         playerMinimap.transform.eulerAngles = new Vector3(90, charColl.transform.eulerAngles.y, charColl.transform.eulerAngles.z);
         transform.eulerAngles = charColl.transform.eulerAngles;
     }
-
+    #endregion
     #region Function
     public void MoveRoad()
     {

@@ -52,10 +52,12 @@ public class UIManager : MonoBehaviour
     public GameObject boostSpeedGObj;
     public GameObject isBoosting;
     public GameObject lockSpeedGObj;
+    public GameObject finishLap;
     public Button boostSpeedButton;
     public Button changeToRocketStart;
     public Button LockBoostButton;
     public Button pauseButton;
+    public string countText;
     private float timeValue = 3;
     public float currentTime;
     public float timeValueUp = 0;
@@ -82,7 +84,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI rankText;
     public TextMeshProUGUI messageText;
     public TextMeshProUGUI countBoostNumber_Text;
-    public TextMeshProUGUI popUpNumber_Text;
+    //public TextMeshProUGUI popUpNumber_Text;
+    public TextMeshProUGUI numberLaps;
 
     //Set rank
     [Header("Set Rank (Seconds)")]
@@ -99,7 +102,8 @@ public class UIManager : MonoBehaviour
 
     private HiresScreenShots screenShot;
     private int score;
-    private int lapsToGameOver;
+    public int lapsToGameOver;
+    float timeGo = 0.5f;
     #endregion
 
     //Game Start
@@ -134,6 +138,7 @@ public class UIManager : MonoBehaviour
         }
         if (!checkRunning)
         {
+            countText = boostCount.ToString();
             boostSpeedGObj.gameObject.SetActive(true);
             boostSpeedButton.gameObject.SetActive(true);
             //charColl.m_CurrentSpeed = 0;
@@ -232,6 +237,15 @@ public class UIManager : MonoBehaviour
             //BoostSpeed();
             //HealthUpdate();
             //UpdateScore(0);
+            if (timeGo > 0)
+            {
+                countdownTimer_Text.text = "GO";
+                timeGo -= Time.deltaTime;
+            }
+            else
+            {
+                countdownTimer_Text.gameObject.SetActive(false);
+            }
             TimeUp();
             GetVariables();
 
@@ -268,12 +282,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
+
     private void GetVariables()
     {
         //Get kph speed
         double kphSpeed = charColl.m_CurrentSpeed * 3.6;
         int currendSpeed = (int)kphSpeed;
         kphText.text = currendSpeed + "";
+        numberLaps.text = lapsToGameOver + "/3";
 
         //Get current milk
         currentMilk = charColl.m_CurrentBottleMilk;
@@ -346,7 +362,7 @@ public class UIManager : MonoBehaviour
     public void BoostStart()
     {
         boostCount = b_count.boostCount;
-        popUpNumber_Text.text = boostCount + "";
+        //popUpNumber_Text.text = boostCount + "";
         countBoostNumber_Text.text = boostCount + "";
         if (boostCount == 0)
         {
@@ -518,7 +534,7 @@ public class UIManager : MonoBehaviour
         if (timeToDisplay < 0)
         {
             timeToDisplay = 0;
-            countdownTimer_Text.gameObject.SetActive(false);
+            
             mainSceneUI.gameObject.SetActive(true);
             obstacles.StartSpawnObjects();
             charColl.GetComponent<CharacterCollider>().enabled = true;

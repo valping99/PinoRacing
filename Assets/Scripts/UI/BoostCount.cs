@@ -1,12 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BoostCount : MonoBehaviour
 {
+    public GameObject popUpBoostNumber;
+
+    public UIManager uiManagers;
+
+    public Transform transformParent;
+
+    public RectTransform positionTransform;
+
+    public string textToDisplay;
+
+    public int countPopup;
+
     public int boostCount = 16;
-    protected UIManager uiManagers;
-    // Start is called before the first frame update
+
+    private void Start()
+    {
+
+    }
+    private void Update()
+    {
+        countPopup = uiManagers.boostCount;
+
+    }
+    public void NumberPopup()
+    {
+        textToDisplay = countPopup.ToString();
+        
+        GameObject TextBoostPopup = Instantiate(popUpBoostNumber, popUpBoostNumber.transform.localPosition, Quaternion.identity,transformParent);
+        RectTransform rt = TextBoostPopup.GetComponent<RectTransform>();
+        rt.localPosition = new Vector3(0,15,0);
+        TextBoostPopup.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(textToDisplay);
+        Debug.Log("Instantiate");
+    }
+
 
     public void Count()
     {
@@ -16,7 +48,7 @@ public class BoostCount : MonoBehaviour
         }
         else
         {
-            boostCount -= 1;
+            boostCount -= 1;            
         }
     }
 }

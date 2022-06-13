@@ -31,6 +31,7 @@ public class CharacterInputController : MonoBehaviour
     [Tooltip("Range of the character move when you swipe")]
     public int slideLength;
     [HideInInspector] public bool m_IsBoosting;
+    [HideInInspector] public bool m_PadsIsBoosting;
 
     // Init number Items ====
     [HideInInspector] public float m_MilkCollectSpeed;
@@ -70,6 +71,7 @@ public class CharacterInputController : MonoBehaviour
         m_IsGotMilk = false;
         IsFirstTime = true;
         m_IsChangePosition = false;
+        m_PadsIsBoosting = false;
 
         GetComponentInGame();
     }
@@ -115,11 +117,10 @@ public class CharacterInputController : MonoBehaviour
 
         if (m_IsGotMilk)
         {
-            if (!m_IsBoosting)
+            if (!m_IsBoosting && !m_PadsIsBoosting)
             {
                 if (m_Character.m_CurrentSpeed < m_MilkCollectSpeed)
                 {
-
                     m_Character.m_CurrentSpeed = m_MilkCollectSpeed;
                 }
                 else
@@ -235,16 +236,17 @@ public class CharacterInputController : MonoBehaviour
         }
         StartCoroutine(CrystalBoost());
         m_IsRemainBoost = true;
-        StartCoroutine(CheckRemainBoost());
+        // StartCoroutine(CheckRemainBoost());
     }
     public void ChangeSpeed()
     {
-        if (m_IsBoosting)
+        if (m_PadsIsBoosting)
         {
-            m_Character.m_CurrentSpeed += m_BoostSpeed;
+            StartCoroutine(CheckRemainBoost());
         }
         else
         {
+            m_PadsIsBoosting = false;
             if (m_Character.m_CurrentBottleMilk >= 1)
             {
                 if (IsFirstTime)
@@ -262,6 +264,7 @@ public class CharacterInputController : MonoBehaviour
             {
                 m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
             }
+            Debug.Log("Current speed: " + m_Character.m_CurrentSpeed);
         }
     }
     public void ChangeLane(int _direction)
@@ -295,8 +298,10 @@ public class CharacterInputController : MonoBehaviour
     }
     IEnumerator CheckRemainBoost()
     {
-        yield return new WaitForSeconds(3f);
-        m_IsRemainBoost = false;
+        yield return new WaitForSeconds(1f);
+        m_PadsIsBoosting = false;
+        // Debug.Log("CheckRemainBoost");
+        ChangeSpeed();
     }
     IEnumerator CrystalBoost()
     {
