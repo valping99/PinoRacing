@@ -18,6 +18,8 @@ TagManager:
   - Water
   - Choco
   - Spawner
+  - SpeedPads
+  - RootObject
   layers:
   - Default
   - TransparentFX

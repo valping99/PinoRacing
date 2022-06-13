@@ -80,6 +80,14 @@ public class CharacterCollider : MonoBehaviour
                 {
                     FirePickup fire = m_RootItem.GetComponent<FirePickup>();
 
+                    if (!m_CharacterController.m_Stuns)
+                    {
+                        m_CurrentSpeed = 0;
+                        m_CharacterController.m_Stuns = true;
+                        m_CharacterController.ChangeSpeed();
+                        Debug.Log("Stun");
+                    }
+
                     Destroy(m_RootItem.gameObject);
                 }
                 if (child.CompareTag("Stick"))
@@ -137,7 +145,6 @@ public class CharacterCollider : MonoBehaviour
                         m_CurrentSpeed = m_MaxSpeed;
                         m_CharacterController.m_PadsIsBoosting = true;
                         m_CharacterController.ChangeSpeed();
-                        Debug.Log("Boosting");
                     }
 
                     Destroy(m_RootItem.gameObject);
@@ -178,7 +185,7 @@ public class CharacterCollider : MonoBehaviour
     }
     void FixSpeedUpdate()
     {
-        if (m_CurrentSpeed <= 0)
+        if (m_CurrentSpeed <= 0 && !m_CharacterController.m_Stuns)
         {
             m_CurrentSpeed = m_InitialSpeed;
             Debug.Log("Speed is 0");
