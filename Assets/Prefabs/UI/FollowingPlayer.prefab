@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 929251055}
   - component: {fileID: 929251054}
   - component: {fileID: 929251057}
-  - component: {fileID: 929251058}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -129,14 +128,6 @@ MonoBehaviour:
   optimizeForManyScreenshots: 1
   format: 2
   folder: 
---- !u!81 &929251058
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929251052}
-  m_Enabled: 1
 --- !u!1 &5700011495006251104
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,6 +198,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   charColl: {fileID: 0}
+  playerMinimap: {fileID: 0}
   offset: 100
   onGround: 0
 --- !u!54 &5700011495006251098

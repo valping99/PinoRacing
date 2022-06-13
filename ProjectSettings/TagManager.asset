@@ -20,6 +20,8 @@ TagManager:
   - Spawner
   - SpeedPads
   - RootObject
+  - LAP
+  - GimmeckSticker
   layers:
   - Default
   - TransparentFX

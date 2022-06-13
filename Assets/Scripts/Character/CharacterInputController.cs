@@ -272,7 +272,7 @@ public class CharacterInputController : MonoBehaviour
             {
                 m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
             }
-            Debug.Log("Current speed: " + m_Character.m_CurrentSpeed);
+            //Debug.Log("Current speed: " + m_Character.m_CurrentSpeed);
         }
     }
     public void ChangeLane(int _direction)
