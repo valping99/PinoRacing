@@ -143,7 +143,6 @@ GameObject:
   - component: {fileID: 3644350822100761586}
   - component: {fileID: 4440594986791132849}
   - component: {fileID: 8819108625063688369}
-  - component: {fileID: 4134263912402128357}
   - component: {fileID: 4435226266236567447}
   - component: {fileID: 4255195294746993}
   m_Layer: 0
@@ -282,19 +281,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!65 &4134263912402128357
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4168228167028810056}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.5, y: 1, z: 2}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &4435226266236567447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,8 +301,6 @@ MonoBehaviour:
   m_MaxSpeed: 0
   m_InitialVelocity: 0
   m_InitialSpeed: 50
-  m_InitialDef: 8
-  m_InitialStamina: 150
   m_CurrentSpeed: 0
   m_MinSpeed: 0
   m_CurrentStamina: 0
@@ -399,6 +383,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7579965347484290535}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &2604077974469568496
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7581620218286507511}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.858994, y: 1.3150818, z: 4.715831}
+  m_Center: {x: 0, y: 0.65656793, z: 0.0006494522}
 --- !u!4 &7583983835558265945 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4164191419304382, guid: efe9d543c2ae84b788677c86878a94a3,
