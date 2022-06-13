@@ -12,7 +12,6 @@ public class BoostCount : MonoBehaviour
     public Transform transformParent;
 
     public RectTransform positionTransform;
-
     public string textToDisplay;
 
     public int countPopup;
@@ -26,7 +25,6 @@ public class BoostCount : MonoBehaviour
     private void Update()
     {
         countPopup = uiManagers.boostCount;
-
     }
     public void NumberPopup()
     {
@@ -38,7 +36,6 @@ public class BoostCount : MonoBehaviour
         TextBoostPopup.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(textToDisplay);
         Debug.Log("Instantiate");
     }
-
 
     public void Count()
     {
