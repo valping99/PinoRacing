@@ -7,7 +7,7 @@ public class GimmickChangeColor : MonoBehaviour
     public CharacterCollider charColl;
     public Transform transformParent;
     public GameObject stickGimmeck;
-    public GameObject rootObjects;
+    public GameObject rootObject;
 
     public UIManager uiManagers;
 
@@ -18,6 +18,7 @@ public class GimmickChangeColor : MonoBehaviour
     void Start()
     {
         ChangeColorStick();
+        animator = GameObject.FindGameObjectWithTag("GimmeckSticker").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -28,21 +29,20 @@ public class GimmickChangeColor : MonoBehaviour
 
     void ChangeColorStick()
     {
-        animator = FindObjectOfType<Animator>();
         uiManagers = FindObjectOfType<UIManager>();
         charColl = FindObjectOfType<CharacterCollider>();
-        rootObjects = GameObject.FindGameObjectWithTag("RootObject");
-        transformParent = charColl.transform;
-        Instantiate(stickGimmeck, stickGimmeck.transform.position, Quaternion.identity, transformParent);
+        rootObject = GameObject.FindGameObjectWithTag("RootObject");
+        Instantiate(stickGimmeck, rootObject.transform.position, Quaternion.identity, transformParent);
     }
 
     void CheckTimeUI()
     {
-        if(uiManagers.timeValueUp > 180)
+        if(uiManagers.timeValueUp > 270)
         {
             animator.SetFloat(m_AnimTimer, uiManagers.timeValueUp);
         }
-        stickGimmeck.transform.position = new Vector3(10,0,0);
+        transformParent.position = rootObject.transform.position;
+        transformParent.rotation = rootObject.transform.rotation;
     }
    
 }

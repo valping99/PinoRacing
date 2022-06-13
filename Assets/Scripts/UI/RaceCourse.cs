@@ -6,6 +6,7 @@ public class RaceCourse : MonoBehaviour
 {
     #region Variables
     public CharacterCollider m_charCollider;
+    //public GameObject playerPino;
     public int lapCourse;
     private UIManager uiManagers;
     #endregion
@@ -14,6 +15,7 @@ public class RaceCourse : MonoBehaviour
     void Start()
     {
         m_charCollider = FindObjectOfType<CharacterCollider>();
+        //playerPino = GameObject.FindGameObjectWithTag("RootObject");
         uiManagers = FindObjectOfType<UIManager>();
         lapCourse = 1;
         uiManagers.finishLap.gameObject.SetActive(false);
@@ -36,7 +38,7 @@ public class RaceCourse : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Character"))
+        if (other.CompareTag("RootObject"))
         {
             if(lapCourse >= 3)
             {
