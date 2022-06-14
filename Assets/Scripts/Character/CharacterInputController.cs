@@ -30,6 +30,7 @@ public class CharacterInputController : MonoBehaviour
     public float m_BoostSpeed;
     [Tooltip("Range of the character move when you swipe")]
     public int slideLength;
+    public bool m_IsRemainBoost;
     [HideInInspector] public bool m_IsBoosting;
     [HideInInspector] public bool m_PadsIsBoosting;
     [HideInInspector] public bool m_Stuns;
@@ -42,10 +43,10 @@ public class CharacterInputController : MonoBehaviour
     int laneNumber;
 
     // Init Bool ====
-    bool m_IsRemainBoost;
     bool m_IsChangeLine;
     bool m_IsGotMilk;
     bool IsFirstTime;
+    bool m_VelocityUp;
     bool m_IsChangePosition;
 
     Vector3 m_Direction;
@@ -74,10 +75,12 @@ public class CharacterInputController : MonoBehaviour
         m_TimeBoost = 3;
 
         m_IsChangeLine = true;
+        m_VelocityUp = true;
+        IsFirstTime = true;
+
         m_IsBoosting = false;
         m_IsRemainBoost = false;
         m_IsGotMilk = false;
-        IsFirstTime = true;
         m_IsChangePosition = false;
         m_PadsIsBoosting = false;
         m_Stuns = false;
@@ -110,11 +113,11 @@ public class CharacterInputController : MonoBehaviour
         m_DriveSpeed += (m_Character.m_CurrentSpeed * Time.deltaTime) / 10;
 
         Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed);
-        Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed - 14f);
+        Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed - 20f);
         Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed + 70f);
 
-        Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed);
-        Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed);
+        Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 7f);
+        Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 70f);
 
         m_Character.transform.localPosition = Vector3.Lerp(m_Character.transform.localPosition, _tempDistance, 2f * Time.deltaTime);
         spawnerObject.transform.localPosition = Vector3.Lerp(spawnerObject.transform.localPosition, _tempDistanceSpawner, 1.7f * Time.deltaTime);
@@ -174,6 +177,14 @@ public class CharacterInputController : MonoBehaviour
             m_Character.rootObject.transform.Rotate(Vector3.up, 720 * Time.deltaTime, Space.Self);
             StartCoroutine(ReturnRotationStun());
         }
+
+        if (m_VelocityUp)
+        {
+            m_Character.m_CurrentSpeed += 5f;
+            m_VelocityUp = false;
+            StartCoroutine(VelocityUp());
+        }
+
 #if UNITY_EDITOR || UNITY_STANDALONE
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns)
@@ -260,6 +271,7 @@ public class CharacterInputController : MonoBehaviour
         else
         {
             m_PadsIsBoosting = false;
+
             // m_Stuns = false;
             if (m_Character.m_CurrentBottleMilk >= 1 && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
             {
@@ -360,6 +372,10 @@ public class CharacterInputController : MonoBehaviour
         m_Character.rootObject.transform.localRotation = Quaternion.identity;
         m_Stuns = false;
     }
-
+    IEnumerator VelocityUp()
+    {
+        yield return new WaitForSeconds(1f);
+        m_VelocityUp = true;
+    }
     #endregion
 }
