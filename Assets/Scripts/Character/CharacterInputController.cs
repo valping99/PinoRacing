@@ -99,11 +99,6 @@ public class CharacterInputController : MonoBehaviour
 
     #region Class
 
-#if !UNITY_STANDALONE
-    protected Vector2 m_StartingTouch;
-    protected bool m_IsSwiping = false;
-#endif
-
     void GetComponentInGame()
     {
         spawnerObject = GameObject.FindGameObjectWithTag("Spawner");
@@ -115,13 +110,8 @@ public class CharacterInputController : MonoBehaviour
         m_DriveSpeed += (m_Character.m_CurrentSpeed * Time.deltaTime) / 10;
 
         Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed);
-<<<<<<< Updated upstream
         Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed - 14f);
         Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed + 70f);
-=======
-        Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed - 20f);
-        Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed + 18f);
->>>>>>> Stashed changes
 
         Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed);
         Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed);
