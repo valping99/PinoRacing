@@ -3404,7 +3404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &705237340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8569,6 +8569,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8796340094523392805, guid: a37f0305c079ba24fa5ba38b291651a1,
         type: 3}
+<<<<<<< Updated upstream
     - target: {fileID: 1300960298686953969, guid: e974722fcb5685f48bdc619d599490a2,
         type: 3}
       propertyPath: m_RootOrder
@@ -8579,6 +8580,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+=======
+>>>>>>> Stashed changes
     - target: {fileID: 4191881347912065344, guid: e974722fcb5685f48bdc619d599490a2,
         type: 3}
       propertyPath: m_Name
