@@ -22,19 +22,19 @@ public class BoostCount : MonoBehaviour
     {
 
     }
-    private void Update()
+    void Update()
     {
         countPopup = uiManagers.boostCount;
     }
     public void NumberPopup()
     {
+
         textToDisplay = countPopup.ToString();
         
         GameObject TextBoostPopup = Instantiate(popUpBoostNumber, popUpBoostNumber.transform.localPosition, Quaternion.identity,transformParent);
         RectTransform rt = TextBoostPopup.GetComponent<RectTransform>();
         rt.localPosition = new Vector3(0,15,0);
         TextBoostPopup.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(textToDisplay);
-        Debug.Log("Instantiate");
     }
 
     public void Count()
