@@ -33,7 +33,7 @@ public class RoadSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        charPosition = new Vector3(charColl.transform.position.x, charColl.transform.position.y+1, charColl.transform.position.z + 3);
+        charPosition = new Vector3(charColl.transform.position.x, charColl.transform.position.y+1, charColl.transform.position.z);
         Vector3 playerPosition = charColl.transform.position;
         //CheckOnGround();
         //charPosition = charColl.transform.position;
