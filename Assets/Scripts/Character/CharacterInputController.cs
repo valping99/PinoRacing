@@ -165,7 +165,7 @@ public class CharacterInputController : MonoBehaviour
 
         if (m_Stuns)
         {
-            m_Character.rootObject.transform.Rotate(Vector3.up, 360 * Time.deltaTime, Space.Self);
+            m_Character.rootObject.transform.Rotate(Vector3.up, 720 * Time.deltaTime, Space.Self);
             StartCoroutine(ReturnRotationStun());
         }
 #if UNITY_EDITOR || UNITY_STANDALONE
@@ -255,7 +255,7 @@ public class CharacterInputController : MonoBehaviour
         {
             m_PadsIsBoosting = false;
             // m_Stuns = false;
-            if (m_Character.m_CurrentBottleMilk >= 1)
+            if (m_Character.m_CurrentBottleMilk >= 1 && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
             {
                 if (IsFirstTime)
                 {
@@ -306,7 +306,7 @@ public class CharacterInputController : MonoBehaviour
     }
     IEnumerator CheckRemainBoost()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         m_PadsIsBoosting = false;
         // m_Stuns = false;
         // Debug.Log("CheckRemainBoost");

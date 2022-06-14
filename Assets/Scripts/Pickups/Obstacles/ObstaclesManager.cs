@@ -46,61 +46,60 @@ public class ObstaclesManager : MonoBehaviour
     #region Class
     IEnumerator SpawnObstacles()
     {
+        m_ItemPosition = Random.Range(0, listObstacles.Length);
+        m_NextPosition = Random.Range(0, m_PositionSpawn.Count);
+
+        float _PointX = m_Character.spawnerObject.transform.position.x;
+        float _PointY = m_Character.spawnerObject.transform.position.y;
+        float _PointZ = m_Character.spawnerObject.transform.position.z + m_PositionSpawn[m_NextPosition];
+
         if (m_Character.m_IsBoosting)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.5f);
         }
-        else if (m_CharacterCollider.m_CurrentSpeed > 100)
+        else if (m_CharacterCollider.m_CurrentSpeed >= 100)
         {
-            yield return new WaitForSeconds(1.25f);
+            yield return new WaitForSeconds(2.25f);
         }
         else if (m_CharacterCollider.m_CurrentSpeed >= 50)
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2.5f);
         }
         else if (m_CharacterCollider.m_CurrentSpeed >= 25)
         {
-            yield return new WaitForSeconds(1.75f);
+            yield return new WaitForSeconds(2.75f);
         }
         else if (m_CharacterCollider.m_CurrentSpeed >= 10)
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2.5f);
         }
         else if (m_CharacterCollider.m_CurrentSpeed > m_Character.m_BoostSpeed)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.5f);
         }
         else if (m_CharacterCollider.m_CurrentSpeed < 10)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.5f);
         }
         else
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
         }
-
-        m_ItemPosition = Random.Range(0, listObstacles.Length);
-        m_NextPosition = Random.Range(0, m_PositionSpawn.Count);
 
 
         if (m_ItemPosition == positionOfStickCreamInTheSky)
         {
-            Instantiate(listObstacles[m_ItemPosition], SpawnObstacles(m_Character.spawnerObject.transform.position.x,
-            m_Character.spawnerObject.transform.position.y + 7f,
-            m_Character.spawnerObject.transform.localPosition.z + m_PositionSpawn[m_NextPosition]), Quaternion.identity);
+            Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX, _PointY + 7f, _PointZ), Quaternion.identity);
         }
         else
         {
-            Instantiate(listObstacles[m_ItemPosition], SpawnObstacles(m_Character.spawnerObject.transform.position.x,
-            m_Character.spawnerObject.transform.position.y + .5f,
-            m_Character.spawnerObject.transform.localPosition.z + m_PositionSpawn[m_NextPosition]), Quaternion.identity);
+            Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX, _PointY + 0.5f, _PointZ), Quaternion.identity);
         }
-
 
         StartCoroutine(SpawnObstacles());
     }
 
-    Vector3 SpawnObstacles(float x, float y, float z)
+    Vector3 SpawnObstaclesVec(float x, float y, float z)
     {
         return new Vector3(x, y, z);
     }
