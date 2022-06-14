@@ -13,12 +13,15 @@ public class GimmickChangeColor : MonoBehaviour
 
     [Tooltip("Animator")]
     public Animator animator;
+
+    public GameObject currentSticker;
     const string m_AnimTimer = "Timer";
     // Start is called before the first frame update
     void Start()
     {
         ChangeColorStick();
         animator = GameObject.FindGameObjectWithTag("GimmeckSticker").GetComponent<Animator>();
+        currentSticker = GameObject.FindGameObjectWithTag("GimmeckSticker");
     }
 
     // Update is called once per frame
@@ -32,7 +35,7 @@ public class GimmickChangeColor : MonoBehaviour
         uiManagers = FindObjectOfType<UIManager>();
         charColl = FindObjectOfType<CharacterCollider>();
         rootObject = GameObject.FindGameObjectWithTag("RootObject");
-        Instantiate(stickGimmeck, rootObject.transform.position, Quaternion.identity, transformParent);
+        Instantiate(stickGimmeck, charColl.transform.position, Quaternion.identity, transformParent);
     }
 
     void CheckTimeUI()
@@ -41,6 +44,7 @@ public class GimmickChangeColor : MonoBehaviour
         {
             animator.SetFloat(m_AnimTimer, uiManagers.timeValueUp);
         }
+        currentSticker.transform.position = charColl.transform.position;
         transformParent.position = rootObject.transform.position;
         transformParent.rotation = rootObject.transform.rotation;
     }
