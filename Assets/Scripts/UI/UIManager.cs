@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour
     public bool checkPlaying;
     public bool checkBoost;
     public bool checkRunning = false;
+    public bool checkDashBoost = false;
 
     [Header("Object UI")]
     //Get UI to Active
@@ -234,6 +235,11 @@ public class UIManager : MonoBehaviour
     {
         if (checkRunning)
         {
+            if(checkDashBoost)
+            {
+                charInput.DashBoost();
+                checkDashBoost = false;
+            }
             //BoostSpeed();
             //HealthUpdate();
             //UpdateScore(0);
@@ -258,6 +264,7 @@ public class UIManager : MonoBehaviour
             {
                 PauseGame();
             }
+            
         }
         else
         {
@@ -368,9 +375,9 @@ public class UIManager : MonoBehaviour
         {
             boostSpeedButton.gameObject.SetActive(false);
             changeToRocketStart.gameObject.SetActive(true);
+            checkDashBoost = true;
             //popUpNumber_Text.gameObject.SetActive(false);
             //countBoostNumber_Text.gameObject.SetActive(false);
-            Debug.Log("BoostActive");
         }
         else
         {
