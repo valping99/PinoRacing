@@ -270,7 +270,6 @@ public class UIManager : MonoBehaviour
         {
             //popUpNumber_Text.text = boostCount + "";
             //countBoostNumber_Text.text = boostCount + "";
-
             BoostStart();
             //charColl.m_CurrentSpeed = 0;
             CountDown();
@@ -541,7 +540,7 @@ public class UIManager : MonoBehaviour
         if (timeToDisplay < 0)
         {
             timeToDisplay = 0;
-            
+            obstacles.CallSpawnObstacles();
             mainSceneUI.gameObject.SetActive(true);
             //obstacles.StartSpawnObjects();
             charColl.GetComponent<CharacterCollider>().enabled = true;
