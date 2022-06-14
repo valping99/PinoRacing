@@ -273,7 +273,8 @@ public class SelectManager : MonoBehaviour
     public void AcceptPlay()
     {
         UIManager.pinoSelected = selectedPino;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(selectedStage);
+        Debug.Log(selectedPino);
         //Remote select scene
         //for(int i = 0; i<selectedStage; i++)
         //{

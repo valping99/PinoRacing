@@ -118,7 +118,7 @@ public class UIManager : MonoBehaviour
     }
 
 
-    void Update()
+    void LateUpdate()
     {
         GamePlaying();
     }
@@ -536,7 +536,7 @@ public class UIManager : MonoBehaviour
             timeToDisplay = 0;
             
             mainSceneUI.gameObject.SetActive(true);
-            obstacles.StartSpawnObjects();
+            //obstacles.StartSpawnObjects();
             charColl.GetComponent<CharacterCollider>().enabled = true;
             //charInput.GetComponent<CharacterInputController>().enabled = true;
             //obstacles.GetComponent<ObstaclesManager>().enabled = true;
