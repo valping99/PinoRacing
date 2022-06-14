@@ -5,7 +5,10 @@ using TMPro;
 
 public class BoostCount : MonoBehaviour
 {
+    #region Variables
     public GameObject popUpBoostNumber;
+
+    public CharacterInputController charInput;
 
     public UIManager uiManagers;
 
@@ -18,14 +21,26 @@ public class BoostCount : MonoBehaviour
 
     public int boostCount = 16;
 
-    private void Start()
-    {
+    bool checkDashBoost = false;
 
+    #endregion
+
+    #region Unity Method
+    void Start()
+    {
+        charInput = FindObjectOfType<CharacterInputController>();
     }
     void Update()
     {
         countPopup = uiManagers.boostCount;
+        if (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.K))
+        {
+            NumberPopup();
+            Count();
+        }
     }
+    #endregion
+    #region Function
     public void NumberPopup()
     {
 
@@ -48,4 +63,6 @@ public class BoostCount : MonoBehaviour
             boostCount -= 1;            
         }
     }
+
+    #endregion
 }
