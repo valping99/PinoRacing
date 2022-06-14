@@ -77,6 +77,9 @@ public class CharacterCollider : MonoBehaviour
             if (m_CharacterController.m_IsBoosting)
                 m_CharacterController.m_IsBoosting = false;
 
+            if (m_CharacterController.m_IsRemainBoost)
+                m_CharacterController.m_IsRemainBoost = false;
+
             foreach (Transform child in m_RootItem.transform)
             {
                 if (child.CompareTag("Fire"))
