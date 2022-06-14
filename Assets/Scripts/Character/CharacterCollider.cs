@@ -62,7 +62,7 @@ public class CharacterCollider : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // CheckBoostCount();
         FixSpeedUpdate();
@@ -73,6 +73,9 @@ public class CharacterCollider : MonoBehaviour
         if (other.gameObject.tag == "Obstacle")
         {
             m_RootItem = other.gameObject;
+
+            if (m_CharacterController.m_IsBoosting)
+                m_CharacterController.m_IsBoosting = false;
 
             foreach (Transform child in m_RootItem.transform)
             {

@@ -17,6 +17,10 @@ public class ObstaclesManager : MonoBehaviour
     int m_NextPosition;
     float m_RootPosition = 0;
     float m_SidePosition = 4.5f;
+
+    float _PointX;
+    float _PointY;
+    float _PointZ;
     List<float> m_PositionSpawn;
 
     public CharacterInputController m_Character;
@@ -36,6 +40,16 @@ public class ObstaclesManager : MonoBehaviour
 
     }
 
+    void FixedUpdate()
+    {
+        m_ItemPosition = Random.Range(0, listObstacles.Length);
+        m_NextPosition = Random.Range(0, m_PositionSpawn.Count);
+
+        _PointX = m_Character.spawnerObject.transform.localPosition.x;
+        _PointY = m_Character.spawnerObject.transform.localPosition.y;
+        _PointZ = m_Character.spawnerObject.transform.localPosition.z + m_PositionSpawn[m_NextPosition];
+    }
+
     public void StartSpawnObjects()
     {
         StartCoroutine(SpawnObstacles());
@@ -46,13 +60,6 @@ public class ObstaclesManager : MonoBehaviour
     #region Class
     IEnumerator SpawnObstacles()
     {
-        m_ItemPosition = Random.Range(0, listObstacles.Length);
-        m_NextPosition = Random.Range(0, m_PositionSpawn.Count);
-
-        float _PointX = m_Character.spawnerObject.transform.position.x;
-        float _PointY = m_Character.spawnerObject.transform.position.y;
-        float _PointZ = m_Character.spawnerObject.transform.position.z + m_PositionSpawn[m_NextPosition];
-
         if (m_Character.m_IsBoosting)
         {
             yield return new WaitForSeconds(1.5f);
