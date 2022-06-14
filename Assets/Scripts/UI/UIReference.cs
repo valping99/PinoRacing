@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class UIReference : MonoBehaviour
 {
-    public UIManager managers;
-    public CharacterCollider charColl;
-    public CharacterInputController charInput;
+
+    [HideInInspector] public UIManager managers;
+    [HideInInspector] public CharacterCollider charColl;
+    [HideInInspector] public CharacterInputController charInput;
 
     int currendSpeed;
     void Start()
