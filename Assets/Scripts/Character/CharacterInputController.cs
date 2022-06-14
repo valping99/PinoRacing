@@ -55,6 +55,13 @@ public class CharacterInputController : MonoBehaviour
 
     #region Unity Methods
 
+
+#if !UNITY_STANDALONE
+    protected Vector2 m_StartingTouch;
+    protected bool m_IsSwiping = false;
+#endif
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -103,14 +110,14 @@ public class CharacterInputController : MonoBehaviour
         m_DriveSpeed += (m_Character.m_CurrentSpeed * Time.deltaTime) / 10;
 
         Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed);
-        Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed - 3f);
-        Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed + 7f);
+        Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed - 14f);
+        Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed + 70f);
 
         Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed);
         Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed);
 
         m_Character.transform.localPosition = Vector3.Lerp(m_Character.transform.localPosition, _tempDistance, 2f * Time.deltaTime);
-        spawnerObject.transform.localPosition = Vector3.Lerp(spawnerObject.transform.localPosition, _tempDistanceSpawner, 2f * Time.deltaTime);
+        spawnerObject.transform.localPosition = Vector3.Lerp(spawnerObject.transform.localPosition, _tempDistanceSpawner, 1.7f * Time.deltaTime);
         m_WallClearLag.transform.localPosition = Vector3.Lerp(m_WallClearLag.transform.localPosition, _tempDistanceClearLag, 2f * Time.deltaTime);
 
         m_Character.transform.localRotation = Quaternion.Lerp(m_Character.transform.localRotation, _tempRotation, 2f * Time.deltaTime);
@@ -184,7 +191,7 @@ public class CharacterInputController : MonoBehaviour
         //Test boost in unity editor
         if (Input.GetKeyDown(KeyCode.R))
         {
-            ClickBoost();
+            DashBoost();
         }
 
 #else
@@ -235,13 +242,13 @@ public class CharacterInputController : MonoBehaviour
     {
         m_Character.rootObject.transform.localRotation = Quaternion.Euler(0, _direction * 2f, 0);
     }
-    public void ClickBoost()
+    public void DashBoost()
     {
-        if (!m_IsRemainBoost)
+        if (!m_IsBoosting)
         {
-
+            m_Character.m_CurrentSpeed = m_Character.m_MaxSpeed;
         }
-        StartCoroutine(CrystalBoost());
+        // StartCoroutine(CrystalBoost());
         m_IsRemainBoost = true;
         // StartCoroutine(CheckRemainBoost());
     }

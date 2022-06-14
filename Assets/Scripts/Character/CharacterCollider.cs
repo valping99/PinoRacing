@@ -74,6 +74,9 @@ public class CharacterCollider : MonoBehaviour
         {
             m_RootItem = other.gameObject;
 
+            if (m_CharacterController.m_IsBoosting)
+                m_CharacterController.m_IsBoosting = false;
+
             foreach (Transform child in m_RootItem.transform)
             {
                 if (child.CompareTag("Fire"))
