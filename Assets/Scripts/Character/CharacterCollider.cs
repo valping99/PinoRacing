@@ -91,6 +91,8 @@ public class CharacterCollider : MonoBehaviour
                         if (!m_CharacterController.m_Stuns)
                         {
                             m_CurrentSpeed = 0;
+                            m_CharacterController.m_MilkCollectSpeed = 0;
+
                             m_CharacterController.m_Stuns = true;
                             m_CharacterController.ChangeSpeed();
                             // Debug.Log("Stun");
@@ -142,7 +144,7 @@ public class CharacterCollider : MonoBehaviour
                             m_CurrentBottleMilk += milk.amountMilkBottle;
                             m_CharacterController.ChangeSpeed();
                         }
-                        Debug.Log("Milk");
+                        // Debug.Log("Milk");
                         Destroy(m_RootItem.gameObject);
                     }
 
@@ -200,7 +202,7 @@ public class CharacterCollider : MonoBehaviour
     }
     void FixSpeedUpdate()
     {
-        if (m_CurrentSpeed <= 0 && !m_CharacterController.m_Stuns)
+        if (m_CurrentSpeed <= m_InitialSpeed && !m_CharacterController.m_Stuns)
         {
             m_CurrentSpeed = m_InitialSpeed;
             // Debug.Log("Speed is 0");

@@ -186,7 +186,7 @@ public class CharacterInputController : MonoBehaviour
                 StartCoroutine(ReturnRotationStun());
             }
 
-            if (m_VelocityUp && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
+            if (m_VelocityUp && !m_Stuns && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
             {
                 m_Character.m_CurrentSpeed += 5f;
                 m_MilkCollectSpeed += 5f;
