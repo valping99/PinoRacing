@@ -42,7 +42,7 @@ public class RaceCourse : MonoBehaviour
         {
             if(lapCourse >= 3)
             {
-                uiManagers.checkGameOver = true;
+                uiManagers.checkGameClear = true;
             }
             else
             {

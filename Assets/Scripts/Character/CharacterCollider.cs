@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Create by William (c)
 * https://github.com/Long18
 */
@@ -148,6 +148,7 @@ public class CharacterCollider : MonoBehaviour
 
                     if (!m_CharacterController.m_PadsIsBoosting)
                     {
+                        // đạt
                         m_CurrentSpeed = m_MaxSpeed;
                         m_CharacterController.m_PadsIsBoosting = true;
                         m_CharacterController.ChangeSpeed();

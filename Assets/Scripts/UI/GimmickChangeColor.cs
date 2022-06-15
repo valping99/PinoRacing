@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class GimmickChangeColor : MonoBehaviour
 {
+    #region Variables
     public CharacterCollider charColl;
     public Transform transformParent;
     public GameObject stickGimmeck;
+    public GameObject currentSticker;
     public GameObject rootObject;
 
     public UIManager uiManagers;
@@ -14,9 +16,11 @@ public class GimmickChangeColor : MonoBehaviour
     [Tooltip("Animator")]
     public Animator animator;
 
-    public GameObject currentSticker;
     const string m_AnimTimer = "Timer";
-    // Start is called before the first frame update
+
+    #endregion
+    #region Unity Method
+
     void Start()
     {
         ChangeColorStick();
@@ -29,7 +33,8 @@ public class GimmickChangeColor : MonoBehaviour
     {
         CheckTimeUI();
     }
-
+    #endregion
+    #region Function
     void ChangeColorStick()
     {
         uiManagers = FindObjectOfType<UIManager>();
@@ -48,5 +53,5 @@ public class GimmickChangeColor : MonoBehaviour
         transformParent.position = rootObject.transform.position;
         transformParent.rotation = rootObject.transform.rotation;
     }
-   
+    #endregion
 }
