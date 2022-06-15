@@ -21,7 +21,6 @@ public class BoostCount : MonoBehaviour
 
     public int boostCount = 16;
 
-    bool checkDashBoost = false;
 
     #endregion
 

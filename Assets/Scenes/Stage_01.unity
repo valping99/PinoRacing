@@ -1912,6 +1912,7 @@ RectTransform:
   m_Children:
   - {fileID: 1221674034}
   - {fileID: 356671662}
+  - {fileID: 1562919274}
   m_Father: {fileID: 2071708844}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3515,10 +3516,10 @@ MonoBehaviour:
   transformParent: {fileID: 1243054091}
   stickGimmeck: {fileID: 1796291118921967502, guid: 0a053974ae8b7de43928078d6180f9e7,
     type: 3}
+  currentSticker: {fileID: 0}
   rootObject: {fileID: 0}
   uiManagers: {fileID: 1885719431}
   animator: {fileID: 0}
-  currentSticker: {fileID: 0}
 --- !u!4 &705237341
 Transform:
   m_ObjectHideFlags: 0
@@ -4691,6 +4692,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charInput: {fileID: 0}
+  charColl: {fileID: 0}
+  checkSpeed: 0
   mainCamera: {fileID: 929251055}
 --- !u!1 &951390979
 GameObject:
@@ -5166,7 +5169,6 @@ RectTransform:
   - {fileID: 621439010}
   - {fileID: 957379735}
   - {fileID: 13815670}
-  - {fileID: 1562919274}
   m_Father: {fileID: 2071708844}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8014,19 +8016,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562919273}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0969483, y: 1.0969483, z: 1.0969483}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2143464293}
   - {fileID: 599136423}
-  m_Father: {fileID: 992298791}
-  m_RootOrder: 8
+  m_Father: {fileID: 449337012}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 385, y: 645}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -580.74524, y: 68.47046}
   m_SizeDelta: {x: 500, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1594234467
@@ -9299,8 +9301,8 @@ MonoBehaviour:
   checkDashBoost: 0
   mainSceneUI: {fileID: 992298790}
   pauseUI: {fileID: 1274807219}
-  gameOverUI: {fileID: 1002541110}
-  gameClearUI: {fileID: 1337583620}
+  gameClearUI: {fileID: 1002541110}
+  gameOverUI: {fileID: 1337583620}
   healthPoint: {fileID: 1151610922}
   boostSpeedGObj: {fileID: 320466035}
   isBoosting: {fileID: 13815666}

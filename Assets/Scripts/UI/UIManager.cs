@@ -41,11 +41,14 @@ public class UIManager : MonoBehaviour
     public bool checkDashBoost = false;
 
     [Header("Object UI")]
-    //Get UI to Active
-    public GameObject mainSceneUI;
-    public GameObject pauseUI;
-    public GameObject gameOverUI;
-    public GameObject gameClearUI;
+    [SerializeField]
+    private GameObject mainSceneUI;
+    [SerializeField]
+    private GameObject pauseUI;
+    [SerializeField]
+    private GameObject gameClearUI;
+    [SerializeField]
+    private GameObject gameOverUI;
 
     [Header("PlayingUI")]
     //UI Gameplaying
@@ -277,14 +280,14 @@ public class UIManager : MonoBehaviour
             charInput.GetComponent<CharacterInputController>().enabled = false;
         }
 
-        if (checkGameClear)
+        if (checkGameOver)
         {
             TimeOut();
         }
 
-        if (checkGameOver)
+        if (checkGameClear)
         {
-            GameOver();
+            GameClear();
         }
     }
 
@@ -292,7 +295,7 @@ public class UIManager : MonoBehaviour
     private void GetVariables()
     {
         //Get kph speed
-        double kphSpeed = charColl.m_CurrentSpeed * 3.6;
+        double kphSpeed =charColl.m_CurrentSpeed * 3.6f;
         int currendSpeed = (int)kphSpeed;
         kphText.text = currendSpeed + "";
         numberLaps.text = lapsToGameOver + "/3";
@@ -304,16 +307,16 @@ public class UIManager : MonoBehaviour
 
     }
 
-    //Active GameOverUI
-    private void GameOver()
+    //Active GameClearUI
+    private void GameClear()
     {
-        if (checkGameOver)
+        if (checkGameClear)
         {
             //Enable GameOver UI & Disable other UI
-            gameOverUI.gameObject.SetActive(true);
+            gameClearUI.gameObject.SetActive(true);
+            gameOverUI.gameObject.SetActive(false);
             pauseUI.gameObject.SetActive(false);
             mainSceneUI.gameObject.SetActive(false);
-            gameClearUI.gameObject.SetActive(false);
             miniMap.gameObject.SetActive(false);
             screenShot.checkUI();
             setRank();
@@ -473,8 +476,8 @@ public class UIManager : MonoBehaviour
             if (healthPoint.value <= 0)
             {
                 healthPoint.value = 0;
-                checkGameOver = true;
-                GameOver();
+                checkGameClear = true;
+                GameClear();
             }
         }
     }
@@ -594,7 +597,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            checkGameClear = true;
+            checkGameOver = true;
         }
         DisplayTimerCountUp(timeValueUp);
     }
@@ -618,10 +621,10 @@ public class UIManager : MonoBehaviour
 
     private void TimeOut()
     {
-        if (checkGameClear)
+        if (checkGameOver)
         {
-            gameClearUI.gameObject.SetActive(true);
-            gameOverUI.gameObject.SetActive(false);
+            gameClearUI.gameObject.SetActive(false);
+            gameOverUI.gameObject.SetActive(true);
             pauseUI.gameObject.SetActive(false);
             mainSceneUI.gameObject.SetActive(false);
             Time.timeScale = 0f;
