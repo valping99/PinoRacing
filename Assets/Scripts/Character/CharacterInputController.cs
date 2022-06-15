@@ -38,7 +38,8 @@ public class CharacterInputController : MonoBehaviour
     // Init number Items ====
     [HideInInspector] public float m_MilkCollectSpeed;
     float m_CharacterPosition;
-    float m_DriveSpeed;
+    public float m_DriveSpeed;
+    float m_CurrentSpeed;
     int m_TimeBoost;
     int laneNumber;
 
@@ -120,7 +121,18 @@ public class CharacterInputController : MonoBehaviour
     {
         try
         {
-            m_DriveSpeed += (m_Character.m_CurrentSpeed * Time.deltaTime) / 10;
+            if (m_Character.m_CurrentSpeed >= m_CurrentSpeed)
+            {
+                m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_Character.m_CurrentSpeed, Time.deltaTime);
+            }
+            else
+            {
+                m_CurrentSpeed = m_Character.m_CurrentSpeed;
+            }
+
+            m_DriveSpeed += (m_CurrentSpeed * Time.deltaTime) / 10;
+
+            Debug.Log("Speed: " + m_CurrentSpeed);
 
             Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed);
             Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed - 20f);
@@ -311,8 +323,6 @@ public class CharacterInputController : MonoBehaviour
             }
             else
             {
-                m_PadsIsBoosting = false;
-
                 // m_Stuns = false;
                 if (m_Character.m_CurrentBottleMilk >= 1 && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
                 {
@@ -323,7 +333,7 @@ public class CharacterInputController : MonoBehaviour
                     }
                     else
                     {
-                        m_MilkCollectSpeed = (m_Character.m_InitialSpeed + (m_Character.m_CurrentBottleMilk * 5));
+                        m_MilkCollectSpeed = (m_Character.m_InitialSpeed + (m_Character.m_CurrentBottleMilk * 5 * (5 / 10)));
                     }
                     m_IsGotMilk = true;
                 }

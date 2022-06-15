@@ -74,6 +74,9 @@ public class CharacterCollider : MonoBehaviour
         {
             if (other.gameObject.tag == "Obstacle")
             {
+
+                m_CharacterController.m_PadsIsBoosting = false;
+
                 m_RootItem = other.gameObject;
 
                 if (m_CharacterController.m_IsBoosting)
