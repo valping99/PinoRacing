@@ -127,7 +127,8 @@ public class CharacterInputController : MonoBehaviour
             Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 7f);
             Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 70f);
 
-            m_Character.transform.localPosition = Vector3.Lerp(m_Character.transform.localPosition, _tempDistance, 2f * Time.deltaTime);
+            //m_Character.transform.localPosition = Vector3.Lerp(m_Character.transform.localPosition, _tempDistance, 2f * Time.deltaTime);
+            m_Character.transform.localPosition =  _tempDistance;
             spawnerObject.transform.localPosition = Vector3.Lerp(spawnerObject.transform.localPosition, _tempDistanceSpawner, 1.7f * Time.deltaTime);
             m_WallClearLag.transform.localPosition = Vector3.Lerp(m_WallClearLag.transform.localPosition, _tempDistanceClearLag, 2f * Time.deltaTime);
 
@@ -186,6 +187,7 @@ public class CharacterInputController : MonoBehaviour
                 StartCoroutine(ReturnRotationStun());
             }
 
+            if (m_VelocityUp && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
             if (m_VelocityUp && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
             {
                 m_Character.m_CurrentSpeed += 5f;
