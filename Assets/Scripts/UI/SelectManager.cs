@@ -113,7 +113,7 @@ public class SelectManager : MonoBehaviour
             scene_01.gameObject.SetActive(false);
             scene_04.gameObject.SetActive(false);
         }
-        else if(isSelectScene_04)
+        else if (isSelectScene_04)
         {
             scene_04.gameObject.SetActive(true);
             scene_02.gameObject.SetActive(false);
@@ -274,7 +274,7 @@ public class SelectManager : MonoBehaviour
     {
         UIManager.pinoSelected = selectedPino;
         SceneManager.LoadScene(selectedStage);
-        Debug.Log(selectedPino);
+        // Debug.Log(selectedPino);
         //Remote select scene
         //for(int i = 0; i<selectedStage; i++)
         //{

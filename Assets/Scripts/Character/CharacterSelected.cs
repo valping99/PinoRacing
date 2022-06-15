@@ -43,7 +43,7 @@ public class CharacterSelected : MonoBehaviour
             if (i == isSelected)
             {
                 //Get Pino to stage
-                Debug.Log("Instantiate");
+                // Debug.Log("Instantiate");
                 Instantiate(playerList[i - 1], new Vector3(0, 0, 0), Quaternion.identity, transformParent);
 
 

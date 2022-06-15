@@ -52,16 +52,16 @@ public class CharacterInputController : MonoBehaviour
     Vector3 m_Direction;
     Quaternion m_Rotation;
 
-    #endregion
-
-    #region Unity Methods
-
 
 #if !UNITY_STANDALONE
     protected Vector2 m_StartingTouch;
     protected bool m_IsSwiping = false;
 #endif
 
+
+    #endregion
+
+    #region Unity Methods
 
     // Start is called before the first frame update
     void Start()
@@ -89,13 +89,12 @@ public class CharacterInputController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (!spawnerObject && !m_Character && !m_WallClearLag)
             GetComponentInGame();
 
         MoveInput();
-
     }
 
     #endregion
@@ -104,105 +103,116 @@ public class CharacterInputController : MonoBehaviour
 
     void GetComponentInGame()
     {
-        spawnerObject = GameObject.FindGameObjectWithTag("Spawner");
-        m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
-        m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
+        try
+        {
+            spawnerObject = GameObject.FindGameObjectWithTag("Spawner");
+            m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
+            m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Error in Update: " + ex.Message);
+        }
     }
     void MoveInput()
     {
-        m_DriveSpeed += (m_Character.m_CurrentSpeed * Time.deltaTime) / 10;
-
-        Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed);
-        Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed - 20f);
-        Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed + 70f);
-
-        Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 7f);
-        Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 70f);
-
-        m_Character.transform.localPosition = Vector3.Lerp(m_Character.transform.localPosition, _tempDistance, 2f * Time.deltaTime);
-        spawnerObject.transform.localPosition = Vector3.Lerp(spawnerObject.transform.localPosition, _tempDistanceSpawner, 1.7f * Time.deltaTime);
-        m_WallClearLag.transform.localPosition = Vector3.Lerp(m_WallClearLag.transform.localPosition, _tempDistanceClearLag, 2f * Time.deltaTime);
-
-        m_Character.transform.localRotation = Quaternion.Lerp(m_Character.transform.localRotation, _tempRotation, 2f * Time.deltaTime);
-        m_WallClearLag.transform.localRotation = Quaternion.Lerp(m_WallClearLag.transform.localRotation, _tempRotationSpawner, 2f * Time.deltaTime);
-
-
-        if (m_IsGotMilk)
+        try
         {
-            if (!m_IsBoosting && !m_PadsIsBoosting && !m_Stuns)
-            {
-                if (m_Character.m_CurrentSpeed < m_MilkCollectSpeed)
-                {
-                    m_Character.m_CurrentSpeed = m_MilkCollectSpeed;
-                }
-                else
-                {
-                    int _TimePerSec = m_TimeBoost;
-                    float _temp = (m_BoostSpeed - m_MilkCollectSpeed) / (_TimePerSec * m_TimeBoost); // tempt speed
+            m_DriveSpeed += (m_Character.m_CurrentSpeed * Time.deltaTime) / 10;
 
-                    while (m_Character.m_CurrentSpeed > m_MilkCollectSpeed)
+            Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed);
+            Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed - 20f);
+            Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed + 70f);
+
+            Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 7f);
+            Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 70f);
+
+            m_Character.transform.localPosition = Vector3.Lerp(m_Character.transform.localPosition, _tempDistance, 2f * Time.deltaTime);
+            spawnerObject.transform.localPosition = Vector3.Lerp(spawnerObject.transform.localPosition, _tempDistanceSpawner, 1.7f * Time.deltaTime);
+            m_WallClearLag.transform.localPosition = Vector3.Lerp(m_WallClearLag.transform.localPosition, _tempDistanceClearLag, 2f * Time.deltaTime);
+
+            m_Character.transform.localRotation = Quaternion.Lerp(m_Character.transform.localRotation, _tempRotation, 2f * Time.deltaTime);
+            m_WallClearLag.transform.localRotation = Quaternion.Lerp(m_WallClearLag.transform.localRotation, _tempRotationSpawner, 2f * Time.deltaTime);
+
+
+            if (m_IsGotMilk)
+            {
+                if (!m_IsBoosting && !m_PadsIsBoosting && !m_Stuns)
+                {
+                    if (m_Character.m_CurrentSpeed < m_MilkCollectSpeed)
                     {
-                        m_Character.m_CurrentSpeed -= _temp;
-                        if (m_Character.m_CurrentSpeed < m_MilkCollectSpeed)
+                        m_Character.m_CurrentSpeed = m_MilkCollectSpeed;
+                    }
+                    else
+                    {
+                        int _TimePerSec = m_TimeBoost;
+                        float _temp = (m_BoostSpeed - m_MilkCollectSpeed) / (_TimePerSec * m_TimeBoost); // tempt speed
+
+                        while (m_Character.m_CurrentSpeed > m_MilkCollectSpeed)
                         {
-                            m_Character.m_CurrentSpeed = m_MilkCollectSpeed;
+                            m_Character.m_CurrentSpeed -= _temp;
+                            if (m_Character.m_CurrentSpeed < m_MilkCollectSpeed)
+                            {
+                                m_Character.m_CurrentSpeed = m_MilkCollectSpeed;
+                            }
                         }
                     }
                 }
             }
-        }
 
-        if (m_IsChangePosition)
-        {
-            m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(m_CharacterPosition, 0, 0), 2f * Time.deltaTime);
-        }
-        else
-        {
-            if (laneNumber == 1)
+            if (m_IsChangePosition)
             {
-                m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(-5, 0, 0), 2f * Time.deltaTime);
-            }
-            else if (laneNumber == 3)
-            {
-                m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(5, 0, 0), 2f * Time.deltaTime);
+                m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(m_CharacterPosition, 0, 0), 2f * Time.deltaTime);
             }
             else
             {
-                m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(0, 0, 0), 2f * Time.deltaTime);
+                if (laneNumber == 1)
+                {
+                    m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(-5, 0, 0), 2f * Time.deltaTime);
+                }
+                else if (laneNumber == 3)
+                {
+                    m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(5, 0, 0), 2f * Time.deltaTime);
+                }
+                else
+                {
+                    m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(0, 0, 0), 2f * Time.deltaTime);
+                }
             }
-        }
 
-        if (m_Stuns)
-        {
-            m_Character.rootObject.transform.Rotate(Vector3.up, 720 * Time.deltaTime, Space.Self);
-            StartCoroutine(ReturnRotationStun());
-        }
+            if (m_Stuns)
+            {
+                m_Character.rootObject.transform.Rotate(Vector3.up, 720 * Time.deltaTime, Space.Self);
+                StartCoroutine(ReturnRotationStun());
+            }
 
-        if (m_VelocityUp && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
-        {
-            m_Character.m_CurrentSpeed += 5f;
-            m_VelocityUp = false;
-            StartCoroutine(VelocityUp());
-        }
+            if (m_VelocityUp && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
+            {
+                m_Character.m_CurrentSpeed += 5f;
+                m_MilkCollectSpeed += 5f;
+                m_VelocityUp = false;
+                StartCoroutine(VelocityUp());
+            }
+
 
 #if UNITY_EDITOR || UNITY_STANDALONE
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns)
-        {
-            ChangeLane(-slideLength);
-            laneNumber -= 1;
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_Stuns)
-        {
-            ChangeLane(slideLength);
-            laneNumber += 1;
-        }
+            if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns)
+            {
+                ChangeLane(-slideLength);
+                laneNumber -= 1;
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_Stuns)
+            {
+                ChangeLane(slideLength);
+                laneNumber += 1;
+            }
 
-        //Test boost in unity editor
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            DashBoost();
-        }
+            //Test boost in unity editor
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                DashBoost();
+            }
 
 #else
         // Use touch input on mobile
@@ -246,62 +256,94 @@ public class CharacterInputController : MonoBehaviour
             }
         }
 #endif
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Error in Update: " + ex.Message);
+        }
     }
-
     void ChangeRotation(int _direction)
     {
-        m_Character.rootObject.transform.localRotation = Quaternion.Euler(0, _direction * 2f, 0);
+        try
+        {
+            m_Character.rootObject.transform.localRotation = Quaternion.Euler(0, _direction * 2f, 0);
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Error in Update: " + ex.Message);
+        }
     }
     public void DashBoost()
     {
-        if (!m_IsBoosting)
+        try
         {
-            m_Character.m_CurrentSpeed = m_Character.m_MaxSpeed;
+            if (!m_IsBoosting)
+            {
+                m_Character.m_CurrentSpeed = m_Character.m_MaxSpeed;
+            }
+            // StartCoroutine(CrystalBoost());
+            m_IsRemainBoost = true;
+            // StartCoroutine(CheckRemainBoost());
         }
-        // StartCoroutine(CrystalBoost());
-        m_IsRemainBoost = true;
-        // StartCoroutine(CheckRemainBoost());
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Error in DashBoost: " + ex.Message);
+        }
     }
     public void ChangeSpeed()
     {
-        if (m_PadsIsBoosting || m_Stuns)
+        try
         {
-            StartCoroutine(CheckRemainBoost());
-        }
-        else
-        {
-            m_PadsIsBoosting = false;
+            if (m_PadsIsBoosting || m_Stuns)
+            {
+                StartCoroutine(CheckRemainBoost());
+            }
+            else
+            {
+                m_PadsIsBoosting = false;
 
-            // m_Stuns = false;
-            if (m_Character.m_CurrentBottleMilk >= 1 && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
-            {
-                if (IsFirstTime)
+                // m_Stuns = false;
+                if (m_Character.m_CurrentBottleMilk >= 1 && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
                 {
-                    m_MilkCollectSpeed = m_Character.m_InitialSpeed + 5;
-                    IsFirstTime = false;
+                    if (IsFirstTime)
+                    {
+                        m_MilkCollectSpeed = m_Character.m_CurrentSpeed + 5;
+                        IsFirstTime = false;
+                    }
+                    else
+                    {
+                        m_MilkCollectSpeed = (m_Character.m_InitialSpeed + (m_Character.m_CurrentBottleMilk * 5));
+                    }
+                    m_IsGotMilk = true;
                 }
-                else
+                if (m_Character.m_CurrentBottleMilk == 0)
                 {
-                    m_MilkCollectSpeed = (m_Character.m_InitialSpeed + (m_Character.m_CurrentBottleMilk * 5));
+                    m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
                 }
-                m_IsGotMilk = true;
+                //Debug.Log("Current speed: " + m_Character.m_CurrentSpeed);
             }
-            if (m_Character.m_CurrentBottleMilk == 0)
-            {
-                m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
-            }
-            //Debug.Log("Current speed: " + m_Character.m_CurrentSpeed);
+        }
+        catch (System.Exception)
+        {
+            Debug.Log("ChangeSpeed");
         }
     }
     public void ChangeLane(int _direction)
     {
-        ChangeRotation(_direction);
-        StartCoroutine(ReturnRotation());
-        m_IsChangePosition = true;
+        try
+        {
+            ChangeRotation(_direction);
+            StartCoroutine(ReturnRotation());
+            m_IsChangePosition = true;
 
-        m_CharacterPosition = _direction;
-        StartCoroutine(StopMoving());
-        m_IsChangeLine = false;
+            m_CharacterPosition = _direction;
+            StartCoroutine(StopMoving());
+            m_IsChangeLine = false;
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Error in Update: " + ex.Message);
+        }
     }
     IEnumerator CheckBoost()
     {
@@ -325,52 +367,63 @@ public class CharacterInputController : MonoBehaviour
     IEnumerator CheckRemainBoost()
     {
         yield return new WaitForSeconds(2f);
-        m_PadsIsBoosting = false;
-        // m_Stuns = false;
-        // Debug.Log("CheckRemainBoost");
-        ChangeSpeed();
-    }
-    IEnumerator CrystalBoost()
-    {
+        try
+        {
+            m_PadsIsBoosting = false;
+            // m_Stuns = false;
+            // Debug.Log("CheckRemainBoost");
+            ChangeSpeed();
 
-        // if (m_Character.m_CrystalBoost > 0)
-        // {
-        //     m_IsBoosting = true;
-
-        //     if (m_IsBoosting)
-        //     {
-
-        //     }
-        // }
-
-        ChangeSpeed();
-        StartCoroutine(CheckBoost());
-        yield return new WaitForSeconds(m_TimeBoost);
-        m_IsBoosting = false;
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Error in Update: " + ex.Message);
+        }
     }
     IEnumerator StopMoving()
     {
         yield return new WaitForSeconds(m_SecondChangeLine);
-        m_CharacterPosition = 0;
-        m_IsChangeLine = true;
-        m_IsChangePosition = false;
+        try
+        {
+            m_CharacterPosition = 0;
+            m_IsChangeLine = true;
+            m_IsChangePosition = false;
 
-        //stop track
+            //stop track
 
-        //Set animation die
+            //Set animation die
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Error in Update: " + ex.Message);
+        }
     }
     IEnumerator ReturnRotation()
     {
         yield return new WaitForSeconds(m_SecondChangeLine);
 
-        m_Character.rootObject.transform.localRotation = Quaternion.identity;
+        try
+        {
+            m_Character.rootObject.transform.localRotation = Quaternion.identity;
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Error in Update: " + ex.Message);
+        }
     }
     IEnumerator ReturnRotationStun()
     {
         yield return new WaitForSeconds(1f);
 
-        m_Character.rootObject.transform.localRotation = Quaternion.identity;
-        m_Stuns = false;
+        try
+        {
+            m_Character.rootObject.transform.localRotation = Quaternion.identity;
+            m_Stuns = false;
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Error in Update: " + ex.Message);
+        }
     }
     IEnumerator VelocityUp()
     {

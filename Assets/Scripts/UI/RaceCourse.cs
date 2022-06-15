@@ -25,7 +25,7 @@ public class RaceCourse : MonoBehaviour
     void LateUpdate()
     {
         uiManagers.lapsToGameOver = lapCourse;
-        if(lapCourse == 3)
+        if (lapCourse == 3)
         {
             Invoke("ShowFinishLap", 2);
         }
@@ -34,19 +34,19 @@ public class RaceCourse : MonoBehaviour
     private void ShowFinishLap()
     {
         uiManagers.finishLap.gameObject.SetActive(true);
-        
+
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("RootObject"))
         {
-            if(lapCourse >= 3)
+            if (lapCourse >= 3)
             {
                 uiManagers.checkGameClear = true;
             }
             else
             {
-                Debug.Log("True");
+                // Debug.Log("True");
                 lapCourse += 1;
             }
         }

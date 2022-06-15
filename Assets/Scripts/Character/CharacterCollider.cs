@@ -1,4 +1,4 @@
-﻿/*
+/*
 * Create by William (c)
 * https://github.com/Long18
 */
@@ -70,98 +70,106 @@ public class CharacterCollider : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Obstacle")
+        try
         {
-            m_RootItem = other.gameObject;
-
-            if (m_CharacterController.m_IsBoosting)
-                m_CharacterController.m_IsBoosting = false;
-
-            if (m_CharacterController.m_IsRemainBoost)
-                m_CharacterController.m_IsRemainBoost = false;
-
-            foreach (Transform child in m_RootItem.transform)
+            if (other.gameObject.tag == "Obstacle")
             {
-                if (child.CompareTag("Fire"))
-                {
-                    FirePickup fire = m_RootItem.GetComponent<FirePickup>();
+                m_RootItem = other.gameObject;
 
-                    if (!m_CharacterController.m_Stuns)
+                if (m_CharacterController.m_IsBoosting)
+                    m_CharacterController.m_IsBoosting = false;
+
+                if (m_CharacterController.m_IsRemainBoost)
+                    m_CharacterController.m_IsRemainBoost = false;
+
+                foreach (Transform child in m_RootItem.transform)
+                {
+                    if (child.CompareTag("Fire"))
                     {
-                        m_CurrentSpeed = 0;
-                        m_CharacterController.m_Stuns = true;
+                        FirePickup fire = m_RootItem.GetComponent<FirePickup>();
+
+                        if (!m_CharacterController.m_Stuns)
+                        {
+                            m_CurrentSpeed = 0;
+                            m_CharacterController.m_Stuns = true;
+                            m_CharacterController.ChangeSpeed();
+                            // Debug.Log("Stun");
+                        }
+
+                        Destroy(m_RootItem.gameObject);
+                    }
+                    if (child.CompareTag("Stick"))
+                    {
+                        StickPickup stick = m_RootItem.GetComponent<StickPickup>();
+                        m_CurrentBottleMilk -= stick.StickAmount;
+
+                        if (m_CurrentBottleMilk <= 0)
+                        {
+                            m_CurrentBottleMilk = 0;
+                            m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_InitialSpeed, 5f);
+                            m_CharacterController.m_MilkCollectSpeed = Mathf.Lerp(m_CharacterController.m_MilkCollectSpeed, m_InitialSpeed, 5f);
+                        }
+
+                        if (m_CurrentSpeed > m_InitialSpeed)
+                        {
+                            m_CurrentSpeed -= stick.HurtAmount;
+                        }
                         m_CharacterController.ChangeSpeed();
-                        Debug.Log("Stun");
+
+                        Destroy(m_RootItem.gameObject);
                     }
 
-                    Destroy(m_RootItem.gameObject);
                 }
-                if (child.CompareTag("Stick"))
-                {
-                    StickPickup stick = m_RootItem.GetComponent<StickPickup>();
-                    m_CurrentBottleMilk -= stick.StickAmount;
-
-                    if (m_CurrentBottleMilk <= 0)
-                    {
-                        m_CurrentBottleMilk = 0;
-                        m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_InitialSpeed, 5f);
-                        m_CharacterController.m_MilkCollectSpeed = Mathf.Lerp(m_CharacterController.m_MilkCollectSpeed, m_InitialSpeed, 5f);
-                    }
-
-                    if (m_CurrentSpeed > m_InitialSpeed)
-                    {
-                        m_CurrentSpeed -= stick.HurtAmount;
-                    }
-                    m_CharacterController.ChangeSpeed();
-
-                    Destroy(m_RootItem.gameObject);
-                }
-
             }
-        }
 
-        if (other.gameObject.tag == "Item")
+            if (other.gameObject.tag == "Item")
+            {
+                m_RootItem = other.gameObject;
+
+                foreach (Transform child in m_RootItem.transform)
+                {
+
+                    if (child.CompareTag("Milk"))
+                    {
+                        MilkPickup milk = other.GetComponent<MilkPickup>();
+
+                        if (m_CurrentSpeed >= m_MaxSpeed)
+                        {
+                            m_CurrentBottleMilk += milk.amountMilkBottle;
+                        }
+                        else
+                        {
+                            m_CurrentBottleMilk += milk.amountMilkBottle;
+                            m_CharacterController.ChangeSpeed();
+                        }
+                        Debug.Log("Milk");
+                        Destroy(m_RootItem.gameObject);
+                    }
+
+                    if (child.CompareTag("SpeedPads"))
+                    {
+                        SpeedPads crystal = other.GetComponent<SpeedPads>();
+
+                        if (!m_CharacterController.m_PadsIsBoosting)
+                        {
+                            m_CurrentSpeed = m_MaxSpeed;
+                            m_CharacterController.m_PadsIsBoosting = true;
+                            m_CharacterController.ChangeSpeed();
+                        }
+
+                        Destroy(m_RootItem.gameObject);
+                        // Debug.Log("Boosting");
+                    }
+
+                }
+            }
+
+            // Debug.Log("Object: " + other.gameObject.name);
+        }
+        catch (System.Exception ex)
         {
-            m_RootItem = other.gameObject;
-
-            foreach (Transform child in m_RootItem.transform)
-            {
-
-                if (child.CompareTag("Milk"))
-                {
-                    MilkPickup milk = other.GetComponent<MilkPickup>();
-                    if (m_CurrentSpeed > m_MaxSpeed)
-                    {
-                        m_CurrentBottleMilk += milk.amountMilkBottle;
-                    }
-                    else
-                    {
-                        m_CurrentBottleMilk += milk.amountMilkBottle;
-                        m_CharacterController.ChangeSpeed();
-                    }
-                    Destroy(m_RootItem.gameObject);
-                }
-
-                if (child.CompareTag("SpeedPads"))
-                {
-                    SpeedPads crystal = other.GetComponent<SpeedPads>();
-
-                    if (!m_CharacterController.m_PadsIsBoosting)
-                    {
-                        // đạt
-                        m_CurrentSpeed = m_MaxSpeed;
-                        m_CharacterController.m_PadsIsBoosting = true;
-                        m_CharacterController.ChangeSpeed();
-                    }
-
-                    Destroy(m_RootItem.gameObject);
-                    // Debug.Log("Boosting");
-                }
-
-            }
+            Debug.Log("Error: " + ex.Message);
         }
-
-        // Debug.Log("Object: " + other.gameObject.name);
     }
 
     #endregion
@@ -195,13 +203,13 @@ public class CharacterCollider : MonoBehaviour
         if (m_CurrentSpeed <= 0 && !m_CharacterController.m_Stuns)
         {
             m_CurrentSpeed = m_InitialSpeed;
-            Debug.Log("Speed is 0");
+            // Debug.Log("Speed is 0");
         }
 
         if (m_CurrentSpeed > m_MaxSpeed)
         {
             m_CurrentSpeed = m_MaxSpeed;
-            Debug.Log("Speed is max");
+            // Debug.Log("Speed is max");
         }
     }
     #endregion
