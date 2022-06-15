@@ -23,6 +23,8 @@ public class ObstaclesManager : MonoBehaviour
     float _PointZ;
     List<float> m_PositionSpawn;
 
+    Quaternion _Rotation;
+
     public CharacterInputController m_Character;
     public CharacterCollider m_CharacterCollider;
     #endregion
@@ -54,6 +56,8 @@ public class ObstaclesManager : MonoBehaviour
         _PointX = m_Character.spawnerObject.transform.localPosition.x;
         _PointY = m_Character.spawnerObject.transform.localPosition.y;
         _PointZ = m_Character.spawnerObject.transform.localPosition.z + m_PositionSpawn[m_NextPosition];
+
+        _Rotation = m_Character.spawnerObject.transform.rotation;
     }
 
     public void StartSpawnObjects()
@@ -105,11 +109,11 @@ public class ObstaclesManager : MonoBehaviour
 
             if (m_ItemPosition == positionOfStickCreamInTheSky)
             {
-                Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX, _PointY + 7f, _PointZ), Quaternion.identity);
+                Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX, _PointY + 7f, _PointZ), _Rotation);
             }
             else
             {
-                Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX, _PointY + 0.5f, _PointZ), Quaternion.identity);
+                Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX, _PointY + 0.5f, _PointZ), _Rotation);
             }
 
             StartCoroutine(SpawnObstacles());

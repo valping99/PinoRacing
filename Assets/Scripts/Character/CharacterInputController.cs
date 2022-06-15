@@ -52,6 +52,8 @@ public class CharacterInputController : MonoBehaviour
     Vector3 m_Direction;
     Quaternion m_Rotation;
 
+    enum CarType { abc, bdc }
+
 
 #if !UNITY_STANDALONE
     protected Vector2 m_StartingTouch;
@@ -127,12 +129,21 @@ public class CharacterInputController : MonoBehaviour
             Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 7f);
             Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 70f);
 
-            m_Character.transform.localPosition = Vector3.Lerp(m_Character.transform.localPosition, _tempDistance, 2f * Time.deltaTime);
-            spawnerObject.transform.localPosition = Vector3.Lerp(spawnerObject.transform.localPosition, _tempDistanceSpawner, 1.7f * Time.deltaTime);
-            m_WallClearLag.transform.localPosition = Vector3.Lerp(m_WallClearLag.transform.localPosition, _tempDistanceClearLag, 2f * Time.deltaTime);
+            // m_Character.transform.localPosition = Vector3.Lerp(m_Character.transform.localPosition, _tempDistance, 2f * Time.deltaTime);
+            // spawnerObject.transform.localPosition = Vector3.Lerp(spawnerObject.transform.localPosition, _tempDistanceSpawner, 1.7f * Time.deltaTime);
+            // m_WallClearLag.transform.localPosition = Vector3.Lerp(m_WallClearLag.transform.localPosition, _tempDistanceClearLag, 2f * Time.deltaTime);
+
+            m_Character.transform.localPosition = _tempDistance;
+            spawnerObject.transform.localPosition = _tempDistanceSpawner;
+            m_WallClearLag.transform.localPosition = _tempDistanceClearLag;
+
 
             m_Character.transform.localRotation = Quaternion.Lerp(m_Character.transform.localRotation, _tempRotation, 2f * Time.deltaTime);
-            m_WallClearLag.transform.localRotation = Quaternion.Lerp(m_WallClearLag.transform.localRotation, _tempRotationSpawner, 2f * Time.deltaTime);
+            m_WallClearLag.transform.localRotation = Quaternion.Lerp(m_WallClearLag.transform.localRotation, _tempRotationSpawner, 7f * Time.deltaTime);
+            // m_Character.transform.localRotation = _tempRotation;
+            // m_WallClearLag.transform.localRotation = _tempRotationSpawner;
+
+            spawnerObject.transform.localRotation = _tempRotationSpawner;
 
 
             if (m_IsGotMilk)
