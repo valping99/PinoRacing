@@ -34,5 +34,13 @@ public class DashBoostCamera : MonoBehaviour
         {
             mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 70, 1.5f * Time.deltaTime);
         }
+        if (charInput.m_Stuns)
+        {
+            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 40, 2.5f * Time.deltaTime);
+        }
+        else
+        {
+            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 70, 1.5f * Time.deltaTime);
+        }
     }
 }
