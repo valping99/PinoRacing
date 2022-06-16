@@ -115,7 +115,7 @@ public class UIManager : MonoBehaviour
     {
         checkPlaying = true;
         StartGame();
-        StartStatusOfPino();
+        //StartStatusOfPino();
         screenShot = FindObjectOfType<HiresScreenShots>();
         obstacles = FindObjectOfType<ObstaclesManager>();
         b_count = FindObjectOfType<BoostCount>();
@@ -275,7 +275,7 @@ public class UIManager : MonoBehaviour
             //countBoostNumber_Text.text = boostCount + "";
             BoostStart();
             //charColl.m_CurrentSpeed = 0;
-            CountDown();
+            waitForDisplay();
             mainSceneUI.gameObject.SetActive(false);
             charInput.GetComponent<CharacterInputController>().enabled = false;
         }
@@ -291,7 +291,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
+    public void waitForDisplay()
+    {
+        CountDown();
+    }
     private void GetVariables()
     {
         //Get kph speed
