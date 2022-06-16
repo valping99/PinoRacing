@@ -36,10 +36,10 @@ public class CharacterInputController : MonoBehaviour
     [HideInInspector] public bool m_Stuns;
 
     // Init number Items ====
+    [HideInInspector] public float m_CurrentSpeed;
     [HideInInspector] public float m_MilkCollectSpeed;
     float m_CharacterPosition;
     public float m_DriveSpeed;
-    float m_CurrentSpeed;
     int m_TimeBoost;
     int laneNumber;
 
@@ -110,33 +110,19 @@ public class CharacterInputController : MonoBehaviour
 
     void MoveInput()
     {
-        try
-        {
-            CharacterMove();
+        CharacterMove();
 
-            GotMilkSpeed();
+        GotMilkSpeed();
 
-            ChangePosition();
+        ChangePosition();
 
-            GotStuns();
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError("Error in Update: " + ex.Message);
-        }
+        GotStuns();
     }
     void GetComponentInGame()
     {
-        try
-        {
-            spawnerObject = GameObject.FindGameObjectWithTag("Spawner");
-            m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
-            m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError("Error in Update: " + ex.Message);
-        }
+        spawnerObject = GameObject.FindGameObjectWithTag("Spawner");
+        m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
+        m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
     }
     void GotStuns()
     {
@@ -279,31 +265,18 @@ public class CharacterInputController : MonoBehaviour
     }
     void ChangeLane(int _direction)
     {
-        try
-        {
-            ChangeRotation(_direction);
-            StartCoroutine(ReturnRotation());
-            m_IsChangePosition = true;
+        ChangeRotation(_direction);
+        StartCoroutine(ReturnRotation());
+        m_IsChangePosition = true;
 
-            m_CharacterPosition = _direction;
-            StartCoroutine(StopMoving());
-            m_IsChangeLine = false;
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError("Error in Update: " + ex.Message);
-        }
+        m_CharacterPosition = _direction;
+        StartCoroutine(StopMoving());
+        m_IsChangeLine = false;
     }
     void ChangeRotation(int _direction)
     {
-        try
-        {
-            m_Character.rootObject.transform.localRotation = Quaternion.Euler(0, _direction * 2f, 0);
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError("Error in Update: " + ex.Message);
-        }
+        m_Character.rootObject.transform.localRotation = Quaternion.Euler(0, _direction * 2f, 0);
+
     }
     void ChangePosition()
     {
@@ -329,49 +302,37 @@ public class CharacterInputController : MonoBehaviour
     }
     public void ChangeSpeed()
     {
-        try
-        {
-            if (m_PadsIsBoosting || m_Stuns)
-            {
-                StartCoroutine(CheckRemainBoost());
-            }
-            else
-            {
-                // m_Stuns = false;
-                if (m_Character.m_CurrentBottleMilk >= 1)
-                {
-                    m_MilkCollectSpeed = m_Character.m_CurrentSpeed + (m_Character.m_CurrentBottleMilk * 5);
-                    m_MilkCollectSpeed = m_CurrentSpeed + (m_Character.m_CurrentBottleMilk * 5);
-                    m_IsGotMilk = true;
-                }
 
-                if (m_Character.m_CurrentBottleMilk == 0)
-                {
-                    m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
-                }
+        if (m_PadsIsBoosting || m_Stuns)
+        {
+            StartCoroutine(CheckRemainBoost());
+        }
+        else
+        {
+            // m_Stuns = false;
+            if (m_Character.m_CurrentBottleMilk >= 1)
+            {
+                m_MilkCollectSpeed = m_Character.m_CurrentSpeed + (m_Character.m_CurrentBottleMilk * 5);
+                m_MilkCollectSpeed = m_CurrentSpeed + (m_Character.m_CurrentBottleMilk * 5);
+                m_IsGotMilk = true;
+            }
+
+            if (m_Character.m_CurrentBottleMilk == 0)
+            {
+                m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
             }
         }
-        catch (System.Exception)
-        {
-            Debug.Log("ChangeSpeed");
-        }
+
     }
     public void DashBoost()
     {
-        try
+        if (!m_IsBoosting)
         {
-            if (!m_IsBoosting)
-            {
-                m_Character.m_CurrentSpeed = m_Character.m_MaxSpeed;
-            }
-            // StartCoroutine(CrystalBoost());
-            m_IsRemainBoost = true;
-            // StartCoroutine(CheckRemainBoost());
+            m_Character.m_CurrentSpeed = m_Character.m_MaxSpeed;
         }
-        catch (System.Exception ex)
-        {
-            Debug.LogError("Error in DashBoost: " + ex.Message);
-        }
+        // StartCoroutine(CrystalBoost());
+        m_IsRemainBoost = true;
+        // StartCoroutine(CheckRemainBoost());
     }
     IEnumerator CheckBoost()
     {
@@ -395,65 +356,39 @@ public class CharacterInputController : MonoBehaviour
     IEnumerator CheckRemainBoost()
     {
         yield return new WaitForSeconds(2f);
-        try
-        {
-            // m_PadsIsBoosting = false;
-            // m_Stuns = false;
-            // Debug.Log("CheckRemainBoost");
-            ChangeSpeed();
 
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError("Error in Update: " + ex.Message);
-        }
+        // m_PadsIsBoosting = false;
+        // m_Stuns = false;
+        // Debug.Log("CheckRemainBoost");
+        ChangeSpeed();
     }
     IEnumerator ReturnRotation()
     {
         yield return new WaitForSeconds(m_SecondChangeLine);
 
-        try
-        {
-            m_Character.rootObject.transform.localRotation = Quaternion.identity;
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError("Error in Update: " + ex.Message);
-        }
+        m_Character.rootObject.transform.localRotation = Quaternion.identity;
     }
     IEnumerator ReturnRotationStun()
     {
         yield return new WaitForSeconds(1f);
 
-        try
-        {
-            m_Character.rootObject.transform.localRotation = Quaternion.identity;
-            m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
-            m_Character.m_Stuns = false;
-            m_Stuns = false;
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError("Error in Update: " + ex.Message);
-        }
+        m_Character.rootObject.transform.localRotation = Quaternion.identity;
+        m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
+        m_Character.m_Stuns = false;
+        m_Stuns = false;
     }
     IEnumerator StopMoving()
     {
         yield return new WaitForSeconds(m_SecondChangeLine);
-        try
-        {
-            m_CharacterPosition = 0;
-            m_IsChangeLine = true;
-            m_IsChangePosition = false;
 
-            //stop track
+        m_CharacterPosition = 0;
+        m_IsChangeLine = true;
+        m_IsChangePosition = false;
 
-            //Set animation die
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError("Error in Update: " + ex.Message);
-        }
+        //stop track
+
+        //Set animation die
+
     }
     IEnumerator VelocityUp()
     {
