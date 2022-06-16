@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1433065699756771603
 Transform:
   m_ObjectHideFlags: 0
@@ -313,10 +313,9 @@ MonoBehaviour:
   m_CurrentBottleMilk: 0
   m_CrystalBoost: 0
   m_MaxSpeed: 100
-  m_InitialVelocity: 50
-  m_InitialSpeed: 10
-  m_CurrentSpeed: 10
-  m_MinSpeed: 0
+  m_InitialVelocity: 3
+  m_InitialSpeed: 70
+  m_CurrentSpeed: 0
   m_CurrentStamina: 50
   m_IsEnoughBoost: 0
   m_Stuns: 0

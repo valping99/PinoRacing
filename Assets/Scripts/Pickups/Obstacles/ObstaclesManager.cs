@@ -19,7 +19,7 @@ public class ObstaclesManager : MonoBehaviour
     float _PointX;
     float _PointY;
     float _PointZ;
-    List<float> m_PositionSpawn;
+    float[] m_PositionSpawn;
     Quaternion _Rotation;
 
     public CharacterInputController m_Character;
@@ -34,7 +34,7 @@ public class ObstaclesManager : MonoBehaviour
         m_Character = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInputController>();
         m_CharacterCollider = m_Character.gameObject.GetComponentInChildren<CharacterCollider>();
 
-        m_PositionSpawn = new List<float> { m_Character.slideLength, -m_Character.slideLength, 0 };
+        m_PositionSpawn = new float[] { m_Character.slideLength, 0, -m_Character.slideLength };
 
         // StartCoroutine(SpawnObstacles());
 
@@ -47,12 +47,9 @@ public class ObstaclesManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        m_ItemPosition = Random.Range(0, listObstacles.Length);
-        m_NextPosition = Random.Range(0, m_PositionSpawn.Count);
-
-        _PointX = m_Character.spawnerObject.transform.localPosition.x;
+        _PointX = m_Character.spawnerObject.transform.position.x;
         _PointY = m_Character.spawnerObject.transform.localPosition.y;
-        _PointZ = m_Character.spawnerObject.transform.localPosition.z + m_PositionSpawn[m_NextPosition];
+        _PointZ = m_Character.spawnerObject.transform.localPosition.z;
 
         _Rotation = m_Character.spawnerObject.transform.rotation;
     }
@@ -67,62 +64,23 @@ public class ObstaclesManager : MonoBehaviour
     #region Class
     IEnumerator SpawnObstacles()
     {
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(SpawnObstacles());
+
         if (!m_Character.m_Stuns)
         {
-            yield return new WaitForSeconds(1f);
+            m_ItemPosition = Random.Range(0, listObstacles.Length);
+            m_NextPosition = Random.Range(0, m_PositionSpawn.Length);
 
-            try
+            if (m_ItemPosition == positionOfStickCreamInTheSky)
             {
-
-                if (m_ItemPosition == positionOfStickCreamInTheSky)
-                {
-                    Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX, _PointY + 7f, _PointZ), _Rotation);
-                }
-                else
-                {
-                    Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX, _PointY + 0.5f, _PointZ), _Rotation);
-                }
-
-                StartCoroutine(SpawnObstacles());
+                Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX, _PointY + 7f, _PointZ + m_PositionSpawn[m_NextPosition]), _Rotation);
             }
-            catch (System.Exception ex)
+            else
             {
-                Debug.Log(ex.Message);
+                Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX, _PointY + 0.5f, _PointZ + m_PositionSpawn[m_NextPosition]), _Rotation);
             }
         }
-        // if (m_Character.m_IsBoosting)
-        // {
-        //     yield return new WaitForSeconds(1.5f);
-        // }
-        // else if (m_CharacterCollider.m_CurrentSpeed >= 100)
-        // {
-        //     yield return new WaitForSeconds(2.25f);
-        // }
-        // else if (m_CharacterCollider.m_CurrentSpeed >= 50)
-        // {
-        //     yield return new WaitForSeconds(2.5f);
-        // }
-        // else if (m_CharacterCollider.m_CurrentSpeed >= 25)
-        // {
-        //     yield return new WaitForSeconds(2.75f);
-        // }
-        // else if (m_CharacterCollider.m_CurrentSpeed >= 10)
-        // {
-        //     yield return new WaitForSeconds(2.5f);
-        // }
-        // else if (m_CharacterCollider.m_CurrentSpeed > m_Character.m_BoostSpeed)
-        // {
-        //     yield return new WaitForSeconds(1.5f);
-        // }
-        // else if (m_CharacterCollider.m_CurrentSpeed < 10)
-        // {
-        //     yield return new WaitForSeconds(1.5f);
-        // }
-        // else
-        // {
-        //     yield return new WaitForSeconds(2f);
-        // }
-
     }
 
     Vector3 SpawnObstaclesVec(float x, float y, float z)

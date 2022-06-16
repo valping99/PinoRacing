@@ -23,7 +23,7 @@ public class ReferencesManager : MonoBehaviour
     }
     public void PressedShareButton()
     {
-        currentTime = (int) managers.currentTime;
+        currentTime = (int)managers.currentTime;
         Application.OpenURL(share_Address + "?text=" + WWW.EscapeURL(shareNameParameter + "\n" +
             shareDescriptionParam + currentTime + " Seconds"));
     }

@@ -226,7 +226,7 @@ public class UIManager : MonoBehaviour
     {
         if (checkRunning)
         {
-            if(checkDashBoost)
+            if (checkDashBoost)
             {
                 charInput.DashBoost();
                 checkDashBoost = false;
@@ -255,11 +255,11 @@ public class UIManager : MonoBehaviour
             {
                 PauseGame();
             }
-            
+
         }
         else
         {
-            if(startScene == false)
+            if (startScene == false)
             {
                 displayScene.gameObject.SetActive(false);
                 miniMap.gameObject.SetActive(true);
@@ -297,7 +297,7 @@ public class UIManager : MonoBehaviour
     private void GetVariables()
     {
         //Get kph speed
-        double kphSpeed =charInput.m_CurrentSpeed;
+        double kphSpeed = charInput.m_CurrentSpeed;
         int currendSpeed = (int)kphSpeed;
         kphText.text = currendSpeed + "";
         numberLaps.text = lapsToGameOver + "/3";

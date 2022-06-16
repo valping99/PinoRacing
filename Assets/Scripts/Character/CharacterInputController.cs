@@ -46,20 +46,13 @@ public class CharacterInputController : MonoBehaviour
     // Init Bool ====
     bool m_IsChangeLine;
     bool m_IsGotMilk;
-    bool IsFirstTime;
     bool m_VelocityUp;
     bool m_IsChangePosition;
 
     Vector3 m_Direction;
     Quaternion m_Rotation;
 
-    enum CarType
-    {
-        Car1 = 1,
-        Car2 = 2,
-        Car3 = 3
-    }
-
+    public bool m_UpSpeed;
 
 #if !UNITY_STANDALONE
     protected Vector2 m_StartingTouch;
@@ -73,9 +66,9 @@ public class CharacterInputController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ChangeSpeed();
-
         m_MilkCollectSpeed = m_Character.m_InitialSpeed;
+        m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
+        m_CurrentSpeed = m_Character.m_InitialSpeed;
 
         laneNumber = 2;
         m_CharacterPosition = 0;
@@ -83,13 +76,13 @@ public class CharacterInputController : MonoBehaviour
 
         m_IsChangeLine = true;
         m_VelocityUp = true;
-        IsFirstTime = true;
 
         m_IsBoosting = false;
         m_IsRemainBoost = false;
         m_IsGotMilk = false;
         m_IsChangePosition = false;
         m_PadsIsBoosting = false;
+        m_UpSpeed = false;
         m_Stuns = false;
 
         GetComponentInGame();
@@ -102,6 +95,8 @@ public class CharacterInputController : MonoBehaviour
             GetComponentInGame();
 
         MoveInput();
+
+        // Debug.Log("m_CurrentSpeed: " + m_CurrentSpeed + " m_Character.m_CurrentSpeed: " + m_Character.m_CurrentSpeed);
     }
 
     #endregion
@@ -117,6 +112,8 @@ public class CharacterInputController : MonoBehaviour
         ChangePosition();
 
         GotStuns();
+
+        SpeedUp();
     }
     void GetComponentInGame()
     {
@@ -128,15 +125,17 @@ public class CharacterInputController : MonoBehaviour
     {
         if (m_Stuns)
         {
-            m_Character.m_Stuns = true;
             m_Character.rootObject.transform.Rotate(Vector3.up, 720 * Time.deltaTime, Space.Self);
             StartCoroutine(ReturnRotationStun());
         }
-
-        if (m_VelocityUp && !m_Stuns && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
+    }
+    void SpeedUp()
+    {
+        if (m_VelocityUp && !m_Stuns && m_CurrentSpeed < m_Character.m_MaxSpeed && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
         {
-            m_Character.m_CurrentSpeed += (5f + (m_Character.m_CurrentBottleMilk * 5f));
-            m_MilkCollectSpeed += (5f + (m_Character.m_CurrentBottleMilk * 5f));
+            m_Character.m_CurrentSpeed += (m_Character.m_InitialVelocity + (m_Character.m_CurrentBottleMilk * 5f));
+            m_CurrentSpeed += (m_Character.m_InitialVelocity + (m_Character.m_CurrentBottleMilk * 5f));
+            m_MilkCollectSpeed += (m_Character.m_InitialVelocity + (m_Character.m_CurrentBottleMilk * 5f));
             m_VelocityUp = false;
             StartCoroutine(VelocityUp());
         }
@@ -172,16 +171,10 @@ public class CharacterInputController : MonoBehaviour
     {
         if (m_Character.m_CurrentSpeed >= m_CurrentSpeed)
         {
-            m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_Character.m_CurrentSpeed, Time.deltaTime);
-        }
-        else
-        {
-            m_CurrentSpeed = m_Character.m_CurrentSpeed;
+            m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_Character.m_CurrentSpeed, m_Character.m_InitialVelocity * Time.deltaTime);
         }
 
         m_DriveSpeed += (m_CurrentSpeed * Time.deltaTime) / 10;
-
-        // Debug.Log("Speed: " + m_CurrentSpeed);
 
         Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed);
         Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed - 20f);
@@ -200,7 +193,6 @@ public class CharacterInputController : MonoBehaviour
 
         spawnerObject.transform.localRotation = _tempRotationSpawner;
 
-
 #if UNITY_EDITOR || UNITY_STANDALONE
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns)
@@ -216,9 +208,8 @@ public class CharacterInputController : MonoBehaviour
 
         //Test boost in unity editor
         if (Input.GetKeyDown(KeyCode.R))
-        {
             DashBoost();
-        }
+
 
 #else
         // Use touch input on mobile
@@ -276,7 +267,6 @@ public class CharacterInputController : MonoBehaviour
     void ChangeRotation(int _direction)
     {
         m_Character.rootObject.transform.localRotation = Quaternion.Euler(0, _direction * 2f, 0);
-
     }
     void ChangePosition()
     {
@@ -302,27 +292,18 @@ public class CharacterInputController : MonoBehaviour
     }
     public void ChangeSpeed()
     {
-
         if (m_PadsIsBoosting || m_Stuns)
         {
             StartCoroutine(CheckRemainBoost());
         }
         else
         {
-            // m_Stuns = false;
             if (m_Character.m_CurrentBottleMilk >= 1)
             {
-                m_MilkCollectSpeed = m_Character.m_CurrentSpeed + (m_Character.m_CurrentBottleMilk * 5);
-                m_MilkCollectSpeed = m_CurrentSpeed + (m_Character.m_CurrentBottleMilk * 5);
+                m_MilkCollectSpeed = m_Character.m_CurrentSpeed + 5f;
                 m_IsGotMilk = true;
             }
-
-            if (m_Character.m_CurrentBottleMilk == 0)
-            {
-                m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
-            }
         }
-
     }
     public void DashBoost()
     {
@@ -330,36 +311,12 @@ public class CharacterInputController : MonoBehaviour
         {
             m_Character.m_CurrentSpeed = m_Character.m_MaxSpeed;
         }
-        // StartCoroutine(CrystalBoost());
         m_IsRemainBoost = true;
-        // StartCoroutine(CheckRemainBoost());
-    }
-    IEnumerator CheckBoost()
-    {
-        // m_Character.m_CrystalBoost -= 1;
-        // if (m_Character.m_CrystalBoost <= 0)
-        // {
-        //     m_Character.m_CurrentCrystal = 0;
-        // }
-
-        int _TimePerSec = m_TimeBoost;
-        // tempt speed
-        float _temp = (m_BoostSpeed - m_MilkCollectSpeed) / (_TimePerSec * m_TimeBoost);
-
-
-        while (m_Character.m_CurrentSpeed > m_MilkCollectSpeed)
-        {
-            yield return new WaitForSeconds(1f / _TimePerSec);
-            m_Character.m_CurrentSpeed -= _temp;
-        }
     }
     IEnumerator CheckRemainBoost()
     {
         yield return new WaitForSeconds(2f);
 
-        // m_PadsIsBoosting = false;
-        // m_Stuns = false;
-        // Debug.Log("CheckRemainBoost");
         ChangeSpeed();
     }
     IEnumerator ReturnRotation()
@@ -374,6 +331,7 @@ public class CharacterInputController : MonoBehaviour
 
         m_Character.rootObject.transform.localRotation = Quaternion.identity;
         m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
+
         m_Character.m_Stuns = false;
         m_Stuns = false;
     }
@@ -394,6 +352,7 @@ public class CharacterInputController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         m_VelocityUp = true;
+        m_UpSpeed = false;
     }
     #endregion
 }

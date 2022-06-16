@@ -32,8 +32,7 @@ public class CharacterCollider : MonoBehaviour
 
     [Header("Controls")]
     public float m_CurrentSpeed;
-    public float m_MinSpeed;
-    public float m_CurrentStamina;
+    [HideInInspector] public float m_CurrentStamina;
     public bool m_IsEnoughBoost;
 
     [HideInInspector] public bool m_Stuns;
@@ -50,14 +49,11 @@ public class CharacterCollider : MonoBehaviour
 
     #region Unity Methods
 
-    void Awake()
-    {
-        m_CurrentSpeed = m_InitialSpeed;
-    }
-
     void Start()
     {
         m_Stuns = false;
+
+        m_CurrentSpeed = m_InitialSpeed;
 
         GetComponentInGame();
     }
@@ -65,7 +61,7 @@ public class CharacterCollider : MonoBehaviour
     void FixedUpdate()
     {
         // CheckBoostCount();
-        // FixSpeedUpdate();
+        FixSpeedUpdate();
     }
 
     void OnTriggerEnter(Collider other)
@@ -110,7 +106,7 @@ public class CharacterCollider : MonoBehaviour
                     if (!m_CharacterController.m_Stuns)
                     {
                         m_CurrentSpeed = 0;
-                        m_CharacterController.m_MilkCollectSpeed = 0;
+                        m_CharacterController.m_CurrentSpeed = 0;
 
                         m_CharacterController.m_Stuns = true;
                         m_CharacterController.ChangeSpeed();
@@ -118,6 +114,7 @@ public class CharacterCollider : MonoBehaviour
 
                     Destroy(m_RootItem.gameObject);
                 }
+
                 if (child.CompareTag("Stick"))
                 {
                     StickPickup stick = m_RootItem.GetComponent<StickPickup>();
@@ -127,7 +124,8 @@ public class CharacterCollider : MonoBehaviour
                     {
                         m_CurrentBottleMilk = 0;
                         m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_InitialSpeed, 5f);
-                        m_CharacterController.m_MilkCollectSpeed = Mathf.Lerp(m_CharacterController.m_MilkCollectSpeed, m_InitialSpeed, 5f);
+                        // m_CharacterController.m_MilkCollectSpeed = Mathf.Lerp(m_CharacterController.m_MilkCollectSpeed, m_InitialSpeed, 5f);
+                        m_CharacterController.m_MilkCollectSpeed = m_InitialSpeed;
                     }
 
                     if (m_CurrentSpeed > m_InitialSpeed)
@@ -153,6 +151,8 @@ public class CharacterCollider : MonoBehaviour
 
                 if (child.CompareTag("Milk"))
                 {
+                    m_CharacterController.m_UpSpeed = true;
+
                     MilkPickup milk = other.GetComponent<MilkPickup>();
 
                     m_CurrentBottleMilk += milk.amountMilkBottle;
@@ -171,7 +171,6 @@ public class CharacterCollider : MonoBehaviour
                             m_CurrentSpeed = m_MaxSpeed;
 
                         m_CharacterController.m_PadsIsBoosting = true;
-                        m_CharacterController.ChangeSpeed();
                     }
 
                     Destroy(m_RootItem.gameObject);
@@ -185,12 +184,19 @@ public class CharacterCollider : MonoBehaviour
         m_Audio = GetComponent<AudioSource>();
         m_CharacterController = GetComponentInParent<CharacterInputController>();
     }
-    // void FixSpeedUpdate()
-    // {
-    //     if (m_CurrentSpeed <= m_InitialSpeed && !m_Stuns)
-    //     {
-    //         m_CurrentSpeed = m_InitialSpeed;
-    //     }
-    // }
+    void FixSpeedUpdate()
+    {
+        if (m_CurrentSpeed >= m_MaxSpeed && m_CharacterController.m_UpSpeed)
+        {
+            m_CharacterController.m_UpSpeed = false;
+            StartCoroutine(SpeedUp());
+        }
+    }
+
+    IEnumerator SpeedUp()
+    {
+        yield return new WaitForSeconds(.3f);
+        m_MaxSpeed = m_CharacterController.m_CurrentSpeed;
+    }
     #endregion
 }
