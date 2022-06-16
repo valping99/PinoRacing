@@ -312,9 +312,9 @@ MonoBehaviour:
   m_CurrentCrystal: 0
   m_CurrentBottleMilk: 0
   m_CrystalBoost: 0
-  m_MaxSpeed: 100
+  m_MaxSpeed: 150
   m_InitialVelocity: 3
-  m_InitialSpeed: 70
+  m_InitialSpeed: 50
   m_CurrentSpeed: 0
   m_CurrentStamina: 50
   m_IsEnoughBoost: 0

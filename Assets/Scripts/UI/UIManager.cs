@@ -587,7 +587,7 @@ public class UIManager : MonoBehaviour
         milkNumberText.text = currentMilk + "";
         IsBoostingSpeed();
         //Get crystal to unlock boost button
-        crystalCollected = charColl.m_CurrentCrystal;
+        // crystalCollected = charColl.m_CurrentCrystal;
         if (charColl.m_IsEnoughBoost == true)
         {
             //crystalCollected = 6;

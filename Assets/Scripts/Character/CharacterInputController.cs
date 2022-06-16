@@ -173,7 +173,10 @@ public class CharacterInputController : MonoBehaviour
         {
             m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_Character.m_CurrentSpeed, m_Character.m_InitialVelocity * Time.deltaTime);
         }
-
+        else
+        {
+            m_CurrentSpeed = m_Character.m_CurrentSpeed;
+        }
         m_DriveSpeed += (m_CurrentSpeed * Time.deltaTime) / 10;
 
         Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed);
