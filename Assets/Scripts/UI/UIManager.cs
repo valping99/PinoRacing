@@ -297,7 +297,7 @@ public class UIManager : MonoBehaviour
     private void GetVariables()
     {
         //Get kph speed
-        double kphSpeed =charColl.m_CurrentSpeed * 3.6f;
+        double kphSpeed =charInput.m_CurrentSpeed;
         int currendSpeed = (int)kphSpeed;
         kphText.text = currendSpeed + "";
         numberLaps.text = lapsToGameOver + "/3";
