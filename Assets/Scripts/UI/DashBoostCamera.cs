@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DashBoostCamera : MonoBehaviour
@@ -50,12 +48,13 @@ public class DashBoostCamera : MonoBehaviour
         }
         else if (charInput.m_Stuns)
         {
-            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 40, 2.5f * Time.deltaTime);
+            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 50, 2.5f * Time.deltaTime);
         }
         else
         {
             mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 70, 1.5f * Time.deltaTime);
         }
+
     }
 }
 
