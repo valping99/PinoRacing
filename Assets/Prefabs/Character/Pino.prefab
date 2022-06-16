@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 4738020060440150089}
   m_Layer: 0
   m_Name: Pino
-  m_TagString: RootObject
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -319,6 +319,7 @@ MonoBehaviour:
   m_MinSpeed: 0
   m_CurrentStamina: 50
   m_IsEnoughBoost: 0
+  m_Stuns: 0
 --- !u!114 &4738020060440150089
 MonoBehaviour:
   m_ObjectHideFlags: 0
