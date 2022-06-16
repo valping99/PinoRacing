@@ -9125,7 +9125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &449337012
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9139,9 +9139,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 356671662}
-  - {fileID: 1562919274}
   m_Father: {fileID: 2071708844}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -12272,7 +12271,7 @@ RectTransform:
   - {fileID: 2047694142}
   - {fileID: 1540496042}
   m_Father: {fileID: 2071708844}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -15210,17 +15209,17 @@ RectTransform:
   m_GameObject: {fileID: 1562919273}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0969483, y: 1.0969483, z: 1.0969483}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2143464293}
   - {fileID: 599136423}
-  m_Father: {fileID: 449337012}
-  m_RootOrder: 1
+  m_Father: {fileID: 2071708844}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -580.74524, y: 67.99887}
+  m_AnchoredPosition: {x: 384.99988, y: -242.42993}
   m_SizeDelta: {x: 500, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!43 &1580559677
@@ -16816,6 +16815,7 @@ MonoBehaviour:
   lockSpeedGObj: {fileID: 621439009}
   finishLap: {fileID: 1058259406}
   displayScene: {fileID: 7497120833653236045}
+  lapsObjects: {fileID: 1562919273}
   boostSpeedButton: {fileID: 320466037}
   changeToRocketStart: {fileID: 2047694144}
   LockBoostButton: {fileID: 621439011}
@@ -17728,6 +17728,7 @@ RectTransform:
   - {fileID: 1002541111}
   - {fileID: 1337583621}
   - {fileID: 2065750299}
+  - {fileID: 1562919274}
   - {fileID: 449337012}
   - {fileID: 971276961}
   - {fileID: 7497120833653236042}
@@ -18784,7 +18785,7 @@ RectTransform:
   - {fileID: 7497120833814288701}
   - {fileID: 7497120834432658718}
   m_Father: {fileID: 2071708844}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -19157,6 +19158,7 @@ MonoBehaviour:
   m_IsBoosting: 0
   m_PadsIsBoosting: 0
   m_Stuns: 0
+  m_CurrentSpeed: 0
   m_MilkCollectSpeed: 0
   m_DriveSpeed: 0
 --- !u!4 &7651326599288477483

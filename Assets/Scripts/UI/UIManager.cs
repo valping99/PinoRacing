@@ -59,6 +59,7 @@ public class UIManager : MonoBehaviour
     public GameObject lockSpeedGObj;
     public GameObject finishLap;
     public GameObject displayScene;
+    public GameObject lapsObjects;
     public Button boostSpeedButton;
     public Button changeToRocketStart;
     public Button LockBoostButton;
@@ -166,6 +167,8 @@ public class UIManager : MonoBehaviour
                 mainSceneUI.gameObject.SetActive(false);
                 gameOverUI.gameObject.SetActive(false);
                 checkPause = !checkPause;
+                miniMap.gameObject.SetActive(false);
+                lapsObjects.gameObject.SetActive(false);
                 Time.timeScale = 0f;
                 Debug.Log("Pause");
             }
@@ -175,6 +178,8 @@ public class UIManager : MonoBehaviour
                 pauseUI.gameObject.SetActive(false);
                 mainSceneUI.gameObject.SetActive(true);
                 gameOverUI.gameObject.SetActive(false);
+                lapsObjects.gameObject.SetActive(true);
+                miniMap.gameObject.SetActive(true);
                 checkPause = !checkPause;
                 Time.timeScale = 1f;
                 Debug.Log("Resume");
@@ -264,12 +269,14 @@ public class UIManager : MonoBehaviour
                 displayScene.gameObject.SetActive(false);
                 miniMap.gameObject.SetActive(true);
                 countdownTimer_Text.gameObject.SetActive(true);
+                lapsObjects.gameObject.SetActive(true);
                 CountDown();
             }
             else
             {
                 countdownTimer_Text.gameObject.SetActive(false);
                 miniMap.gameObject.SetActive(false);
+                lapsObjects.gameObject.SetActive(false);
             }
             //popUpNumber_Text.text = boostCount + "";
             //countBoostNumber_Text.text = boostCount + "";
@@ -318,22 +325,13 @@ public class UIManager : MonoBehaviour
             gameClearUI.gameObject.SetActive(true);
             gameOverUI.gameObject.SetActive(false);
             pauseUI.gameObject.SetActive(false);
+            lapsObjects.gameObject.SetActive(false);
             mainSceneUI.gameObject.SetActive(false);
             miniMap.gameObject.SetActive(false);
             screenShot.checkUI();
             setRank();
 
             Time.timeScale = 0f;
-        }
-        else
-        {
-            //Disable GameOver UI & Enable other UI
-            gameOverUI.gameObject.SetActive(false);
-            pauseUI.gameObject.SetActive(false);
-            miniMap.gameObject.SetActive(true);
-            gameClearUI.gameObject.SetActive(false);
-            mainSceneUI.gameObject.SetActive(true);
-            Time.timeScale = 1f;
         }
     }
     //private void GameClear()
@@ -461,17 +459,11 @@ public class UIManager : MonoBehaviour
         {
             gameClearUI.gameObject.SetActive(false);
             gameOverUI.gameObject.SetActive(true);
+            lapsObjects.gameObject.SetActive(false);
             pauseUI.gameObject.SetActive(false);
             mainSceneUI.gameObject.SetActive(false);
             Time.timeScale = 0f;
-        }
-        else
-        {
-            gameClearUI.gameObject.SetActive(false);
-            gameOverUI.gameObject.SetActive(false);
-            pauseUI.gameObject.SetActive(false);
-            mainSceneUI.gameObject.SetActive(true);
-            Time.timeScale = 1f;
+            miniMap.gameObject.SetActive(false);
         }
     }
     void IsBoostingSpeed()
