@@ -39,6 +39,7 @@ public class UIManager : MonoBehaviour
     public bool checkBoost;
     public bool checkRunning = false;
     public bool checkDashBoost = false;
+    private bool startScene = true;
 
     [Header("Object UI")]
     [SerializeField]
@@ -57,6 +58,7 @@ public class UIManager : MonoBehaviour
     public GameObject isBoosting;
     public GameObject lockSpeedGObj;
     public GameObject finishLap;
+    public GameObject displayScene;
     public Button boostSpeedButton;
     public Button changeToRocketStart;
     public Button LockBoostButton;
@@ -119,6 +121,7 @@ public class UIManager : MonoBehaviour
         screenShot = FindObjectOfType<HiresScreenShots>();
         obstacles = FindObjectOfType<ObstaclesManager>();
         b_count = FindObjectOfType<BoostCount>();
+        displayScene = GameObject.Find("PanelWaitForDisplay");
     }
 
 
@@ -172,7 +175,6 @@ public class UIManager : MonoBehaviour
                 pauseUI.gameObject.SetActive(true);
                 mainSceneUI.gameObject.SetActive(false);
                 gameOverUI.gameObject.SetActive(false);
-                countdownTimer_Text.gameObject.SetActive(false);
                 checkPause = !checkPause;
                 Time.timeScale = 0f;
                 Debug.Log("Pause");
@@ -185,10 +187,6 @@ public class UIManager : MonoBehaviour
                 gameOverUI.gameObject.SetActive(false);
                 checkPause = !checkPause;
                 Time.timeScale = 1f;
-                if (!checkRunning)
-                {
-                    countdownTimer_Text.gameObject.SetActive(true);
-                }
                 Debug.Log("Resume");
             }
         }
@@ -271,11 +269,22 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            if(startScene == false)
+            {
+                displayScene.gameObject.SetActive(false);
+                miniMap.gameObject.SetActive(true);
+                countdownTimer_Text.gameObject.SetActive(true);
+                CountDown();
+            }
+            else
+            {
+                countdownTimer_Text.gameObject.SetActive(false);
+                miniMap.gameObject.SetActive(false);
+            }
             //popUpNumber_Text.text = boostCount + "";
             //countBoostNumber_Text.text = boostCount + "";
             BoostStart();
             //charColl.m_CurrentSpeed = 0;
-            waitForDisplay();
             mainSceneUI.gameObject.SetActive(false);
             charInput.GetComponent<CharacterInputController>().enabled = false;
         }
@@ -293,7 +302,7 @@ public class UIManager : MonoBehaviour
 
     public void waitForDisplay()
     {
-        CountDown();
+        startScene = false;
     }
     private void GetVariables()
     {
