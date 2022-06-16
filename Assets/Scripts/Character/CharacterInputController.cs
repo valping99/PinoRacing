@@ -199,7 +199,7 @@ public class CharacterInputController : MonoBehaviour
 
         Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed);
         Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed - 20f);
-        Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed + 70f);
+        Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed + 60f);
 
         Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 7f);
         Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 70f);
@@ -315,11 +315,11 @@ public class CharacterInputController : MonoBehaviour
         {
             if (laneNumber == 1)
             {
-                m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(-5, 0, 0), 2f * Time.deltaTime);
+                m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(-slideLength, 0, 0), 2f * Time.deltaTime);
             }
             else if (laneNumber == 3)
             {
-                m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(5, 0, 0), 2f * Time.deltaTime);
+                m_Character.rootObject.transform.localPosition = Vector3.Lerp(m_Character.rootObject.transform.localPosition, new Vector3(slideLength, 0, 0), 2f * Time.deltaTime);
             }
             else
             {
@@ -341,6 +341,7 @@ public class CharacterInputController : MonoBehaviour
                 if (m_Character.m_CurrentBottleMilk >= 1)
                 {
                     m_MilkCollectSpeed = m_Character.m_CurrentSpeed + (m_Character.m_CurrentBottleMilk * 5);
+                    m_MilkCollectSpeed = m_CurrentSpeed + (m_Character.m_CurrentBottleMilk * 5);
                     m_IsGotMilk = true;
                 }
 

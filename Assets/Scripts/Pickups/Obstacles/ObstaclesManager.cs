@@ -15,14 +15,11 @@ public class ObstaclesManager : MonoBehaviour
     private const int positionOfStickCreamInTheSky = 1;
     int m_ItemPosition;
     int m_NextPosition;
-    float m_RootPosition = 0;
-    float m_SidePosition = 4.5f;
 
     float _PointX;
     float _PointY;
     float _PointZ;
     List<float> m_PositionSpawn;
-
     Quaternion _Rotation;
 
     public CharacterInputController m_Character;
@@ -37,7 +34,7 @@ public class ObstaclesManager : MonoBehaviour
         m_Character = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInputController>();
         m_CharacterCollider = m_Character.gameObject.GetComponentInChildren<CharacterCollider>();
 
-        m_PositionSpawn = new List<float> { -m_SidePosition, m_RootPosition, m_SidePosition };
+        m_PositionSpawn = new List<float> { m_Character.slideLength, -m_Character.slideLength, 0 };
 
         // StartCoroutine(SpawnObstacles());
 
@@ -70,6 +67,29 @@ public class ObstaclesManager : MonoBehaviour
     #region Class
     IEnumerator SpawnObstacles()
     {
+        if (!m_Character.m_Stuns)
+        {
+            yield return new WaitForSeconds(1f);
+
+            try
+            {
+
+                if (m_ItemPosition == positionOfStickCreamInTheSky)
+                {
+                    Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX, _PointY + 7f, _PointZ), _Rotation);
+                }
+                else
+                {
+                    Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX, _PointY + 0.5f, _PointZ), _Rotation);
+                }
+
+                StartCoroutine(SpawnObstacles());
+            }
+            catch (System.Exception ex)
+            {
+                Debug.Log(ex.Message);
+            }
+        }
         // if (m_Character.m_IsBoosting)
         // {
         //     yield return new WaitForSeconds(1.5f);
@@ -102,26 +122,7 @@ public class ObstaclesManager : MonoBehaviour
         // {
         //     yield return new WaitForSeconds(2f);
         // }
-        yield return new WaitForSeconds(2f);
 
-        try
-        {
-
-            if (m_ItemPosition == positionOfStickCreamInTheSky)
-            {
-                Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX, _PointY + 7f, _PointZ), _Rotation);
-            }
-            else
-            {
-                Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX, _PointY + 0.5f, _PointZ), _Rotation);
-            }
-
-            StartCoroutine(SpawnObstacles());
-        }
-        catch (System.Exception ex)
-        {
-            Debug.Log(ex.Message);
-        }
     }
 
     Vector3 SpawnObstaclesVec(float x, float y, float z)

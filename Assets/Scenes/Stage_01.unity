@@ -11103,6 +11103,7 @@ MonoBehaviour:
   m_PadsIsBoosting: 0
   m_Stuns: 0
   m_MilkCollectSpeed: 0
+  m_DriveSpeed: 0
 --- !u!4 &7651326599288477483
 Transform:
   m_ObjectHideFlags: 0
