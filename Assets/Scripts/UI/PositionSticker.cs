@@ -6,10 +6,13 @@ public class PositionSticker : MonoBehaviour
 {
     public GameObject stick;
     private CharacterCollider charColl;
+    [SerializeField]
+    private GameObject pinoModel;
     // Start is called before the first frame update
     void Start()
     {
         charColl = FindObjectOfType<CharacterCollider>();
+        pinoModel = GameObject.FindGameObjectWithTag("RootObject");
     }
 
     // Update is called once per frame
@@ -17,4 +20,5 @@ public class PositionSticker : MonoBehaviour
     {
         stick.transform.position = charColl.transform.position;
     }
+
 }
