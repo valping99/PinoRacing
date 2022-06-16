@@ -27,7 +27,7 @@ public class DashBoostCamera : MonoBehaviour
 
     private void FieldCamera()
     {
-        if(charColl.m_CurrentSpeed == charColl.m_MaxSpeed)
+        if (charColl.m_CurrentSpeed >= charColl.m_MaxSpeed)
         {
             checkSpeed = true;
         }
@@ -40,7 +40,7 @@ public class DashBoostCamera : MonoBehaviour
         {
             mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 100, 3f * Time.deltaTime);
         }
-        else if(charInput.m_PadsIsBoosting && checkSpeed)
+        else if (charInput.m_PadsIsBoosting && checkSpeed)
         {
             mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 120, 3f * Time.deltaTime);
         }
@@ -48,7 +48,7 @@ public class DashBoostCamera : MonoBehaviour
         {
             mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 100, .5f * Time.deltaTime);
         }
-        else if(charInput.m_Stuns)
+        else if (charInput.m_Stuns)
         {
             mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 40, 2.5f * Time.deltaTime);
         }
