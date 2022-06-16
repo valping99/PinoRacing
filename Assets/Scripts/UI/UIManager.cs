@@ -111,7 +111,7 @@ public class UIManager : MonoBehaviour
     public int lapsToGameOver;
     float timeGo = 0.5f;
     #endregion
-
+    #region Unity Method
     //Game Start
     void Start()
     {
@@ -130,7 +130,7 @@ public class UIManager : MonoBehaviour
         GamePlaying();
     }
 
-
+    #endregion
     #region UIManager
     //Active when game start
     private void StartGame()
@@ -153,16 +153,6 @@ public class UIManager : MonoBehaviour
         }
 
     }
-
-
-    //Set Variables when game start
-    private void StartStatusOfPino()
-    {
-        healthPoint.value = healthPoint.maxValue;
-
-    }
-
-
 
     //Active PauseUI
     public void PauseGame()
@@ -377,9 +367,6 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
-
-
     public void BoostStart()
     {
         boostCount = b_count.boostCount;
@@ -399,7 +386,115 @@ public class UIManager : MonoBehaviour
             changeToRocketStart.gameObject.SetActive(false);
         }
     }
+    //Time to countdown
+    public void CountDown()
+    {
+        if (timeValue > 0)
+        {
+            timeValue -= Time.deltaTime;
+            charColl.m_CurrentSpeed = 0;
+            charColl.GetComponent<CharacterCollider>().enabled = false;
+            mainSceneUI.gameObject.SetActive(false);
+            //obstacles.GetComponent<ObstaclesManager>().enabled = false;
+        }
+        else
+        {
+            checkRunning = true;
+            timeValue = 0;
 
+        }
+        DisplayTimer(timeValue);
+    }
+    //DisplayTimer
+    public void DisplayTimer(float timeToDisplay)
+    {
+        if (timeToDisplay < 0)
+        {
+            timeToDisplay = 0;
+            obstacles.CallSpawnObstacles();
+            mainSceneUI.gameObject.SetActive(true);
+            //obstacles.StartSpawnObjects();
+            charColl.GetComponent<CharacterCollider>().enabled = true;
+            //charInput.GetComponent<CharacterInputController>().enabled = true;
+            //obstacles.GetComponent<ObstaclesManager>().enabled = true;
+            //charColl.m_CurrentSpeed += charColl.m_InitialSpeed;
+        }
+        //float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60) + 1;
+
+        //countdownTimer_Text.text = string.Format("{0:00}:{1:00}", minutes, seconds);\
+        countdownTimer_Text.text = seconds + "";
+    }
+    //TimeCountUp
+    private void TimeUp()
+    {
+        if (timeValueUp < maxTimeValue)
+        {
+            timeValueUp += Time.deltaTime;
+
+        }
+        else
+        {
+            checkGameOver = true;
+        }
+        DisplayTimerCountUp(timeValueUp);
+    }
+    private void DisplayTimerCountUp(float timeToDisplayCountUp)
+    {
+        if (timeToDisplayCountUp == maxTimeValue)
+        {
+            timeToDisplayCountUp = 0;
+            //GameOver();
+        }
+        float minutes = Mathf.FloorToInt(timeToDisplayCountUp / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplayCountUp % 60);
+        float milliSeconds = (timeToDisplayCountUp % 1) * 1000;
+
+        currentTime = timeToDisplayCountUp;
+
+        limitedTimer_Text.text = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliSeconds);
+        gameOverScoreText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+    private void TimeOut()
+    {
+        if (checkGameOver)
+        {
+            gameClearUI.gameObject.SetActive(false);
+            gameOverUI.gameObject.SetActive(true);
+            pauseUI.gameObject.SetActive(false);
+            mainSceneUI.gameObject.SetActive(false);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            gameClearUI.gameObject.SetActive(false);
+            gameOverUI.gameObject.SetActive(false);
+            pauseUI.gameObject.SetActive(false);
+            mainSceneUI.gameObject.SetActive(true);
+            Time.timeScale = 1f;
+        }
+    }
+    void IsBoostingSpeed()
+    {
+        if (charInput.m_IsBoosting)
+        {
+            isBoosting.gameObject.SetActive(true);
+            boostSpeedGObj.gameObject.SetActive(false);
+        }
+        else
+        {
+            isBoosting.gameObject.SetActive(false);
+            boostSpeedGObj.gameObject.SetActive(true);
+        }
+    }
+    #endregion
+    #region Not using
+    //Set Variables when game start
+    private void StartStatusOfPino()
+    {
+        healthPoint.value = healthPoint.maxValue;
+
+    }
     /**
     //Update Score, speed, item...
     public void UpdateScore(int scoreToAdd)
@@ -461,7 +556,6 @@ public class UIManager : MonoBehaviour
         }
     }
     **/
-
     //Set HP Decrease 
     public void HealthUpdate()
     {
@@ -493,9 +587,6 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-
-
-
 
     //BoostSpeed
     public void BoostSpeed()
@@ -529,47 +620,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    //Time to countdown
-    public void CountDown()
-    {
-        if (timeValue > 0)
-        {
-            timeValue -= Time.deltaTime;
-            charColl.m_CurrentSpeed = 0;
-            charColl.GetComponent<CharacterCollider>().enabled = false;
-            mainSceneUI.gameObject.SetActive(false);
-            //obstacles.GetComponent<ObstaclesManager>().enabled = false;
-        }
-        else
-        {
-            checkRunning = true;
-            timeValue = 0;
-
-        }
-        DisplayTimer(timeValue);
-    }
-
-    //DisplayTimer
-    public void DisplayTimer(float timeToDisplay)
-    {
-        if (timeToDisplay < 0)
-        {
-            timeToDisplay = 0;
-            obstacles.CallSpawnObstacles();
-            mainSceneUI.gameObject.SetActive(true);
-            //obstacles.StartSpawnObjects();
-            charColl.GetComponent<CharacterCollider>().enabled = true;
-            //charInput.GetComponent<CharacterInputController>().enabled = true;
-            //obstacles.GetComponent<ObstaclesManager>().enabled = true;
-            //charColl.m_CurrentSpeed += charColl.m_InitialSpeed;
-        }
-        //float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60) + 1;
-
-        //countdownTimer_Text.text = string.Format("{0:00}:{1:00}", minutes, seconds);\
-        countdownTimer_Text.text = seconds + "";
-    }
-
     /**
     //TimeOver
     public void CountDownMinutes()
@@ -599,72 +649,5 @@ public class UIManager : MonoBehaviour
         limitedTimer_Text.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
     **/
-    //TimeCountUp
-    private void TimeUp()
-    {
-        if (timeValueUp < maxTimeValue)
-        {
-            timeValueUp += Time.deltaTime;
-
-        }
-        else
-        {
-            checkGameOver = true;
-        }
-        DisplayTimerCountUp(timeValueUp);
-    }
-
-    private void DisplayTimerCountUp(float timeToDisplayCountUp)
-    {
-        if (timeToDisplayCountUp == maxTimeValue)
-        {
-            timeToDisplayCountUp = 0;
-            //GameOver();
-        }
-        float minutes = Mathf.FloorToInt(timeToDisplayCountUp / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplayCountUp % 60);
-        float milliSeconds = (timeToDisplayCountUp % 1) * 1000;
-
-        currentTime = timeToDisplayCountUp;
-
-        limitedTimer_Text.text = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliSeconds);
-        gameOverScoreText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-    }
-
-    private void TimeOut()
-    {
-        if (checkGameOver)
-        {
-            gameClearUI.gameObject.SetActive(false);
-            gameOverUI.gameObject.SetActive(true);
-            pauseUI.gameObject.SetActive(false);
-            mainSceneUI.gameObject.SetActive(false);
-            Time.timeScale = 0f;
-        }
-        else
-        {
-            gameClearUI.gameObject.SetActive(false);
-            gameOverUI.gameObject.SetActive(false);
-            pauseUI.gameObject.SetActive(false);
-            mainSceneUI.gameObject.SetActive(true);
-            Time.timeScale = 1f;
-        }
-    }
-    void IsBoostingSpeed()
-    {
-        if (charInput.m_IsBoosting)
-        {
-            isBoosting.gameObject.SetActive(true);
-            boostSpeedGObj.gameObject.SetActive(false);
-        }
-        else
-        {
-            isBoosting.gameObject.SetActive(false);
-            boostSpeedGObj.gameObject.SetActive(true);
-        }
-    }
-
-
-
     #endregion
 }
