@@ -16,9 +16,7 @@ public class CharacterCollider : MonoBehaviour
     public GameObject rootObject;
 
     [Header("Items")]
-    public int m_CurrentCrystal;
     public int m_CurrentBottleMilk;
-    public int m_CrystalBoost;
 
 
     [Header("Initial Values")]
@@ -124,7 +122,6 @@ public class CharacterCollider : MonoBehaviour
                     {
                         m_CurrentBottleMilk = 0;
                         m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_InitialSpeed, 5f);
-                        // m_CharacterController.m_MilkCollectSpeed = Mathf.Lerp(m_CharacterController.m_MilkCollectSpeed, m_InitialSpeed, 5f);
                         m_CharacterController.m_MilkCollectSpeed = m_InitialSpeed;
                     }
 
@@ -192,7 +189,6 @@ public class CharacterCollider : MonoBehaviour
             StartCoroutine(SpeedUp());
         }
     }
-
     IEnumerator SpeedUp()
     {
         yield return new WaitForSeconds(.3f);
