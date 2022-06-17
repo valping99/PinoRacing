@@ -309,13 +309,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CharacterController: {fileID: 0}
   rootObject: {fileID: 223628765726189809}
-  m_CurrentCrystal: 0
   m_CurrentBottleMilk: 0
-  m_CrystalBoost: 0
   m_MaxSpeed: 150
   m_InitialVelocity: 3
   m_InitialSpeed: 50
-  m_CurrentSpeed: 0
+  m_CurrentSpeed: 278.09
   m_CurrentStamina: 50
   m_IsEnoughBoost: 0
   m_Stuns: 0

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 /*
 * Create by William (c)
 * https://github.com/Long18
