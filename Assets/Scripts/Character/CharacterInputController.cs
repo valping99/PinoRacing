@@ -67,8 +67,6 @@ public class CharacterInputController : MonoBehaviour
     void Start()
     {
         m_MilkCollectSpeed = m_Character.m_InitialSpeed;
-        m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
-        m_CurrentSpeed = m_Character.m_InitialSpeed;
 
         laneNumber = 2;
         m_CharacterPosition = 0;
@@ -79,7 +77,6 @@ public class CharacterInputController : MonoBehaviour
 
         m_IsBoosting = false;
         m_IsRemainBoost = false;
-        m_IsGotMilk = false;
         m_IsChangePosition = false;
         m_PadsIsBoosting = false;
         m_UpSpeed = false;
@@ -95,19 +92,22 @@ public class CharacterInputController : MonoBehaviour
             GetComponentInGame();
 
         MoveInput();
-
-        // Debug.Log("m_CurrentSpeed: " + m_CurrentSpeed + " m_Character.m_CurrentSpeed: " + m_Character.m_CurrentSpeed);
+        DebugLog();
     }
 
     #endregion
 
     #region Class
 
+    void DebugLog()
+    {
+        Debug.Log("Current Speed Controller: " + m_CurrentSpeed +
+        " Current Speed: " + m_Character.m_CurrentSpeed +
+        " Driver Speed: " + m_DriveSpeed + " Max Speed: " + m_Character.m_MaxSpeed);
+    }
     void MoveInput()
     {
         CharacterMove();
-
-        GotMilkSpeed();
 
         ChangePosition();
 
@@ -126,6 +126,7 @@ public class CharacterInputController : MonoBehaviour
         if (m_Stuns)
         {
             m_Character.rootObject.transform.Rotate(Vector3.up, 720 * Time.deltaTime, Space.Self);
+            m_Character.rootObject.transform.Rotate(Vector3.left, 180 * Time.deltaTime, Space.Self);
             StartCoroutine(ReturnRotationStun());
         }
     }
@@ -134,49 +135,21 @@ public class CharacterInputController : MonoBehaviour
         if (m_VelocityUp && !m_Stuns && m_CurrentSpeed < m_Character.m_MaxSpeed && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
         {
             m_Character.m_CurrentSpeed += (m_Character.m_InitialVelocity + (m_Character.m_CurrentBottleMilk * 5f));
-            m_CurrentSpeed += (m_Character.m_InitialVelocity + (m_Character.m_CurrentBottleMilk * 5f));
+            // m_CurrentSpeed += (m_Character.m_InitialVelocity + (m_Character.m_CurrentBottleMilk * 5f));
             m_MilkCollectSpeed += (m_Character.m_InitialVelocity + (m_Character.m_CurrentBottleMilk * 5f));
             m_VelocityUp = false;
             StartCoroutine(VelocityUp());
         }
     }
-    void GotMilkSpeed()
-    {
-        if (m_IsGotMilk)
-        {
-            if (!m_IsBoosting && !m_PadsIsBoosting && !m_Stuns)
-            {
-                if (m_Character.m_CurrentSpeed < m_MilkCollectSpeed)
-                {
-                    m_Character.m_CurrentSpeed = m_MilkCollectSpeed;
-                }
-                else
-                {
-                    int _TimePerSec = m_TimeBoost;
-                    float _temp = (m_BoostSpeed - m_MilkCollectSpeed) / (_TimePerSec * m_TimeBoost); // tempt speed
-
-                    while (m_Character.m_CurrentSpeed > m_MilkCollectSpeed)
-                    {
-                        m_Character.m_CurrentSpeed -= _temp;
-                        if (m_Character.m_CurrentSpeed < m_MilkCollectSpeed)
-                        {
-                            m_Character.m_CurrentSpeed = m_MilkCollectSpeed;
-                        }
-                    }
-                }
-            }
-        }
-    }
     void CharacterMove()
     {
-        if (m_Character.m_CurrentSpeed >= m_CurrentSpeed)
+        if (m_Character.m_CurrentSpeed > m_Character.m_MaxSpeed)
         {
-            m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_Character.m_CurrentSpeed, m_Character.m_InitialVelocity * Time.deltaTime);
+            m_Character.m_CurrentSpeed = m_Character.m_MaxSpeed;
         }
-        else
-        {
-            m_CurrentSpeed = m_Character.m_CurrentSpeed;
-        }
+
+        m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_Character.m_CurrentSpeed, m_Character.m_InitialVelocity * Time.deltaTime);
+
         m_DriveSpeed += (m_CurrentSpeed * Time.deltaTime) / 10;
 
         Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed);
@@ -184,7 +157,8 @@ public class CharacterInputController : MonoBehaviour
         Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed + 60f);
 
         Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 7f);
-        Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 70f);
+        Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 60f);
+        Quaternion _tempRotationClearLag = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed - 7f);
 
         m_Character.transform.localPosition = _tempDistance;
         spawnerObject.transform.localPosition = _tempDistanceSpawner;
@@ -192,9 +166,12 @@ public class CharacterInputController : MonoBehaviour
 
 
         m_Character.transform.localRotation = Quaternion.Lerp(m_Character.transform.localRotation, _tempRotation, 2f * Time.deltaTime);
-        m_WallClearLag.transform.localRotation = Quaternion.Lerp(m_WallClearLag.transform.localRotation, _tempRotationSpawner, 7f * Time.deltaTime);
+        spawnerObject.transform.localRotation = Quaternion.Lerp(spawnerObject.transform.localRotation, _tempRotationSpawner, 2f * Time.deltaTime);
+        m_WallClearLag.transform.localRotation = Quaternion.Lerp(m_WallClearLag.transform.localRotation, _tempRotationClearLag, 7f * Time.deltaTime);
 
         spawnerObject.transform.localRotation = _tempRotationSpawner;
+
+
 
 #if UNITY_EDITOR || UNITY_STANDALONE
 
@@ -299,14 +276,6 @@ public class CharacterInputController : MonoBehaviour
         {
             StartCoroutine(CheckRemainBoost());
         }
-        else
-        {
-            if (m_Character.m_CurrentBottleMilk >= 1)
-            {
-                m_MilkCollectSpeed = m_Character.m_CurrentSpeed + 5f;
-                m_IsGotMilk = true;
-            }
-        }
     }
     public void DashBoost()
     {
@@ -319,7 +288,6 @@ public class CharacterInputController : MonoBehaviour
     IEnumerator CheckRemainBoost()
     {
         yield return new WaitForSeconds(2f);
-
         ChangeSpeed();
     }
     IEnumerator ReturnRotation()

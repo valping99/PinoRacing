@@ -21,6 +21,8 @@ public class CharacterCollider : MonoBehaviour
 
     [Header("Initial Values")]
 
+    float m_InitialMaxSpeed;
+
     [Tooltip("Max speed of the character")]
     public float m_MaxSpeed;
     [Tooltip("Initial Velocity of the character")]
@@ -31,9 +33,11 @@ public class CharacterCollider : MonoBehaviour
     [Header("Controls")]
     public float m_CurrentSpeed;
     [HideInInspector] public float m_CurrentStamina;
+    [HideInInspector] public float m_SpeedMilk;
     public bool m_IsEnoughBoost;
 
     [HideInInspector] public bool m_Stuns;
+
 
     GameObject m_RootItem;
     List<GameObject> crystalList = new List<GameObject>();
@@ -51,7 +55,11 @@ public class CharacterCollider : MonoBehaviour
     {
         m_Stuns = false;
 
+        m_InitialMaxSpeed = m_MaxSpeed;
         m_CurrentSpeed = m_InitialSpeed;
+        // m_CharacterController.m_CurrentSpeed = m_InitialSpeed;
+
+        m_SpeedMilk = 5f / 100f;
 
         GetComponentInGame();
     }
@@ -85,6 +93,7 @@ public class CharacterCollider : MonoBehaviour
         if (other.gameObject.tag == "Obstacle")
         {
 
+            m_CharacterController.m_UpSpeed = true;
             m_CharacterController.m_PadsIsBoosting = false;
 
             m_RootItem = other.gameObject;
@@ -108,6 +117,10 @@ public class CharacterCollider : MonoBehaviour
 
                         m_CharacterController.m_Stuns = true;
                         m_CharacterController.ChangeSpeed();
+
+                        if (m_CurrentBottleMilk <= 0)
+                            m_MaxSpeed = m_InitialMaxSpeed;
+
                     }
 
                     Destroy(m_RootItem.gameObject);
@@ -121,14 +134,9 @@ public class CharacterCollider : MonoBehaviour
                     if (m_CurrentBottleMilk <= 0)
                     {
                         m_CurrentBottleMilk = 0;
-                        m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_InitialSpeed, 5f);
-                        m_CharacterController.m_MilkCollectSpeed = m_InitialSpeed;
+                        m_MaxSpeed = m_InitialMaxSpeed;
                     }
 
-                    if (m_CurrentSpeed > m_InitialSpeed)
-                    {
-                        m_CurrentSpeed -= stick.HurtAmount;
-                    }
                     m_CharacterController.ChangeSpeed();
 
                     Destroy(m_RootItem.gameObject);
@@ -152,7 +160,10 @@ public class CharacterCollider : MonoBehaviour
 
                     MilkPickup milk = other.GetComponent<MilkPickup>();
 
-                    m_CurrentBottleMilk += milk.amountMilkBottle;
+                    if (m_CurrentBottleMilk < 10)
+                    {
+                        m_CurrentBottleMilk += milk.amountMilkBottle;
+                    }
                     m_CharacterController.ChangeSpeed();
 
                     Destroy(m_RootItem.gameObject);
@@ -186,13 +197,15 @@ public class CharacterCollider : MonoBehaviour
         if (m_CurrentSpeed >= m_MaxSpeed && m_CharacterController.m_UpSpeed)
         {
             m_CharacterController.m_UpSpeed = false;
+
             StartCoroutine(SpeedUp());
         }
+
     }
     IEnumerator SpeedUp()
     {
         yield return new WaitForSeconds(.3f);
-        m_MaxSpeed = m_CharacterController.m_CurrentSpeed;
+        m_MaxSpeed = m_InitialMaxSpeed * m_SpeedMilk * m_CurrentBottleMilk + m_InitialMaxSpeed;
     }
     #endregion
 }

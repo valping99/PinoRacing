@@ -22,6 +22,7 @@ TagManager:
   - RootObject
   - LAP
   - GimmeckSticker
+  - SpawnChild
   layers:
   - Default
   - TransparentFX

@@ -17,6 +17,7 @@ public class ObstaclesManager : MonoBehaviour
     int m_NextPosition;
 
     float _PointX;
+    float _PointXChild;
     float _PointY;
     float _PointZ;
     float[] m_PositionSpawn;
@@ -24,6 +25,8 @@ public class ObstaclesManager : MonoBehaviour
 
     public CharacterInputController m_Character;
     public CharacterCollider m_CharacterCollider;
+
+    GameObject m_RootItem;
     #endregion
 
     #region Unity Methods
@@ -35,6 +38,7 @@ public class ObstaclesManager : MonoBehaviour
         m_CharacterCollider = m_Character.gameObject.GetComponentInChildren<CharacterCollider>();
 
         m_PositionSpawn = new float[] { m_Character.slideLength, 0, -m_Character.slideLength };
+        m_RootItem = GameObject.FindGameObjectWithTag("SpawnChild");
 
         // StartCoroutine(SpawnObstacles());
 
@@ -47,11 +51,13 @@ public class ObstaclesManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        _PointX = m_Character.spawnerObject.transform.position.x;
-        _PointY = m_Character.spawnerObject.transform.localPosition.y;
-        _PointZ = m_Character.spawnerObject.transform.localPosition.z;
+        _PointX = m_RootItem.transform.position.x;
+        _PointY = m_RootItem.transform.position.y;
+        _PointZ = m_RootItem.transform.position.z;
 
         _Rotation = m_Character.spawnerObject.transform.rotation;
+
+        // Debug.Log(" _RotationY: " + _Rotation.y + " _RotationW: " + _Rotation.w);
     }
 
     public void StartSpawnObjects()
@@ -74,12 +80,13 @@ public class ObstaclesManager : MonoBehaviour
 
             if (m_ItemPosition == positionOfStickCreamInTheSky)
             {
-                Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX, _PointY + 7f, _PointZ + m_PositionSpawn[m_NextPosition]), _Rotation);
+                Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX + m_PositionSpawn[m_NextPosition], _PointY + 7f, _PointZ), _Rotation);
             }
             else
             {
-                Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX, _PointY + 0.5f, _PointZ + m_PositionSpawn[m_NextPosition]), _Rotation);
+                Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX + m_PositionSpawn[m_NextPosition], _PointY + 0.5f, _PointZ), _Rotation);
             }
+
         }
     }
 

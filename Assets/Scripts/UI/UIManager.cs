@@ -390,7 +390,6 @@ public class UIManager : MonoBehaviour
         if (timeValue > 0)
         {
             timeValue -= Time.deltaTime;
-            charColl.m_CurrentSpeed = 0;
             charColl.GetComponent<CharacterCollider>().enabled = false;
             mainSceneUI.gameObject.SetActive(false);
             //obstacles.GetComponent<ObstaclesManager>().enabled = false;
