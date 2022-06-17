@@ -11,4 +11,4 @@ var LibraryGLClear = {
         GLctx.clear(mask);
     }
 };
-mergeInto(LibraryManager.library, LibraryGLClear); 
+mergeInto(LibraryManager.library, LibraryGLClear);
