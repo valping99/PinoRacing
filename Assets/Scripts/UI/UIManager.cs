@@ -229,6 +229,10 @@ public class UIManager : MonoBehaviour
 
     private void GamePlaying()
     {
+        if(b_count.boostCount < 16)
+        {
+            startScene = false;
+        }
         if (checkRunning)
         {
             if (checkDashBoost)
