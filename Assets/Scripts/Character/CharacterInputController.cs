@@ -40,7 +40,6 @@ public class CharacterInputController : MonoBehaviour
     [HideInInspector] public float m_MilkCollectSpeed;
     float m_CharacterPosition;
     public float m_DriveSpeed;
-    int m_TimeBoost;
     int laneNumber;
 
     // Init Bool ====
@@ -70,7 +69,6 @@ public class CharacterInputController : MonoBehaviour
 
         laneNumber = 2;
         m_CharacterPosition = 0;
-        m_TimeBoost = 3;
 
         m_IsChangeLine = true;
         m_VelocityUp = true;
@@ -114,6 +112,15 @@ public class CharacterInputController : MonoBehaviour
         GotStuns();
 
         SpeedUp();
+
+        WheelRotation();
+    }
+    void WheelRotation()
+    {
+        foreach (var wheel in m_Character.wheelCream)
+        {
+            wheel.transform.Rotate(Vector3.right, 360 * m_Character.m_CurrentSpeed * Time.deltaTime);
+        }
     }
     void GetComponentInGame()
     {

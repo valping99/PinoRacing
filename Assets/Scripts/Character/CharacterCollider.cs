@@ -14,6 +14,7 @@ public class CharacterCollider : MonoBehaviour
     [Header("Variables")]
     public CharacterInputController m_CharacterController;
     public GameObject rootObject;
+    public GameObject[] wheelCream;
 
     [Header("Items")]
     public int m_CurrentBottleMilk;
