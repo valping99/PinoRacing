@@ -45,11 +45,11 @@ public class GimmickChangeColor : MonoBehaviour
 
     void CheckTimeUI()
     {
-        if(uiManagers.timeValueUp > 270)
+        if(uiManagers.timeValueUp > 240)
         {
             animator.SetFloat(m_AnimTimer, uiManagers.timeValueUp);
         }
-        currentSticker.transform.position = charColl.transform.position;
+        currentSticker.transform.position =new Vector3(rootObject.transform.position.x, rootObject.transform.position.y + .7f, rootObject.transform.position.z);
         transformParent.position = rootObject.transform.position;
         transformParent.rotation = rootObject.transform.rotation;
     }
