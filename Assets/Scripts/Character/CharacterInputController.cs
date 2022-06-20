@@ -143,10 +143,7 @@ public class CharacterInputController : MonoBehaviour
     }
     void CharacterMove()
     {
-        if (m_Character.m_CurrentSpeed > m_Character.m_MaxSpeed)
-        {
-            m_Character.m_CurrentSpeed = m_Character.m_MaxSpeed;
-        }
+        CheckSpeed();
 
         m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_Character.m_CurrentSpeed, m_Character.m_InitialVelocity * Time.deltaTime);
 
@@ -234,6 +231,24 @@ public class CharacterInputController : MonoBehaviour
         }
 #endif
     }
+    void CheckSpeed()
+    {
+        if (m_Character.m_CurrentSpeed > m_Character.m_MaxSpeed)
+        {
+            m_Character.m_CurrentSpeed = m_Character.m_MaxSpeed;
+        }
+        if (m_PadsIsBoosting)
+        {
+            bool _isBoosting = true;
+            StartCoroutine(CheckBoost());
+            if (_isBoosting)
+            {
+                m_Character.m_CurrentSpeed += 20;
+                _isBoosting = false;
+            }
+        }
+
+    }
     void ChangeLane(int _direction)
     {
         ChangeRotation(_direction);
@@ -284,6 +299,11 @@ public class CharacterInputController : MonoBehaviour
             m_Character.m_CurrentSpeed = m_Character.m_MaxSpeed;
         }
         m_IsRemainBoost = true;
+    }
+    IEnumerator CheckBoost()
+    {
+        yield return new WaitForSeconds(3f);
+        m_PadsIsBoosting = false;
     }
     IEnumerator CheckRemainBoost()
     {
