@@ -9,11 +9,13 @@ public class RaceCourse : MonoBehaviour
     //public GameObject playerPino;
     public int lapCourse;
     private UIManager uiManagers;
+    private LapsNumber lapNums;
     #endregion
     // Start is called before the first frame update
     #region UnityMethod
     void Start()
     {
+        lapNums = FindObjectOfType<LapsNumber>();
         m_charCollider = FindObjectOfType<CharacterCollider>();
         //playerPino = GameObject.FindGameObjectWithTag("RootObject");
         uiManagers = FindObjectOfType<UIManager>();
@@ -24,6 +26,7 @@ public class RaceCourse : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        Debug.Log("Lap" + lapCourse);
         uiManagers.lapsToGameOver = lapCourse;
         if (lapCourse == 3)
         {
@@ -48,6 +51,8 @@ public class RaceCourse : MonoBehaviour
             {
                 // Debug.Log("True");
                 lapCourse += 1;
+                lapNums.checkLaps();
+
             }
         }
     }

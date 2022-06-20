@@ -101,9 +101,9 @@ public class CharacterInputController : MonoBehaviour
 
     void DebugLog()
     {
-        Debug.Log("Current Speed Controller: " + m_CurrentSpeed +
-        " Current Speed: " + m_Character.m_CurrentSpeed +
-        " Driver Speed: " + m_DriveSpeed + " Max Speed: " + m_Character.m_MaxSpeed);
+        //    Debug.Log("Current Speed Controller: " + m_CurrentSpeed +
+        //    " Current Speed: " + m_Character.m_CurrentSpeed +
+        //    " Driver Speed: " + m_DriveSpeed + " Max Speed: " + m_Character.m_MaxSpeed);
     }
     void MoveInput()
     {

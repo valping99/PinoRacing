@@ -72,6 +72,7 @@ public class UIManager : MonoBehaviour
     //private float timeValueCountdown = 300;
 
 
+    private ClickAnimation clickAnim;
     [Header("Button")]
     //GameOverUI
     public Button shareScoreButton;
@@ -92,7 +93,6 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI messageText;
     public TextMeshProUGUI countBoostNumber_Text;
     //public TextMeshProUGUI popUpNumber_Text;
-    public TextMeshProUGUI numberLaps;
 
     //Set rank
     [Header("Set Rank (Seconds)")]
@@ -119,6 +119,7 @@ public class UIManager : MonoBehaviour
         checkPlaying = true;
         StartGame();
         //StartStatusOfPino();
+        clickAnim = FindObjectOfType<ClickAnimation>();
         screenShot = FindObjectOfType<HiresScreenShots>();
         obstacles = FindObjectOfType<ObstaclesManager>();
         b_count = FindObjectOfType<BoostCount>();
@@ -311,7 +312,6 @@ public class UIManager : MonoBehaviour
         double kphSpeed = charInput.m_CurrentSpeed;
         int currendSpeed = (int)kphSpeed;
         kphText.text = currendSpeed + "";
-        numberLaps.text = lapsToGameOver + "/3";
 
         //Get current milk
         currentMilk = charColl.m_CurrentBottleMilk;
@@ -379,6 +379,7 @@ public class UIManager : MonoBehaviour
             boostSpeedButton.gameObject.SetActive(false);
             changeToRocketStart.gameObject.SetActive(true);
             checkDashBoost = true;
+            clickAnim.gameObject.SetActive(false);
             //popUpNumber_Text.gameObject.SetActive(false);
             //countBoostNumber_Text.gameObject.SetActive(false);
         }
@@ -453,7 +454,7 @@ public class UIManager : MonoBehaviour
 
         currentTime = timeToDisplayCountUp;
 
-        limitedTimer_Text.text = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliSeconds);
+        limitedTimer_Text.text = string.Format("{0:0}:{1:00}:{2:000}", minutes, seconds, milliSeconds);
         gameOverScoreText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
     private void TimeOut()
