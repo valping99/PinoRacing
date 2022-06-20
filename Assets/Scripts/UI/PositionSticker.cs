@@ -18,7 +18,7 @@ public class PositionSticker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        stick.transform.position = charColl.transform.position;
+       //stick.transform.position = charColl.transform.position;
     }
 
 }

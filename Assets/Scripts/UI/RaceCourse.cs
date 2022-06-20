@@ -26,7 +26,6 @@ public class RaceCourse : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        Debug.Log("Lap" + lapCourse);
         uiManagers.lapsToGameOver = lapCourse;
         if (lapCourse == 3)
         {
