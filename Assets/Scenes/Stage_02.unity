@@ -13158,7 +13158,7 @@ PrefabInstance:
     - target: {fileID: 120340297762815318, guid: 27f69fe37e0c8c44f97be1aba8f406cd,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 120340297762815318, guid: 27f69fe37e0c8c44f97be1aba8f406cd,
         type: 3}
@@ -15127,7 +15127,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManagers: {fileID: 1885719431}
   animator_Cursor: {fileID: 1540496044}
-  animator_Clicky: {fileID: 605291674}
 --- !u!95 &1540496044
 Animator:
   serializedVersion: 4
@@ -16869,7 +16868,6 @@ MonoBehaviour:
   rankText: {fileID: 338811891}
   messageText: {fileID: 2111688245}
   countBoostNumber_Text: {fileID: 1633853004}
-  numberLaps: {fileID: 599136424}
   toRankS: 80
   toRankA: 100
   toRankB: 120
