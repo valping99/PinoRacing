@@ -41745,7 +41745,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: beca5d919dc60344cb33536f137fdfd5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3f5c6bc003f462c46bf9795a1a909d2c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -42602,13 +42602,6 @@ MonoBehaviour:
   rankText: {fileID: 338811891}
   messageText: {fileID: 2111688245}
   countBoostNumber_Text: {fileID: 1633853004}
-  toRankS: 80
-  toRankA: 100
-  toRankB: 120
-  toRankC: 150
-  toRankD: 200
-  toRankE: 250
-  toRankF: 300
   miniMap: {fileID: 449337011}
   lapsToGameOver: 0
 --- !u!114 &1885719432
