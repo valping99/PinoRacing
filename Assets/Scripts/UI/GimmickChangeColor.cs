@@ -49,7 +49,7 @@ public class GimmickChangeColor : MonoBehaviour
         {
             animator.SetFloat(m_AnimTimer, uiManagers.timeValueUp);
         }
-        currentSticker.transform.position =new Vector3(rootObject.transform.position.x, rootObject.transform.position.y + .7f, rootObject.transform.position.z);
+        currentSticker.transform.position =new Vector3(rootObject.transform.position.x, rootObject.transform.position.y + 1.5f, rootObject.transform.position.z);
         transformParent.position = rootObject.transform.position;
         transformParent.rotation = rootObject.transform.rotation;
     }
