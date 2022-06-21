@@ -78,6 +78,9 @@ public class Pickup : MonoBehaviour
 
     #endregion
 
+
+
+
     #region Class
 
     protected virtual void HandleBobbing()
