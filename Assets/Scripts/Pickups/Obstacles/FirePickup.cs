@@ -28,5 +28,15 @@ public class FirePickup : Pickup
         }
     }
 
+    protected override void HandleBobbing()
+    {
+        // Nothing to do here, because we don't want the object to bob up and down when it's floating in the air
+    }
+
+    protected override void HandleRotation()
+    {
+        // Nothing to do here, because we don't want the object to rotate when it's floating in the air
+    }
+
     #endregion
 }
