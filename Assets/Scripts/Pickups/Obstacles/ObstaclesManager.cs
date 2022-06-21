@@ -1,7 +1,4 @@
-﻿/*
-* Create by William (c)
-* https://github.com/Long18
-*/
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -84,7 +81,7 @@ public class ObstaclesManager : MonoBehaviour
             }
             else
             {
-                Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX + m_PositionSpawn[m_NextPosition], _PointY + 0.5f, _PointZ), _Rotation);
+                Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX + m_PositionSpawn[m_NextPosition], _PointY, _PointZ), _Rotation);
             }
 
         }

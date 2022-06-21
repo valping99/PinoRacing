@@ -1,8 +1,5 @@
 ﻿using System;
-/*
-* Create by William (c)
-* https://github.com/Long18
-*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
