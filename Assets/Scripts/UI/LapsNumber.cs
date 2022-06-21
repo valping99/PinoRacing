@@ -27,13 +27,11 @@ public class LapsNumber : MonoBehaviour
         {
             Instantiate(lapImages[1], transformParent.transform.position, Quaternion.identity, transformParent);
             Destroy(GameObject.Find("Lap_1(Clone)"));
-            Debug.Log("Lap1");
         }
         else 
         {
             Instantiate(lapImages[2], transformParent.transform.position, Quaternion.identity, transformParent);
             Destroy(GameObject.Find("Lap_2(Clone)"));
-            Debug.Log("Lap2");
         }
     }
 }

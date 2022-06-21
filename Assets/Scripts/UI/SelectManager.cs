@@ -12,6 +12,7 @@ public class SelectManager : MonoBehaviour
     [Header("Get Scripts")]
     public CharacterSelected charSelect;
     public UIManager uiManagers;
+    public AnimSelectedPino animatorSelected;
 
     [Header("Variables")]
     public int selectedStage;
@@ -33,6 +34,12 @@ public class SelectManager : MonoBehaviour
     public bool isSelectPino_01;
     public bool isSelectPino_02;
     public bool isSelectPino_03;
+
+    [Header("Select Pino & Show Pino")]
+    public GameObject SelectPinos;
+    public GameObject Pino_01;
+    public GameObject Pino_02;
+    public GameObject Pino_03;
 
     // to set active scene
     [Header("G_Scenes ")]
@@ -74,6 +81,7 @@ public class SelectManager : MonoBehaviour
     void Update()
     {
         checkScene();
+        checkAnimation();
     }
 
     #region Selected
@@ -105,6 +113,7 @@ public class SelectManager : MonoBehaviour
             scene_01.gameObject.SetActive(false);
             scene_03.gameObject.SetActive(false);
             scene_04.gameObject.SetActive(false);
+            animatorSelected.none = true;
         }
         else if (isSelectScene_03)
         {
@@ -126,6 +135,30 @@ public class SelectManager : MonoBehaviour
         }
     }
 
+    public void checkAnimation()
+    {
+        if (isSelectPino_01)
+        {
+            animatorSelected.isSelect1 = true;
+            animatorSelected.isSelect2 = false;
+            animatorSelected.isSelect3 = false;
+            animatorSelected.none = false;
+        }
+        else if (isSelectPino_02)
+        {
+            animatorSelected.isSelect1 = false;
+            animatorSelected.isSelect2 = true;
+            animatorSelected.isSelect3 = false;
+            animatorSelected.none = false;
+        }
+        else if(isSelectPino_03)
+        {
+            animatorSelected.isSelect1 = false;
+            animatorSelected.isSelect2 = false;
+            animatorSelected.none = false;
+            animatorSelected.isSelect3 = true;
+        }
+    }
 
     //Select stages
     public void isSelectStage()
@@ -168,11 +201,15 @@ public class SelectManager : MonoBehaviour
     {
         if (isSelectPino_01)
         {
+            SelectPinos.gameObject.SetActive(false);
             selectedPino = 1;
             isSelectPino_02 = false;
             isSelectPino_03 = false;
             isSelectScene_03 = false;
             isSelectScene_04 = true;
+            Pino_01.gameObject.SetActive(true);
+            Pino_02.gameObject.SetActive(false);
+            Pino_03.gameObject.SetActive(false);
 
             //Enable isSelectedPino & Disable unSelectedPino
             statusOfPino_01.gameObject.SetActive(true);
@@ -181,11 +218,15 @@ public class SelectManager : MonoBehaviour
         }
         else if (isSelectPino_02)
         {
+            SelectPinos.gameObject.SetActive(false);
             selectedPino = 2;
             isSelectPino_01 = false;
             isSelectPino_03 = false;
             isSelectScene_03 = false;
             isSelectScene_04 = true;
+            Pino_01.gameObject.SetActive(false);
+            Pino_02.gameObject.SetActive(true);
+            Pino_03.gameObject.SetActive(false);
 
             //Enable isSelectedPino & Disable unSelectedPino
             statusOfPino_01.gameObject.SetActive(false);
@@ -194,11 +235,15 @@ public class SelectManager : MonoBehaviour
         }
         else if (isSelectPino_03)
         {
+            SelectPinos.gameObject.SetActive(false);
             selectedPino = 3;
             isSelectPino_02 = false;
             isSelectPino_01 = false;
             isSelectScene_03 = false;
             isSelectScene_04 = true;
+            Pino_01.gameObject.SetActive(false);
+            Pino_02.gameObject.SetActive(false);
+            Pino_03.gameObject.SetActive(true);
 
             //Enable isSelectedPino & Disable unSelectedPino
             statusOfPino_01.gameObject.SetActive(false);

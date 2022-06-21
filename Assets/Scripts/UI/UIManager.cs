@@ -96,16 +96,6 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI countBoostNumber_Text;
     //public TextMeshProUGUI popUpNumber_Text;
 
-    //Set rank
-    [Header("Set Rank (Seconds)")]
-    public float toRankS;
-    public float toRankA;
-    public float toRankB;
-    public float toRankC;
-    public float toRankD;
-    public float toRankE;
-    public float toRankF;
-
     [Header("Minimap")]
     public GameObject miniMap;
 
