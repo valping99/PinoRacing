@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirePickup : Pickup
+public class IcePickup : Pickup
 {
 
     #region Variables
@@ -19,10 +19,10 @@ public class FirePickup : Pickup
 
     protected override void OnPicked(CharacterCollider player)
     {
-        Fire firePickup = player.GetComponent<Fire>();
-        if (firePickup && firePickup.CanPickup())
+        Ice icePickup = player.GetComponent<Ice>();
+        if (icePickup && icePickup.CanPickup())
         {
-            firePickup.TakeDamage(HurtAmount, gameObject);
+            icePickup.TakeDamage(HurtAmount, gameObject);
             PlayPickupFeedback();
             Destroy(gameObject);
         }

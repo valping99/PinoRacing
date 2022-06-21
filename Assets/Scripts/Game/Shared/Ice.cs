@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Fire : MonoBehaviour
+public class Ice : MonoBehaviour
 {
 
     #region Variables

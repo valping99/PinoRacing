@@ -9714,7 +9714,7 @@ GameObject:
   - component: {fileID: 6077407875283091339}
   - component: {fileID: 5134917182454724218}
   m_Layer: 6
-  m_Name: Loot_Fire
+  m_Name: Loot_Ice
   m_TagString: Obstacle
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -9785,13 +9785,13 @@ MonoBehaviour:
   VerticalBobFrequency: 0
   BobbingAmount: 0
   RotatingSpeed: 0
-  PickupSfx: {fileID: 8300000, guid: 6f3e0904bbbace745bdef08cdbcdfec0, type: 3}
-  PickupVfxPrefab: {fileID: 7529341927632577005, guid: 915014a88b530494b9082a7520ea240b,
+  PickupSfx: {fileID: 8300000, guid: 9c793d7183ca03e4fbf328175291cee4, type: 3}
+  PickupVfxPrefab: {fileID: 8929146388027618498, guid: 7468cd18030a0204ab08baf7ac36ff1e,
     type: 3}
   m_RootModel: {fileID: 5529103100820561513}
-  m_Distance: 10
-  HurtAmount: 10
-  LostSpeed: 10
+  m_Distance: 0
+  HurtAmount: 0
+  LostSpeed: 0
 --- !u!1001 &4646087710822802232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9864,6 +9864,11 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 16d2575caa38a4d4a851f32beb016525,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 931b1c93646225d49be359f2a3d11959, type: 2}
     - target: {fileID: 919132149155446097, guid: 16d2575caa38a4d4a851f32beb016525,
         type: 3}
       propertyPath: m_Name
@@ -9873,6 +9878,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 16d2575caa38a4d4a851f32beb016525,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ice
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16d2575caa38a4d4a851f32beb016525, type: 3}

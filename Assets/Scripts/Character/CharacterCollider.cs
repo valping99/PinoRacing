@@ -104,9 +104,9 @@ public class CharacterCollider : MonoBehaviour
 
             foreach (Transform child in m_RootItem.transform)
             {
-                if (child.CompareTag("Fire"))
+                if (child.CompareTag("Ice"))
                 {
-                    FirePickup fire = m_RootItem.GetComponent<FirePickup>();
+                    IcePickup ice = m_RootItem.GetComponent<IcePickup>();
 
                     if (!m_CharacterController.m_Stuns)
                     {
