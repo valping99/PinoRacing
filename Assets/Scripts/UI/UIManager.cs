@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
     public GameObject m_Player;
     public BoostCount b_count;
 
+    private RankManager rankManagers;
+
 
     [Header("Player Variables")]
     public float currentScore;
@@ -123,6 +125,7 @@ public class UIManager : MonoBehaviour
         screenShot = FindObjectOfType<HiresScreenShots>();
         obstacles = FindObjectOfType<ObstaclesManager>();
         b_count = FindObjectOfType<BoostCount>();
+        rankManagers = FindObjectOfType<RankManager>();
         displayScene = GameObject.Find("PanelWaitForDisplay");
     }
 
@@ -189,44 +192,44 @@ public class UIManager : MonoBehaviour
 
     }
 
-    private void setRank()
-    {
-        if (currentTime <= toRankS)
-        {
-            rankText.text = "Rank S";
-            messageText.text = "Perfect";
-        }
-        else if (currentTime <= toRankA)
-        {
-            rankText.text = "Rank A";
-            messageText.text = "Awesome";
-        }
-        else if (currentTime <= toRankB)
-        {
-            rankText.text = "Rank B";
-            messageText.text = "Cool";
-        }
-        else if (currentTime <= toRankC)
-        {
-            rankText.text = "Rank C";
-            messageText.text = "Not bad";
-        }
-        else if (currentTime <= toRankD)
-        {
-            rankText.text = "Rank D";
-            messageText.text = "One more time";
-        }
-        else if (currentTime <= toRankE)
-        {
-            rankText.text = "Rank E";
-            messageText.text = "Try again";
-        }
-        else
-        {
-            rankText.text = "Rank F";
-            messageText.text = "Never give up";
-        }
-    }
+    //private void setRank()
+    //{
+    //    if (currentTime <= toRankS)
+    //    {
+    //        rankText.text = "Rank S";
+    //        messageText.text = "Perfect";
+    //    }
+    //    else if (currentTime <= toRankA)
+    //    {
+    //        rankText.text = "Rank A";
+    //        messageText.text = "Awesome";
+    //    }
+    //    else if (currentTime <= toRankB)
+    //    {
+    //        rankText.text = "Rank B";
+    //        messageText.text = "Cool";
+    //    }
+    //    else if (currentTime <= toRankC)
+    //    {
+    //        rankText.text = "Rank C";
+    //        messageText.text = "Not bad";
+    //    }
+    //    else if (currentTime <= toRankD)
+    //    {
+    //        rankText.text = "Rank D";
+    //        messageText.text = "One more time";
+    //    }
+    //    else if (currentTime <= toRankE)
+    //    {
+    //        rankText.text = "Rank E";
+    //        messageText.text = "Try again";
+    //    }
+    //    else
+    //    {
+    //        rankText.text = "Rank F";
+    //        messageText.text = "Never give up";
+    //    }
+    //}
 
     private void GamePlaying()
     {
@@ -264,6 +267,7 @@ public class UIManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 PauseGame();
+                rankManagers.setRank();
             }
 
         }
@@ -333,8 +337,10 @@ public class UIManager : MonoBehaviour
             mainSceneUI.gameObject.SetActive(false);
             miniMap.gameObject.SetActive(false);
             screenShot.checkUI();
-            setRank();
-
+            if (rankManagers.checkRank)
+            {
+                rankManagers.setRank();
+            }
             Time.timeScale = 0f;
         }
     }
@@ -510,46 +516,6 @@ public class UIManager : MonoBehaviour
         score += scoreToAdd;
         scoreText.text = currentScore + " m";
         gameOverScoreText.text = currentScore + "m";
-
-
-
-
-        //Set rank
-        if (currentScore >= toRankS)
-        {
-            rankText.text = "Rank S";
-            messageText.text = "Perfect";
-        }
-        else if(currentScore >= toRankA)
-        {
-            rankText.text = "Rank A";
-            messageText.text = "Awesome";
-        }
-        else if (currentScore >= toRankB)
-        {
-            rankText.text = "Rank B";
-            messageText.text = "Cool";
-        }
-        else if (currentScore >= toRankC)
-        {
-            rankText.text = "Rank C";
-            messageText.text = "Not bad";
-        }
-        else if (currentScore >= toRankD)
-        {
-            rankText.text = "Rank D";
-            messageText.text = "One more time";
-        }
-        else if (currentScore >= toRankE)
-        {
-            rankText.text = "Rank E";
-            messageText.text = "Try again";
-        }
-        else
-        {
-            rankText.text = "Rank F";
-            messageText.text = "Never give up";
-        }
     }
     **/
     //Set HP Decrease 
