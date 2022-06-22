@@ -406,6 +406,7 @@ MonoBehaviour:
   - {fileID: 6264660410902452727}
   - {fileID: 4618946228115038599}
   m_CurrentBottleMilk: 0
+  milk: {fileID: 1154960059834158301, guid: f905d99bc7465f045940c34e7810168a, type: 3}
   m_MaxSpeed: 120
   m_InitialVelocity: 2
   m_InitialSpeed: 60

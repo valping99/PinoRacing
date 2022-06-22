@@ -205,7 +205,10 @@ public class CharacterInputController : MonoBehaviour
             DashBoost();
 
         if (Input.GetKeyDown(KeyCode.M))
+        {
             m_Character.m_CurrentBottleMilk += 1;
+            ChangeSpeed();
+        }
 
 
 #else

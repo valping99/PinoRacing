@@ -15,6 +15,7 @@ public class CharacterCollider : MonoBehaviour
 
     [Header("Items")]
     public int m_CurrentBottleMilk;
+    public GameObject milk;
 
 
     [Header("Initial Values")]
@@ -138,6 +139,14 @@ public class CharacterCollider : MonoBehaviour
                     {
                         m_CurrentBottleMilk = 0;
                         m_MaxSpeed = m_InitialMaxSpeed;
+                    }
+
+                    if (m_CurrentBottleMilk > 0)
+                    {
+                        Instantiate(milk, new Vector3(rootObject.transform.position.x + (m_CharacterController.slideLength / 2), rootObject.transform.position.y + 2f, rootObject.transform.position.z),
+                        rootObject.transform.rotation);
+                        Instantiate(milk, new Vector3(rootObject.transform.position.x - (m_CharacterController.slideLength / 2), rootObject.transform.position.y + 2f, rootObject.transform.position.z),
+                        rootObject.transform.rotation);
                     }
 
                     m_CharacterController.ChangeSpeed();
