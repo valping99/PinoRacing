@@ -57,7 +57,7 @@ public class ButtonSelectedUI : MonoBehaviour
         selected.isSelectPino_02 = false;
         selected.isSelectPino_03 = false;
         selected.isSelectPino_01 = true;
-        //selected.isSelectedPino();
+        selected.isSelectedPino();
     }
     public void selectedPino_02()
     {
@@ -69,7 +69,7 @@ public class ButtonSelectedUI : MonoBehaviour
         selected.isSelectPino_01 = false;
         selected.isSelectPino_03 = false;
         selected.isSelectPino_02 = true;
-        //selected.isSelectedPino();
+        selected.isSelectedPino();
     }
     public void selectedPino_03()
     {
@@ -81,7 +81,7 @@ public class ButtonSelectedUI : MonoBehaviour
         selected.isSelectPino_01 = false;
         selected.isSelectPino_02 = false;
         selected.isSelectPino_03 = true;
-        //selected.isSelectedPino();
+        selected.isSelectedPino();
     }
 
 
