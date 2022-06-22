@@ -346,6 +346,7 @@ public class CharacterInputController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         m_Character.m_Stuns = false;
         m_Stuns = false;
+        m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
         m_Character.rootObject.transform.localRotation = Quaternion.identity;
         m_Character.animStuns.SetBool("isStuns", m_Stuns);
     }
