@@ -49,11 +49,11 @@ public class ButtonSelectedUI : MonoBehaviour
 
     public void selectedPino_01()
     {
-        if (selected.isSelectPino_01)
-        {
-            selected.SelectPinos.gameObject.SetActive(false);
-            selected.isSelectedPino();
-        }
+        //if (selected.isSelectPino_01)
+        //{
+        //    selected.SelectPinos.gameObject.SetActive(false);
+        //    //selected.isSelectedPino();
+        //}
         selected.isSelectPino_02 = false;
         selected.isSelectPino_03 = false;
         selected.isSelectPino_01 = true;
@@ -61,11 +61,11 @@ public class ButtonSelectedUI : MonoBehaviour
     }
     public void selectedPino_02()
     {
-        if (selected.isSelectPino_02)
-        {
-            selected.SelectPinos.gameObject.SetActive(false);
-            selected.isSelectedPino();
-        }
+        //if (selected.isSelectPino_02)
+        //{
+        //    selected.SelectPinos.gameObject.SetActive(false);
+        //    //selected.isSelectedPino();
+        //}
         selected.isSelectPino_01 = false;
         selected.isSelectPino_03 = false;
         selected.isSelectPino_02 = true;
@@ -73,11 +73,11 @@ public class ButtonSelectedUI : MonoBehaviour
     }
     public void selectedPino_03()
     {
-        if (selected.isSelectPino_03)
-        {
-            selected.SelectPinos.gameObject.SetActive(false);
-            selected.isSelectedPino();
-        }
+        //if (selected.isSelectPino_03)
+        //{
+        //    selected.SelectPinos.gameObject.SetActive(false);
+        //    //selected.isSelectedPino();
+        //}
         selected.isSelectPino_01 = false;
         selected.isSelectPino_02 = false;
         selected.isSelectPino_03 = true;
@@ -90,6 +90,7 @@ public class ButtonSelectedUI : MonoBehaviour
     public void returnMenu()
     {
         selected.ReturnMenu();
+        selected.SelectPinos.gameObject.SetActive(false);
         selected.Pino_01.gameObject.SetActive(false);
         selected.Pino_02.gameObject.SetActive(false);
         selected.Pino_03.gameObject.SetActive(false);
