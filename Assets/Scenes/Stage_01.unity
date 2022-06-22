@@ -542,6 +542,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119296967}
   m_Mesh: {fileID: 4300000, guid: ea9887d5bf4454e0aad4f0c7a1c95691, type: 3}
+--- !u!1 &146182497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 146182498}
+  m_Layer: 0
+  m_Name: Track_Pino
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &146182498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146182497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 369774608}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &158525965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,6 +1611,7 @@ Transform:
   - {fileID: 1137882575}
   - {fileID: 635435422}
   - {fileID: 925033532}
+  - {fileID: 146182498}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6301,12 +6333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b97527d28f7b2b4c85a13d462b50617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charColl: {fileID: 0}
-  transformParent: {fileID: 1243054091}
-  stickGimmeck: {fileID: 1796291118921967502, guid: 0a053974ae8b7de43928078d6180f9e7,
-    type: 3}
   currentSticker: {fileID: 0}
-  rootObject: {fileID: 0}
   uiManagers: {fileID: 1885719431}
   animator: {fileID: 0}
 --- !u!4 &705237341
@@ -13731,33 +13758,33 @@ MonoBehaviour:
       - {x: 24.50422, y: 0, z: -0.18407474}
       - {x: 34.19228, y: 0, z: 0.06686781}
       - {x: 36.720978, y: 0, z: 0.13236678}
-      - {x: 40.24643, y: 0, z: -0.3740396}
+      - {x: 40.246426, y: 0, z: -0.3740369}
       - {x: 42.611782, y: 0, z: 0.522457}
-      - {x: 44.941254, y: 0, z: 1.4053535}
-      - {x: 47.71825, y: 0, z: 3.6215982}
-      - {x: 49.117947, y: 0, z: 5.6823716}
-      - {x: 50.64274, y: 0, z: 7.927318}
-      - {x: 51.93137, y: 0, z: 11.636553}
-      - {x: 51.730534, y: 0, z: 14.342922}
-      - {x: 51.526505, y: 0, z: 17.092354}
-      - {x: 49.60167, y: 0, z: 20.560448}
+      - {x: 44.94126, y: 0, z: 1.4053535}
+      - {x: 47.718273, y: 0, z: 3.621594}
+      - {x: 49.117977, y: 0, z: 5.6823716}
+      - {x: 50.64277, y: 0, z: 7.927316}
+      - {x: 51.931404, y: 0, z: 11.636553}
+      - {x: 51.730564, y: 0, z: 14.342922}
+      - {x: 51.52653, y: 0, z: 17.092358}
+      - {x: 49.601673, y: 0, z: 20.560444}
       - {x: 47.80678, y: 0, z: 22.653143}
       - {x: 46.40165, y: 0, z: 24.291414}
-      - {x: 43.884743, y: 0, z: 25.97473}
-      - {x: 41.844887, y: 0, z: 26.679934}
-      - {x: 39.708492, y: 0, z: 27.418512}
-      - {x: 36.588764, y: 0, z: 27.150475}
-      - {x: 34.329353, y: 0, z: 27.219427}
-      - {x: 31.881203, y: 0, z: 27.29414}
-      - {x: 28.614803, y: 0, z: 27.136223}
-      - {x: 26.165516, y: 0, z: 27.13253}
-      - {x: 23.670752, y: 0, z: 27.128769}
-      - {x: 20.34462, y: 0, z: 27.204481}
-      - {x: 17.849867, y: 0, z: 27.195965}
-      - {x: 15.178042, y: 0, z: 27.186844}
-      - {x: 11.616381, y: 0, z: 27.092869}
+      - {x: 43.884758, y: 0, z: 25.974743}
+      - {x: 41.844902, y: 0, z: 26.679949}
+      - {x: 39.708508, y: 0, z: 27.41853}
+      - {x: 36.58878, y: 0, z: 27.15049}
+      - {x: 34.32937, y: 0, z: 27.219442}
+      - {x: 31.881218, y: 0, z: 27.294155}
+      - {x: 28.614819, y: 0, z: 27.136238}
+      - {x: 26.165531, y: 0, z: 27.132545}
+      - {x: 23.670765, y: 0, z: 27.128784}
+      - {x: 20.344633, y: 0, z: 27.204504}
+      - {x: 17.849878, y: 0, z: 27.195984}
+      - {x: 15.17805, y: 0, z: 27.18686}
+      - {x: 11.6163845, y: 0, z: 27.092873}
       - {x: 8.944663, y: 0, z: 27.06722}
-      - {x: 4.365713, y: 0, z: 27.023262}
+      - {x: 4.365713, y: 0, z: 27.023258}
       - {x: -1.7399273, y: 0, z: 27.017036}
       - {x: -6.319034, y: 0, z: 26.994818}
       - {x: -9.190599, y: 0, z: 26.980885}
