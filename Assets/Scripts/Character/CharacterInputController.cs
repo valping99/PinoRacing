@@ -141,7 +141,7 @@ public class CharacterInputController : MonoBehaviour
             // m_Character.rootObject.transform.Rotate(Vector3.left, 450 * Time.deltaTime, Space.Self);
             // m_Character.rootObject.transform.localPosition = new Vector3(m_Character.rootObject.transform.localPosition.x, m_Character.rootObject.transform.localPosition.y + 0.05f, m_Character.rootObject.transform.localPosition.z);
             // Debug.Log("Flip ");
-            m_Character.animStuns.SetBool("isStuns", m_Stuns);
+            m_Character.animStuns.SetBool("isStunsLeft", m_Stuns);
 
 
             StartCoroutine(ReturnRotationStun());
@@ -203,6 +203,9 @@ public class CharacterInputController : MonoBehaviour
         //Test boost in unity editor
         if (Input.GetKeyDown(KeyCode.R))
             DashBoost();
+
+        if (Input.GetKeyDown(KeyCode.M))
+            m_Character.m_CurrentBottleMilk += 1;
 
 
 #else
@@ -348,7 +351,7 @@ public class CharacterInputController : MonoBehaviour
         m_Stuns = false;
         m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
         m_Character.rootObject.transform.localRotation = Quaternion.identity;
-        m_Character.animStuns.SetBool("isStuns", m_Stuns);
+        m_Character.animStuns.SetBool("isStunsLeft", m_Stuns);
     }
     IEnumerator StopMoving()
     {

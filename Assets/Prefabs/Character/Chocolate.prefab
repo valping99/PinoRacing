@@ -201,7 +201,7 @@ Transform:
   - {fileID: 8737662560169910953}
   - {fileID: 1642430308754946376}
   - {fileID: 8355637117286588418}
-  - {fileID: 7705835165777775932}
+  - {fileID: 9100778002675140173}
   m_Father: {fileID: 3644350822100761586}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -678,7 +678,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &8222751588174411410
+--- !u!1001 &7395403313059724771
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -747,9 +747,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a053974ae8b7de43928078d6180f9e7, type: 3}
---- !u!4 &7705835165777775932 stripped
+--- !u!4 &9100778002675140173 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1796291118922464174, guid: 0a053974ae8b7de43928078d6180f9e7,
     type: 3}
-  m_PrefabInstance: {fileID: 8222751588174411410}
+  m_PrefabInstance: {fileID: 7395403313059724771}
   m_PrefabAsset: {fileID: 0}

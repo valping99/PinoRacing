@@ -42,6 +42,7 @@ public class CharacterCollider : MonoBehaviour
     GameObject m_RootItem;
     List<GameObject> crystalList = new List<GameObject>();
 
+    public Rigidbody car;
     // [Header("Sound")]
     // public AudioClip milkSound;
 

@@ -35,7 +35,7 @@ Transform:
   - {fileID: 5690357391858986415}
   - {fileID: 2409788099140908622}
   - {fileID: 4922280031172046596}
-  - {fileID: 8073421187914871126}
+  - {fileID: 284681360228403062}
   m_Father: {fileID: 3644350822100761586}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -181,7 +181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3850682360735780235}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -415,6 +415,7 @@ MonoBehaviour:
   m_IsEnoughBoost: 0
   m_Stuns: 0
   animStuns: {fileID: 0}
+  car: {fileID: 0}
 --- !u!114 &8494547279078751302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,7 +679,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &7559072668197636856
+--- !u!1001 &1954229572628724952
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -745,16 +746,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5878133708153929801, guid: 0a053974ae8b7de43928078d6180f9e7,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a053974ae8b7de43928078d6180f9e7, type: 3}
---- !u!4 &8073421187914871126 stripped
+--- !u!4 &284681360228403062 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1796291118922464174, guid: 0a053974ae8b7de43928078d6180f9e7,
     type: 3}
-  m_PrefabInstance: {fileID: 7559072668197636856}
+  m_PrefabInstance: {fileID: 1954229572628724952}
   m_PrefabAsset: {fileID: 0}
