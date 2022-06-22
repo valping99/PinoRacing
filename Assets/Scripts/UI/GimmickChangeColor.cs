@@ -5,11 +5,12 @@ using UnityEngine;
 public class GimmickChangeColor : MonoBehaviour
 {
     #region Variables
-    public CharacterCollider charColl;
-    public Transform transformParent;
-    public GameObject stickGimmeck;
+    //public CharacterCollider charColl;
+    //public Transform transformParent;
+    //public GameObject stickGimmeck;
     public GameObject currentSticker;
-    public GameObject rootObject;
+    //public GameObject rootObject;
+    //public CharacterInputController charInput;
 
     public UIManager uiManagers;
 
@@ -24,8 +25,6 @@ public class GimmickChangeColor : MonoBehaviour
     void Start()
     {
         ChangeColorStick();
-        animator = GameObject.FindGameObjectWithTag("GimmeckSticker").GetComponent<Animator>();
-        currentSticker = GameObject.FindGameObjectWithTag("GimmeckSticker");
     }
 
     // Update is called once per frame
@@ -37,21 +36,32 @@ public class GimmickChangeColor : MonoBehaviour
     #region Function
     void ChangeColorStick()
     {
+        animator = GameObject.FindGameObjectWithTag("GimmeckSticker").GetComponent<Animator>();
+        currentSticker = GameObject.FindGameObjectWithTag("GimmeckSticker");
+        //charInput = FindObjectOfType<CharacterInputController>();
         uiManagers = FindObjectOfType<UIManager>();
-        charColl = FindObjectOfType<CharacterCollider>();
-        rootObject = GameObject.FindGameObjectWithTag("RootObject");
-        Instantiate(stickGimmeck, charColl.transform.position, Quaternion.identity, transformParent);
+        //charColl = FindObjectOfType<CharacterCollider>();
+        //rootObject = GameObject.FindGameObjectWithTag("RootObject");
+        //Instantiate(stickGimmeck, charColl.transform.position, Quaternion.identity, transformParent);
     }
 
     void CheckTimeUI()
     {
-        if(uiManagers.timeValueUp > 240)
+        //currentSticker.transform.rotation = rootObject.transform.rotation;
+        //transformParent.position = charColl.transform.position;
+        //transformParent.rotation = charColl.transform.rotation;
+        if (uiManagers.timeValueUp > 240)
         {
             animator.SetFloat(m_AnimTimer, uiManagers.timeValueUp);
         }
-        currentSticker.transform.position =new Vector3(rootObject.transform.position.x, rootObject.transform.position.y + 1.5f, rootObject.transform.position.z);
-        transformParent.position = rootObject.transform.position;
-        transformParent.rotation = rootObject.transform.rotation;
+        //if (charinput.m_stuns)
+        //{
+        //    currentsticker.transform.position = rootobject.transform.position;
+        //}
+        //else
+        //{
+        //    currentsticker.transform.position = new vector3(rootobject.transform.position.x, rootobject.transform.position.y + 1.5f, rootobject.transform.position.z);
+        //}
     }
     #endregion
 }
