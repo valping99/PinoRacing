@@ -13,6 +13,7 @@ public class SelectManager : MonoBehaviour
     public CharacterSelected charSelect;
     public UIManager uiManagers;
     public AnimSelectedPino animatorSelected;
+    public GameObject buttonAction;
 
     [Header("Variables")]
     public int selectedStage;
@@ -100,6 +101,14 @@ public class SelectManager : MonoBehaviour
     // Remove this function
     public void checkScene()
     {
+        if (!isSelectPino_01 && !isSelectPino_02 && !isSelectPino_03)
+        {
+            buttonAction.gameObject.SetActive(false);
+        }
+        else
+        {
+            buttonAction.gameObject.SetActive(true);
+        }
         if (isSelectScene_01)
         {
             scene_01.gameObject.SetActive(true);

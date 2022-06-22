@@ -25,6 +25,7 @@ TagManager:
   - Ranking
   - Ice
   - Fire
+  - ButtonStartScene
   layers:
   - Default
   - TransparentFX
