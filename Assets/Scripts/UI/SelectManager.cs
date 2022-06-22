@@ -210,56 +210,56 @@ public class SelectManager : MonoBehaviour
     {
         if (isSelectPino_01)
         {
-            SelectPinos.gameObject.SetActive(false);
+            //SelectPinos.gameObject.SetActive(false);
             selectedPino = 1;
             isSelectPino_02 = false;
             isSelectPino_03 = false;
-            isSelectScene_03 = false;
-            isSelectScene_04 = true;
-            Pino_01.gameObject.SetActive(true);
-            Pino_02.gameObject.SetActive(false);
-            Pino_03.gameObject.SetActive(false);
+            //isSelectScene_03 = false;
+            //isSelectScene_04 = true;
+            //Pino_01.gameObject.SetActive(true);
+            //Pino_02.gameObject.SetActive(false);
+            //Pino_03.gameObject.SetActive(false);
 
             //Enable isSelectedPino & Disable unSelectedPino
-            statusOfPino_01.gameObject.SetActive(true);
-            statusOfPino_02.gameObject.SetActive(false);
-            statusOfPino_03.gameObject.SetActive(false);
+            //statusOfPino_01.gameObject.SetActive(true);
+            //statusOfPino_02.gameObject.SetActive(false);
+            //statusOfPino_03.gameObject.SetActive(false);
         }
         else if (isSelectPino_02)
         {
-            SelectPinos.gameObject.SetActive(false);
+            //SelectPinos.gameObject.SetActive(false);
             selectedPino = 2;
             isSelectPino_01 = false;
             isSelectPino_03 = false;
-            isSelectScene_03 = false;
-            isSelectScene_04 = true;
-            Pino_01.gameObject.SetActive(false);
-            Pino_02.gameObject.SetActive(true);
-            Pino_03.gameObject.SetActive(false);
+            //isSelectScene_03 = false;
+            //isSelectScene_04 = true;
+            //Pino_01.gameObject.SetActive(false);
+            //Pino_02.gameObject.SetActive(true);
+            //Pino_03.gameObject.SetActive(false);
 
-            //Enable isSelectedPino & Disable unSelectedPino
-            statusOfPino_01.gameObject.SetActive(false);
-            statusOfPino_02.gameObject.SetActive(true);
-            statusOfPino_03.gameObject.SetActive(false);
+            ////Enable isSelectedPino & Disable unSelectedPino
+            //statusOfPino_01.gameObject.SetActive(false);
+            //statusOfPino_02.gameObject.SetActive(true);
+            //statusOfPino_03.gameObject.SetActive(false);
         }
         else if (isSelectPino_03)
         {
-            SelectPinos.gameObject.SetActive(false);
+            //SelectPinos.gameObject.SetActive(false);
             selectedPino = 3;
             isSelectPino_02 = false;
             isSelectPino_01 = false;
-            isSelectScene_03 = false;
-            isSelectScene_04 = true;
-            Pino_01.gameObject.SetActive(false);
-            Pino_02.gameObject.SetActive(false);
-            Pino_03.gameObject.SetActive(true);
+            //isSelectScene_03 = false;
+            //isSelectScene_04 = true;
+            //Pino_01.gameObject.SetActive(false);
+            //Pino_02.gameObject.SetActive(false);
+            //Pino_03.gameObject.SetActive(true);
 
-            //Enable isSelectedPino & Disable unSelectedPino
-            statusOfPino_01.gameObject.SetActive(false);
-            statusOfPino_02.gameObject.SetActive(false);
-            statusOfPino_03.gameObject.SetActive(true);
+            ////Enable isSelectedPino & Disable unSelectedPino
+            //statusOfPino_01.gameObject.SetActive(false);
+            //statusOfPino_02.gameObject.SetActive(false);
+            //statusOfPino_03.gameObject.SetActive(true);
         }
-        scene_03.gameObject.SetActive(false);
+        //scene_03.gameObject.SetActive(false);
     }
 
     /**
