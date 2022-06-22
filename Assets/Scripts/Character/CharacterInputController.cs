@@ -87,7 +87,7 @@ public class CharacterInputController : MonoBehaviour
             GetComponentInGame();
 
         MoveInput();
-        DebugLog();
+        // DebugLog();
     }
 
     #endregion
@@ -96,9 +96,9 @@ public class CharacterInputController : MonoBehaviour
 
     void DebugLog()
     {
-        //    Debug.Log("Current Speed Controller: " + m_CurrentSpeed +
-        //    " Current Speed: " + m_Character.m_CurrentSpeed +
-        //    " Driver Speed: " + m_DriveSpeed + " Max Speed: " + m_Character.m_MaxSpeed);
+        Debug.Log("Current Speed Controller: " + m_CurrentSpeed +
+        " Current Speed: " + m_Character.m_CurrentSpeed +
+        " Driver Speed: " + m_DriveSpeed + " Max Speed: " + m_Character.m_MaxSpeed);
     }
     void MoveInput()
     {
@@ -114,9 +114,12 @@ public class CharacterInputController : MonoBehaviour
     }
     void WheelRotation()
     {
-        foreach (var wheel in m_Character.wheelCream)
+        if (!m_Stuns && m_CurrentSpeed >= 1f)
         {
-            wheel.transform.Rotate(Vector3.right, 360 * m_Character.m_CurrentSpeed * Time.deltaTime);
+            foreach (var wheel in m_Character.wheelCream)
+            {
+                wheel.transform.Rotate(Vector3.right, 180 * m_Character.m_CurrentSpeed * Time.deltaTime);
+            }
         }
     }
     void GetComponentInGame()
@@ -127,10 +130,20 @@ public class CharacterInputController : MonoBehaviour
     }
     void GotStuns()
     {
+
         if (m_Stuns)
         {
-            m_Character.rootObject.transform.Rotate(Vector3.up, 720 * Time.deltaTime, Space.Self);
-            m_Character.rootObject.transform.Rotate(Vector3.left, 180 * Time.deltaTime, Space.Self);
+            //Rotate circle
+            // m_Character.rootObject.transform.Rotate(Vector3.up, 360 * Time.deltaTime, Space.Self);
+            // Debug.Log("circle ");
+
+            //Flip up
+            // m_Character.rootObject.transform.Rotate(Vector3.left, 450 * Time.deltaTime, Space.Self);
+            // m_Character.rootObject.transform.localPosition = new Vector3(m_Character.rootObject.transform.localPosition.x, m_Character.rootObject.transform.localPosition.y + 0.05f, m_Character.rootObject.transform.localPosition.z);
+            // Debug.Log("Flip ");
+            m_Character.animStuns.SetBool("isStuns", m_Stuns);
+
+
             StartCoroutine(ReturnRotationStun());
         }
     }
@@ -266,6 +279,10 @@ public class CharacterInputController : MonoBehaviour
     void ChangeRotation(int _direction)
     {
         m_Character.rootObject.transform.localRotation = Quaternion.Euler(0, _direction * 2f, 0);
+
+        m_Character.wheelCream[0].transform.localRotation = Quaternion.Euler(0, _direction * 7f, 0);
+        m_Character.wheelCream[1].transform.localRotation = Quaternion.Euler(0, _direction * 7f, 0);
+
     }
     void ChangePosition()
     {
@@ -319,16 +336,18 @@ public class CharacterInputController : MonoBehaviour
         yield return new WaitForSeconds(m_SecondChangeLine);
 
         m_Character.rootObject.transform.localRotation = Quaternion.identity;
+
+        m_Character.wheelCream[0].transform.localRotation = Quaternion.identity;
+        m_Character.wheelCream[1].transform.localRotation = Quaternion.identity;
+
     }
     IEnumerator ReturnRotationStun()
     {
         yield return new WaitForSeconds(1f);
-
-        m_Character.rootObject.transform.localRotation = Quaternion.identity;
-        m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
-
         m_Character.m_Stuns = false;
         m_Stuns = false;
+        m_Character.rootObject.transform.localRotation = Quaternion.identity;
+        m_Character.animStuns.SetBool("isStuns", m_Stuns);
     }
     IEnumerator StopMoving()
     {

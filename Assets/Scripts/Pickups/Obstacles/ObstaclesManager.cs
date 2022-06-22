@@ -67,14 +67,25 @@ public class ObstaclesManager : MonoBehaviour
     #region Class
     IEnumerator SpawnObstacles()
     {
-        yield return new WaitForSeconds(1f);
+        if (m_Character.m_Stuns)
+        {
+            yield return new WaitForSeconds(4f);
+        }
+        else if (m_Character.m_CurrentSpeed < 20f)
+        {
+            yield return new WaitForSeconds(2f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(1f);
+        }
         StartCoroutine(SpawnObstacles());
+
+        m_ItemPosition = Random.Range(0, listObstacles.Length);
+        m_NextPosition = Random.Range(0, m_PositionSpawn.Length);
 
         if (!m_Character.m_Stuns)
         {
-            m_ItemPosition = Random.Range(0, listObstacles.Length);
-            m_NextPosition = Random.Range(0, m_PositionSpawn.Length);
-
             if (m_ItemPosition == positionOfStickCreamInTheSky)
             {
                 Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX + m_PositionSpawn[m_NextPosition], _PointY + 7f, _PointZ), _Rotation);

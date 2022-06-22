@@ -36,6 +36,8 @@ public class CharacterCollider : MonoBehaviour
 
     [HideInInspector] public bool m_Stuns;
 
+    public Animator animStuns;
+
 
     GameObject m_RootItem;
     List<GameObject> crystalList = new List<GameObject>();
@@ -55,7 +57,9 @@ public class CharacterCollider : MonoBehaviour
 
         m_InitialMaxSpeed = m_MaxSpeed;
         m_CurrentSpeed = m_InitialSpeed;
-        // m_CharacterController.m_CurrentSpeed = m_InitialSpeed;
+
+        animStuns = rootObject.GetComponent<Animator>();
+
 
         m_SpeedMilk = 5f / 100f;
 
@@ -104,9 +108,9 @@ public class CharacterCollider : MonoBehaviour
 
             foreach (Transform child in m_RootItem.transform)
             {
-                if (child.CompareTag("Fire"))
+                if (child.CompareTag("Ice"))
                 {
-                    FirePickup fire = m_RootItem.GetComponent<FirePickup>();
+                    IcePickup ice = m_RootItem.GetComponent<IcePickup>();
 
                     if (!m_CharacterController.m_Stuns)
                     {

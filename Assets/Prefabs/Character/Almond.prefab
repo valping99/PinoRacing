@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1145123409057055138}
   - component: {fileID: 6608125721828246286}
+  - component: {fileID: 946320154045547533}
   m_Layer: 0
   m_Name: car
   m_TagString: RootObject
@@ -50,6 +51,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 2, z: 3}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!95 &946320154045547533
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337658925646404376}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bddce5109541d3c449acaddfbad00fc9, type: 2}
+  m_CullingMode: 2
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2135373222308208828
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +215,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4197b16f40fba0b458446e578347d47d, type: 2}
+  - {fileID: 2100000, guid: d1df96d505ffce441a2ddc09b8f80dc9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -392,6 +413,7 @@ MonoBehaviour:
   m_SpeedMilk: 0
   m_IsEnoughBoost: 0
   m_Stuns: 0
+  animStuns: {fileID: 0}
 --- !u!114 &8494547279078751302
 MonoBehaviour:
   m_ObjectHideFlags: 0

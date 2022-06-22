@@ -62,6 +62,7 @@ public class Pickup : MonoBehaviour
         HandleRotation();
 
         CheckDistance(m_CharacterCollider.gameObject.transform, m_RootModel);
+        CheckDistanceToDestroy(m_CharacterCollider.gameObject.transform, m_RootModel);
     }
 
     void OnTriggerEnter(Collider other)
@@ -134,5 +135,18 @@ public class Pickup : MonoBehaviour
         Gizmos.DrawWireSphere(m_RootModel.transform.position, m_Distance);
     }
 #endif
+
+    void CheckDistanceToDestroy(Transform m_PlayerPosition, GameObject _RootModel)
+    {
+        if (Vector3.Distance(m_PlayerPosition.position, _RootModel.transform.position) <= 0.5f)
+        {
+            StartCoroutine(DestroyPickup());
+        }
+    }
+    IEnumerator DestroyPickup()
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+    }
     #endregion
 }
