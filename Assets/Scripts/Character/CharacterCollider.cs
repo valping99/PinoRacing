@@ -133,7 +133,21 @@ public class CharacterCollider : MonoBehaviour
                 if (child.CompareTag("Stick"))
                 {
                     StickPickup stick = m_RootItem.GetComponent<StickPickup>();
-                    m_CurrentBottleMilk -= stick.StickAmount;
+                    if (m_CurrentBottleMilk >= 2)
+                    {
+                        m_CurrentBottleMilk -= stick.StickAmount;
+
+                        Instantiate(milk, new Vector3(rootObject.transform.position.x + (m_CharacterController.slideLength / 2), rootObject.transform.position.y + 2f, rootObject.transform.position.z),
+                        rootObject.transform.rotation);
+                        Instantiate(milk, new Vector3(rootObject.transform.position.x - (m_CharacterController.slideLength / 2), rootObject.transform.position.y + 2f, rootObject.transform.position.z),
+                        rootObject.transform.rotation);
+                    }
+                    else
+                    {
+                        m_CurrentBottleMilk -= 1;
+                        Instantiate(milk, new Vector3(rootObject.transform.position.x, rootObject.transform.position.y + 2f, rootObject.transform.position.z),
+                        rootObject.transform.rotation);
+                    }
 
                     if (m_CurrentBottleMilk <= 0)
                     {
@@ -143,10 +157,7 @@ public class CharacterCollider : MonoBehaviour
 
                     if (m_CurrentBottleMilk > 0)
                     {
-                        Instantiate(milk, new Vector3(rootObject.transform.position.x + (m_CharacterController.slideLength / 2), rootObject.transform.position.y + 2f, rootObject.transform.position.z),
-                        rootObject.transform.rotation);
-                        Instantiate(milk, new Vector3(rootObject.transform.position.x - (m_CharacterController.slideLength / 2), rootObject.transform.position.y + 2f, rootObject.transform.position.z),
-                        rootObject.transform.rotation);
+
                     }
 
                     m_CharacterController.ChangeSpeed();
