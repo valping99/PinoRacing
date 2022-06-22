@@ -36,6 +36,8 @@ public class CharacterCollider : MonoBehaviour
 
     [HideInInspector] public bool m_Stuns;
 
+    public Animator animStuns;
+
 
     GameObject m_RootItem;
     List<GameObject> crystalList = new List<GameObject>();
@@ -55,7 +57,9 @@ public class CharacterCollider : MonoBehaviour
 
         m_InitialMaxSpeed = m_MaxSpeed;
         m_CurrentSpeed = m_InitialSpeed;
-        // m_CharacterController.m_CurrentSpeed = m_InitialSpeed;
+
+        animStuns = rootObject.GetComponent<Animator>();
+
 
         m_SpeedMilk = 5f / 100f;
 

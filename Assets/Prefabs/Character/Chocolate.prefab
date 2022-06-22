@@ -176,6 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4061709785277992612}
   - component: {fileID: 7101383511625217395}
+  - component: {fileID: 5539946291234232627}
   m_Layer: 0
   m_Name: car
   m_TagString: RootObject
@@ -216,6 +217,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 2, z: 3}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!95 &5539946291234232627
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3681067258991957022}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8feedcf7369e7fb49b3867e2587a5b8f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4168228167028810056
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,6 +413,7 @@ MonoBehaviour:
   m_SpeedMilk: 0
   m_IsEnoughBoost: 0
   m_Stuns: 0
+  animStuns: {fileID: 0}
 --- !u!114 &4255195294746993
 MonoBehaviour:
   m_ObjectHideFlags: 0

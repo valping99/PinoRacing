@@ -114,11 +114,11 @@ public class CharacterInputController : MonoBehaviour
     }
     void WheelRotation()
     {
-        if (!m_Stuns && m_CurrentSpeed >= 10f)
+        if (!m_Stuns && m_CurrentSpeed >= 1f)
         {
             foreach (var wheel in m_Character.wheelCream)
             {
-                wheel.transform.Rotate(Vector3.right, 360 * m_Character.m_CurrentSpeed * Time.deltaTime);
+                wheel.transform.Rotate(Vector3.right, 180 * m_Character.m_CurrentSpeed * Time.deltaTime);
             }
         }
     }
@@ -138,9 +138,10 @@ public class CharacterInputController : MonoBehaviour
             // Debug.Log("circle ");
 
             //Flip up
-            m_Character.rootObject.transform.Rotate(Vector3.left, 450 * Time.deltaTime, Space.Self);
-            m_Character.rootObject.transform.localPosition = new Vector3(m_Character.rootObject.transform.localPosition.x, m_Character.rootObject.transform.localPosition.y + 0.05f, m_Character.rootObject.transform.localPosition.z);
-            Debug.Log("Flip ");
+            // m_Character.rootObject.transform.Rotate(Vector3.left, 450 * Time.deltaTime, Space.Self);
+            // m_Character.rootObject.transform.localPosition = new Vector3(m_Character.rootObject.transform.localPosition.x, m_Character.rootObject.transform.localPosition.y + 0.05f, m_Character.rootObject.transform.localPosition.z);
+            // Debug.Log("Flip ");
+            m_Character.animStuns.SetBool("isStuns", m_Stuns);
 
 
             StartCoroutine(ReturnRotationStun());
@@ -342,13 +343,11 @@ public class CharacterInputController : MonoBehaviour
     }
     IEnumerator ReturnRotationStun()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1f);
         m_Character.m_Stuns = false;
         m_Stuns = false;
-
-        yield return new WaitForSeconds(1f);
         m_Character.rootObject.transform.localRotation = Quaternion.identity;
-        m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed + 20f;
+        m_Character.animStuns.SetBool("isStuns", m_Stuns);
     }
     IEnumerator StopMoving()
     {
