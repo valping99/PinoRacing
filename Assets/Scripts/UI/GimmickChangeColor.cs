@@ -37,6 +37,7 @@ public class GimmickChangeColor : MonoBehaviour
     void ChangeColorStick()
     {
         animator = GameObject.FindGameObjectWithTag("GimmeckSticker").GetComponent<Animator>();
+        Debug.Log("abcs");
         currentSticker = GameObject.FindGameObjectWithTag("GimmeckSticker");
         //charInput = FindObjectOfType<CharacterInputController>();
         uiManagers = FindObjectOfType<UIManager>();

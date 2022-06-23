@@ -22,10 +22,10 @@ public class RoadSpawner : MonoBehaviour
     void Start()
     {
         charColl = FindObjectOfType<CharacterCollider>();
-        if (roads != null && roads.Count > 0)
-        {
-            roads = roads.OrderBy(r => r.transform.position.z).ToList();
-        }
+        //if (roads != null && roads.Count > 0)
+        //{
+        //    roads = roads.OrderBy(r => r.transform.position.z).ToList();
+        //}
 
 
     }
