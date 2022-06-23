@@ -18,19 +18,18 @@ public class UIManager : MonoBehaviour
     // Get player for get Speed;
     public GameObject m_Player;
     public BoostCount b_count;
-
     private RankManager rankManagers;
 
 
     [Header("Player Variables")]
+    public int boostCount = 16;
     public float currentScore;
     public float currentSpeed;
     public float currentMilk;
     public float currentStamina;
     public int crystalCollected;
-    public float healthDown;
     public static int pinoSelected;
-    public int boostCount = 16;
+    public float healthDown;
 
     //Check to active UI & button;
     [Header("Check active")]
@@ -42,6 +41,7 @@ public class UIManager : MonoBehaviour
     public bool checkRunning = false;
     public bool checkDashBoost = false;
     private bool startScene = true;
+    private bool checkCount = true;
 
     [Header("Object UI")]
     [SerializeField]
@@ -62,12 +62,13 @@ public class UIManager : MonoBehaviour
     public GameObject finishLap;
     public GameObject displayScene;
     public GameObject lapsObjects;
+    public List<GameObject> ListCountdown;
     public Button boostSpeedButton;
     public Button changeToRocketStart;
     public Button LockBoostButton;
     public Button pauseButton;
     public string countText;
-    private float timeValue = 3;
+    public float timeValue = 3;
     public float currentTime;
     public float timeValueUp = 0;
     public float maxTimeValue = 300;
@@ -102,7 +103,7 @@ public class UIManager : MonoBehaviour
     private HiresScreenShots screenShot;
     private int score;
     public int lapsToGameOver;
-    float timeGo = 0.5f;
+    public float timeGo = 0.5f;
     #endregion
     #region Unity Method
     //Game Start
@@ -239,12 +240,12 @@ public class UIManager : MonoBehaviour
             //UpdateScore(0);
             if (timeGo > 0)
             {
-                countdownTimer_Text.text = "GO";
+                //countdownTimer_Text.text = "GO";
                 timeGo -= Time.deltaTime;
             }
             else
             {
-                countdownTimer_Text.gameObject.SetActive(false);
+                //countdownTimer_Text.gameObject.SetActive(false);
             }
             TimeUp();
             GetVariables();
@@ -267,13 +268,19 @@ public class UIManager : MonoBehaviour
             {
                 displayScene.gameObject.SetActive(false);
                 miniMap.gameObject.SetActive(true);
-                countdownTimer_Text.gameObject.SetActive(true);
+                //countdownTimer_Text.gameObject.SetActive(true);
                 lapsObjects.gameObject.SetActive(true);
                 CountDown();
+                if (checkCount)
+                {
+                    Debug.Log("False");
+                    StartCoroutine(CountNumber());
+                    checkCount = false;
+                }
             }
             else
             {
-                countdownTimer_Text.gameObject.SetActive(false);
+                //countdownTimer_Text.gameObject.SetActive(false);
                 miniMap.gameObject.SetActive(false);
                 lapsObjects.gameObject.SetActive(false);
             }
@@ -572,6 +579,25 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    IEnumerator CountNumber()
+    {
+
+        for(int i = 3; i <= ListCountdown.Count; i--)
+        {
+            if (i < 0)
+            {
+                break;
+            }
+            else
+            {
+                ListCountdown[i].gameObject.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                ListCountdown[i].gameObject.SetActive(false);
+                Debug.Log(ListCountdown[i]);
+            }
+        }
+    }
+
     /**
     //TimeOver
     public void CountDownMinutes()
@@ -600,6 +626,7 @@ public class UIManager : MonoBehaviour
 
         limitedTimer_Text.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
+
     **/
     #endregion
 }

@@ -8,13 +8,12 @@ public class GimmickChangeColor : MonoBehaviour
     //public CharacterCollider charColl;
     //public Transform transformParent;
     //public GameObject stickGimmeck;
-    public GameObject currentSticker;
     //public GameObject rootObject;
     //public CharacterInputController charInput;
 
+    [Tooltip("Variables")]
+    public GameObject currentSticker;
     public UIManager uiManagers;
-
-    [Tooltip("Animator")]
     public Animator animator;
 
     const string m_AnimTimer = "Timer";
@@ -37,10 +36,9 @@ public class GimmickChangeColor : MonoBehaviour
     void ChangeColorStick()
     {
         animator = GameObject.FindGameObjectWithTag("GimmeckSticker").GetComponent<Animator>();
-        Debug.Log("abcs");
         currentSticker = GameObject.FindGameObjectWithTag("GimmeckSticker");
-        //charInput = FindObjectOfType<CharacterInputController>();
         uiManagers = FindObjectOfType<UIManager>();
+        //charInput = FindObjectOfType<CharacterInputController>();
         //charColl = FindObjectOfType<CharacterCollider>();
         //rootObject = GameObject.FindGameObjectWithTag("RootObject");
         //Instantiate(stickGimmeck, charColl.transform.position, Quaternion.identity, transformParent);
@@ -48,13 +46,13 @@ public class GimmickChangeColor : MonoBehaviour
 
     void CheckTimeUI()
     {
-        //currentSticker.transform.rotation = rootObject.transform.rotation;
-        //transformParent.position = charColl.transform.position;
-        //transformParent.rotation = charColl.transform.rotation;
         if (uiManagers.timeValueUp > 240)
         {
             animator.SetFloat(m_AnimTimer, uiManagers.timeValueUp);
         }
+        //currentSticker.transform.rotation = rootObject.transform.rotation;
+        //transformParent.position = charColl.transform.position;
+        //transformParent.rotation = charColl.transform.rotation;
         //if (charinput.m_stuns)
         //{
         //    currentsticker.transform.position = rootobject.transform.position;
