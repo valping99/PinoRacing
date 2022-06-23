@@ -133,11 +133,11 @@ public class CharacterInputController : MonoBehaviour
 
             m_Character.animStuns.applyRootMotion = false;
             m_Character.animStuns.SetBool("isCrash", m_Stuns);
+            m_Character.m_CarShadow.gameObject.SetActive(!m_Stuns);
             Debug.Log(m_Character.m_CarShadow.name);
 
             StartCoroutine(ReturnRotationStun());
         }
-        // m_Character.m_CarShadow.gameObject.SetActive(!m_Stuns);
     }
     void SpeedUp()
     {
@@ -336,6 +336,9 @@ public class CharacterInputController : MonoBehaviour
     }
     IEnumerator ReturnRotationStun()
     {
+        // yield return new WaitForSeconds(1f);
+        // m_Character.m_CarShadow.gameObject.SetActive(m_Stuns);
+
         yield return new WaitForSeconds(2f);
 
         m_Character.m_Stuns = false;
