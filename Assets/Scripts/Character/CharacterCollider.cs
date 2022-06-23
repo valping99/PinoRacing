@@ -1,52 +1,37 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterCollider : MonoBehaviour
 {
-
     #region Variables
 
     [Header("Variables")]
-    public CharacterInputController m_CharacterController;
-    public GameObject rootObject;
     public GameObject[] wheelCream;
-
-    [Header("Items")]
-    public int m_CurrentBottleMilk;
-    public GameObject milk;
-
-
-    [Header("Initial Values")]
-
-    float m_InitialMaxSpeed;
-
-    [Tooltip("Max speed of the character")]
-    public float m_MaxSpeed;
-    [Tooltip("Initial Velocity of the character")]
-    public int m_InitialVelocity;
-    [Tooltip("Speed initial of the character - min speed")]
-    public float m_InitialSpeed;
-
-    [Header("Controls")]
-    public float m_CurrentSpeed;
-    [HideInInspector] public float m_CurrentStamina;
-    [HideInInspector] public float m_SpeedMilk;
-    public bool m_IsEnoughBoost;
-
-    [HideInInspector] public bool m_Stuns;
-
+    public CharacterInputController m_CharacterController;
     public Animator animStuns;
 
 
+    [Header("Items")]
+    public GameObject rootObject;
+    public GameObject milk;
+
+    [Header("Initial Values"), Tooltip("Initial Velocity of the character"), Range(0, 5)]
+    public int m_InitialVelocity;
+    [Tooltip("Speed initial of the character - min speed"), Range(0, 300)]
+    public float m_InitialSpeed;
+    [Tooltip("Max speed of the character"), Range(0, 300)]
+    public float m_MaxSpeed;
+
+    [Header("Controls")]
+    [Range(0, 10)] public int m_CurrentBottleMilk;
+    [Range(0, 300)] public float m_CurrentSpeed;
+    public bool m_IsEnoughBoost;
+    public bool m_Stuns;
+
+    [Range(0, 300)] float m_SpeedMilk;
+    [Range(0, 300)] float m_InitialMaxSpeed;
     GameObject m_RootItem;
-    List<GameObject> crystalList = new List<GameObject>();
-
-    public Rigidbody car;
-    // [Header("Sound")]
-    // public AudioClip milkSound;
-
     AudioSource m_Audio;
 
     #endregion
@@ -55,22 +40,12 @@ public class CharacterCollider : MonoBehaviour
 
     void Start()
     {
-        m_Stuns = false;
-
-        m_InitialMaxSpeed = m_MaxSpeed;
-        m_CurrentSpeed = m_InitialSpeed;
-
-        animStuns = rootObject.GetComponent<Animator>();
-
-
-        m_SpeedMilk = 5f / 100f;
-
         GetComponentInGame();
+        InitialComponent();
     }
 
     void FixedUpdate()
     {
-        // CheckBoostCount();
         FixSpeedUpdate();
     }
 
@@ -79,7 +54,6 @@ public class CharacterCollider : MonoBehaviour
         try
         {
             Obstacles(other);
-
             Item(other);
         }
         catch (System.Exception ex)
@@ -92,6 +66,21 @@ public class CharacterCollider : MonoBehaviour
     #endregion
 
     #region Class
+    void GetComponentInGame()
+    {
+        m_CharacterController = GetComponentInParent<CharacterInputController>();
+        animStuns = rootObject.GetComponent<Animator>();
+        m_Audio = GetComponent<AudioSource>();
+    }
+    void InitialComponent()
+    {
+        m_Stuns = false;
+
+        m_InitialMaxSpeed = m_MaxSpeed;
+        m_CurrentSpeed = m_InitialSpeed;
+
+        m_SpeedMilk = 5f / 100f;
+    }
     void Obstacles(Collider other)
     {
         if (other.gameObject.tag == "Obstacle")
@@ -209,11 +198,6 @@ public class CharacterCollider : MonoBehaviour
 
             }
         }
-    }
-    void GetComponentInGame()
-    {
-        m_Audio = GetComponent<AudioSource>();
-        m_CharacterController = GetComponentInParent<CharacterInputController>();
     }
     void FixSpeedUpdate()
     {
