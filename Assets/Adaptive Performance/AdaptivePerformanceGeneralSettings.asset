@@ -104,3 +104,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LoaderManagerInstance: {fileID: -5199054181462941955}
   m_InitManagerOnStart: 1
+  m_AdaptivePerformanceManager: {fileID: 0}
+  m_ProviderIntialized: 0
+  m_ProviderStarted: 0

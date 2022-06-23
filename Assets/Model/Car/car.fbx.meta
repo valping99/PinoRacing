@@ -3,7 +3,12 @@ guid: 6fa2cb40c6d39924f94d1e72418e5e27
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: surfaceShader1
+    second: {fileID: 2100000, guid: d179200a6f5edbf45907ed883260aba1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -88,7 +93,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.84999996
+    globalScale: 85
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
