@@ -284,6 +284,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &9237470 stripped
@@ -501,6 +506,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_5
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &19133718 stripped
@@ -595,6 +605,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -691,6 +706,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_07
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &23002466 stripped
@@ -785,6 +805,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -881,6 +906,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &80767595 stripped
@@ -976,6 +1006,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &94533482 stripped
@@ -1051,6 +1086,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_90_degree (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 39b50f88a9dae234d998976e766150a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39b50f88a9dae234d998976e766150a1, type: 3}
 --- !u!4 &109034568 stripped
@@ -1087,7 +1127,7 @@ Transform:
   m_GameObject: {fileID: 119296967}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.338, z: 0}
-  m_LocalScale: {x: 8.986015, y: 6.7367573, z: 10.693436}
+  m_LocalScale: {x: 41.31231, y: 30.97157, z: 49.162003}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7651326599288477483}
@@ -1202,6 +1242,7 @@ Transform:
   - {fileID: 936047555}
   - {fileID: 983149477}
   - {fileID: 1122337276}
+  - {fileID: 1828133947}
   m_Father: {fileID: 369774608}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1458,6 +1499,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_06
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &174834752 stripped
@@ -1552,6 +1598,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -1648,6 +1699,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_03
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &179592864 stripped
@@ -1742,6 +1798,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -1988,6 +2049,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &206661467 stripped
@@ -2082,6 +2148,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -2178,6 +2249,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_5
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &214953887 stripped
@@ -2272,6 +2348,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -2368,6 +2449,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Road_inverted_05 '
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &226953632 stripped
@@ -2463,6 +2549,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_07
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &237148781 stripped
@@ -2480,7 +2571,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 247736322}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Line_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2598,6 +2689,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -2798,6 +2894,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &315298113 stripped
@@ -2892,6 +2993,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -3064,6 +3170,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &326697814 stripped
@@ -3158,6 +3269,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -3389,6 +3505,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &351377229 stripped
@@ -3557,6 +3678,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &369417082 stripped
@@ -3663,6 +3789,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_90_degree (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 39b50f88a9dae234d998976e766150a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39b50f88a9dae234d998976e766150a1, type: 3}
@@ -3799,6 +3930,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &395685957 stripped
@@ -3832,14 +3968,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413048337}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -84.39325, y: -70.49978, z: 22.597597}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: -84.39325, y: -70.49978, z: 164.4}
   m_LocalScale: {x: 0.88664323, y: 0.50679815, z: 0.88664323}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 449337012}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
 --- !u!114 &413048339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3900,7 +4036,7 @@ Camera:
   far clip plane: 800
   field of view: 60
   orthographic: 1
-  orthographic size: 300
+  orthographic size: 1000
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -4163,6 +4299,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_5
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &468065487 stripped
@@ -4393,6 +4534,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &529932550 stripped
@@ -4487,6 +4633,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -4640,7 +4791,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 558224238}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Line_2_Flip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4858,6 +5009,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_90_degree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 39b50f88a9dae234d998976e766150a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39b50f88a9dae234d998976e766150a1, type: 3}
 --- !u!4 &587728738 stripped
@@ -5020,6 +5176,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -5446,6 +5607,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_8
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &623391686 stripped
@@ -5782,6 +5948,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &656929399 stripped
@@ -5790,6 +5961,79 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 656929398}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &658914201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 658914202}
+  - component: {fileID: 658914204}
+  - component: {fileID: 658914203}
+  m_Layer: 0
+  m_Name: Countdown_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &658914202
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658914201}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2116185422}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 89, y: 125}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &658914203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658914201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: ecc79f1f115ca754d83e635b5d18d835, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &658914204
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658914201}
+  m_CullTransparentMesh: 1
 --- !u!1 &664379662
 GameObject:
   m_ObjectHideFlags: 0
@@ -6064,6 +6308,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &696075085 stripped
@@ -6206,6 +6455,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_03 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &717151304 stripped
@@ -6301,6 +6555,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &719386683 stripped
@@ -6326,7 +6585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &729728945
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6532,6 +6791,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_10
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &737764070 stripped
@@ -6626,6 +6890,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -7203,6 +7472,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_120_degree_Flip
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c240b73c8da313148970ee00a5238520,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c240b73c8da313148970ee00a5238520, type: 3}
 --- !u!4 &824649415 stripped
@@ -7297,6 +7571,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -7446,6 +7725,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_90_degree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 39b50f88a9dae234d998976e766150a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39b50f88a9dae234d998976e766150a1, type: 3}
 --- !u!4 &833047475 stripped
@@ -7541,6 +7825,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &843843656 stripped
@@ -7634,7 +7923,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 887728457}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Line_Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7897,6 +8186,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_Start
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196404823138277292, guid: f69543d724ad71f469191f33f7ddc790,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1378922297957006227, guid: f69543d724ad71f469191f33f7ddc790,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f69543d724ad71f469191f33f7ddc790, type: 3}
@@ -8282,6 +8581,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &931054799 stripped
@@ -8299,7 +8603,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 936047555}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Line_Bot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9205,6 +9509,89 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 992298790}
   m_CullTransparentMesh: 1
+--- !u!1 &995800235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 995800236}
+  - component: {fileID: 995800238}
+  - component: {fileID: 995800237}
+  m_Layer: 10
+  m_Name: Start_Hidden
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &995800236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995800235}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 8.31, z: 11.53}
+  m_LocalScale: {x: 2.0249, y: 1, z: 4.4132376}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 908170757}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &995800237
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995800235}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 369209a5a61089e4ab6751a8b297323f, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &995800238
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995800235}
+  m_Mesh: {fileID: 3112977340068577888, guid: f69543d724ad71f469191f33f7ddc790, type: 3}
 --- !u!1 &1002541110
 GameObject:
   m_ObjectHideFlags: 0
@@ -9427,7 +9814,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1025312168}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Line_3_Flip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9690,6 +10077,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1054696988 stripped
@@ -9784,6 +10176,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Arch_banner_finish_free
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3bdf32973f5b9f143bfdfd0ae9bd4c32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3bdf32973f5b9f143bfdfd0ae9bd4c32,
         type: 3}
@@ -9922,6 +10319,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1071756752 stripped
@@ -10011,6 +10413,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_60_degree
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: acd393f791d135643b485354e24a04f1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acd393f791d135643b485354e24a04f1, type: 3}
@@ -10239,6 +10646,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_03
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1117431082 stripped
@@ -10258,6 +10670,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LAP
+      objectReference: {fileID: 0}
+    - target: {fileID: 120340297762815318, guid: 27f69fe37e0c8c44f97be1aba8f406cd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 120340297762815318, guid: 27f69fe37e0c8c44f97be1aba8f406cd,
         type: 3}
@@ -10488,6 +10905,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1136794338 stripped
@@ -10582,6 +11004,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -10904,6 +11331,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_5
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1170839179 stripped
@@ -10998,6 +11430,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -11395,6 +11832,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_90_degree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 39b50f88a9dae234d998976e766150a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39b50f88a9dae234d998976e766150a1, type: 3}
 --- !u!4 &1254185770 stripped
@@ -11489,6 +11931,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -11664,6 +12111,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1277238963 stripped
@@ -11759,6 +12211,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_7
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1325450083 stripped
@@ -11848,6 +12305,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_60_degree_Flip
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: acd393f791d135643b485354e24a04f1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acd393f791d135643b485354e24a04f1, type: 3}
@@ -12060,6 +12522,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_05
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1353240250 stripped
@@ -12077,7 +12544,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1358749457}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Line_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12191,6 +12658,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_9
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1362630271 stripped
@@ -12266,6 +12738,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_90_degree
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 39b50f88a9dae234d998976e766150a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39b50f88a9dae234d998976e766150a1, type: 3}
 --- !u!4 &1383555561 stripped
@@ -12274,6 +12751,79 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1383555560}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1420349574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1420349575}
+  - component: {fileID: 1420349577}
+  - component: {fileID: 1420349576}
+  m_Layer: 0
+  m_Name: Countdown_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1420349575
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420349574}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2116185422}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 126, y: 126}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1420349576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420349574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 74f33c9abc0a8c94d92ebbcb37c11054, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1420349577
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420349574}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1453222272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12360,6 +12910,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_03 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -12533,6 +13088,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_03 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1466916944 stripped
@@ -12628,6 +13188,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1468058371 stripped
@@ -12722,6 +13287,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -13099,6 +13669,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_04
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1483842994 stripped
@@ -13194,6 +13769,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_120_degree
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c240b73c8da313148970ee00a5238520,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c240b73c8da313148970ee00a5238520, type: 3}
 --- !u!4 &1491397239 stripped
@@ -13214,7 +13794,7 @@ GameObject:
   - component: {fileID: 1503920368}
   - component: {fileID: 1503920367}
   - component: {fileID: 1503920366}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13676,7 +14256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1574225732}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Line_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13715,6 +14295,79 @@ Transform:
   m_Father: {fileID: 146182498}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1576937937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1576937938}
+  - component: {fileID: 1576937940}
+  - component: {fileID: 1576937939}
+  m_Layer: 0
+  m_Name: Countdown_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1576937938
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576937937}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2116185422}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 124, y: 127}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1576937939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576937937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: b8da93cd9f56c6248b0b9994e715d105, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1576937940
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576937937}
+  m_CullTransparentMesh: 1
 --- !u!1 &1594234467
 GameObject:
   m_ObjectHideFlags: 0
@@ -13936,6 +14589,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -14270,6 +14928,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_10
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1633142335 stripped
@@ -14533,6 +15196,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1639327084 stripped
@@ -14627,6 +15295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -14723,6 +15396,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1710315760 stripped
@@ -14817,6 +15495,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_03 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -14943,6 +15626,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -15189,6 +15877,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_90_degree_Flip
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 39b50f88a9dae234d998976e766150a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39b50f88a9dae234d998976e766150a1, type: 3}
 --- !u!4 &1762170047 stripped
@@ -15283,6 +15976,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -15379,6 +16077,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1773092494 stripped
@@ -15473,6 +16176,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -15569,6 +16277,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_7
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1791398378 stripped
@@ -15577,6 +16290,104 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1791398377}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1828133946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1828133947}
+  - component: {fileID: 1828133950}
+  - component: {fileID: 1828133949}
+  - component: {fileID: 1828133948}
+  m_Layer: 10
+  m_Name: f
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1828133947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828133946}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 20.304, y: -1, z: 139}
+  m_LocalScale: {x: 488.0765, y: 488.0765, z: 0.48807654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 146182498}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!136 &1828133948
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828133946}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1828133949
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828133946}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: bb7f86c8ff9cca649b4dbfc5a47a15e0, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1828133950
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828133946}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1832012171
 GameObject:
   m_ObjectHideFlags: 0
@@ -15739,6 +16550,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -15911,6 +16727,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1880243765 stripped
@@ -15940,7 +16761,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1886486569}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Line_1_Flip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16067,6 +16888,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_5
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1894092885 stripped
@@ -16161,6 +16987,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -16846,6 +17677,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1987286581 stripped
@@ -17096,6 +17932,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_03
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &1997448810 stripped
@@ -17190,6 +18031,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_90_degree
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 39b50f88a9dae234d998976e766150a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39b50f88a9dae234d998976e766150a1, type: 3}
@@ -17383,6 +18229,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 729728945}
+  - {fileID: 2116185422}
   m_Father: {fileID: 2071708844}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17477,6 +18324,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Road_inverted_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
@@ -17701,6 +18553,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_inverted_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 186308159b137b448b2dd3476189fbce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186308159b137b448b2dd3476189fbce, type: 3}
 --- !u!4 &2082419980 stripped
@@ -17709,6 +18566,79 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2082419979}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2094714713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2094714714}
+  - component: {fileID: 2094714716}
+  - component: {fileID: 2094714715}
+  m_Layer: 0
+  m_Name: Countdown_Go
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2094714714
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094714713}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2116185422}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 313, y: 128}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2094714715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094714713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 9a1067be8f4a8bb49ad49e37cc6d8f47, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &2094714716
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094714713}
+  m_CullTransparentMesh: 1
 --- !u!1 &2111688243
 GameObject:
   m_ObjectHideFlags: 0
@@ -17845,6 +18775,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111688243}
   m_CullTransparentMesh: 1
+--- !u!1 &2116185421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2116185422}
+  - component: {fileID: 2116185423}
+  m_Layer: 0
+  m_Name: Timer_Countdown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2116185422
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116185421}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1420349575}
+  - {fileID: 1576937938}
+  - {fileID: 658914202}
+  - {fileID: 2094714714}
+  m_Father: {fileID: 2065750299}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2116185423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116185421}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90baa0594ca84d8468ed58e96d9d4a2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managers: {fileID: 0}
+  countDown_3: {fileID: 1420349574}
+  countDown_2: {fileID: 1576937937}
+  countDown_1: {fileID: 658914201}
+  countDown_Go: {fileID: 2094714713}
 --- !u!1 &2131492074
 GameObject:
   m_ObjectHideFlags: 0
@@ -18333,6 +19321,31 @@ PrefabInstance:
       propertyPath: gameOverMainMenuButton
       value: 
       objectReference: {fileID: 664379664}
+    - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
+        type: 3}
+      propertyPath: ListCountdown.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
+        type: 3}
+      propertyPath: ListCountdown.Array.data[0]
+      value: 
+      objectReference: {fileID: 2094714713}
+    - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
+        type: 3}
+      propertyPath: ListCountdown.Array.data[1]
+      value: 
+      objectReference: {fileID: 658914201}
+    - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
+        type: 3}
+      propertyPath: ListCountdown.Array.data[2]
+      value: 
+      objectReference: {fileID: 1576937937}
+    - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
+        type: 3}
+      propertyPath: ListCountdown.Array.data[3]
+      value: 
+      objectReference: {fileID: 1420349574}
     - target: {fileID: 7201900232121991469, guid: 0ba6220d5676d0440922d1dc5fa1983f,
         type: 3}
       propertyPath: m_RootOrder
