@@ -13,9 +13,10 @@ public class CharacterCollider : MonoBehaviour
 
 
     [Header("Items")]
+    public GameObject m_CarShadow;
     public GameObject rootObject;
     public GameObject childRootObject;
-    public GameObject milk;
+    public GameObject m_MilkPrefabs;
 
     [Header("Initial Values"), Tooltip("Initial Velocity of the character"), Range(0, 5)]
     public int m_InitialVelocity;
@@ -127,15 +128,15 @@ public class CharacterCollider : MonoBehaviour
                     {
                         m_CurrentBottleMilk -= stick.StickAmount;
 
-                        Instantiate(milk, new Vector3(rootObject.transform.position.x + (m_CharacterController.slideLength / 2), rootObject.transform.position.y + 2f, rootObject.transform.position.z),
+                        Instantiate(m_MilkPrefabs, new Vector3(rootObject.transform.position.x + (m_CharacterController.slideLength / 2), rootObject.transform.position.y + 2f, rootObject.transform.position.z),
                         rootObject.transform.rotation);
-                        Instantiate(milk, new Vector3(rootObject.transform.position.x - (m_CharacterController.slideLength / 2), rootObject.transform.position.y + 2f, rootObject.transform.position.z),
+                        Instantiate(m_MilkPrefabs, new Vector3(rootObject.transform.position.x - (m_CharacterController.slideLength / 2), rootObject.transform.position.y + 2f, rootObject.transform.position.z),
                         rootObject.transform.rotation);
                     }
                     else if (m_CurrentBottleMilk == 1)
                     {
                         m_CurrentBottleMilk -= 1;
-                        Instantiate(milk, new Vector3(rootObject.transform.position.x, rootObject.transform.position.y + 2f, rootObject.transform.position.z),
+                        Instantiate(m_MilkPrefabs, new Vector3(rootObject.transform.position.x, rootObject.transform.position.y + 2f, rootObject.transform.position.z),
                         rootObject.transform.rotation);
                     }
 

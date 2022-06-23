@@ -130,11 +130,14 @@ public class CharacterInputController : MonoBehaviour
 
         if (m_Stuns)
         {
+
             m_Character.animStuns.applyRootMotion = false;
             m_Character.animStuns.SetBool("isCrash", m_Stuns);
+            Debug.Log(m_Character.m_CarShadow.name);
 
             StartCoroutine(ReturnRotationStun());
         }
+        // m_Character.m_CarShadow.gameObject.SetActive(!m_Stuns);
     }
     void SpeedUp()
     {
