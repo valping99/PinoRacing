@@ -130,11 +130,8 @@ public class CharacterInputController : MonoBehaviour
 
         if (m_Stuns)
         {
-            if (laneNumber > 1)
-                m_Character.animStuns.SetBool("isStunsRight", m_Stuns);
-
-            if (laneNumber < 3)
-                m_Character.animStuns.SetBool("isStunsLeft", m_Stuns);
+            m_Character.animStuns.applyRootMotion = false;
+            m_Character.animStuns.SetBool("isCrash", m_Stuns);
 
             StartCoroutine(ReturnRotationStun());
         }
@@ -144,7 +141,6 @@ public class CharacterInputController : MonoBehaviour
         if (m_VelocityUp && !m_Stuns && m_CurrentSpeed < m_Character.m_MaxSpeed && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
         {
             m_Character.m_CurrentSpeed += (m_Character.m_InitialVelocity + (m_Character.m_CurrentBottleMilk * 5f));
-            // m_CurrentSpeed += (m_Character.m_InitialVelocity + (m_Character.m_CurrentBottleMilk * 5f));
             m_MilkCollectSpeed += (m_Character.m_InitialVelocity + (m_Character.m_CurrentBottleMilk * 5f));
             m_VelocityUp = false;
             StartCoroutine(VelocityUp());
@@ -337,18 +333,17 @@ public class CharacterInputController : MonoBehaviour
     }
     IEnumerator ReturnRotationStun()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         m_Character.m_Stuns = false;
         m_Stuns = false;
+        m_Character.animStuns.applyRootMotion = true;
 
         m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
+        m_Character.childRootObject.transform.localPosition = Vector3.zero;
         m_Character.rootObject.transform.localRotation = Quaternion.identity;
 
-        if (laneNumber > 1)
-            m_Character.animStuns.SetBool("isStunsRight", m_Stuns);
-        if (laneNumber < 3)
-            m_Character.animStuns.SetBool("isStunsLeft", m_Stuns);
+        m_Character.animStuns.SetBool("isCrash", m_Stuns);
     }
     IEnumerator StopMoving()
     {

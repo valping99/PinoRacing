@@ -26,7 +26,7 @@ public class ItemDrop : MonoBehaviour
     {
         yield return new WaitForSeconds(s);
         Destroy(gameObject);
-        Debug.Log(gameObject.name);
+        // Debug.Log(gameObject.name);
     }
     #endregion
 }

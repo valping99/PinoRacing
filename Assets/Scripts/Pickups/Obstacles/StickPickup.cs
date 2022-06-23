@@ -33,35 +33,28 @@ public class StickPickup : Pickup
 
     protected override void CheckDistance(Transform _PlayerPosition, GameObject _RootModel)
     {
-        try
+        float _speed = _PlayerPosition.GetComponent<CharacterCollider>().m_CurrentSpeed;
+
+        //Calculate distance and time to drop
+        float _Distance = Vector3.Distance(transform.position, new Vector3(transform.position.x, 0, transform.position.z));
+        // Time = Distance / Velocity
+        float _tempTime = _Distance / m_DropSpeed;
+
+        if (Vector3.Distance(transform.position, _PlayerPosition.position) < m_Distance)
         {
-            float _speed = _PlayerPosition.GetComponent<CharacterCollider>().m_CurrentSpeed;
-
-            //Calculate distance and time to drop
-            float _Distance = Vector3.Distance(transform.position, new Vector3(transform.position.x, 0, transform.position.z));
-            // Time = Distance / Velocity
-            float _tempTime = _Distance / m_DropSpeed;
-
-            if (Vector3.Distance(transform.position, _PlayerPosition.position) < m_Distance)
+            // if distance of player to object is less than m_Distance, make object move down
+            if (_RootModel.transform.position.y > 0)
             {
-                // if distance of player to object is less than m_Distance, make object move down
-                if (_RootModel.transform.position.y > 0)
-                {
-                    //Move model down
-                    _RootModel.transform.position = Vector3.MoveTowards(_RootModel.transform.position,
-                    new Vector3(_RootModel.transform.position.x, 0, _RootModel.transform.position.z),
-                    (_tempTime * _speed) * Time.deltaTime);
+                //Move model down
+                _RootModel.transform.position = Vector3.MoveTowards(_RootModel.transform.position,
+                new Vector3(_RootModel.transform.position.x, 0, _RootModel.transform.position.z),
+                (_tempTime * _speed) * Time.deltaTime);
 
-                    //Move collider down, must faster than model
-                    transform.position = Vector3.MoveTowards(transform.position,
-                    new Vector3(transform.position.x, 0, transform.position.z),
-                    (_tempTime * _speed) * 2 * Time.deltaTime);
-                }
+                //Move collider down, must faster than model
+                transform.position = Vector3.MoveTowards(transform.position,
+                new Vector3(transform.position.x, 0, transform.position.z),
+                (_tempTime * _speed) * 2 * Time.deltaTime);
             }
-        }
-        catch (NullReferenceException e)
-        {
-            Debug.Log(e.Message);
         }
     }
 

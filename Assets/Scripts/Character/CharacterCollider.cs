@@ -14,6 +14,7 @@ public class CharacterCollider : MonoBehaviour
 
     [Header("Items")]
     public GameObject rootObject;
+    public GameObject childRootObject;
     public GameObject milk;
 
     [Header("Initial Values"), Tooltip("Initial Velocity of the character"), Range(0, 5)]
@@ -69,7 +70,7 @@ public class CharacterCollider : MonoBehaviour
     void GetComponentInGame()
     {
         m_CharacterController = GetComponentInParent<CharacterInputController>();
-        animStuns = rootObject.GetComponent<Animator>();
+        animStuns = rootObject.GetComponentInChildren<Animator>();
         m_Audio = GetComponent<AudioSource>();
     }
     void InitialComponent()
@@ -106,7 +107,7 @@ public class CharacterCollider : MonoBehaviour
                     if (!m_CharacterController.m_Stuns)
                     {
                         m_CurrentSpeed = 0;
-                        // m_CharacterController.m_CurrentSpeed = 0;
+                        m_CharacterController.m_CurrentSpeed = 0;
 
                         m_CharacterController.m_Stuns = true;
                         m_CharacterController.ChangeSpeed();
@@ -131,7 +132,7 @@ public class CharacterCollider : MonoBehaviour
                         Instantiate(milk, new Vector3(rootObject.transform.position.x - (m_CharacterController.slideLength / 2), rootObject.transform.position.y + 2f, rootObject.transform.position.z),
                         rootObject.transform.rotation);
                     }
-                    else
+                    else if (m_CurrentBottleMilk == 1)
                     {
                         m_CurrentBottleMilk -= 1;
                         Instantiate(milk, new Vector3(rootObject.transform.position.x, rootObject.transform.position.y + 2f, rootObject.transform.position.z),
@@ -143,12 +144,6 @@ public class CharacterCollider : MonoBehaviour
                         m_CurrentBottleMilk = 0;
                         m_MaxSpeed = m_InitialMaxSpeed;
                     }
-
-                    if (m_CurrentBottleMilk > 0)
-                    {
-
-                    }
-
                     m_CharacterController.ChangeSpeed();
 
                     Destroy(m_RootItem.gameObject);
