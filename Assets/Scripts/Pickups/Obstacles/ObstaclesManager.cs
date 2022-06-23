@@ -34,7 +34,7 @@ public class ObstaclesManager : MonoBehaviour
         m_Character = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInputController>();
         m_CharacterCollider = m_Character.gameObject.GetComponentInChildren<CharacterCollider>();
 
-        m_PositionSpawn = new float[] { m_Character.slideLength, 0, -m_Character.slideLength };
+        m_PositionSpawn = new float[] { m_Character.slideLength + 3, 0, -m_Character.slideLength - 3 };
         m_RootItem = GameObject.FindGameObjectWithTag("SpawnChild");
 
         // StartCoroutine(SpawnObstacles());
