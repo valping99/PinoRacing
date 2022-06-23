@@ -1,5 +1,4 @@
 ﻿using System;
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,37 +8,38 @@ public class CharacterInputController : MonoBehaviour
 {
     #region Variables
 
-    // Animation =====
+#if !UNITY_STANDALONE
+    [Header("Mobile Controller"), SerializeField]
+    protected bool m_IsSwiping = false;
+    [SerializeField] protected Vector2 m_StartingTouch;
+#endif
 
-    // Scripts ====
     [Header("Variables")]
     public CharacterCollider m_Character;
     public PathCreator m_PathCreator;
     public GameObject spawnerObject;
     GameObject m_WallClearLag;
     UIManager uiManagers;
-    // Variables ====
 
     [Header("Controls")]
-    [Tooltip("The more you press, the faster the character will change lines")]
+    [Tooltip("The more you press, the faster the character will change lines"), Range(0, 1)]
     public float m_SecondChangeLine;
-    [Tooltip("Speed of the character when you click boost")]
+    [Tooltip("Speed of the character when you click boost"), Range(0, 300)]
     public float m_BoostSpeed;
-    [Tooltip("Range of the character move when you swipe")]
+    [Tooltip("Range of the character move when you swipe"), Range(0, 10)]
     public int slideLength;
-    public bool m_IsRemainBoost;
+    [HideInInspector] public bool m_IsRemainBoost;
+    [HideInInspector] public bool m_UpSpeed;
     [HideInInspector] public bool m_IsBoosting;
     [HideInInspector] public bool m_PadsIsBoosting;
     [HideInInspector] public bool m_Stuns;
+    [HideInInspector, Range(0, 300)] public float m_CurrentSpeed;
+    [HideInInspector, Range(0, 300)] public float m_MilkCollectSpeed;
+    [Range(0, 300)] float m_DriveSpeed;
+    [Range(0, 4)] float m_CharacterPosition;
+    [Range(0, 3)] int laneNumber;
 
-    // Init number Items ====
-    [HideInInspector] public float m_CurrentSpeed;
-    [HideInInspector] public float m_MilkCollectSpeed;
-    float m_CharacterPosition;
-    public float m_DriveSpeed;
-    int laneNumber;
 
-    // Init Bool ====
     bool m_IsChangeLine;
     bool m_IsGotMilk;
     bool m_VelocityUp;
@@ -48,19 +48,41 @@ public class CharacterInputController : MonoBehaviour
     Vector3 m_Direction;
     Quaternion m_Rotation;
 
-    public bool m_UpSpeed;
-
-#if !UNITY_STANDALONE
-    protected Vector2 m_StartingTouch;
-    protected bool m_IsSwiping = false;
-#endif
-
     #endregion
 
     #region Unity Methods
 
-    // Start is called before the first frame update
     void Start()
+    {
+        GetComponentInGame();
+        InitialComponent();
+    }
+
+    void Update()
+    {
+        if (!spawnerObject && !m_Character && !m_WallClearLag)
+            GetComponentInGame();
+
+        MoveInput();
+
+#if UNITY_EDITOR || UNITY_STANDALONE
+
+#else
+    DebugLog();
+#endif
+    }
+
+    #endregion
+
+    #region Class
+
+    void DebugLog()
+    {
+        Debug.Log("Current Speed Controller: " + m_CurrentSpeed +
+        " Current Speed: " + m_Character.m_CurrentSpeed +
+        " Driver Speed: " + m_DriveSpeed + " Max Speed: " + m_Character.m_MaxSpeed);
+    }
+    void InitialComponent()
     {
         m_MilkCollectSpeed = m_Character.m_InitialSpeed;
 
@@ -76,29 +98,6 @@ public class CharacterInputController : MonoBehaviour
         m_PadsIsBoosting = false;
         m_UpSpeed = false;
         m_Stuns = false;
-
-        GetComponentInGame();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (!spawnerObject && !m_Character && !m_WallClearLag)
-            GetComponentInGame();
-
-        MoveInput();
-        // DebugLog();
-    }
-
-    #endregion
-
-    #region Class
-
-    void DebugLog()
-    {
-        Debug.Log("Current Speed Controller: " + m_CurrentSpeed +
-        " Current Speed: " + m_Character.m_CurrentSpeed +
-        " Driver Speed: " + m_DriveSpeed + " Max Speed: " + m_Character.m_MaxSpeed);
     }
     void MoveInput()
     {
@@ -115,34 +114,27 @@ public class CharacterInputController : MonoBehaviour
     void WheelRotation()
     {
         if (!m_Stuns && m_CurrentSpeed >= 1f)
-        {
             foreach (var wheel in m_Character.wheelCream)
-            {
                 wheel.transform.Rotate(Vector3.right, 180 * m_Character.m_CurrentSpeed * Time.deltaTime);
-            }
-        }
+
+
     }
     void GetComponentInGame()
     {
+        m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
         spawnerObject = GameObject.FindGameObjectWithTag("Spawner");
         m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
-        m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
     }
     void GotStuns()
     {
 
         if (m_Stuns)
         {
-            //Rotate circle
-            // m_Character.rootObject.transform.Rotate(Vector3.up, 360 * Time.deltaTime, Space.Self);
-            // Debug.Log("circle ");
+            if (laneNumber > 1)
+                m_Character.animStuns.SetBool("isStunsRight", m_Stuns);
 
-            //Flip up
-            // m_Character.rootObject.transform.Rotate(Vector3.left, 450 * Time.deltaTime, Space.Self);
-            // m_Character.rootObject.transform.localPosition = new Vector3(m_Character.rootObject.transform.localPosition.x, m_Character.rootObject.transform.localPosition.y + 0.05f, m_Character.rootObject.transform.localPosition.z);
-            // Debug.Log("Flip ");
-            m_Character.animStuns.SetBool("isStunsLeft", m_Stuns);
-
+            if (laneNumber < 3)
+                m_Character.animStuns.SetBool("isStunsLeft", m_Stuns);
 
             StartCoroutine(ReturnRotationStun());
         }
@@ -185,10 +177,17 @@ public class CharacterInputController : MonoBehaviour
 
         spawnerObject.transform.localRotation = _tempRotationSpawner;
 
+        //Test boost in unity editor
+        if (Input.GetKeyDown(KeyCode.R))
+            DashBoost();
 
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            m_Character.m_CurrentBottleMilk += 1;
+            ChangeSpeed();
+        }
 
 #if UNITY_EDITOR || UNITY_STANDALONE
-
         if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns)
         {
             ChangeLane(-slideLength);
@@ -199,15 +198,6 @@ public class CharacterInputController : MonoBehaviour
             ChangeLane(slideLength);
             laneNumber += 1;
         }
-
-        //Test boost in unity editor
-        if (Input.GetKeyDown(KeyCode.R))
-            DashBoost();
-
-        if (Input.GetKeyDown(KeyCode.M))
-            m_Character.m_CurrentBottleMilk += 1;
-
-
 #else
         // Use touch input on mobile
         if (Input.touchCount == 1)
@@ -254,29 +244,30 @@ public class CharacterInputController : MonoBehaviour
     void CheckSpeed()
     {
         if (m_Character.m_CurrentSpeed > m_Character.m_MaxSpeed)
-        {
             m_Character.m_CurrentSpeed = m_Character.m_MaxSpeed;
-        }
+
         if (m_PadsIsBoosting)
         {
             bool _isBoosting = true;
+
             StartCoroutine(CheckBoost());
+
             if (_isBoosting)
             {
                 m_Character.m_CurrentSpeed += 20;
                 _isBoosting = false;
             }
         }
-
     }
     void ChangeLane(int _direction)
     {
+        m_CharacterPosition = _direction;
+
         ChangeRotation(_direction);
         StartCoroutine(ReturnRotation());
-        m_IsChangePosition = true;
-
-        m_CharacterPosition = _direction;
         StartCoroutine(StopMoving());
+
+        m_IsChangePosition = true;
         m_IsChangeLine = false;
     }
     void ChangeRotation(int _direction)
@@ -312,26 +303,26 @@ public class CharacterInputController : MonoBehaviour
     public void ChangeSpeed()
     {
         if (m_PadsIsBoosting || m_Stuns)
-        {
             StartCoroutine(CheckRemainBoost());
-        }
+
     }
     public void DashBoost()
     {
         if (!m_IsBoosting)
-        {
             m_Character.m_CurrentSpeed = m_Character.m_MaxSpeed;
-        }
+
         m_IsRemainBoost = true;
     }
     IEnumerator CheckBoost()
     {
         yield return new WaitForSeconds(3f);
+
         m_PadsIsBoosting = false;
     }
     IEnumerator CheckRemainBoost()
     {
         yield return new WaitForSeconds(2f);
+
         ChangeSpeed();
     }
     IEnumerator ReturnRotation()
@@ -347,28 +338,31 @@ public class CharacterInputController : MonoBehaviour
     IEnumerator ReturnRotationStun()
     {
         yield return new WaitForSeconds(1f);
+
         m_Character.m_Stuns = false;
         m_Stuns = false;
+
         m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
         m_Character.rootObject.transform.localRotation = Quaternion.identity;
-        m_Character.animStuns.SetBool("isStunsLeft", m_Stuns);
+
+        if (laneNumber > 1)
+            m_Character.animStuns.SetBool("isStunsRight", m_Stuns);
+        if (laneNumber < 3)
+            m_Character.animStuns.SetBool("isStunsLeft", m_Stuns);
     }
     IEnumerator StopMoving()
     {
         yield return new WaitForSeconds(m_SecondChangeLine);
 
         m_CharacterPosition = 0;
+
         m_IsChangeLine = true;
         m_IsChangePosition = false;
-
-        //stop track
-
-        //Set animation die
-
     }
     IEnumerator VelocityUp()
     {
         yield return new WaitForSeconds(1f);
+
         m_VelocityUp = true;
         m_UpSpeed = false;
     }
