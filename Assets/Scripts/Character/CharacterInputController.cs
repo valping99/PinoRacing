@@ -68,7 +68,7 @@ public class CharacterInputController : MonoBehaviour
 #if UNITY_EDITOR || UNITY_STANDALONE
 
 #else
-    DebugLog();
+        DebugLog();
 #endif
     }
 
@@ -130,8 +130,12 @@ public class CharacterInputController : MonoBehaviour
 
         if (m_Stuns)
         {
+
             m_Character.animStuns.applyRootMotion = false;
+            m_Character.animShadow.applyRootMotion = false;
             m_Character.animStuns.SetBool("isCrash", m_Stuns);
+            m_Character.animShadow.SetBool("isCrash", m_Stuns);
+            // m_Character.m_CarShadow.gameObject.SetActive(!m_Stuns);
 
             StartCoroutine(ReturnRotationStun());
         }
@@ -333,17 +337,22 @@ public class CharacterInputController : MonoBehaviour
     }
     IEnumerator ReturnRotationStun()
     {
+        // yield return new WaitForSeconds(1f);
+
         yield return new WaitForSeconds(2f);
+        // m_Character.m_CarShadow.gameObject.SetActive(true);
 
         m_Character.m_Stuns = false;
         m_Stuns = false;
         m_Character.animStuns.applyRootMotion = true;
+        m_Character.animShadow.applyRootMotion = true;
 
         m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
-        m_Character.childRootObject.transform.localPosition = Vector3.zero;
+        // m_Character.childRootObject.transform.localPosition = Vector3.zero;
         m_Character.rootObject.transform.localRotation = Quaternion.identity;
 
         m_Character.animStuns.SetBool("isCrash", m_Stuns);
+        m_Character.animShadow.SetBool("isCrash", m_Stuns);
     }
     IEnumerator StopMoving()
     {

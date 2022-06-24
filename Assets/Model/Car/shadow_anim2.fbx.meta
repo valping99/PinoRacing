@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 505fad9a7d329924fbe0f1e523e54a7a
+guid: 80a3a42a54b2e084b95c7871e5b2f25b
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Crashing
+    second: Shadow
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: surfaceShader1
-    second: {fileID: 2100000, guid: d179200a6f5edbf45907ed883260aba1, type: 2}
+      name: surfaceShader4
+    second: {fileID: 2100000, guid: 5f80f5cfa651da24eba47fe3afaade5f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -30,8 +30,8 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 1
-    importConstraints: 1
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -41,11 +41,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Crashing
+      name: Shadow
       takeName: Take 001
       internalID: 0
-      firstFrame: 16
-      lastFrame: 55
+      firstFrame: 20
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -68,7 +68,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     isReadable: 0
   meshes:
     lODScreenPercentages: []
