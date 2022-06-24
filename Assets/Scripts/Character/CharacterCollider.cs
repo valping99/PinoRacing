@@ -10,6 +10,7 @@ public class CharacterCollider : MonoBehaviour
     public GameObject[] wheelCream;
     public CharacterInputController m_CharacterController;
     public Animator animStuns;
+    public Animator animShadow;
 
 
     [Header("Items")]
@@ -71,7 +72,6 @@ public class CharacterCollider : MonoBehaviour
     void GetComponentInGame()
     {
         m_CharacterController = GetComponentInParent<CharacterInputController>();
-        animStuns = rootObject.GetComponentInChildren<Animator>();
         m_Audio = GetComponent<AudioSource>();
     }
     void InitialComponent()
