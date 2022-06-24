@@ -4113,7 +4113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
+  m_RenderShadows: 0
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
@@ -4123,7 +4123,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
+  m_VolumeFrameworkUpdateModeOption: 0
   m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
@@ -4143,8 +4143,8 @@ Camera:
   m_GameObject: {fileID: 413048337}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 4
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -20114,7 +20114,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerList.Array.data[2]
       value: 
-      objectReference: {fileID: 3958754163516159781, guid: 2dfb48cf53621a34e886c8068243d3ba,
+      objectReference: {fileID: 3958754163516159781, guid: 1abad79d796780446a64802b5928dd11,
         type: 3}
     - target: {fileID: 8900812262158074489, guid: 1e7cf3bbd51571841a315ded330182ae,
         type: 3}
