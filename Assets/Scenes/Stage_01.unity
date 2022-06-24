@@ -12831,6 +12831,7 @@ MonoBehaviour:
   waterDrop: {fileID: 5703325995869357478, guid: 5cbc2ef4c810eb84b9958c7143fe7312,
     type: 3}
   transformParent: {fileID: 0}
+  waterObjects: {fileID: 0}
 --- !u!1001 &1383555560
 PrefabInstance:
   m_ObjectHideFlags: 0
