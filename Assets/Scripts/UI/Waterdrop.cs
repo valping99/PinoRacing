@@ -4,44 +4,45 @@ using UnityEngine;
 
 public class Waterdrop : MonoBehaviour
 {
-    public Transform transformParent;
-    public CharacterCollider charColl;
     public GameObject waterDrop;
-    public UIManager managers;
-    public float timerSpawn;
+    private UIManager managers;
+    public Animator animWaterDrop;
+    public CharacterInputController charInput;
 
-    public bool enableSpawn = true;
+    public float timerToDrip;
+
+    const string k_AnimDropWater = "WaterDrop";
+    const string k_AnimStun = "Stun";
+    public bool enableAnim = false;
     // Start is called before the first frame update
     void Start()
     {
-        transformParent = GameObject.FindGameObjectWithTag("RootObject").transform;
         managers = FindObjectOfType<UIManager>();
-        charColl = FindObjectOfType<CharacterCollider>();
+        waterDrop.gameObject.SetActive(false);
+        charInput = FindObjectOfType<CharacterInputController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (managers.timeValueUp > 10)
+        CheckAnimation();
+        if (managers.timeValueUp >= timerToDrip)
         {
-            if (enableSpawn)
-            {
-                //StartCoroutine(spawnAnimationWaterDrop());
-                enableSpawn = false;
-            }
-
+            enableAnim = true;
+        }
+        else
+        {
+            enableAnim = false;
+        }
+        if(managers.timeValueUp >= timerToDrip + 60f)
+        {
+            animWaterDrop.speed += 0.005f * Time.deltaTime;
         }
     }
-    IEnumerator spawnAnimationWaterDrop()
+
+    void CheckAnimation()
     {
-        Debug.Log("Spawn");
-        GameObject clone = Instantiate(waterDrop, charColl.transform.position, this.transform.rotation, transformParent);
-        clone.transform.Rotate(0,Random.Range(0,360),0);
-        GameObject clone1 = Instantiate(waterDrop, charColl.transform.position, this.transform.rotation, transformParent);
-        clone1.transform.Rotate(0, Random.Range(0, 360), 0);
-        GameObject clone2 = Instantiate(waterDrop, charColl.transform.position, this.transform.rotation, transformParent);
-        clone2.transform.Rotate(0, Random.Range(0, 360), 0);
-        yield return new WaitForSeconds(timerSpawn);
-        StartCoroutine(spawnAnimationWaterDrop());
+        animWaterDrop.SetBool(k_AnimDropWater, enableAnim);
+        animWaterDrop.SetBool(k_AnimStun, charInput.m_Stuns);
     }
 }
