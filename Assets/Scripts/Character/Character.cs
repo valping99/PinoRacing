@@ -8,7 +8,7 @@ public class Character : MonoBehaviour
 
     [Header("Variables")]
     public GameObject[] wheelCream;
-    public CharacterInputController m_CharacterController;
+    public CharacterController m_CharacterController;
     public Animator animStuns;
     public Animator animShadow;
 
@@ -71,7 +71,7 @@ public class Character : MonoBehaviour
     #region Class
     void GetComponentInGame()
     {
-        m_CharacterController = GetComponentInParent<CharacterInputController>();
+        m_CharacterController = GetComponentInParent<CharacterController>();
         m_Audio = GetComponent<AudioSource>();
     }
     void InitialComponent()

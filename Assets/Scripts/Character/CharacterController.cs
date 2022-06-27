@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
 
-public class CharacterInputController : MonoBehaviour
+public class CharacterController : MonoBehaviour
 {
     #region Variables
 

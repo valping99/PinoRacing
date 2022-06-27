@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ButtonManager : MonoBehaviour
 {
     #region GetScripts
-    public CharacterInputController charInput;
+    public CharacterController charInput;
     public Character charColl;
     public UIManager managers;
     #endregion

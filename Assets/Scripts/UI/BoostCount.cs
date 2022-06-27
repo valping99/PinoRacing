@@ -8,7 +8,7 @@ public class BoostCount : MonoBehaviour
     #region Variables
     public GameObject popUpBoostNumber;
 
-    public CharacterInputController charInput;
+    public CharacterController charInput;
 
     public UIManager uiManagers;
 
@@ -27,7 +27,7 @@ public class BoostCount : MonoBehaviour
     #region Unity Method
     void Start()
     {
-        charInput = FindObjectOfType<CharacterInputController>();
+        charInput = FindObjectOfType<CharacterController>();
     }
     void Update()
     {
@@ -44,10 +44,10 @@ public class BoostCount : MonoBehaviour
     {
 
         textToDisplay = countPopup.ToString();
-        
-        GameObject TextBoostPopup = Instantiate(popUpBoostNumber, popUpBoostNumber.transform.localPosition, Quaternion.identity,transformParent);
+
+        GameObject TextBoostPopup = Instantiate(popUpBoostNumber, popUpBoostNumber.transform.localPosition, Quaternion.identity, transformParent);
         RectTransform rt = TextBoostPopup.GetComponent<RectTransform>();
-        rt.localPosition = new Vector3(0,15,0);
+        rt.localPosition = new Vector3(0, 15, 0);
         TextBoostPopup.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(textToDisplay);
     }
 
@@ -59,7 +59,7 @@ public class BoostCount : MonoBehaviour
         }
         else
         {
-            boostCount -= 1;            
+            boostCount -= 1;
         }
     }
 

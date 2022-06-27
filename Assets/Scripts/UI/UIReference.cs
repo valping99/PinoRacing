@@ -7,14 +7,14 @@ public class UIReference : MonoBehaviour
 
     [HideInInspector] public UIManager managers;
     [HideInInspector] public Character charColl;
-    [HideInInspector] public CharacterInputController charInput;
+    [HideInInspector] public CharacterController charInput;
 
     int currendSpeed;
     void Start()
     {
         managers = FindObjectOfType<UIManager>();
         charColl = FindObjectOfType<Character>();
-        charInput = FindObjectOfType<CharacterInputController>();
+        charInput = FindObjectOfType<CharacterController>();
     }
 
     // Update is called once per frame

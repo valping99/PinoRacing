@@ -9,7 +9,7 @@ public class CharacterSelected : MonoBehaviour
     public Transform transformParent;
     public Character nameCollider;
     public Character nameGameObject;
-    public CharacterInputController charInput;
+    public CharacterController charInput;
     public List<GameObject> playerList;
     public UIManager uiManagers;
     //public List<GameObject> roadToSpawn;
@@ -51,7 +51,7 @@ public class CharacterSelected : MonoBehaviour
                 nameGameObject = FindObjectOfType<Character>();
                 GameObject PinoGameObject = nameGameObject.gameObject;
                 nameCollider = FindObjectOfType<Character>();
-                charInput = (CharacterInputController)FindObjectOfType(typeof(CharacterInputController));
+                charInput = (CharacterController)FindObjectOfType(typeof(CharacterController));
 
                 //Get Variables to UIManager
                 uiManagers.m_Player = PinoGameObject;

@@ -20,7 +20,7 @@ public class ObstaclesManager : MonoBehaviour
     float[] m_PositionSpawn;
     Quaternion _Rotation;
 
-    public CharacterInputController m_Character;
+    public CharacterController m_Character;
     public Character m_CharacterCollider;
 
     GameObject m_RootItem;
@@ -31,7 +31,7 @@ public class ObstaclesManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_Character = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInputController>();
+        m_Character = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
         m_CharacterCollider = m_Character.gameObject.GetComponentInChildren<Character>();
 
         m_PositionSpawn = new float[] { m_Character.slideLength + 3, 0, -m_Character.slideLength - 3 };

@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
 
     [Header("Set Object player")]
-    public CharacterInputController charInput;
+    public CharacterController charInput;
     public Character charColl;
     public ObstaclesManager obstacles;
     // Get player for get Speed;
@@ -251,7 +251,7 @@ public class UIManager : MonoBehaviour
             GetVariables();
 
             mainSceneUI.gameObject.SetActive(true);
-            charInput.GetComponent<CharacterInputController>().enabled = true;
+            charInput.GetComponent<CharacterController>().enabled = true;
             boostSpeedButton.gameObject.SetActive(false);
             changeToRocketStart.gameObject.SetActive(false);
 
@@ -289,7 +289,7 @@ public class UIManager : MonoBehaviour
             BoostStart();
             //charColl.m_CurrentSpeed = 0;
             mainSceneUI.gameObject.SetActive(false);
-            charInput.GetComponent<CharacterInputController>().enabled = false;
+            charInput.GetComponent<CharacterController>().enabled = false;
         }
 
         if (checkGameOver)

@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] float m_SmoothSpeed = 1f;
     [SerializeField] float m_RotationSpeed = 1f;
     [SerializeField] Transform m_Target;
-    CharacterInputController m_Player;
+    CharacterController m_Player;
 
 
     #endregion
@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        m_Player = m_Target.GetComponent<CharacterInputController>();
+        m_Player = m_Target.GetComponent<CharacterController>();
     }
 
     void FixedUpdate()

@@ -11,7 +11,7 @@ public class Pickup : MonoBehaviour
 
     [Header("Scripts")]
     public Character m_CharacterCollider;
-    public CharacterInputController m_CharacterController;
+    public CharacterController m_CharacterController;
 
     [Header("Effects")]
 
@@ -44,7 +44,7 @@ public class Pickup : MonoBehaviour
         PickupRigidbody = GetComponent<Rigidbody>();
         m_Collider = GetComponent<Collider>();
 
-        m_CharacterController = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInputController>();
+        m_CharacterController = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
         m_CharacterCollider = m_CharacterController.GetComponentInChildren<Character>();
 
         // ensure the physics setup is a kinematic rigidbody trigger

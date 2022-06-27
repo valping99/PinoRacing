@@ -3,7 +3,7 @@ using UnityEngine;
 public class DashBoostCamera : MonoBehaviour
 {
     [SerializeField]
-    private CharacterInputController charInput;
+    private CharacterController charInput;
 
     [SerializeField]
     private Character charColl;
@@ -13,7 +13,7 @@ public class DashBoostCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        charInput = FindObjectOfType<CharacterInputController>();
+        charInput = FindObjectOfType<CharacterController>();
         charColl = FindObjectOfType<Character>();
     }
 

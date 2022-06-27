@@ -7,7 +7,7 @@ public class Waterdrop : MonoBehaviour
     public GameObject waterDrop;
     private UIManager managers;
     public Animator animWaterDrop;
-    public CharacterInputController charInput;
+    public CharacterController charInput;
 
     public float timerToDrip;
 
@@ -19,7 +19,7 @@ public class Waterdrop : MonoBehaviour
     {
         managers = FindObjectOfType<UIManager>();
         waterDrop.gameObject.SetActive(false);
-        charInput = FindObjectOfType<CharacterInputController>();
+        charInput = FindObjectOfType<CharacterController>();
     }
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class Waterdrop : MonoBehaviour
         {
             enableAnim = false;
         }
-        if(managers.timeValueUp >= timerToDrip + 60f)
+        if (managers.timeValueUp >= timerToDrip + 60f)
         {
             animWaterDrop.speed += 0.005f * Time.deltaTime;
         }

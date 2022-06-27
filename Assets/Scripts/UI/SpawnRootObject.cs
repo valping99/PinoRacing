@@ -6,14 +6,14 @@ public class SpawnRootObject : MonoBehaviour
 {
     public Transform transformParent;
     public Character charColl;
-    public CharacterInputController charInput;
+    public CharacterController charInput;
     public GameObject rootObject;
     public GameObject currentRootObject;
     // Start is called before the first frame update
     void Start()
     {
-        transformParent = FindObjectOfType<CharacterInputController>().transform;
-        charInput = FindObjectOfType<CharacterInputController>();
+        transformParent = FindObjectOfType<CharacterController>().transform;
+        charInput = FindObjectOfType<CharacterController>();
         charColl = FindObjectOfType<Character>();
         Instantiate(rootObject, transformParent.transform.position, Quaternion.identity, transformParent);
         currentRootObject = GameObject.FindGameObjectWithTag("RootObject");

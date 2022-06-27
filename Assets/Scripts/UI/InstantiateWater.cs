@@ -8,21 +8,21 @@ public class InstantiateWater : MonoBehaviour
     public Transform transformParent;
     public Waterdrop waterObjects;
     private UIManager managers;
-    private CharacterInputController charInput;
+    private CharacterController charInput;
 
     // Start is called before the first frame update
     void Start()
     {
         transformParent = GameObject.FindGameObjectWithTag("RootObject").transform;
         Instantiate(waterDrop, transformParent.transform.position, transformParent.transform.rotation, transformParent);
-        charInput = FindObjectOfType<CharacterInputController>();
+        charInput = FindObjectOfType<CharacterController>();
         managers = FindObjectOfType<UIManager>();
         waterObjects = FindObjectOfType<Waterdrop>();
     }
 
     private void Update()
     {
-        if(managers.timeValueUp >= 180)
+        if (managers.timeValueUp >= 180)
         {
             if (charInput.m_Stuns)
             {
