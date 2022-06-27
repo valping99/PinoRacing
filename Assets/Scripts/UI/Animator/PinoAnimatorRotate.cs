@@ -11,9 +11,6 @@ public class PinoAnimatorRotate : MonoBehaviour
     public Outline almondOutline;
     public Outline strawberryOutline;
     public Outline stickOutline;
-    public GameObject chocolateParticle;
-    public GameObject almondParticle;
-    public GameObject strawberryParticle;
 
     [Header("Animator")]
     const string k_AnimRotatePino1 = "Pino1";
@@ -28,10 +25,6 @@ public class PinoAnimatorRotate : MonoBehaviour
         almondOutline.enabled = false;
         strawberryOutline.enabled = false;
         stickOutline.enabled = false;
-
-        chocolateParticle.SetActive(false);
-        almondParticle.SetActive(false);
-        strawberryParticle.SetActive(false);
     }
 
     // Update is called once per frame
@@ -57,30 +50,18 @@ public class PinoAnimatorRotate : MonoBehaviour
             chocolateOutline.enabled = true;
             almondOutline.enabled = false;
             strawberryOutline.enabled = false;
-
-            chocolateParticle.SetActive(true);
-            almondParticle.SetActive(false);
-            strawberryParticle.SetActive(false);
         }
         else if (selected.isSelectPino_02)
         {
             chocolateOutline.enabled = false;
             almondOutline.enabled = true;
             strawberryOutline.enabled = false;
-
-            chocolateParticle.SetActive(false);
-            almondParticle.SetActive(true);
-            strawberryParticle.SetActive(false);
         }
         else if (selected.isSelectPino_03)
         {
             chocolateOutline.enabled = false;
             almondOutline.enabled = false;
             strawberryOutline.enabled = true;
-
-            chocolateParticle.SetActive(false);
-            almondParticle.SetActive(false);
-            strawberryParticle.SetActive(true);
         }
         else
         {
@@ -88,10 +69,6 @@ public class PinoAnimatorRotate : MonoBehaviour
             almondOutline.enabled = false;
             strawberryOutline.enabled = false;
             stickOutline.enabled = false;
-
-            chocolateParticle.SetActive(false);
-            almondParticle.SetActive(false);
-            strawberryParticle.SetActive(false);
         }
     }
 
