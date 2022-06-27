@@ -8,7 +8,7 @@ public class RoadSpawner : MonoBehaviour
     #region Variables
     // Start is called before the first frame update
     public GameObject MainRoad;
-    public List<GameObject> roads;
+    //public List<GameObject> roads;
     public CharacterCollider charColl;
     public GameObject playerMinimap;
 
@@ -44,30 +44,30 @@ public class RoadSpawner : MonoBehaviour
     }
     #endregion
     #region Function
-    public void MoveRoad()
-    {
-        GameObject moveRoad = roads[0];
-        roads.Remove(moveRoad);
-        float newPosZ = roads[roads.Count - 1].transform.position.z + offset;
-        moveRoad.transform.position = new Vector3(0, 0, newPosZ);
-        roads.Add(moveRoad);
-    }
-    /**
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("SpawnTrigger"))
-        {
-            MoveRoad();
-        }
-    }
-    **/
+    //public void MoveRoad()
+    //{
+    //    GameObject moveRoad = roads[0];
+    //    roads.Remove(moveRoad);
+    //    float newPosZ = roads[roads.Count - 1].transform.position.z + offset;
+    //    moveRoad.transform.position = new Vector3(0, 0, newPosZ);
+    //    roads.Add(moveRoad);
+    //}
+    ///**
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("SpawnTrigger"))
+    //    {
+    //        MoveRoad();
+    //    }
+    //}
+    //**/
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("CheckGround"))
-        {
-            MoveRoad();
-        }
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("CheckGround"))
+    //    {
+    //        MoveRoad();
+    //    }
+    //}
     #endregion
 }
