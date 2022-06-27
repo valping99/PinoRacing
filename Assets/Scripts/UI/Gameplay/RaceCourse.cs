@@ -43,7 +43,7 @@ public class RaceCourse : MonoBehaviour
     {
         if (other.CompareTag("RootObject"))
         {
-            if (lapCourse >= 3)
+            if (lapCourse >= lapToWin)
             {
                 uiManagers.checkGameClear = true;
             }
