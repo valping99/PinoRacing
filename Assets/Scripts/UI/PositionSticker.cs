@@ -5,20 +5,20 @@ using UnityEngine;
 public class PositionSticker : MonoBehaviour
 {
     public GameObject stick;
-    private CharacterCollider charColl;
+    private Character charColl;
     [SerializeField]
     private GameObject pinoModel;
     // Start is called before the first frame update
     void Start()
     {
-        charColl = FindObjectOfType<CharacterCollider>();
+        charColl = FindObjectOfType<Character>();
         pinoModel = GameObject.FindGameObjectWithTag("RootObject");
     }
 
     // Update is called once per frame
     void Update()
     {
-       //stick.transform.position = charColl.transform.position;
+        //stick.transform.position = charColl.transform.position;
     }
 
 }

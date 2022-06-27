@@ -6,14 +6,14 @@ public class UIReference : MonoBehaviour
 {
 
     [HideInInspector] public UIManager managers;
-    [HideInInspector] public CharacterCollider charColl;
+    [HideInInspector] public Character charColl;
     [HideInInspector] public CharacterInputController charInput;
 
     int currendSpeed;
     void Start()
     {
         managers = FindObjectOfType<UIManager>();
-        charColl = FindObjectOfType<CharacterCollider>();
+        charColl = FindObjectOfType<Character>();
         charInput = FindObjectOfType<CharacterInputController>();
     }
 

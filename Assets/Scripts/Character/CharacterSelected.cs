@@ -7,8 +7,8 @@ public class CharacterSelected : MonoBehaviour
     //SelectManager selectManager;
     //public GameObject nameGameObject;
     public Transform transformParent;
-    public CharacterCollider nameCollider;
-    public CharacterCollider nameGameObject;
+    public Character nameCollider;
+    public Character nameGameObject;
     public CharacterInputController charInput;
     public List<GameObject> playerList;
     public UIManager uiManagers;
@@ -48,9 +48,9 @@ public class CharacterSelected : MonoBehaviour
 
 
                 //Get new Variables of the pino
-                nameGameObject = FindObjectOfType<CharacterCollider>();
+                nameGameObject = FindObjectOfType<Character>();
                 GameObject PinoGameObject = nameGameObject.gameObject;
-                nameCollider = FindObjectOfType<CharacterCollider>();
+                nameCollider = FindObjectOfType<Character>();
                 charInput = (CharacterInputController)FindObjectOfType(typeof(CharacterInputController));
 
                 //Get Variables to UIManager

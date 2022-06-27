@@ -15,7 +15,7 @@ public class CharacterInputController : MonoBehaviour
 #endif
 
     [Header("Variables")]
-    public CharacterCollider m_Character;
+    public Character m_Character;
     public PathCreator m_PathCreator;
     public GameObject spawnerObject;
     GameObject m_WallClearLag;
@@ -123,7 +123,7 @@ public class CharacterInputController : MonoBehaviour
     {
         m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
         spawnerObject = GameObject.FindGameObjectWithTag("Spawner");
-        m_Character = gameObject.GetComponentInChildren<CharacterCollider>();
+        m_Character = gameObject.GetComponentInChildren<Character>();
     }
     void GotStuns()
     {

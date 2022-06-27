@@ -15,7 +15,7 @@ public class MilkPickup : Pickup
     #endregion
 
     #region Class
-    protected override void OnPicked(CharacterCollider player)
+    protected override void OnPicked(Character player)
     {
         Milk playerMilkBottle = player.GetComponent<Milk>();
         if (playerMilkBottle && playerMilkBottle.CanPickup())

@@ -20,7 +20,7 @@ public class StickPickup : Pickup
 
     #region Class
 
-    protected override void OnPicked(CharacterCollider player)
+    protected override void OnPicked(Character player)
     {
         Stick stickPickup = player.GetComponent<Stick>();
         if (stickPickup && stickPickup.CanPickup())
@@ -33,7 +33,7 @@ public class StickPickup : Pickup
 
     protected override void CheckDistance(Transform _PlayerPosition, GameObject _RootModel)
     {
-        float _speed = _PlayerPosition.GetComponent<CharacterCollider>().m_CurrentSpeed;
+        float _speed = _PlayerPosition.GetComponent<Character>().m_CurrentSpeed;
 
         //Calculate distance and time to drop
         float _Distance = Vector3.Distance(transform.position, new Vector3(transform.position.x, 0, transform.position.z));

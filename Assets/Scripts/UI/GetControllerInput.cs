@@ -7,10 +7,10 @@ public class GetControllerInput : MonoBehaviour
     // Start is called before the first frame update
 
     public CharacterInputController charInput;
-    public CharacterCollider charColl;
+    public Character charColl;
     void Awake()
     {
-        charColl = FindObjectOfType<CharacterCollider>();
+        charColl = FindObjectOfType<Character>();
         charInput = (CharacterInputController)FindObjectOfType(typeof(CharacterInputController));
         checkInput();
     }

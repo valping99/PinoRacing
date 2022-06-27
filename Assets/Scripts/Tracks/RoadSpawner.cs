@@ -9,7 +9,7 @@ public class RoadSpawner : MonoBehaviour
     // Start is called before the first frame update
     public GameObject MainRoad;
     public List<GameObject> roads;
-    public CharacterCollider charColl;
+    public Character charColl;
     public GameObject playerMinimap;
 
     private Vector3 charPosition;
@@ -21,7 +21,7 @@ public class RoadSpawner : MonoBehaviour
     #region Unity Method
     void Start()
     {
-        charColl = FindObjectOfType<CharacterCollider>();
+        charColl = FindObjectOfType<Character>();
         //if (roads != null && roads.Count > 0)
         //{
         //    roads = roads.OrderBy(r => r.transform.position.z).ToList();
@@ -33,7 +33,7 @@ public class RoadSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        charPosition = new Vector3(charColl.transform.position.x, charColl.transform.position.y+1, charColl.transform.position.z);
+        charPosition = new Vector3(charColl.transform.position.x, charColl.transform.position.y + 1, charColl.transform.position.z);
         Vector3 playerPosition = charColl.transform.position;
         //CheckOnGround();
         //charPosition = charColl.transform.position;

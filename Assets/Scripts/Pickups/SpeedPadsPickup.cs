@@ -20,7 +20,7 @@ public class SpeedPadsPickup : Pickup
     #endregion
 
     #region Class
-    protected override void OnPicked(CharacterCollider player)
+    protected override void OnPicked(Character player)
     {
         SpeedPads speedPadsPickup = player.GetComponent<SpeedPads>();
         if (speedPadsPickup && speedPadsPickup.CanPickup())

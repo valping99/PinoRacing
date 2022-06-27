@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Set Object player")]
     public CharacterInputController charInput;
-    public CharacterCollider charColl;
+    public Character charColl;
     public ObstaclesManager obstacles;
     // Get player for get Speed;
     public GameObject m_Player;
@@ -398,7 +398,7 @@ public class UIManager : MonoBehaviour
         if (timeValue > 0)
         {
             timeValue -= Time.deltaTime;
-            charColl.GetComponent<CharacterCollider>().enabled = false;
+            charColl.GetComponent<Character>().enabled = false;
             mainSceneUI.gameObject.SetActive(false);
             //obstacles.GetComponent<ObstaclesManager>().enabled = false;
         }
@@ -419,7 +419,7 @@ public class UIManager : MonoBehaviour
             obstacles.CallSpawnObstacles();
             mainSceneUI.gameObject.SetActive(true);
             //obstacles.StartSpawnObjects();
-            charColl.GetComponent<CharacterCollider>().enabled = true;
+            charColl.GetComponent<Character>().enabled = true;
             //charInput.GetComponent<CharacterInputController>().enabled = true;
             //obstacles.GetComponent<ObstaclesManager>().enabled = true;
             //charColl.m_CurrentSpeed += charColl.m_InitialSpeed;
@@ -582,7 +582,7 @@ public class UIManager : MonoBehaviour
     IEnumerator CountNumber()
     {
 
-        for(int i = 3; i <= ListCountdown.Count; i--)
+        for (int i = 3; i <= ListCountdown.Count; i--)
         {
             if (i < 0)
             {

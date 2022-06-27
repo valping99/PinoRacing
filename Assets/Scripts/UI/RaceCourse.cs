@@ -5,7 +5,7 @@ using UnityEngine;
 public class RaceCourse : MonoBehaviour
 {
     #region Variables
-    public CharacterCollider m_charCollider;
+    public Character m_charCollider;
     //public GameObject playerPino;
     public int lapCourse;
     private UIManager uiManagers;
@@ -16,7 +16,7 @@ public class RaceCourse : MonoBehaviour
     void Start()
     {
         lapNums = FindObjectOfType<LapsNumber>();
-        m_charCollider = FindObjectOfType<CharacterCollider>();
+        m_charCollider = FindObjectOfType<Character>();
         //playerPino = GameObject.FindGameObjectWithTag("RootObject");
         uiManagers = FindObjectOfType<UIManager>();
         lapCourse = 1;

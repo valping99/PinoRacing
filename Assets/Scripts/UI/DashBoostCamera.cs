@@ -6,7 +6,7 @@ public class DashBoostCamera : MonoBehaviour
     private CharacterInputController charInput;
 
     [SerializeField]
-    private CharacterCollider charColl;
+    private Character charColl;
 
     public bool checkSpeed = false;
     public Camera mainCamera;
@@ -14,7 +14,7 @@ public class DashBoostCamera : MonoBehaviour
     void Start()
     {
         charInput = FindObjectOfType<CharacterInputController>();
-        charColl = FindObjectOfType<CharacterCollider>();
+        charColl = FindObjectOfType<Character>();
     }
 
     // Update is called once per frame

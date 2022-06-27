@@ -7,7 +7,7 @@ public class ButtonManager : MonoBehaviour
 {
     #region GetScripts
     public CharacterInputController charInput;
-    public CharacterCollider charColl;
+    public Character charColl;
     public UIManager managers;
     #endregion
     void Start()
@@ -17,7 +17,7 @@ public class ButtonManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void ClickResume()
     {

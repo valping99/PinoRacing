@@ -10,7 +10,7 @@ public class Pickup : MonoBehaviour
     #region Variables
 
     [Header("Scripts")]
-    public CharacterCollider m_CharacterCollider;
+    public Character m_CharacterCollider;
     public CharacterInputController m_CharacterController;
 
     [Header("Effects")]
@@ -45,7 +45,7 @@ public class Pickup : MonoBehaviour
         m_Collider = GetComponent<Collider>();
 
         m_CharacterController = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInputController>();
-        m_CharacterCollider = m_CharacterController.GetComponentInChildren<CharacterCollider>();
+        m_CharacterCollider = m_CharacterController.GetComponentInChildren<Character>();
 
         // ensure the physics setup is a kinematic rigidbody trigger
         PickupRigidbody.isKinematic = true;
@@ -67,7 +67,7 @@ public class Pickup : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        CharacterCollider pickingPlayer = other.GetComponent<CharacterCollider>();
+        Character pickingPlayer = other.GetComponent<Character>();
 
         if (pickingPlayer != null)
         {
@@ -94,7 +94,7 @@ public class Pickup : MonoBehaviour
         // Handle rotating
         m_RootModel.transform.Rotate(Vector3.up, RotatingSpeed * Time.deltaTime, Space.World);
     }
-    protected virtual void OnPicked(CharacterCollider playerController)
+    protected virtual void OnPicked(Character playerController)
     {
         // Play pickup sound
         PlayPickupFeedback();

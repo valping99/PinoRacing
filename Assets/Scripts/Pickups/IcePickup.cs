@@ -17,7 +17,7 @@ public class IcePickup : Pickup
 
     #region Class
 
-    protected override void OnPicked(CharacterCollider player)
+    protected override void OnPicked(Character player)
     {
         Ice icePickup = player.GetComponent<Ice>();
         if (icePickup && icePickup.CanPickup())

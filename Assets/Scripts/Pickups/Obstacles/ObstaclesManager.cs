@@ -21,7 +21,7 @@ public class ObstaclesManager : MonoBehaviour
     Quaternion _Rotation;
 
     public CharacterInputController m_Character;
-    public CharacterCollider m_CharacterCollider;
+    public Character m_CharacterCollider;
 
     GameObject m_RootItem;
     #endregion
@@ -32,7 +32,7 @@ public class ObstaclesManager : MonoBehaviour
     void Start()
     {
         m_Character = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInputController>();
-        m_CharacterCollider = m_Character.gameObject.GetComponentInChildren<CharacterCollider>();
+        m_CharacterCollider = m_Character.gameObject.GetComponentInChildren<Character>();
 
         m_PositionSpawn = new float[] { m_Character.slideLength + 3, 0, -m_Character.slideLength - 3 };
         m_RootItem = GameObject.FindGameObjectWithTag("SpawnChild");

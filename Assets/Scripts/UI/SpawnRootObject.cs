@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnRootObject : MonoBehaviour
 {
     public Transform transformParent;
-    public CharacterCollider charColl;
+    public Character charColl;
     public CharacterInputController charInput;
     public GameObject rootObject;
     public GameObject currentRootObject;
@@ -14,7 +14,7 @@ public class SpawnRootObject : MonoBehaviour
     {
         transformParent = FindObjectOfType<CharacterInputController>().transform;
         charInput = FindObjectOfType<CharacterInputController>();
-        charColl = FindObjectOfType<CharacterCollider>();
+        charColl = FindObjectOfType<Character>();
         Instantiate(rootObject, transformParent.transform.position, Quaternion.identity, transformParent);
         currentRootObject = GameObject.FindGameObjectWithTag("RootObject");
     }
