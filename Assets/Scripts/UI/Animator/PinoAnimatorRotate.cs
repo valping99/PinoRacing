@@ -4,23 +4,41 @@ using UnityEngine;
 
 public class PinoAnimatorRotate : MonoBehaviour
 {
+    [Header("Scripts")]
     public SelectManager selected;
     public Animator pinoAnimator;
+    public Outline chocolateOutline;
+    public Outline almondOutline;
+    public Outline strawberryOutline;
+    public Outline stickOutline;
+    public GameObject chocolateParticle;
+    public GameObject almondParticle;
+    public GameObject strawberryParticle;
 
-    [Tooltip("Animator")]
+    [Header("Animator")]
     const string k_AnimRotatePino1 = "Pino1";
     const string k_AnimRotatePino2 = "Pino2";
     const string k_AnimRotatePino3 = "Pino3";
+
     // Start is called before the first frame update
     void Start()
     {
         selected = FindObjectOfType<SelectManager>();
+        chocolateOutline.enabled = false;
+        almondOutline.enabled = false;
+        strawberryOutline.enabled = false;
+        stickOutline.enabled = false;
+
+        chocolateParticle.SetActive(false);
+        almondParticle.SetActive(false);
+        strawberryParticle.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckAnimation();
+        CheckGlow();
     }
 
     void CheckAnimation()
@@ -28,6 +46,54 @@ public class PinoAnimatorRotate : MonoBehaviour
         pinoAnimator.SetBool(k_AnimRotatePino1, selected.isSelectPino_01);
         pinoAnimator.SetBool(k_AnimRotatePino2, selected.isSelectPino_02);
         pinoAnimator.SetBool(k_AnimRotatePino3, selected.isSelectPino_03);
+
+        stickOutline.enabled = true;
     }
+
+    void CheckGlow()
+    {
+        if (selected.isSelectPino_01)
+        {
+            chocolateOutline.enabled = true;
+            almondOutline.enabled = false;
+            strawberryOutline.enabled = false;
+
+            chocolateParticle.SetActive(true);
+            almondParticle.SetActive(false);
+            strawberryParticle.SetActive(false);
+        }
+        else if (selected.isSelectPino_02)
+        {
+            chocolateOutline.enabled = false;
+            almondOutline.enabled = true;
+            strawberryOutline.enabled = false;
+
+            chocolateParticle.SetActive(false);
+            almondParticle.SetActive(true);
+            strawberryParticle.SetActive(false);
+        }
+        else if (selected.isSelectPino_03)
+        {
+            chocolateOutline.enabled = false;
+            almondOutline.enabled = false;
+            strawberryOutline.enabled = true;
+
+            chocolateParticle.SetActive(false);
+            almondParticle.SetActive(false);
+            strawberryParticle.SetActive(true);
+        }
+        else
+        {
+            chocolateOutline.enabled = false;
+            almondOutline.enabled = false;
+            strawberryOutline.enabled = false;
+            stickOutline.enabled = false;
+
+            chocolateParticle.SetActive(false);
+            almondParticle.SetActive(false);
+            strawberryParticle.SetActive(false);
+        }
+    }
+
 
 }
