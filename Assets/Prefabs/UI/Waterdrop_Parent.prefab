@@ -114,7 +114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1383160851877023317
 Transform:
   m_ObjectHideFlags: 0
@@ -306,7 +306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4322396799871510718
 Transform:
   m_ObjectHideFlags: 0
@@ -402,7 +402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4211632602523437918
 Transform:
   m_ObjectHideFlags: 0
@@ -594,7 +594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5261869981673446531
 Transform:
   m_ObjectHideFlags: 0
@@ -751,8 +751,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterDrop: {fileID: 5703325995869357478}
   animWaterDrop: {fileID: 5703325995869357479}
-  timerToDrip: 180
+  charInput: {fileID: 0}
+  timeToDrip: 180
+  timeToFaster: 60
   enableAnim: 0
+  fasterAnim: 0
 --- !u!1 &6090554118648040898
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,7 +774,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6903505990524557176
 Transform:
   m_ObjectHideFlags: 0
@@ -1059,7 +1062,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6140487382306419636
 Transform:
   m_ObjectHideFlags: 0
