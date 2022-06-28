@@ -33,8 +33,12 @@ public class DashBoostCamera : MonoBehaviour
         {
             checkSpeed = false;
         }
-
-        if (charInput.m_IsRemainBoost || charInput.m_PadsIsBoosting)
+        if (charInput.m_IsRemainBoost && charInput.m_PadsIsBoosting)
+        {
+            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 120, 3f * Time.deltaTime);
+        }
+        
+        else if (charInput.m_IsRemainBoost || charInput.m_PadsIsBoosting)
         {
             mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 100, 3f * Time.deltaTime);
         }
