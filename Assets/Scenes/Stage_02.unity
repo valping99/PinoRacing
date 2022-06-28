@@ -1547,8 +1547,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RenderShadows: 0
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
+  m_RequiresDepthTextureOption: 0
+  m_RequiresOpaqueTextureOption: 0
   m_CameraType: 0
   m_Cameras: []
   m_RendererIndex: -1
@@ -22020,7 +22020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: m_Dithering
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: m_CameraType
@@ -22028,15 +22028,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: m_Antialiasing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
-      propertyPath: m_RendererIndex
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
+      propertyPath: m_RenderShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
+      propertyPath: m_RendererIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: m_RenderPostProcessing
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
+      propertyPath: m_RequiresDepthTextureOption
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
+      propertyPath: m_RequiresOpaqueTextureOption
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 929251055, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: m_ClearFlags
@@ -22044,7 +22056,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 929251055, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: field of view
-      value: 70
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 929251055, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: far clip plane
@@ -22458,6 +22470,8 @@ MonoBehaviour:
   m_Stuns: 0
   m_CurrentSpeed: 0
   m_MilkCollectSpeed: 0
+  timer: 0
+  delay: 0
 --- !u!4 &7651326599288477483
 Transform:
   m_ObjectHideFlags: 0
