@@ -388,10 +388,9 @@ MonoBehaviour:
     type: 3}
   m_InitialVelocity: 2
   m_InitialSpeed: 70
-  m_MaxSpeed: 120
+  m_MaxSpeed: 140
   m_CurrentBottleMilk: 0
   m_CurrentSpeed: 0
-  m_CurrentPads: 0
   m_IsEnoughBoost: 0
   m_Stuns: 0
 --- !u!114 &4255195294746993
