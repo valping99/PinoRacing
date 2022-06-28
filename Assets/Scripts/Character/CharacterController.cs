@@ -35,6 +35,8 @@ public class CharacterController : MonoBehaviour
     [HideInInspector] public bool m_Stuns;
     [HideInInspector, Range(0, 300)] public float m_CurrentSpeed;
     [HideInInspector, Range(0, 300)] public float m_MilkCollectSpeed;
+    [HideInInspector] public float timer;
+    [HideInInspector] public float delay;
     [Range(0, 300)] float m_DriveSpeed;
     [Range(0, 4)] float m_CharacterPosition;
     [Range(0, 3)] int laneNumber;
@@ -47,6 +49,8 @@ public class CharacterController : MonoBehaviour
 
     Vector3 m_Direction;
     Quaternion m_Rotation;
+
+    float repeatRate;
 
     #endregion
 
@@ -86,8 +90,11 @@ public class CharacterController : MonoBehaviour
     {
         m_MilkCollectSpeed = m_Character.m_InitialSpeed;
 
-        laneNumber = 2;
         m_CharacterPosition = 0;
+        timer = 0;
+        laneNumber = 2;
+        delay = 2;
+        repeatRate = delay;
 
         m_IsChangeLine = true;
         m_VelocityUp = true;
@@ -246,18 +253,20 @@ public class CharacterController : MonoBehaviour
         if (m_Character.m_CurrentSpeed > m_Character.m_MaxSpeed)
             m_Character.m_CurrentSpeed = m_Character.m_MaxSpeed;
 
+        CheckBoostPad();
         if (m_PadsIsBoosting)
         {
             bool _isBoosting = true;
 
-            StartCoroutine(CheckBoost());
-
             if (_isBoosting)
             {
-                m_Character.m_CurrentSpeed += 20;
+                float _speed = m_Character.m_CurrentSpeed * 0.2f;
+                m_Character.m_CurrentSpeed += _speed;
                 _isBoosting = false;
             }
         }
+
+        timer -= Time.deltaTime;
     }
     void ChangeLane(int _direction)
     {
@@ -313,11 +322,14 @@ public class CharacterController : MonoBehaviour
 
         m_IsRemainBoost = true;
     }
-    IEnumerator CheckBoost()
+    void CheckBoostPad()
     {
-        yield return new WaitForSeconds(3f);
-
-        m_PadsIsBoosting = false;
+        if (timer < 0)
+        {
+            timer = repeatRate;
+            m_PadsIsBoosting = false;
+        }
+        Debug.Log((int)timer);
     }
     IEnumerator CheckRemainBoost()
     {

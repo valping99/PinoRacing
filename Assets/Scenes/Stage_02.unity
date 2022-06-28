@@ -9846,11 +9846,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90baa0594ca84d8468ed58e96d9d4a2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  managers: {fileID: 0}
-  countDown_3: {fileID: 1420349574}
-  countDown_2: {fileID: 1576937937}
-  countDown_1: {fileID: 658914201}
-  countDown_Go: {fileID: 2094714713}
 --- !u!1 &2131492074
 GameObject:
   m_ObjectHideFlags: 0
@@ -22015,7 +22010,7 @@ MonoBehaviour:
   spawnerObject: {fileID: 921387196}
   m_SecondChangeLine: 0.2
   m_BoostSpeed: 70
-  slideLength: 7
+  slideLength: 8
   m_IsRemainBoost: 0
   m_UpSpeed: 0
   m_IsBoosting: 0

@@ -20137,7 +20137,7 @@ MonoBehaviour:
   spawnerObject: {fileID: 921387196}
   m_SecondChangeLine: 0.2
   m_BoostSpeed: 70
-  slideLength: 7
+  slideLength: 8
   m_IsRemainBoost: 0
   m_UpSpeed: 0
   m_IsBoosting: 0

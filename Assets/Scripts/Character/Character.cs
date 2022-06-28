@@ -181,13 +181,12 @@ public class Character : MonoBehaviour
                 {
                     SpeedPads crystal = other.GetComponent<SpeedPads>();
 
-                    if (!m_CharacterController.m_PadsIsBoosting)
-                    {
-                        if (m_CurrentSpeed < m_MaxSpeed)
-                            m_CurrentSpeed = m_MaxSpeed;
+                    m_CharacterController.timer = m_CharacterController.delay;
 
-                        m_CharacterController.m_PadsIsBoosting = true;
-                    }
+                    if (m_CurrentSpeed < m_MaxSpeed)
+                        m_CurrentSpeed = m_MaxSpeed;
+
+                    m_CharacterController.m_PadsIsBoosting = true;
 
                     Destroy(m_RootItem.gameObject);
                 }
