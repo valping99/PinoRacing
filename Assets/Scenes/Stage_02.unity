@@ -1449,8 +1449,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RenderShadows: 0
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
+  m_RequiresDepthTextureOption: 0
+  m_RequiresOpaqueTextureOption: 0
   m_CameraType: 0
   m_Cameras: []
   m_RendererIndex: -1
@@ -10239,11 +10239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90baa0594ca84d8468ed58e96d9d4a2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  managers: {fileID: 0}
-  countDown_3: {fileID: 1420349574}
-  countDown_2: {fileID: 1576937937}
-  countDown_1: {fileID: 658914201}
-  countDown_Go: {fileID: 2094714713}
 --- !u!1 &2131492074
 GameObject:
   m_ObjectHideFlags: 0
@@ -23714,7 +23709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: m_Dithering
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: m_CameraType
@@ -23722,15 +23717,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: m_Antialiasing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
-      propertyPath: m_RendererIndex
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
+      propertyPath: m_RenderShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
+      propertyPath: m_RendererIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: m_RenderPostProcessing
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
+      propertyPath: m_RequiresDepthTextureOption
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
+      propertyPath: m_RequiresOpaqueTextureOption
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 929251055, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: m_ClearFlags
@@ -23738,7 +23745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 929251055, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: field of view
-      value: 70
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 929251055, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: far clip plane
@@ -24149,7 +24156,7 @@ MonoBehaviour:
   spawnerObject: {fileID: 921387196}
   m_SecondChangeLine: 0.2
   m_BoostSpeed: 70
-  slideLength: 7
+  slideLength: 8
   m_IsRemainBoost: 0
   m_UpSpeed: 0
   m_IsBoosting: 0
@@ -24157,6 +24164,8 @@ MonoBehaviour:
   m_Stuns: 0
   m_CurrentSpeed: 0
   m_MilkCollectSpeed: 0
+  timer: 0
+  delay: 0
 --- !u!4 &7651326599288477483
 Transform:
   m_ObjectHideFlags: 0

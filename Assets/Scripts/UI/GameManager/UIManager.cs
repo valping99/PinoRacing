@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -311,8 +312,7 @@ public class UIManager : MonoBehaviour
     {
         //Get kph speed
         double kphSpeed = charInput.m_CurrentSpeed;
-        int currendSpeed = (int)kphSpeed;
-        kphText.text = currendSpeed + "";
+        kphText.text = Math.Ceiling(kphSpeed) + "";
 
         //Get current milk
         currentMilk = charColl.m_CurrentBottleMilk;

@@ -45,7 +45,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 2, z: 3}
+  m_Size: {x: 4, y: 2, z: 3}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &1804232451468831713
 GameObject:
@@ -388,7 +388,7 @@ MonoBehaviour:
     type: 3}
   m_InitialVelocity: 2
   m_InitialSpeed: 70
-  m_MaxSpeed: 100
+  m_MaxSpeed: 140
   m_CurrentBottleMilk: 0
   m_CurrentSpeed: 0
   m_IsEnoughBoost: 0

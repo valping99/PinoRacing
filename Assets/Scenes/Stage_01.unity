@@ -4498,7 +4498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
+  m_RenderShadows: 0
   m_RequiresDepthTextureOption: 0
   m_RequiresOpaqueTextureOption: 0
   m_CameraType: 0
@@ -4510,7 +4510,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 0
   m_RenderPostProcessing: 0
-  m_Antialiasing: 2
+  m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -20744,11 +20744,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: m_RequiresDepthTextureOption
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 929251054, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: m_RequiresOpaqueTextureOption
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 929251055, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: m_ClearFlags
@@ -20756,7 +20756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 929251055, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: field of view
-      value: 70
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 929251055, guid: 937c798f012c5404bbcb56d75ce7ce69, type: 3}
       propertyPath: far clip plane
@@ -21171,7 +21171,7 @@ MonoBehaviour:
   spawnerObject: {fileID: 921387196}
   m_SecondChangeLine: 0.3
   m_BoostSpeed: 70
-  slideLength: 7
+  slideLength: 8
   m_IsRemainBoost: 0
   m_UpSpeed: 0
   m_IsBoosting: 0
@@ -21179,6 +21179,8 @@ MonoBehaviour:
   m_Stuns: 0
   m_CurrentSpeed: 0
   m_MilkCollectSpeed: 0
+  timer: 0
+  delay: 0
 --- !u!4 &7651326599288477483
 Transform:
   m_ObjectHideFlags: 0
