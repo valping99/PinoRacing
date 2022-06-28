@@ -178,7 +178,7 @@ public class CharacterController : MonoBehaviour
         m_WallClearLag.transform.localPosition = _tempDistanceClearLag;
 
 
-        m_Character.transform.localRotation = Quaternion.Lerp(m_Character.transform.localRotation, _tempRotation, 2f * Time.deltaTime);
+        m_Character.transform.localRotation = Quaternion.Lerp(m_Character.transform.localRotation, _tempRotation, 7f * Time.deltaTime);
         spawnerObject.transform.localRotation = Quaternion.Lerp(spawnerObject.transform.localRotation, _tempRotationSpawner, 2f * Time.deltaTime);
         m_WallClearLag.transform.localRotation = Quaternion.Lerp(m_WallClearLag.transform.localRotation, _tempRotationClearLag, 7f * Time.deltaTime);
 
