@@ -8,6 +8,7 @@ public class LapsNumber : MonoBehaviour
     public UIManager managers;
     public RaceCourse raceCrouses;
     public Transform transformParent;
+    public GameObject selectLaps;
     int lapCourse;
     // Start is called before the first frame update
     void Start()
@@ -16,8 +17,9 @@ public class LapsNumber : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
+        selectLaps = GameObject.FindGameObjectWithTag("LapNumbers");
     }
 
     public void checkLaps() 
@@ -25,13 +27,13 @@ public class LapsNumber : MonoBehaviour
         lapCourse = raceCrouses.lapCourse;
         if (lapCourse == 2)
         {
+            Destroy(selectLaps);
             Instantiate(lapImages[1], transformParent.transform.position, Quaternion.identity, transformParent);
-            Destroy(GameObject.Find("Lap_1(Clone)"));
         }
         else if(lapCourse >2)
         {
+            Destroy(selectLaps);
             Instantiate(lapImages[2], transformParent.transform.position, Quaternion.identity, transformParent);
-            Destroy(GameObject.Find("Lap_2(Clone)"));
         }
     }
 }

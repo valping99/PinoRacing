@@ -26,6 +26,8 @@ TagManager:
   - Ice
   - Fire
   - ButtonStartScene
+  - Shadow
+  - LapNumbers
   layers:
   - Default
   - TransparentFX
