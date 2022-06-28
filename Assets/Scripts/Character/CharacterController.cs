@@ -254,6 +254,7 @@ public class CharacterController : MonoBehaviour
             m_Character.m_CurrentSpeed = m_Character.m_MaxSpeed;
 
         CheckBoostPad();
+
         if (m_PadsIsBoosting)
         {
             bool _isBoosting = true;
@@ -329,7 +330,6 @@ public class CharacterController : MonoBehaviour
             timer = repeatRate;
             m_PadsIsBoosting = false;
         }
-        Debug.Log((int)timer);
     }
     IEnumerator CheckRemainBoost()
     {
