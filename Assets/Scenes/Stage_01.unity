@@ -20497,7 +20497,7 @@ MonoBehaviour:
   m_Character: {fileID: 0}
   m_PathCreator: {fileID: 983149478}
   spawnerObject: {fileID: 921387196}
-  m_SecondChangeLine: 0.2
+  m_SecondChangeLine: 0.3
   m_BoostSpeed: 70
   slideLength: 7
   m_IsRemainBoost: 0
