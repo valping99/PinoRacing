@@ -1424,7 +1424,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.20000076, y: 21}
+  m_AnchoredPosition: {x: -0.20000076, y: 10.4}
   m_SizeDelta: {x: 0, y: -82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &356671663
@@ -1528,7 +1528,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413048337}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -157.703, y: -107.7704, z: -68.39999}
+  m_LocalPosition: {x: -157.703, y: -107.7704, z: 94.4}
   m_LocalScale: {x: 0.88664347, y: 0.50679815, z: 0.8866433}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2098,6 +2098,7 @@ MonoBehaviour:
   managers: {fileID: 1885719431}
   raceCrouses: {fileID: 2181571619821598929}
   transformParent: {fileID: 1562919274}
+  selectLaps: {fileID: 0}
 --- !u!114 &568090867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7856,7 +7857,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288, y: -390}
+  m_AnchoredPosition: {x: 288, y: -346}
   m_SizeDelta: {x: 500, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1576937937
@@ -9853,7 +9854,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 141.5, y: 65}
+  m_AnchoredPosition: {x: 141.5, y: 14.8}
   m_SizeDelta: {x: 83, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2065750298
