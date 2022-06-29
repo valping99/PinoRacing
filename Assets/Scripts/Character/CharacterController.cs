@@ -109,20 +109,16 @@ public class CharacterController : MonoBehaviour
     void MoveInput()
     {
         CharacterMove();
-
         ChangePosition();
-
         GotStuns();
-
         SpeedUp();
-
         WheelRotation();
     }
     void WheelRotation()
     {
         if (!m_Stuns && m_CurrentSpeed >= 1f)
             foreach (var wheel in m_Character.wheelCream)
-                wheel.transform.Rotate(Vector3.right, 180 * m_Character.m_CurrentSpeed * Time.deltaTime);
+                wheel.transform.Rotate(Vector3.right, -180 * m_Character.m_CurrentSpeed * Time.deltaTime);
 
 
     }
@@ -137,12 +133,10 @@ public class CharacterController : MonoBehaviour
 
         if (m_Stuns)
         {
-
             m_Character.animStuns.applyRootMotion = false;
             m_Character.animShadow.applyRootMotion = false;
             m_Character.animStuns.SetBool("isCrash", m_Stuns);
             m_Character.animShadow.SetBool("isCrash", m_Stuns);
-            // m_Character.m_CarShadow.gameObject.SetActive(!m_Stuns);
 
             StartCoroutine(ReturnRotationStun());
         }
@@ -185,10 +179,10 @@ public class CharacterController : MonoBehaviour
         spawnerObject.transform.localRotation = _tempRotationSpawner;
 
         //Test boost in unity editor
-        if (Input.GetKeyDown(KeyCode.R))
-            DashBoost();
+        if (Input.GetKey(KeyCode.R))
+            m_PadsIsBoosting = true;
 
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKey(KeyCode.M))
         {
             m_Character.m_CurrentBottleMilk += 1;
             ChangeSpeed();
@@ -349,10 +343,7 @@ public class CharacterController : MonoBehaviour
     }
     IEnumerator ReturnRotationStun()
     {
-        // yield return new WaitForSeconds(1f);
-
-        yield return new WaitForSeconds(2f);
-        // m_Character.m_CarShadow.gameObject.SetActive(true);
+        yield return new WaitForSeconds(4f);
 
         m_Character.m_Stuns = false;
         m_Stuns = false;
@@ -360,7 +351,6 @@ public class CharacterController : MonoBehaviour
         m_Character.animShadow.applyRootMotion = true;
 
         m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
-        // m_Character.childRootObject.transform.localPosition = Vector3.zero;
         m_Character.rootObject.transform.localRotation = Quaternion.identity;
 
         m_Character.animStuns.SetBool("isCrash", m_Stuns);

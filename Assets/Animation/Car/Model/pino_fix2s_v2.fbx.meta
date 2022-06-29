@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 505fad9a7d329924fbe0f1e523e54a7a
+guid: e75ac78d72671244ebf3f35f5bedbfa3
 ModelImporter:
-  serializedVersion: 21202
+  serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Crashing
+    second: Crash_v02
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -41,11 +41,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Crashing
+      name: Crash_v02
       takeName: Take 001
       internalID: 0
       firstFrame: 16
-      lastFrame: 55
+      lastFrame: 115
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -69,7 +69,7 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 85
@@ -136,6 +136,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
