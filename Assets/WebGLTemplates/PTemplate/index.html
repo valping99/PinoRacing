@@ -24,11 +24,11 @@
 	</div>
 
 	<div id="canvas-layer" class="abs">
-		<div id="unity-warning"
-			style="padding: 10px; font-size: large; background-color: red;border-radius: 25px;text-align: center;">
+		<div id="unity-warning" style="font-size: large; background-color: red;border-radius: 25px;text-align: center;">
 		</div>
-		<div id="canvas-offset" style="padding-top: 20px;">
-			<canvas id="unity-canvas" width={{{WIDTH}}} height={{{HEIGHT}}}></canvas>
+		<div id="canvas-offset">
+			<canvas id="unity-canvas" width={{{WIDTH}}} height={{{HEIGHT}}}
+				style="margin: 0 !important; padding: 0 !important;"></canvas>
 		</div>
 	</div>
 	#if false
@@ -97,18 +97,46 @@
 			meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
 			document.getElementsByTagName('head')[0].appendChild(meta);
 
-			canvas.style.width = window.innerWidth + 'px';
-			canvas.style.height = window.innerHeight + 'px';
+			canvas.style.paddingTop = '15px';
+
+			canvas.style.height = "100%";
+			canvas.style.width = "100%";
 
 			if (canvas.style.width < canvas.style.height) {
 				unityShowBanner('PLEASE rotate the screen again and refresh the	page.');
 			} else {
 				unityShowBanner('Enjoy.');
 			}
+
+
+
+		} else if (/iPad/i.test(navigator.userAgent)) {
+			var meta = document.createElement('meta');
+			meta.name = 'viewport';
+			meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+			document.getElementsByTagName('head')[0].appendChild(meta);
+
+			canvas.style.width = window.innerWidth + 'px';
+			canvas.style.height = window.innerHeight + 'px';
+
+			if (canvas.style.width < canvas.style.height) {
+				unityShowBanner('PLEASE rotate the screen again and refresh the page.');
+			} else {
+				unityShowBanner('Enjoy.');
+			}
 		} else {
-			// Desktop style: Render the game canvas in a window that can be maximized to fullscreen: canvas.style.width = "100%";
+			// Desktop style: Render the game canvas in a window that can be maximized to fullscreen: 
 			canvas.style.height = "100%";
+			canvas.style.width = "100%";
 		}
+
+		const resize = () => {
+			canvas.style.width = window.innerWidth;
+			canvas.style.height = window.innerHeight;
+		}
+
+		resize()
+		window.addEventListener('resize', resize)
 	</script>
 </body>
 
