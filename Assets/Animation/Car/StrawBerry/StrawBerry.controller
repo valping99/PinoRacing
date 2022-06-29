@@ -130,8 +130,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 27843809ec6d91b41b8112e3911ce7b8,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: bc5d49436c0fe314d8a7f07038054e5c, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -197,7 +196,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: isCrash
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3003122810046539658}
   m_Solo: 0
@@ -233,7 +235,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7afba7c50071e0e408fed52642ecbbfa, type: 2}
+  m_Motion: {fileID: 7400000, guid: e4b341e23e0572b468811cdf77fe8629, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
