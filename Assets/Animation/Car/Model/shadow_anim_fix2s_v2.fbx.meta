@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 505fad9a7d329924fbe0f1e523e54a7a
+guid: bdf9a4921ea58eb46b46dd4f63b8a42b
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Crashing
+    second: Shadow_Crash_V02
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: surfaceShader1
-    second: {fileID: 2100000, guid: d179200a6f5edbf45907ed883260aba1, type: 2}
+      name: surfaceShader4
+    second: {fileID: 2100000, guid: 5f80f5cfa651da24eba47fe3afaade5f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -41,11 +41,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Crashing
+      name: Shadow_Crash_V02
       takeName: Take 001
       internalID: 0
       firstFrame: 16
-      lastFrame: 55
+      lastFrame: 150
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -69,7 +69,7 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 85
@@ -125,7 +125,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 85
+    globalScale: 0.84999996
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
@@ -136,7 +136,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
-  remapMaterialsIfMaterialImportModeIsNone: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
