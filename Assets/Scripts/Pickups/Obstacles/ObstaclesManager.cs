@@ -12,6 +12,8 @@ public class ObstaclesManager : MonoBehaviour
     private const int positionOfStickCreamInTheSky = 1;
     int m_ItemPosition;
     int m_NextPosition;
+    [SerializeField]
+    private Transform transform_parent;
 
     float _PointX;
     float _PointXChild;
@@ -37,6 +39,7 @@ public class ObstaclesManager : MonoBehaviour
         m_PositionSpawn = new float[] { m_Character.slideLength + 2, 0, -m_Character.slideLength - 2 };
         m_RootItem = GameObject.FindGameObjectWithTag("SpawnChild");
 
+        transform_parent = GameObject.FindGameObjectWithTag("SpawnChild").transform;
         // StartCoroutine(SpawnObstacles());
 
     }
@@ -88,11 +91,14 @@ public class ObstaclesManager : MonoBehaviour
         {
             if (m_ItemPosition == positionOfStickCreamInTheSky)
             {
-                Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX + m_PositionSpawn[m_NextPosition], _PointY + 7f, _PointZ), _Rotation);
+                GameObject cloneObstacles = Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX + m_PositionSpawn[m_NextPosition], _PointY + 7f, _PointZ), _Rotation, transform_parent);
+                cloneObstacles.transform.SetParent(null);
             }
             else
             {
-                Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX + m_PositionSpawn[m_NextPosition], _PointY, _PointZ), _Rotation);
+                GameObject cloneObstacles = Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX + m_PositionSpawn[m_NextPosition], _PointY, _PointZ), _Rotation, transform_parent);
+                cloneObstacles.transform.SetParent(null);
+
             }
 
         }

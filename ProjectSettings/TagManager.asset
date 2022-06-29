@@ -28,6 +28,9 @@ TagManager:
   - ButtonStartScene
   - Shadow
   - LapNumbers
+  - SpawnX
+  - SpawnZ
+  - CheckSpawnX
   layers:
   - Default
   - TransparentFX
