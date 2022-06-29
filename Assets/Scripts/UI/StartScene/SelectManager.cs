@@ -103,7 +103,7 @@ public class SelectManager : MonoBehaviour
     // Remove this function
     public void checkScene()
     {
-        if(!isSelectStage_01 && !isSelectStage_02 && !isSelectStage_03)
+        if (!isSelectStage_01 && !isSelectStage_02 && !isSelectStage_03)
         {
             buttonSelectStage.gameObject.SetActive(false);
         }
@@ -170,7 +170,7 @@ public class SelectManager : MonoBehaviour
             animatorSelected.isSelect3 = false;
             animatorSelected.none = false;
         }
-        else if(isSelectPino_03)
+        else if (isSelectPino_03)
         {
             animatorSelected.isSelect1 = false;
             animatorSelected.isSelect2 = false;
