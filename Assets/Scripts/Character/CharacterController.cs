@@ -174,7 +174,7 @@ public class CharacterController : MonoBehaviour
         Quaternion _tempRotationClearLag = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed - 7f);
 
         m_Character.transform.localPosition = _tempDistance;
-        spawnerObject.transform.localPosition = _tempDistanceSpawner;
+        spawnerObject.transform.position = _tempDistanceSpawner;
         m_WallClearLag.transform.localPosition = _tempDistanceClearLag;
 
 
@@ -382,5 +382,6 @@ public class CharacterController : MonoBehaviour
         m_VelocityUp = true;
         m_UpSpeed = false;
     }
+
     #endregion
 }
