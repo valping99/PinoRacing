@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class CheckObstacle : MonoBehaviour
 {
-    void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-
-        if (other.gameObject.tag == "CheckSpawnX")
+        if (collision.gameObject.CompareTag("SpawnX"))
         {
-            Debug.Log("WTF");
+            Debug.Log("X");
         }
     }
 }
