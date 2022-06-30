@@ -164,6 +164,8 @@ public class Character : MonoBehaviour
 
                 if (child.CompareTag("Milk"))
                 {
+
+
                     m_CharacterController.m_UpSpeed = true;
 
                     MilkPickup milk = other.GetComponent<MilkPickup>();
