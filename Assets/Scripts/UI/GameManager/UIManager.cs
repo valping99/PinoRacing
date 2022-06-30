@@ -274,7 +274,7 @@ public class UIManager : MonoBehaviour
                 CountDown();
                 if (checkCount)
                 {
-                    Debug.Log("False");
+                    // Debug.Log("False");
                     StartCoroutine(CountNumber());
                     checkCount = false;
                 }
@@ -593,7 +593,7 @@ public class UIManager : MonoBehaviour
                 ListCountdown[i].gameObject.SetActive(true);
                 yield return new WaitForSeconds(1f);
                 ListCountdown[i].gameObject.SetActive(false);
-                Debug.Log(ListCountdown[i]);
+                // Debug.Log(ListCountdown[i]);
             }
         }
     }
