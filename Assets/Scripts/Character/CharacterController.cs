@@ -62,7 +62,7 @@ public class CharacterController : MonoBehaviour
         InitialComponent();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!spawnerObject && !m_Character && !m_WallClearLag)
             GetComponentInGame();
@@ -118,7 +118,7 @@ public class CharacterController : MonoBehaviour
     {
         if (!m_Stuns && m_CurrentSpeed >= 1f)
             foreach (var wheel in m_Character.wheelCream)
-                wheel.transform.Rotate(Vector3.right, -180 * m_Character.m_CurrentSpeed * Time.deltaTime);
+                wheel.transform.Rotate(Vector3.right, 180 * m_Character.m_CurrentSpeed * Time.deltaTime);
 
 
     }
@@ -184,7 +184,13 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.M))
         {
-            m_Character.m_CurrentBottleMilk += 1;
+            m_Character.m_CurrentBottleMilk += 500;
+            ChangeSpeed();
+        }
+        if (Input.GetKey(KeyCode.N))
+        {
+            if (m_Character.m_CurrentBottleMilk > 0)
+                m_Character.m_CurrentBottleMilk -= 500;
             ChangeSpeed();
         }
 
