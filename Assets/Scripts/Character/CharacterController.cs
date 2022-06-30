@@ -118,7 +118,7 @@ public class CharacterController : MonoBehaviour
     {
         if (!m_Stuns && m_CurrentSpeed >= 1f)
             foreach (var wheel in m_Character.wheelCream)
-                wheel.transform.Rotate(Vector3.right, 180 * m_Character.m_CurrentSpeed * Time.deltaTime);
+                wheel.transform.Rotate(Vector3.right, 360 * m_Character.m_CurrentSpeed * Time.deltaTime);
 
 
     }
