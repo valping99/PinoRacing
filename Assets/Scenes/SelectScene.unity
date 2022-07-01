@@ -26894,7 +26894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0.9333334, g: 0.8705883, b: 0.7411765, a: 1}
+  outlineColor: {r: 0.8941177, g: 0.62352943, b: 0.7019608, a: 1}
   outlineWidth: 5
   precomputeOutline: 0
   bakeKeys: []
@@ -26967,7 +26967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0.8941177, g: 0.62352943, b: 0.7019608, a: 1}
+  outlineColor: {r: 0.93333334, g: 0.87058824, b: 0.7411765, a: 1}
   outlineWidth: 5
   precomputeOutline: 0
   bakeKeys: []
