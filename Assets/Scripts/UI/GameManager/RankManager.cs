@@ -27,16 +27,16 @@ public class RankManager : MonoBehaviour
     #region class
     public void setRank()
     {
-        int values = listRanking.Count-1;
+        int values = listRanking.Count - 1;
         int timer = (int)managers.currentTime;
-        for(int i=0; i< setRankByTimed.Length; i++)
+        for (int i = 0; i < setRankByTimed.Length; i++)
         {
-            if(timer >= setRankByTimed[i] && timer < setRankByTimed[i-1])
+            if (timer >= setRankByTimed[i] && timer < setRankByTimed[i - 1])
             {
                 if (i >= 1)
                 {
-                    
-                    values = i-1;
+
+                    values = i - 1;
                 }
                 else
                 {
@@ -44,7 +44,7 @@ public class RankManager : MonoBehaviour
                 }
             }
         }
-        Debug.Log(values);
+        // Debug.Log(values);
         managers.messageText.text = textRank[values];
         Instantiate(listRanking[values], rectTransform.transform.position, Quaternion.identity, transformParent);
         checkRank = false;

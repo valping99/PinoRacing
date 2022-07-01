@@ -81,7 +81,7 @@ public class Character : MonoBehaviour
         m_InitialMaxSpeed = m_MaxSpeed;
         m_CurrentSpeed = m_InitialSpeed;
 
-        m_SpeedMilk = 5f / 100f;
+        m_SpeedMilk = 0.05f;
     }
     void Obstacles(Collider other)
     {
@@ -164,8 +164,6 @@ public class Character : MonoBehaviour
 
                 if (child.CompareTag("Milk"))
                 {
-
-
                     m_CharacterController.m_UpSpeed = true;
 
                     MilkPickup milk = other.GetComponent<MilkPickup>();
@@ -198,7 +196,7 @@ public class Character : MonoBehaviour
     }
     void FixSpeedUpdate()
     {
-        if (m_CurrentSpeed >= m_MaxSpeed && m_CharacterController.m_UpSpeed)
+        if (m_CharacterController.m_UpSpeed)
         {
             m_CharacterController.m_UpSpeed = false;
 
@@ -208,8 +206,8 @@ public class Character : MonoBehaviour
     }
     IEnumerator SpeedUp()
     {
-        yield return new WaitForSeconds(.3f);
-        m_MaxSpeed = m_InitialMaxSpeed * m_SpeedMilk * m_CurrentBottleMilk + m_InitialMaxSpeed;
+        yield return new WaitForSeconds(.01f);
+        m_MaxSpeed = (m_InitialMaxSpeed * m_SpeedMilk * m_CurrentBottleMilk) + m_InitialMaxSpeed;
     }
     #endregion
 }

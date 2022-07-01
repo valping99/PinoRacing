@@ -62,6 +62,12 @@ public class CharacterController : MonoBehaviour
         InitialComponent();
     }
 
+    void Update()
+    {
+        WheelRotation();
+        ChangePosition();
+    }
+
     void FixedUpdate()
     {
         if (!spawnerObject && !m_Character && !m_WallClearLag)
@@ -109,18 +115,14 @@ public class CharacterController : MonoBehaviour
     void MoveInput()
     {
         CharacterMove();
-        ChangePosition();
         GotStuns();
         SpeedUp();
-        WheelRotation();
     }
     void WheelRotation()
     {
         if (!m_Stuns && m_CurrentSpeed >= 1f)
             foreach (var wheel in m_Character.wheelCream)
-                wheel.transform.Rotate(Vector3.right, 180 * m_Character.m_CurrentSpeed * Time.deltaTime);
-
-
+                wheel.transform.Rotate(Vector3.right, 360 * m_Character.m_CurrentSpeed * Time.deltaTime);
     }
     void GetComponentInGame()
     {
@@ -130,7 +132,6 @@ public class CharacterController : MonoBehaviour
     }
     void GotStuns()
     {
-
         if (m_Stuns)
         {
             m_Character.animStuns.applyRootMotion = false;
@@ -155,7 +156,7 @@ public class CharacterController : MonoBehaviour
     {
         CheckSpeed();
 
-        m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_Character.m_CurrentSpeed, m_Character.m_InitialVelocity * Time.deltaTime);
+        m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_Character.m_CurrentSpeed, Time.deltaTime);
 
         m_DriveSpeed += (m_CurrentSpeed * Time.deltaTime) / 10;
 
@@ -189,7 +190,7 @@ public class CharacterController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.N))
         {
-            if (m_Character.m_CurrentBottleMilk > 0)
+            if (m_Character.m_CurrentBottleMilk >= 500)
                 m_Character.m_CurrentBottleMilk -= 500;
             ChangeSpeed();
         }
@@ -315,6 +316,7 @@ public class CharacterController : MonoBehaviour
         if (m_PadsIsBoosting || m_Stuns)
             StartCoroutine(CheckRemainBoost());
 
+        m_UpSpeed = true;
     }
     public void DashBoost()
     {

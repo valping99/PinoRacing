@@ -126,6 +126,10 @@ public class UIManager : MonoBehaviour
     {
         GamePlaying();
     }
+    void Update()
+    {
+        GetVariables();
+    }
 
     #endregion
     #region UIManager
@@ -249,7 +253,7 @@ public class UIManager : MonoBehaviour
                 //countdownTimer_Text.gameObject.SetActive(false);
             }
             TimeUp();
-            GetVariables();
+            // GetVariables();
 
             mainSceneUI.gameObject.SetActive(true);
             charInput.GetComponent<CharacterController>().enabled = true;
@@ -312,7 +316,8 @@ public class UIManager : MonoBehaviour
     {
         //Get kph speed
         double kphSpeed = charInput.m_CurrentSpeed;
-        kphText.text = Math.Ceiling(kphSpeed) + "";
+        // kphText.text = Math.Ceiling(kphSpeed) + "";
+        kphText.text = Math.Round(kphSpeed) + "";
 
         //Get current milk
         currentMilk = charColl.m_CurrentBottleMilk;
