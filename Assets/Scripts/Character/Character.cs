@@ -81,7 +81,7 @@ public class Character : MonoBehaviour
         m_InitialMaxSpeed = m_MaxSpeed;
         m_CurrentSpeed = m_InitialSpeed;
 
-        m_SpeedMilk = 0.05f;
+        m_SpeedMilk = 0.1f;
     }
     void Obstacles(Collider other)
     {
