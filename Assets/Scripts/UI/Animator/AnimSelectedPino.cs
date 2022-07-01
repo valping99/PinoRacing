@@ -54,8 +54,4 @@ public class AnimSelectedPino : MonoBehaviour
         animator.SetBool(k_AnimIsPino2, isSelect2);
         animator.SetBool(k_AnimIsPino3, isSelect3);
     }
-    IEnumerator checkTime()
-    {
-        yield return new WaitForSeconds(1f);
-    }
 }

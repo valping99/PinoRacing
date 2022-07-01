@@ -6745,6 +6745,42 @@ MonoBehaviour:
   charInput: {fileID: 0}
   charColl: {fileID: 0}
   managers: {fileID: 1885719431}
+--- !u!1 &665918510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 665918511}
+  m_Layer: 0
+  m_Name: img_Pinos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &665918511
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665918510}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1337583621}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 113}
+  m_SizeDelta: {x: -1820, y: -866}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &671941235
 GameObject:
   m_ObjectHideFlags: 0
@@ -13409,6 +13445,7 @@ RectTransform:
   - {fileID: 597391691}
   - {fileID: 623501570}
   - {fileID: 989002529}
+  - {fileID: 665918511}
   m_Father: {fileID: 2071708844}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15534,8 +15571,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -132}
-  m_SizeDelta: {x: 1200, y: 300}
+  m_AnchoredPosition: {x: -26, y: -175}
+  m_SizeDelta: {x: 1200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1558942066
 MonoBehaviour:
@@ -18339,7 +18376,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 7201900233457568427}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7201900233457568429}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4c79524454887b4590d165bcb4396ab, type: 3}
@@ -20514,7 +20551,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2116185422}
-  - component: {fileID: 2116185423}
   m_Layer: 0
   m_Name: Timer_Countdown
   m_TagString: Untagged
@@ -20546,18 +20582,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2116185423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2116185421}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90baa0594ca84d8468ed58e96d9d4a2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2131492074
 GameObject:
   m_ObjectHideFlags: 0
@@ -21186,6 +21210,34 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7201900233457568427}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7201900233457568429 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7201900232121991470, guid: 0ba6220d5676d0440922d1dc5fa1983f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7201900233457568427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7201900233457568430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7201900233457568429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eec611f9f182ea488fab2bee0e96601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSelectedPinos: 0
+  transformParent: {fileID: 665918511}
+  pinoShow:
+  - {fileID: 592283117456119262, guid: 9869b3108d46d95409c14fee3bee7909, type: 3}
+  - {fileID: 4364539082429491071, guid: fb89199c86f8c1a4f9405c8ac3f5fb2f, type: 3}
+  - {fileID: 6104152545067743364, guid: ce2bced20ca928d438276fdccc23cd0a, type: 3}
+  pinoOnly: {fileID: 4364539082429491071, guid: fb89199c86f8c1a4f9405c8ac3f5fb2f,
+    type: 3}
+  charSelect: {fileID: 0}
+  IsShowPinos: 1
 --- !u!114 &7651326599288477482
 MonoBehaviour:
   m_ObjectHideFlags: 0
