@@ -16055,6 +16055,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1968838555}
     m_Modifications:
+    - target: {fileID: 1619783702, guid: e974722fcb5685f48bdc619d599490a2, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619783702, guid: e974722fcb5685f48bdc619d599490a2, type: 3}
+      propertyPath: Priority
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619783702, guid: e974722fcb5685f48bdc619d599490a2, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 05d32c03123d67141b23a458cf036d87, type: 3}
     - target: {fileID: 1300960298686953967, guid: e974722fcb5685f48bdc619d599490a2,
         type: 3}
       propertyPath: listObstacles.Array.size

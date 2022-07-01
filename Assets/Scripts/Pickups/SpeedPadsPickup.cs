@@ -22,12 +22,14 @@ public class SpeedPadsPickup : Pickup
     #region Class
     protected override void OnPicked(Character player)
     {
-        SpeedPads speedPadsPickup = player.GetComponent<SpeedPads>();
-        if (speedPadsPickup && speedPadsPickup.CanPickup())
-        {
-            speedPadsPickup.Collect(amountSpeedPads);
-            Destroy(gameObject);
-        }
+        // SpeedPads speedPadsPickup = player.GetComponent<SpeedPads>();
+        // if (speedPadsPickup && speedPadsPickup.CanPickup())
+        // {
+        //     speedPadsPickup.Collect(amountSpeedPads);
+        //     Destroy(gameObject);
+        // }
+        PlayPickupFeedback();
+        Destroy(gameObject);
     }
 
     protected override void HandleBobbing()
