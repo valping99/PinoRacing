@@ -11,21 +11,13 @@ public class ObstaclesManager : MonoBehaviour
 
     private const int positionOfStickCreamInTheSky = 1;
     int m_ItemPosition;
-    int m_NextPosition;
+    int m_NextSpawner;
     [SerializeField]
-    private Transform transform_parent;
-
-    float _PointX;
-    float _PointXChild;
-    float _PointY;
-    float _PointZ;
-    float[] m_PositionSpawn;
     Quaternion _Rotation;
 
     public CharacterController m_Character;
     public Character m_CharacterCollider;
 
-    GameObject m_RootItem;
     #endregion
 
     #region Unity Methods
@@ -35,13 +27,6 @@ public class ObstaclesManager : MonoBehaviour
     {
         m_Character = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
         m_CharacterCollider = m_Character.gameObject.GetComponentInChildren<Character>();
-
-        m_PositionSpawn = new float[] { m_Character.slideLength + 1, 0, -m_Character.slideLength - 1 };
-        m_RootItem = GameObject.FindGameObjectWithTag("SpawnChild");
-
-        transform_parent = GameObject.FindGameObjectWithTag("SpawnChild").transform;
-        // StartCoroutine(SpawnObstacles());
-
     }
 
     public void CallSpawnObstacles()
@@ -51,13 +36,7 @@ public class ObstaclesManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        _PointX = m_RootItem.transform.position.x;
-        _PointY = m_RootItem.transform.position.y;
-        _PointZ = m_RootItem.transform.position.z;
-
         _Rotation = m_Character.spawnerObject.transform.rotation;
-
-        // Debug.Log(" _RotationY: " + _Rotation.y + " _RotationW: " + _Rotation.w);
     }
 
     public void StartSpawnObjects()
@@ -85,28 +64,30 @@ public class ObstaclesManager : MonoBehaviour
         StartCoroutine(SpawnObstacles());
 
         m_ItemPosition = Random.Range(0, listObstacles.Length);
-        m_NextPosition = Random.Range(0, m_PositionSpawn.Length);
+        m_NextSpawner = Random.Range(0, m_Character.listSpawner.Length);
 
         if (!m_Character.m_Stuns)
         {
             if (m_ItemPosition == positionOfStickCreamInTheSky)
             {
-                GameObject cloneObstacles = Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX + m_PositionSpawn[m_NextPosition], _PointY + 7f, _PointZ), _Rotation, transform_parent);
-                cloneObstacles.transform.SetParent(null);
+                Instantiate(listObstacles[m_ItemPosition],
+                SpawnObstaclesInSky(m_Character.listSpawner[m_NextSpawner]), _Rotation);
             }
             else
             {
-                GameObject cloneObstacles = Instantiate(listObstacles[m_ItemPosition], SpawnObstaclesVec(_PointX + m_PositionSpawn[m_NextPosition], _PointY, _PointZ), _Rotation, transform_parent);
-                cloneObstacles.transform.SetParent(null);
-
+                Instantiate(listObstacles[m_ItemPosition],
+                SpawnObstaclesNormal(m_Character.listSpawner[m_NextSpawner]), _Rotation);
             }
-
         }
     }
 
-    Vector3 SpawnObstaclesVec(float x, float y, float z)
+    Vector3 SpawnObstaclesNormal(GameObject spawner)
     {
-        return new Vector3(x, y, z);
+        return new Vector3(spawner.transform.position.x, spawner.transform.position.y, spawner.transform.position.z);
+    }
+    Vector3 SpawnObstaclesInSky(GameObject spawner)
+    {
+        return new Vector3(spawner.transform.position.x, spawner.transform.position.y + 7f, spawner.transform.position.z);
     }
     #endregion
 }
