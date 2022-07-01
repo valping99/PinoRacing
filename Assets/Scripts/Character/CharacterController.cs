@@ -266,7 +266,7 @@ public class CharacterController : MonoBehaviour
 
             if (_isBoosting)
             {
-                float _speed = m_Character.m_CurrentSpeed * 0.15f;
+                float _speed = m_Character.m_CurrentSpeed * 0.2f;
                 m_Character.m_CurrentSpeed += _speed;
                 _isBoosting = false;
             }

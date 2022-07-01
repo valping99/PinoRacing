@@ -12,11 +12,9 @@ public class ObstaclesManager : MonoBehaviour
     private const int positionOfStickCreamInTheSky = 1;
     int m_ItemPosition;
     int m_NextSpawner;
-    [SerializeField]
     Quaternion _Rotation;
-
-    public CharacterController m_Character;
-    public Character m_CharacterCollider;
+    CharacterController m_Character;
+    Character m_CharacterCollider;
 
     #endregion
 
