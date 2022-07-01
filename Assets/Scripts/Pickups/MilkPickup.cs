@@ -17,12 +17,14 @@ public class MilkPickup : Pickup
     #region Class
     protected override void OnPicked(Character player)
     {
-        Milk playerMilkBottle = player.GetComponent<Milk>();
-        if (playerMilkBottle && playerMilkBottle.CanPickup())
-        {
-            playerMilkBottle.Collect(amountMilkBottle);
-            Destroy(gameObject);
-        }
+        // Milk playerMilkBottle = player.GetComponent<Milk>();
+        // if (playerMilkBottle && playerMilkBottle.CanPickup())
+        // {
+        //     playerMilkBottle.Collect(amountMilkBottle);
+        //     Destroy(gameObject);
+        // }
+        PlayPickupFeedback();
+        Destroy(gameObject);
     }
     #endregion
 }

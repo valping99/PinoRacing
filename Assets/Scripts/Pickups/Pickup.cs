@@ -69,10 +69,8 @@ public class Pickup : MonoBehaviour
     {
         Character pickingPlayer = other.GetComponent<Character>();
 
-        if (pickingPlayer != null)
-        {
+        if (other.gameObject.tag == "RootObject")
             OnPicked(pickingPlayer);
-        }
     }
 
 
@@ -112,13 +110,13 @@ public class Pickup : MonoBehaviour
 
         if (PickupSfx)
         {
-            AudioUtility.CreateSFX(PickupSfx, m_RootModel.transform.position, AudioUtility.AudioGroups.Pickup, 0f);
+            AudioUtility.CreateSFX(PickupSfx, m_RootModel.transform.position, AudioUtility.AudioGroups.Pickup, 3f);
         }
 
-        if (PickupVfxPrefab)
-        {
-            var pickupVfxInstance = Instantiate(PickupVfxPrefab, m_RootModel.transform.position, Quaternion.identity);
-        }
+        // if (PickupVfxPrefab)
+        // {
+        //     var pickupVfxInstance = Instantiate(PickupVfxPrefab, m_RootModel.transform.position, Quaternion.identity);
+        // }
 
         m_HasPlayedFeedback = true;
     }
