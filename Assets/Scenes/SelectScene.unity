@@ -392,7 +392,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: ade7003d3193e674893ecbe9f41a6a4a, type: 3}
+  m_Texture: {fileID: 2800000, guid: 3c01215ec72e3a64c897b14dafffac28, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1395,7 +1395,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 38a0fc4ff79b9cc4e9379f17378196d6, type: 3}
+  m_Texture: {fileID: 2800000, guid: 036aa65a9a0622c40baf958d3af77ffe, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -2250,7 +2250,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 56cd9631243c81846a9e385b92399d83, type: 3}
+  m_Texture: {fileID: 2800000, guid: 108a5f865453005428b670d15b8bac06, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3635,7 +3635,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: d8498adced6c9174d905f3ce9824b084, type: 3}
+  m_Texture: {fileID: 2800000, guid: f56376e99b691e0438e0abe210a227e8, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -6572,7 +6572,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 398834f05e6c50347bb06c1ec4280285, type: 3}
+  m_Texture: {fileID: 2800000, guid: f5d887ab6597ed54e894440677ed627c, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -6791,7 +6791,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 38a0fc4ff79b9cc4e9379f17378196d6, type: 3}
+  m_Texture: {fileID: 2800000, guid: 036aa65a9a0622c40baf958d3af77ffe, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -9107,7 +9107,6 @@ GameObject:
   - component: {fileID: 1221037182}
   - component: {fileID: 1221037181}
   - component: {fileID: 1221037180}
-  - component: {fileID: 1221037183}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -9164,102 +9163,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1221037183
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221037179}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9b3d19d5b3ce51e48b9090eee88ee465, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1240728613
 GameObject:
   m_ObjectHideFlags: 0
@@ -10377,7 +10280,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 2b1d695788d3bef4dbc1c0e2979d4313, type: 3}
+  m_Texture: {fileID: 2800000, guid: 1531babcc452b4f45afa607b370b2ab4, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -10705,7 +10608,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 2b1d695788d3bef4dbc1c0e2979d4313, type: 3}
+  m_Texture: {fileID: 2800000, guid: 1531babcc452b4f45afa607b370b2ab4, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -13747,7 +13650,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 91805b398ee4ff540ab48cfdeaecf1ba, type: 3}
+  m_Texture: {fileID: 2800000, guid: 2ce05ae29285f8e4e97d6c259b51b095, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
