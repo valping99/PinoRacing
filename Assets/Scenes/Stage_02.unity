@@ -8795,7 +8795,7 @@ PrefabInstance:
     - target: {fileID: 1300960298686953967, guid: e974722fcb5685f48bdc619d599490a2,
         type: 3}
       propertyPath: listObstacles.Array.size
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1300960298686953967, guid: e974722fcb5685f48bdc619d599490a2,
         type: 3}
@@ -8808,6 +8808,18 @@ PrefabInstance:
       propertyPath: listObstacles.Array.data[3]
       value: 
       objectReference: {fileID: 8077980517131866237, guid: 98963e14ad200ff44bb873b7942d69a8,
+        type: 3}
+    - target: {fileID: 1300960298686953967, guid: e974722fcb5685f48bdc619d599490a2,
+        type: 3}
+      propertyPath: listObstacles.Array.data[6]
+      value: 
+      objectReference: {fileID: 8077980517131866237, guid: 98963e14ad200ff44bb873b7942d69a8,
+        type: 3}
+    - target: {fileID: 1300960298686953967, guid: e974722fcb5685f48bdc619d599490a2,
+        type: 3}
+      propertyPath: listObstacles.Array.data[7]
+      value: 
+      objectReference: {fileID: 2044869778130598217, guid: c91090ad5cfdcc8438f83e051c55f511,
         type: 3}
     - target: {fileID: 1300960298686953968, guid: e974722fcb5685f48bdc619d599490a2,
         type: 3}
@@ -25001,7 +25013,7 @@ MonoBehaviour:
   - {fileID: 433289744}
   m_SecondChangeLine: 0.2
   m_BoostSpeed: 70
-  slideLength: 8
+  slideLength: 9
   m_IsRemainBoost: 0
   m_UpSpeed: 0
   m_IsBoosting: 0
