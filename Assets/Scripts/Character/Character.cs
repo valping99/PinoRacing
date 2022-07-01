@@ -196,7 +196,7 @@ public class Character : MonoBehaviour
     }
     void FixSpeedUpdate()
     {
-        if (m_CurrentSpeed >= m_MaxSpeed && m_CharacterController.m_UpSpeed)
+        if (m_CharacterController.m_UpSpeed)
         {
             m_CharacterController.m_UpSpeed = false;
 
