@@ -109,9 +109,7 @@ public class Pickup : MonoBehaviour
             return;
 
         if (PickupSfx)
-        {
-            AudioUtility.CreateSFX(PickupSfx, m_RootModel.transform.position, AudioUtility.AudioGroups.Pickup, 3f);
-        }
+            AudioUtility.CreateSFX(PickupSfx, m_RootModel.transform.position, AudioUtility.AudioGroups.Pickup, 0);
 
         // if (PickupVfxPrefab)
         // {
