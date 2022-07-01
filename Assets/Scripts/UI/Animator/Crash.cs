@@ -19,7 +19,7 @@ public class Crash : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         checkCrash = charColl.m_Stuns;
         animator.SetBool(k_AnimCrash, checkCrash);

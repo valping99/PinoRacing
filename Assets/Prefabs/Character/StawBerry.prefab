@@ -560,7 +560,6 @@ MonoBehaviour:
   m_MaxSpeed: 150
   m_CurrentBottleMilk: 0
   m_CurrentSpeed: 0
-  m_CurrentPads: 0
   m_IsEnoughBoost: 0
   m_Stuns: 0
 --- !u!114 &4738020060440150089
@@ -878,37 +877,37 @@ PrefabInstance:
     - target: {fileID: 5545760352362531620, guid: 5432a6997e939c54f9cd311c8bbb5c18,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5545760352362531620, guid: 5432a6997e939c54f9cd311c8bbb5c18,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.252
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5545760352362531620, guid: 5432a6997e939c54f9cd311c8bbb5c18,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5545760352362531620, guid: 5432a6997e939c54f9cd311c8bbb5c18,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5545760352362531620, guid: 5432a6997e939c54f9cd311c8bbb5c18,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5545760352362531620, guid: 5432a6997e939c54f9cd311c8bbb5c18,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5545760352362531620, guid: 5432a6997e939c54f9cd311c8bbb5c18,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 5545760352362531620, guid: 5432a6997e939c54f9cd311c8bbb5c18,
         type: 3}
@@ -918,6 +917,16 @@ PrefabInstance:
     - target: {fileID: 5545760352362531620, guid: 5432a6997e939c54f9cd311c8bbb5c18,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6682589183126302795, guid: 5432a6997e939c54f9cd311c8bbb5c18,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6682589183126302795, guid: 5432a6997e939c54f9cd311c8bbb5c18,
+        type: 3}
+      propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
