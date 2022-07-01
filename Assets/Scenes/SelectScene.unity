@@ -25775,7 +25775,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d1df96d505ffce441a2ddc09b8f80dc9, type: 2}
+  - {fileID: 2100000, guid: 7bb6173d63ec2144ea7f3cd57021c288, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25878,7 +25878,7 @@ GameObject:
   - component: {fileID: 4448291182041388986}
   - component: {fileID: 3641438597379486457}
   m_Layer: 0
-  m_Name: StrawBerry
+  m_Name: StrawBerry - Almond
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25993,7 +25993,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7bb6173d63ec2144ea7f3cd57021c288, type: 2}
+  - {fileID: 2100000, guid: d1df96d505ffce441a2ddc09b8f80dc9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26043,7 +26043,7 @@ GameObject:
   - component: {fileID: 3644350821730751630}
   - component: {fileID: 4440594986354684365}
   m_Layer: 0
-  m_Name: Almond
+  m_Name: Almond - Strawberry
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

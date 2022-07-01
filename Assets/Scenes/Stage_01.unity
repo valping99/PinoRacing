@@ -21232,12 +21232,11 @@ MonoBehaviour:
   transformParent: {fileID: 665918511}
   pinoShow:
   - {fileID: 592283117456119262, guid: 9869b3108d46d95409c14fee3bee7909, type: 3}
-  - {fileID: 4364539082429491071, guid: fb89199c86f8c1a4f9405c8ac3f5fb2f, type: 3}
   - {fileID: 6104152545067743364, guid: ce2bced20ca928d438276fdccc23cd0a, type: 3}
-  pinoOnly: {fileID: 4364539082429491071, guid: fb89199c86f8c1a4f9405c8ac3f5fb2f,
-    type: 3}
+  - {fileID: 4364539082429491071, guid: fb89199c86f8c1a4f9405c8ac3f5fb2f, type: 3}
+  pinoOnly: {fileID: 592283117456119262, guid: 9869b3108d46d95409c14fee3bee7909, type: 3}
   charSelect: {fileID: 0}
-  IsShowPinos: 1
+  IsShowPinos: 0
 --- !u!114 &7651326599288477482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21530,9 +21529,15 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 8900812262158074488, guid: 1e7cf3bbd51571841a315ded330182ae,
         type: 3}
-      propertyPath: playerList.Array.data[2]
+      propertyPath: playerList.Array.data[1]
       value: 
       objectReference: {fileID: 4168228167028810056, guid: 8982e2648a728604cacfd24fab9bc08a,
+        type: 3}
+    - target: {fileID: 8900812262158074488, guid: 1e7cf3bbd51571841a315ded330182ae,
+        type: 3}
+      propertyPath: playerList.Array.data[2]
+      value: 
+      objectReference: {fileID: 4168228167028810056, guid: 712cbd3b10c0b444ea677f72e5894ce6,
         type: 3}
     - target: {fileID: 8900812262158074489, guid: 1e7cf3bbd51571841a315ded330182ae,
         type: 3}
