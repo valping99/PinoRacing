@@ -395,6 +395,7 @@ public class UIManager : MonoBehaviour
     }
     #endregion
     #region Not using
+    //
     //Set Variables when game start
     //private void StartStatusOfPino()
     //{
