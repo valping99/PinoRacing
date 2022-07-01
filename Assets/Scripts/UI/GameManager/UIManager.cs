@@ -122,7 +122,7 @@ public class UIManager : MonoBehaviour
     }
 
 
-    void LateUpdate()
+    void FixedUpdate()
     {
         GamePlaying();
     }
