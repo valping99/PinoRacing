@@ -66,7 +66,7 @@ public class ObstaclesManager : MonoBehaviour
 
         if (!m_Character.m_Stuns)
         {
-            if (m_ItemPosition == positionOfStickCreamInTheSky)
+            if (m_ItemPosition == positionOfStickCreamInTheSky || m_ItemPosition == positionOfStickCreamInTheSky + 6)
             {
                 Instantiate(listObstacles[m_ItemPosition],
                 SpawnObstaclesInSky(m_Character.listSpawner[m_NextSpawner]), _Rotation);
