@@ -58,6 +58,7 @@ public class Character : MonoBehaviour
         {
             Obstacles(other);
             Item(other);
+            Sound(other);
         }
         catch (System.Exception ex)
         {
@@ -192,6 +193,15 @@ public class Character : MonoBehaviour
                 }
 
             }
+        }
+    }
+
+    void Sound(Collider other)
+    {
+        if (other.gameObject.name == "New Game Object")
+        {
+            m_RootItem = other.gameObject;
+            Destroy(m_RootItem.gameObject);
         }
     }
     void FixSpeedUpdate()

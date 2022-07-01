@@ -16061,7 +16061,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1619783702, guid: e974722fcb5685f48bdc619d599490a2, type: 3}
       propertyPath: Priority
-      value: 64
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619783702, guid: e974722fcb5685f48bdc619d599490a2, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1619783702, guid: e974722fcb5685f48bdc619d599490a2, type: 3}
       propertyPath: m_audioClip
