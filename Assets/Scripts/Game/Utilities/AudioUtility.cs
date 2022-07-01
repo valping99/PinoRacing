@@ -7,7 +7,7 @@ public class AudioUtility : MonoBehaviour
 {
 
     #region Variables
-    static AudioManager s_AudioManager;
+    static AudiooManager s_AudioManager;
 
     public enum AudioGroups
     {
@@ -33,43 +33,50 @@ public class AudioUtility : MonoBehaviour
         source.minDistance = rolloffDistanceMin;
         source.Play();
 
+        Destroy(impactSfxInstance, 2f);
+
         // source.outputAudioMixerGroup = GetAudioGroup(audioGroup);
 
+        TimedSelfDestruct timedSelfDestruct = impactSfxInstance.AddComponent<TimedSelfDestruct>();
+        timedSelfDestruct.LifeTime = clip.length;
+
+        // GetMasterVolume();
+        // SetMasterVolume(1f);
     }
 
     public static AudioMixerGroup GetAudioGroup(AudioGroups group)
     {
-        // if (s_AudioManager == null)
-        //     s_AudioManager = GameObject.FindObjectOfType<AudioManager>();
+        if (s_AudioManager == null)
+            s_AudioManager = GameObject.FindObjectOfType<AudiooManager>();
 
-        // var groups = s_AudioManager.FindMatchingGroups(group.ToString());
+        var groups = s_AudioManager.FindMatchingGroups(group.ToString());
 
-        // if (groups.Length > 0)
-        //     return groups[0];
+        if (groups.Length > 0)
+            return groups[0];
 
-        // Debug.LogWarning("Didn't find audio group for " + group.ToString());
+        Debug.LogWarning("Didn't find audio group for " + group.ToString());
         return null;
     }
 
     public static void SetMasterVolume(float value)
     {
-        // if (s_AudioManager == null)
-        //     s_AudioManager = GameObject.FindObjectOfType<AudioManager>();
+        if (s_AudioManager == null)
+            s_AudioManager = GameObject.FindObjectOfType<AudiooManager>();
 
-        // if (value <= 0)
-        //     value = 0.001f;
-        // float valueInDb = Mathf.Log10(value) * 20;
+        if (value <= 0)
+            value = 0.1f;
+        float valueInDb = Mathf.Log10(value) * 20;
 
-        // s_AudioManager.SetFloat("MasterVolume", valueInDb);
+        s_AudioManager.SetFloat("MasterVolume", valueInDb);
     }
 
     public static float GetMasterVolume()
     {
-        // if (s_AudioManager == null)
-        //     s_AudioManager = GameObject.FindObjectOfType<AudioManager>();
+        if (s_AudioManager == null)
+            s_AudioManager = GameObject.FindObjectOfType<AudiooManager>();
 
         // s_AudioManager.GetFloat("MasterVolume", out var valueInDb);
-        return Mathf.Pow(10f, /*valueInDb*/ 0 / 20.0f);
+        return Mathf.Pow(10f, 10f / 20.0f);
     }
     #endregion
 }
