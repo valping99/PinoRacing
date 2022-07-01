@@ -18,6 +18,7 @@ public class CharacterController : MonoBehaviour
     public Character m_Character;
     public PathCreator m_PathCreator;
     public GameObject spawnerObject;
+    public GameObject[] listSpawner;
     GameObject m_WallClearLag;
     UIManager uiManagers;
 
@@ -111,6 +112,9 @@ public class CharacterController : MonoBehaviour
         m_PadsIsBoosting = false;
         m_UpSpeed = false;
         m_Stuns = false;
+
+        listSpawner[1].gameObject.transform.localPosition = new Vector3(slideLength, 0, 0);
+        listSpawner[2].gameObject.transform.localPosition = new Vector3(-slideLength, 0, 0);
     }
     void MoveInput()
     {
