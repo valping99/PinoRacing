@@ -190,7 +190,7 @@ public class CharacterController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.N))
         {
-            if (m_Character.m_CurrentBottleMilk > 0)
+            if (m_Character.m_CurrentBottleMilk >= 500)
                 m_Character.m_CurrentBottleMilk -= 500;
             ChangeSpeed();
         }
@@ -316,6 +316,7 @@ public class CharacterController : MonoBehaviour
         if (m_PadsIsBoosting || m_Stuns)
             StartCoroutine(CheckRemainBoost());
 
+        m_UpSpeed = true;
     }
     public void DashBoost()
     {
