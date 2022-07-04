@@ -44,64 +44,64 @@ public class SoundManagers : MonoBehaviour
         {
             case "Tap":
                 audio_source.clip = tapSE;
-                audio_source.PlayOneShot(tapSE, 1f);
+                audio_source.PlayOneShot(tapSE, 0.6f);
                 break;
 
             case "TopScreen":
                 audio_source.clip = topScreen;
                 audio_source.loop = true;
-                audio_source.PlayOneShot(topScreen, 0.6f);
+                audio_source.PlayOneShot(topScreen, 0.2f);
                 StartCoroutine(ReSound("TopScreen"));
                 break;
 
 
             case "CountDown":
                 audio_source.clip = countDownSE;
-                audio_source.PlayOneShot(countDownSE, 1f);
+                audio_source.PlayOneShot(countDownSE, 0.6f);
                 break;
 
             case "No4":
                 audio_source.clip = itemSE;
-                audio_source.PlayOneShot(itemSE, 1f);
+                audio_source.PlayOneShot(itemSE, 0.6f);
                 break;
 
             case "No5":
                 audio_source.clip = damageSE;
-                audio_source.PlayOneShot(damageSE, 1f);
+                audio_source.PlayOneShot(damageSE, 0.6f);
                 break;
 
             case "Finish":
                 audio_source.clip = finishSE;
-                audio_source.PlayOneShot(finishSE, 1f);
+                audio_source.PlayOneShot(finishSE, 0.6f);
                 break;
 
             case "BGM":
                 audio_source.clip = gameBGM;
                 audio_source.loop = true;
-                audio_source.PlayOneShot(gameBGM, 0.6f);
+                audio_source.PlayOneShot(gameBGM, 0.2f);
                 StartCoroutine(ReSound("BGM"));
                 break;
 
             case "Clear":
                 audio_source.clip = clearBGM;
                 audio_source.loop = true;
-                audio_source.PlayOneShot(clearBGM, 0.6f);
+                audio_source.PlayOneShot(clearBGM, 0.2f);
                 StartCoroutine(ReSound("Clear"));
                 break;
 
             case "Indication":
                 audio_source.clip = itemIndication;
-                audio_source.PlayOneShot(itemIndication, 1f);
+                audio_source.PlayOneShot(itemIndication, 0.6f);
                 break;
 
             case "Rank":
                 audio_source.clip = rankDisplay;
-                audio_source.PlayOneShot(rankDisplay, 1f);
+                audio_source.PlayOneShot(rankDisplay, 0.6f);
                 break;
 
             case "No11":
                 audio_source.clip = dashBoardSE;
-                audio_source.PlayOneShot(dashBoardSE, 1f);
+                audio_source.PlayOneShot(dashBoardSE, 0.6f);
                 break;
 
             case "Stop":
