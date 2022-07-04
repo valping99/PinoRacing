@@ -29,6 +29,7 @@ public class RaceCourse : MonoBehaviour
         audio_BGM = GameObject.FindGameObjectWithTag("BGM").GetComponent<SoundManagers>();
     }
 
+
     // Update is called once per frame
     void LateUpdate()
     {
@@ -54,6 +55,7 @@ public class RaceCourse : MonoBehaviour
                 audio_BGM.PlaySound("Stop");
                 audio_BGM.PlaySound("Clear");
                 uiManagers.checkGameClear = true;
+                lapCourse = 1;
             }
             else
             {

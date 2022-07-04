@@ -103,6 +103,7 @@ public class SelectManager : MonoBehaviour
             isSelectScene_01 = false;
             scene_01.gameObject.SetActive(false);
             isSelectScene_02 = true;
+            Time.timeScale = 1f;
         }
     }
 
