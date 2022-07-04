@@ -9,7 +9,7 @@ public class ButtonSelectedUI : MonoBehaviour
     public GameObject ActiveStage1;
     public GameObject ActiveStage2;
 
-
+    public bool timeCheckCD = true;
     #region Select Variables
     public void OnStart()
     {
@@ -66,15 +66,20 @@ public class ButtonSelectedUI : MonoBehaviour
 
     public void selectedPino_01()
     {
+        if (timeCheckCD)
+        {
+            timeCheckCD = false;
+            StartCoroutine(timeToTap());
+            selected.isSelectPino_02 = false;
+            selected.isSelectPino_03 = false;
+            selected.isSelectPino_01 = true;
+            selected.isSelectedPino();
+        }
         //if (selected.isSelectPino_01)
         //{
         //    selected.SelectPinos.gameObject.SetActive(false);
         //    //selected.isSelectedPino();
         //}
-        selected.isSelectPino_02 = false;
-        selected.isSelectPino_03 = false;
-        selected.isSelectPino_01 = true;
-        selected.isSelectedPino();
     }
     public void selectedPino_02()
     {
@@ -83,10 +88,15 @@ public class ButtonSelectedUI : MonoBehaviour
         //    selected.SelectPinos.gameObject.SetActive(false);
         //    //selected.isSelectedPino();
         //}
-        selected.isSelectPino_01 = false;
-        selected.isSelectPino_03 = false;
-        selected.isSelectPino_02 = true;
-        selected.isSelectedPino();
+        if (timeCheckCD)
+        {
+            timeCheckCD = false;
+            StartCoroutine(timeToTap());
+            selected.isSelectPino_01 = false;
+            selected.isSelectPino_03 = false;
+            selected.isSelectPino_02 = true;
+            selected.isSelectedPino();
+        }
     }
     public void selectedPino_03()
     {
@@ -95,10 +105,15 @@ public class ButtonSelectedUI : MonoBehaviour
         //    selected.SelectPinos.gameObject.SetActive(false);
         //    //selected.isSelectedPino();
         //}
-        selected.isSelectPino_01 = false;
-        selected.isSelectPino_02 = false;
-        selected.isSelectPino_03 = true;
-        selected.isSelectedPino();
+        if (timeCheckCD)
+        {
+            timeCheckCD = false;
+            StartCoroutine(timeToTap());
+            selected.isSelectPino_01 = false;
+            selected.isSelectPino_02 = false;
+            selected.isSelectPino_03 = true;
+            selected.isSelectedPino();
+        }
     }
 
 
@@ -124,6 +139,13 @@ public class ButtonSelectedUI : MonoBehaviour
     public void GamePlay()
     {
         selected.AcceptPlay();
+    }
+
+
+    IEnumerator timeToTap()
+    {
+        yield return new WaitForSeconds(.8f);
+        timeCheckCD = true;
     }
     #endregion
 }
