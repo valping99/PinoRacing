@@ -2575,7 +2575,6 @@ GameObject:
   - component: {fileID: 316436817}
   - component: {fileID: 316436816}
   - component: {fileID: 316436815}
-  - component: {fileID: 316436818}
   m_Layer: 0
   m_Name: Pino_01
   m_TagString: Untagged
@@ -2647,7 +2646,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 316436818}
+      - m_Target: {fileID: 2036843014}
         m_TargetAssemblyTypeName: ButtonSelectedUI, Assembly-CSharp
         m_MethodName: selectedPino_01
         m_Mode: 1
@@ -2709,21 +2708,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316436813}
   m_CullTransparentMesh: 1
---- !u!114 &316436818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 316436813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3074d2ced5355f4d8c10096cf1fbf53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selected: {fileID: 2036843011}
-  ActiveStage1: {fileID: 0}
-  ActiveStage2: {fileID: 0}
 --- !u!1 &320073048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2833,6 +2817,7 @@ MonoBehaviour:
   selected: {fileID: 2036843011}
   ActiveStage1: {fileID: 0}
   ActiveStage2: {fileID: 0}
+  timeCheckCD: 1
 --- !u!114 &330466879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3517,6 +3502,7 @@ MonoBehaviour:
   selected: {fileID: 2036843011}
   ActiveStage1: {fileID: 0}
   ActiveStage2: {fileID: 0}
+  timeCheckCD: 1
 --- !u!1 &413886200
 GameObject:
   m_ObjectHideFlags: 0
@@ -7975,6 +7961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6063f09b3154ac54ca890013f2b15410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selected: {fileID: 0}
   none: 1
   isSelect1: 0
   isSelect2: 0
@@ -9076,6 +9063,7 @@ MonoBehaviour:
   selected: {fileID: 2036843011}
   ActiveStage1: {fileID: 0}
   ActiveStage2: {fileID: 0}
+  timeCheckCD: 1
 --- !u!1 &1217033993
 GameObject:
   m_ObjectHideFlags: 0
@@ -9226,6 +9214,7 @@ MonoBehaviour:
   selected: {fileID: 2036843011}
   ActiveStage1: {fileID: 0}
   ActiveStage2: {fileID: 0}
+  timeCheckCD: 1
 --- !u!1 &1218448661
 GameObject:
   m_ObjectHideFlags: 0
@@ -11730,7 +11719,6 @@ GameObject:
   - component: {fileID: 1701490999}
   - component: {fileID: 1701490998}
   - component: {fileID: 1701490997}
-  - component: {fileID: 1701491000}
   m_Layer: 0
   m_Name: Pino_02
   m_TagString: Untagged
@@ -11802,7 +11790,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1701491000}
+      - m_Target: {fileID: 2036843014}
         m_TargetAssemblyTypeName: ButtonSelectedUI, Assembly-CSharp
         m_MethodName: selectedPino_02
         m_Mode: 1
@@ -11864,21 +11852,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701490995}
   m_CullTransparentMesh: 1
---- !u!114 &1701491000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1701490995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3074d2ced5355f4d8c10096cf1fbf53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selected: {fileID: 2036843011}
-  ActiveStage1: {fileID: 0}
-  ActiveStage2: {fileID: 0}
 --- !u!1 &1705911877
 GameObject:
   m_ObjectHideFlags: 0
@@ -12728,7 +12701,6 @@ GameObject:
   - component: {fileID: 1890393296}
   - component: {fileID: 1890393295}
   - component: {fileID: 1890393294}
-  - component: {fileID: 1890393297}
   m_Layer: 0
   m_Name: Pino_03
   m_TagString: Untagged
@@ -12800,7 +12772,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1890393297}
+      - m_Target: {fileID: 2036843014}
         m_TargetAssemblyTypeName: ButtonSelectedUI, Assembly-CSharp
         m_MethodName: selectedPino_03
         m_Mode: 1
@@ -12862,21 +12834,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890393292}
   m_CullTransparentMesh: 1
---- !u!114 &1890393297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1890393292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3074d2ced5355f4d8c10096cf1fbf53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selected: {fileID: 2036843011}
-  ActiveStage1: {fileID: 0}
-  ActiveStage2: {fileID: 0}
 --- !u!1 &1893881862
 GameObject:
   m_ObjectHideFlags: 0
@@ -13560,6 +13517,7 @@ MonoBehaviour:
   statusOfPino_01: {fileID: 1475203510}
   statusOfPino_02: {fileID: 626703131}
   statusOfPino_03: {fileID: 580660057}
+  timeCheckCD: 1
   Text_TapToStart: {fileID: 0}
 --- !u!4 &2036843012
 Transform:
@@ -13606,6 +13564,7 @@ MonoBehaviour:
   selected: {fileID: 2036843011}
   ActiveStage1: {fileID: 895403990}
   ActiveStage2: {fileID: 209455137}
+  timeCheckCD: 1
 --- !u!1 &2040031278
 GameObject:
   m_ObjectHideFlags: 0
