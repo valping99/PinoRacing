@@ -29,6 +29,7 @@ public class RaceCourse : MonoBehaviour
         audio_BGM = GameObject.FindGameObjectWithTag("BGM").GetComponent<SoundManagers>();
     }
 
+
     // Update is called once per frame
     void LateUpdate()
     {
