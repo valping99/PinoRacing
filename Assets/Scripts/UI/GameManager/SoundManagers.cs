@@ -115,4 +115,10 @@ public class SoundManagers : MonoBehaviour
     {
         PlaySound("Tap");
     }
+
+    IEnumerator CheckSound()
+    {
+        yield return new WaitUntil(() => audio_source.isPlaying == false);
+        PlaySound("BGM");
+    }
 }
