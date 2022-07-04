@@ -178,6 +178,9 @@ MonoBehaviour:
   almondOutline: {fileID: 5358222259620755864}
   strawberryOutline: {fileID: 5369814064737426393}
   stickOutline: {fileID: 2044869778040160360}
+  chocolateCarRotation: {fileID: 3644350822309689503}
+  almondCarRotation: {fileID: 3644350821730751630}
+  strawberryCarRotation: {fileID: 4448291182041388986}
 --- !u!95 &13563600
 Animator:
   serializedVersion: 4
@@ -2476,7 +2479,8 @@ AudioSource:
   m_GameObject: {fileID: 314051316}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 6986ad3214ab8084f9bd5e49fb2f8416,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -13481,6 +13485,7 @@ MonoBehaviour:
   charSelect: {fileID: 0}
   uiManagers: {fileID: 0}
   animatorSelected: {fileID: 1029962035}
+  pinoAnimatorRotate: {fileID: 0}
   buttonAction: {fileID: 255853798}
   buttonSelectStage: {fileID: 1597145343}
   selectedUI: {fileID: 2036843014}

@@ -168,6 +168,6 @@ MonoBehaviour:
   PickupVfxPrefab: {fileID: 18133231791472539, guid: e44fc97440f45e946a0bdbdd460acfb9,
     type: 3}
   m_RootModel: {fileID: 5072826503797458897}
-  m_Distance: 3
+  m_Distance: 10
   amountSpeedPads: 1
   timeSpeedPads: 1

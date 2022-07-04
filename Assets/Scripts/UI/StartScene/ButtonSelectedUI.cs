@@ -131,9 +131,15 @@ public class ButtonSelectedUI : MonoBehaviour
     public void returnMenu()
     {
         selected.SelectPinos.gameObject.SetActive(false);
+
         selected.Pino_01.gameObject.SetActive(false);
         selected.Pino_02.gameObject.SetActive(false);
         selected.Pino_03.gameObject.SetActive(false);
+
+        selected.pinoAnimatorRotate.chocolateCarRotation.rotation = new Quaternion(0, 160, 0, 0);
+        selected.pinoAnimatorRotate.almondCarRotation.rotation = new Quaternion(0, 180, 0, 0);
+        selected.pinoAnimatorRotate.strawberryCarRotation.rotation = new Quaternion(0, 210, 0, 0);
+
         selected.ReturnMenu();
 
     }

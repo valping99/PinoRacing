@@ -7,10 +7,17 @@ public class PinoAnimatorRotate : MonoBehaviour
     [Header("Scripts")]
     public SelectManager selected;
     public Animator pinoAnimator;
+
+    [Header("Outline")]
     public Outline chocolateOutline;
     public Outline almondOutline;
     public Outline strawberryOutline;
     public Outline stickOutline;
+
+    [Header("Rotation")]
+    public Transform chocolateCarRotation;
+    public Transform almondCarRotation;
+    public Transform strawberryCarRotation;
 
     [Header("Animator")]
     const string k_AnimRotatePino1 = "Pino1";
