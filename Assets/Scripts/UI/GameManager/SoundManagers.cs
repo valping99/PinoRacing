@@ -58,12 +58,12 @@ public class SoundManagers : MonoBehaviour
                 audio_source.PlayOneShot(countDownSE, 1f);
                 break;
 
-            case "Item":
+            case "No4":
                 audio_source.clip = itemSE;
                 audio_source.PlayOneShot(itemSE, 1f);
                 break;
 
-            case "Damage":
+            case "No5":
                 audio_source.clip = damageSE;
                 audio_source.PlayOneShot(damageSE, 1f);
                 break;
@@ -95,7 +95,7 @@ public class SoundManagers : MonoBehaviour
                 audio_source.PlayOneShot(rankDisplay, 1f);
                 break;
 
-            case "Dashboard":
+            case "No11":
                 audio_source.clip = dashBoardSE;
                 audio_source.PlayOneShot(dashBoardSE, 1f);
                 break;
@@ -104,7 +104,7 @@ public class SoundManagers : MonoBehaviour
                 audio_source.Stop();
                 break;
 
-            case "StingPick":
+            case "No12":
                 audio_source.clip = stingPickSE;
                 audio_source.PlayOneShot(stingPickSE, 1f);
                 break;
