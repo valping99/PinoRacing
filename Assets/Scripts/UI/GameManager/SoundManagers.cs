@@ -51,6 +51,7 @@ public class SoundManagers : MonoBehaviour
                 audio_source.clip = topScreen;
                 audio_source.loop = true;
                 audio_source.PlayOneShot(topScreen, 0.6f);
+                StartCoroutine(ReSound("TopScreen"));
                 break;
 
 
@@ -78,12 +79,14 @@ public class SoundManagers : MonoBehaviour
                 audio_source.clip = gameBGM;
                 audio_source.loop = true;
                 audio_source.PlayOneShot(gameBGM, 0.6f);
+                StartCoroutine(ReSound("BGM"));
                 break;
 
             case "Clear":
                 audio_source.clip = clearBGM;
                 audio_source.loop = true;
                 audio_source.PlayOneShot(clearBGM, 0.6f);
+                StartCoroutine(ReSound("Clear"));
                 break;
 
             case "Indication":
@@ -115,5 +118,11 @@ public class SoundManagers : MonoBehaviour
     public void TapSE()
     {
         PlaySound("Tap");
+    }
+
+    IEnumerator ReSound(string sound)
+    {
+        yield return new WaitUntil(() => audio_source.isPlaying == false);
+        PlaySound(sound);
     }
 }
