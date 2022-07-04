@@ -17,6 +17,9 @@ public class SelectManager : MonoBehaviour
     public GameObject buttonSelectStage;
     public ButtonSelectedUI selectedUI;
 
+    [Header("Sound Managers")]
+    public SoundManagers audio_source;
+
     [Header("Variables")]
     public int selectedStage;
     public int selectedPino;
@@ -79,7 +82,9 @@ public class SelectManager : MonoBehaviour
         isSelectScene_02 = false;
         isSelectScene_03 = false;
         isSelectScene_04 = false;
+        audio_source = FindObjectOfType<SoundManagers>();
     }
+
 
     void Update()
     {
@@ -372,5 +377,9 @@ public class SelectManager : MonoBehaviour
         selectedUI.ActiveStage2.gameObject.SetActive(false);
     }
 
+    public void TapSE()
+    {
+        audio_source.PlaySound("Tap");
+    }
     #endregion
 }

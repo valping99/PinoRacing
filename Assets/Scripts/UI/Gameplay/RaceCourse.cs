@@ -6,6 +6,9 @@ public class RaceCourse : MonoBehaviour
 {
     #region Variables
     public Character m_charCollider;
+
+    public SoundManagers audio_sources;
+    public SoundManagers audio_BGM;
     //public GameObject playerPino;
     public int lapCourse;
     private UIManager uiManagers;
@@ -22,6 +25,8 @@ public class RaceCourse : MonoBehaviour
         uiManagers = FindObjectOfType<UIManager>();
         lapCourse = 1;
         uiManagers.finishLap.gameObject.SetActive(false);
+        audio_sources = GameObject.FindGameObjectWithTag("SoundManagers").GetComponent<SoundManagers>();
+        audio_BGM = GameObject.FindGameObjectWithTag("BGM").GetComponent<SoundManagers>();
     }
 
     // Update is called once per frame
@@ -45,6 +50,9 @@ public class RaceCourse : MonoBehaviour
         {
             if (lapCourse >= lapToWin)
             {
+                audio_sources.PlaySound("Finish");
+                audio_BGM.PlaySound("Stop");
+                audio_BGM.PlaySound("Clear");
                 uiManagers.checkGameClear = true;
             }
             else
