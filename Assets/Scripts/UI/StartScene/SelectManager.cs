@@ -71,7 +71,6 @@ public class SelectManager : MonoBehaviour
     public GameObject statusOfPino_01;
     public GameObject statusOfPino_02;
     public GameObject statusOfPino_03;
-    public bool timeCheckCD = true;
 
     //Text & Variables 
     public TextMeshProUGUI Text_TapToStart;
@@ -140,7 +139,7 @@ public class SelectManager : MonoBehaviour
             scene_01.gameObject.SetActive(false);
             scene_03.gameObject.SetActive(false);
             scene_04.gameObject.SetActive(false);
-            animatorSelected.none = true;
+            //animatorSelected.none = true;
         }
         else if (isSelectScene_03)
         {
@@ -226,63 +225,58 @@ public class SelectManager : MonoBehaviour
     // Select Pinos
     public void isSelectedPino()
     {
-        if (timeCheckCD)
+        if (isSelectPino_01)
         {
-            timeCheckCD = false;
-            StartCoroutine(timeToTap());
-            if (isSelectPino_01)
-            {
-                //SelectPinos.gameObject.SetActive(false);
-                selectedPino = 1;
-                isSelectPino_02 = false;
-                isSelectPino_03 = false;
-                //isSelectScene_03 = false;
-                //isSelectScene_04 = true;
-                //Pino_01.gameObject.SetActive(true);
-                //Pino_02.gameObject.SetActive(false);
-                //Pino_03.gameObject.SetActive(false);
+            //SelectPinos.gameObject.SetActive(false);
+            selectedPino = 1;
+            isSelectPino_02 = false;
+            isSelectPino_03 = false;
+            //isSelectScene_03 = false;
+            //isSelectScene_04 = true;
+            //Pino_01.gameObject.SetActive(true);
+            //Pino_02.gameObject.SetActive(false);
+            //Pino_03.gameObject.SetActive(false);
 
-                //Enable isSelectedPino & Disable unSelectedPino
-                //statusOfPino_01.gameObject.SetActive(true);
-                //statusOfPino_02.gameObject.SetActive(false);
-                //statusOfPino_03.gameObject.SetActive(false);
-            }
-            else if (isSelectPino_02)
-            {
-                //SelectPinos.gameObject.SetActive(false);
-                selectedPino = 2;
-                isSelectPino_01 = false;
-                isSelectPino_03 = false;
-                //isSelectScene_03 = false;
-                //isSelectScene_04 = true;
-                //Pino_01.gameObject.SetActive(false);
-                //Pino_02.gameObject.SetActive(true);
-                //Pino_03.gameObject.SetActive(false);
-
-                ////Enable isSelectedPino & Disable unSelectedPino
-                //statusOfPino_01.gameObject.SetActive(false);
-                //statusOfPino_02.gameObject.SetActive(true);
-                //statusOfPino_03.gameObject.SetActive(false);
-            }
-            else if (isSelectPino_03)
-            {
-                //SelectPinos.gameObject.SetActive(false);
-                selectedPino = 3;
-                isSelectPino_02 = false;
-                isSelectPino_01 = false;
-                //isSelectScene_03 = false;
-                //isSelectScene_04 = true;
-                //Pino_01.gameObject.SetActive(false);
-                //Pino_02.gameObject.SetActive(false);
-                //Pino_03.gameObject.SetActive(true);
-
-                ////Enable isSelectedPino & Disable unSelectedPino
-                //statusOfPino_01.gameObject.SetActive(false);
-                //statusOfPino_02.gameObject.SetActive(false);
-                //statusOfPino_03.gameObject.SetActive(true);
-            }
-            //scene_03.gameObject.SetActive(false);
+            //Enable isSelectedPino & Disable unSelectedPino
+            //statusOfPino_01.gameObject.SetActive(true);
+            //statusOfPino_02.gameObject.SetActive(false);
+            //statusOfPino_03.gameObject.SetActive(false);
         }
+        else if (isSelectPino_02)
+        {
+            //SelectPinos.gameObject.SetActive(false);
+            selectedPino = 2;
+            isSelectPino_01 = false;
+            isSelectPino_03 = false;
+            //isSelectScene_03 = false;
+            //isSelectScene_04 = true;
+            //Pino_01.gameObject.SetActive(false);
+            //Pino_02.gameObject.SetActive(true);
+            //Pino_03.gameObject.SetActive(false);
+
+            ////Enable isSelectedPino & Disable unSelectedPino
+            //statusOfPino_01.gameObject.SetActive(false);
+            //statusOfPino_02.gameObject.SetActive(true);
+            //statusOfPino_03.gameObject.SetActive(false);
+        }
+        else if (isSelectPino_03)
+        {
+            //SelectPinos.gameObject.SetActive(false);
+            selectedPino = 3;
+            isSelectPino_02 = false;
+            isSelectPino_01 = false;
+            //isSelectScene_03 = false;
+            //isSelectScene_04 = true;
+            //Pino_01.gameObject.SetActive(false);
+            //Pino_02.gameObject.SetActive(false);
+            //Pino_03.gameObject.SetActive(true);
+
+            ////Enable isSelectedPino & Disable unSelectedPino
+            //statusOfPino_01.gameObject.SetActive(false);
+            //statusOfPino_02.gameObject.SetActive(false);
+            //statusOfPino_03.gameObject.SetActive(true);
+        }
+        //scene_03.gameObject.SetActive(false);
     }
 
     /**
@@ -385,11 +379,6 @@ public class SelectManager : MonoBehaviour
         selectedUI.ActiveStage2.gameObject.SetActive(false);
     }
 
-    IEnumerator timeToTap()
-    {
-        yield return new WaitForSeconds(2f);
-        timeCheckCD = true;
-    }
     public void TapSE()
     {
         audio_source.PlaySound("Tap");

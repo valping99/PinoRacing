@@ -38,17 +38,14 @@ public class AnimSelectedPino : MonoBehaviour
             if (selected.isSelectPino_01)
             {
                 animator.SetTrigger(k_AnimIsPino1_Trig);
-                Debug.Log("Trig1");
             }
             else if (selected.isSelectPino_02)
             {
                 animator.SetTrigger(k_AnimIsPino2_Trig);
-                Debug.Log("Trig2");
             }
-            else
+            else if(selected.isSelectPino_03)
             {
                 animator.SetTrigger(k_AnimIsPino3_Trig);
-                Debug.Log("Trig3");
             }
         }
         else
@@ -59,21 +56,18 @@ public class AnimSelectedPino : MonoBehaviour
                 animator.SetTrigger(k_AnimIsPino1_Trig);
                 animator.ResetTrigger(k_AnimIsPino2_Trig);
                 animator.ResetTrigger(k_AnimIsPino3_Trig);
-                Debug.Log("Trigggggg1");
             }
             else if (selected.isSelectPino_02)
             {
                 animator.SetTrigger(k_AnimIsPino2_Trig);
                 animator.ResetTrigger(k_AnimIsPino1_Trig);
                 animator.ResetTrigger(k_AnimIsPino3_Trig);
-                Debug.Log("Trigggggg2");
             }
-            else
+            else if(selected.isSelectPino_03)
             {
                 animator.SetTrigger(k_AnimIsPino3_Trig);
                 animator.ResetTrigger(k_AnimIsPino2_Trig);
                 animator.ResetTrigger(k_AnimIsPino1_Trig);
-                Debug.Log("Trigggggg3");
             }
         }
         //if(isSelect1)
