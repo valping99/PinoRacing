@@ -54,6 +54,7 @@ public class RaceCourse : MonoBehaviour
                 audio_BGM.PlaySound("Stop");
                 audio_BGM.PlaySound("Clear");
                 uiManagers.checkGameClear = true;
+                lapCourse = 1;
             }
             else
             {
