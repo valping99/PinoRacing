@@ -79,8 +79,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CharacterCollider: {fileID: 0}
   m_CharacterController: {fileID: 0}
-  VerticalBobFrequency: 1
-  BobbingAmount: 0.4
+  VerticalBobFrequency: 3
+  BobbingAmount: 2
   RotatingSpeed: 360
   PickupSfx: {fileID: 8300000, guid: 781097d53dae0e944ae4ad91af2426d2, type: 3}
   PickupVfxPrefab: {fileID: 8929146388027618498, guid: 7468cd18030a0204ab08baf7ac36ff1e,

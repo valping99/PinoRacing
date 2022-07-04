@@ -12,6 +12,7 @@ public class Pickup : MonoBehaviour
     [Header("Scripts")]
     public Character m_CharacterCollider;
     public CharacterController m_CharacterController;
+    public SoundManagers m_SoundManager;
 
     [Header("Effects")]
 
@@ -46,6 +47,7 @@ public class Pickup : MonoBehaviour
 
         m_CharacterController = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
         m_CharacterCollider = m_CharacterController.GetComponentInChildren<Character>();
+        m_SoundManager = GameObject.FindGameObjectWithTag("SoundManagers").GetComponent<SoundManagers>();
 
         // ensure the physics setup is a kinematic rigidbody trigger
         PickupRigidbody.isKinematic = true;
@@ -58,6 +60,7 @@ public class Pickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         HandleBobbing();
         HandleRotation();
 
@@ -108,13 +111,7 @@ public class Pickup : MonoBehaviour
         if (m_HasPlayedFeedback)
             return;
 
-        if (PickupSfx)
-            AudioUtility.CreateSFX(PickupSfx, m_RootModel.transform.position, AudioUtility.AudioGroups.Pickup, 0);
-
-        // if (PickupVfxPrefab)
-        // {
-        //     var pickupVfxInstance = Instantiate(PickupVfxPrefab, m_RootModel.transform.position, Quaternion.identity);
-        // }
+        m_SoundManager.PlaySound(PickupSfx.name);
 
         m_HasPlayedFeedback = true;
     }
