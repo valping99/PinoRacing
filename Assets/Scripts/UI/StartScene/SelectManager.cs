@@ -13,6 +13,7 @@ public class SelectManager : MonoBehaviour
     public CharacterSelected charSelect;
     public UIManager uiManagers;
     public AnimSelectedPino animatorSelected;
+    public PinoAnimatorRotate pinoAnimatorRotate;
     public GameObject buttonAction;
     public GameObject buttonSelectStage;
     public ButtonSelectedUI selectedUI;
@@ -83,6 +84,7 @@ public class SelectManager : MonoBehaviour
         isSelectScene_03 = false;
         isSelectScene_04 = false;
         audio_source = FindObjectOfType<SoundManagers>();
+        pinoAnimatorRotate = SelectPinos.GetComponent<PinoAnimatorRotate>();
     }
 
 

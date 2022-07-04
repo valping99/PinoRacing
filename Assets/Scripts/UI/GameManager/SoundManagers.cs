@@ -20,7 +20,6 @@ public class SoundManagers : MonoBehaviour
     public AudioClip dashBoardSE;
     public AudioClip stingPickSE;
 
-
     void Start()
     {
         tapSE = Resources.Load<AudioClip>("Audio/No1");
@@ -35,6 +34,8 @@ public class SoundManagers : MonoBehaviour
         rankDisplay = Resources.Load<AudioClip>("Audio/No10");
         dashBoardSE = Resources.Load<AudioClip>("Audio/No11");
         stingPickSE = Resources.Load<AudioClip>("Audio/No12");
+
+        TapSE();
     }
 
     public void PlaySound(string clip)
