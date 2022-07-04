@@ -13,7 +13,6 @@ public class SoundManagers : MonoBehaviour
     public AudioClip itemIndication;
     public AudioClip rankDisplay;
 
-
     public AudioClip topScreen;
     public AudioClip itemSE;
     public AudioClip damageSE;
@@ -36,5 +35,84 @@ public class SoundManagers : MonoBehaviour
         rankDisplay = Resources.Load<AudioClip>("Audio/No10");
         dashBoardSE = Resources.Load<AudioClip>("Audio/No11");
         stingPickSE = Resources.Load<AudioClip>("Audio/No12");
+    }
+
+    public void PlaySound(string clip)
+    {
+        switch (clip)
+        {
+            case "Tap":
+                audio_source.clip = tapSE;
+                audio_source.PlayOneShot(tapSE, 1f);
+                break;
+
+            case "TopScreen":
+                audio_source.clip = topScreen;
+                audio_source.loop = true;
+                audio_source.PlayOneShot(topScreen, 0.6f);
+                break;
+
+
+            case "CountDown":
+                audio_source.clip = countDownSE;
+                audio_source.PlayOneShot(countDownSE, 1f);
+                break;
+
+            case "Item":
+                audio_source.clip = itemSE;
+                audio_source.PlayOneShot(itemSE, 1f);
+                break;
+
+            case "Damage":
+                audio_source.clip = damageSE;
+                audio_source.PlayOneShot(damageSE, 1f);
+                break;
+
+            case "Finish":
+                audio_source.clip = finishSE;
+                audio_source.PlayOneShot(finishSE, 1f);
+                break;
+
+            case "BGM":
+                audio_source.clip = gameBGM;
+                audio_source.loop = true;
+                audio_source.PlayOneShot(gameBGM, 0.6f);
+                break;
+
+            case "Clear":
+                audio_source.clip = clearBGM;
+                audio_source.loop = true;
+                audio_source.PlayOneShot(clearBGM, 0.6f);
+                break;
+
+            case "Indication":
+                audio_source.clip = itemIndication;
+                audio_source.PlayOneShot(itemIndication, 1f);
+                break;
+
+            case "Rank":
+                audio_source.clip = rankDisplay;
+                audio_source.PlayOneShot(rankDisplay, 1f);
+                break;
+
+            case "Dashboard":
+                audio_source.clip = dashBoardSE;
+                audio_source.PlayOneShot(dashBoardSE, 1f);
+                break;
+
+            case "Stop":
+                audio_source.Stop();
+                break;
+
+            case "StingPick":
+                audio_source.clip = stingPickSE;
+                audio_source.PlayOneShot(stingPickSE, 1f);
+                break;
+        }
+    }
+
+    public void TapSE()
+    {
+        PlaySound("Tap");
     }
 }
