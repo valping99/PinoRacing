@@ -9,11 +9,18 @@ public class ButtonSelectedUI : MonoBehaviour
     public GameObject ActiveStage1;
     public GameObject ActiveStage2;
 
-    public bool timeCheckCD = true;
+    public bool timeCheckCD;
+
+    public float timer = 0.8f;
     #region Select Variables
     public void OnStart()
     {
         selected.TapToPlay();
+    }
+    private void Start()
+    {
+
+        timeCheckCD = true;
     }
 
     /**
@@ -92,10 +99,12 @@ public class ButtonSelectedUI : MonoBehaviour
         {
             timeCheckCD = false;
             StartCoroutine(timeToTap());
+            Debug.Log("CD");
             selected.isSelectPino_01 = false;
             selected.isSelectPino_03 = false;
             selected.isSelectPino_02 = true;
             selected.isSelectedPino();
+            Debug.Log("Done");
         }
     }
     public void selectedPino_03()
@@ -139,13 +148,15 @@ public class ButtonSelectedUI : MonoBehaviour
     public void GamePlay()
     {
         selected.AcceptPlay();
-    }
+    }   
 
 
     IEnumerator timeToTap()
     {
-        yield return new WaitForSeconds(.8f);
+
+        yield return new WaitForSeconds(timer);
         timeCheckCD = true;
+        Debug.Log("IENumerator");
     }
     #endregion
 }

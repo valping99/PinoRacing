@@ -8,9 +8,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: NoSelect
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Pino_1_Trig
     m_EventTreshold: 0
@@ -398,7 +395,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 500, y: -60, z: 0}
   m_ExitPosition: {x: 520, y: -140, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -4053062919288465005}
+  m_DefaultState: {fileID: -3024022700172344827}
 --- !u!1102 &-3024022700172344827
 AnimatorState:
   serializedVersion: 6
@@ -740,9 +737,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: NoSelect
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Pino_3_Trig
     m_EventTreshold: 0
