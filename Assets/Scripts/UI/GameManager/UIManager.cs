@@ -21,6 +21,9 @@ public class UIManager : MonoBehaviour
     public BoostCount b_count;
     private RankManager rankManagers;
 
+    [Header("Sound Managers")]
+    public SoundManagers audio_source;
+    public SoundManagers audio_BGM;
 
     [Header("Player Variables")]
     public int boostCount = 16;
@@ -111,16 +114,24 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         checkPlaying = true;
+        GetComponent();
         StartGame();
+        audio_BGM.PlaySound("BGM");
+    }
+
+
+    private void GetComponent()
+    {
         clickAnim = FindObjectOfType<ClickAnimation>();
         screenShot = FindObjectOfType<HiresScreenShots>();
         obstacles = FindObjectOfType<ObstaclesManager>();
         b_count = FindObjectOfType<BoostCount>();
+        audio_source = GameObject.FindGameObjectWithTag("SoundManagers").GetComponent<SoundManagers>();
+        audio_BGM = GameObject.FindGameObjectWithTag("BGM").GetComponent<SoundManagers>();
         rankManagers = FindObjectOfType<RankManager>();
         displayScene = GameObject.Find("PanelWaitForDisplay");
+
     }
-
-
     void Update()
     {
         GamePlaying();
@@ -222,6 +233,7 @@ public class UIManager : MonoBehaviour
                 CountDown();
                 if (checkCount)
                 {
+                    audio_source.PlaySound("CountDown");
                     StartCoroutine(CountNumber());
                     checkCount = false;
                 }
