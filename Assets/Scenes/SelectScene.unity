@@ -2232,7 +2232,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 480, y: 286}
+  m_SizeDelta: {x: 383, y: 293}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &286825233
 MonoBehaviour:
@@ -2443,18 +2443,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audio_source: {fileID: 314051319}
-  tapSE: {fileID: 0}
-  countDownSE: {fileID: 0}
-  finishSE: {fileID: 0}
   clearBGM: {fileID: 0}
-  itemIndication: {fileID: 0}
-  rankDisplay: {fileID: 0}
+  gameBGM: {fileID: 0}
   topScreen: {fileID: 0}
   itemSE: {fileID: 0}
   damageSE: {fileID: 0}
-  gameBGM: {fileID: 0}
   dashBoardSE: {fileID: 0}
   stingPickSE: {fileID: 0}
+  tapSE: {fileID: 0}
+  countDownSE: {fileID: 0}
+  finishSE: {fileID: 0}
+  itemIndication: {fileID: 0}
+  rankDisplay: {fileID: 0}
 --- !u!4 &314051318
 Transform:
   m_ObjectHideFlags: 0
@@ -11311,7 +11311,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 426533279819d0947a0f4b6102235008, type: 3}
+  m_Texture: {fileID: 2800000, guid: 8b0630e223be7d94da5e57538b95f589, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

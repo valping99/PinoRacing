@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DashBoostCamera : MonoBehaviour
 {
+    #region Variables
     [SerializeField]
     private CharacterController charInput;
 
@@ -10,7 +11,8 @@ public class DashBoostCamera : MonoBehaviour
 
     public bool checkSpeed = false;
     public Camera mainCamera;
-    // Start is called before the first frame update
+    #endregion
+    #region Unity Method
     void Start()
     {
         charInput = FindObjectOfType<CharacterController>();
@@ -23,6 +25,8 @@ public class DashBoostCamera : MonoBehaviour
         FieldCamera();
     }
 
+    #endregion
+    #region Class
     private void FieldCamera()
     {
         if (charColl.m_CurrentSpeed >= charColl.m_MaxSpeed)
@@ -46,10 +50,6 @@ public class DashBoostCamera : MonoBehaviour
         {
             mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 120, 3f * Time.deltaTime);
         }
-        //else if (checkSpeed)
-        //{
-        //    mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 90, .5f * Time.deltaTime);
-        //}
         else if (charInput.m_Stuns)
         {
             mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 60, 2.5f * Time.deltaTime);
@@ -60,5 +60,6 @@ public class DashBoostCamera : MonoBehaviour
         }
 
     }
+    #endregion
 }
 

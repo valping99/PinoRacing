@@ -4,23 +4,36 @@ using UnityEngine;
 
 public class SoundManagers : MonoBehaviour
 {
+    #region Variables
+    [Header("Audio Source")]
     public AudioSource audio_source;
 
-    public AudioClip tapSE;
-    public AudioClip countDownSE;
-    public AudioClip finishSE;
+    [Header("BGM")]
     public AudioClip clearBGM;
-    public AudioClip itemIndication;
-    public AudioClip rankDisplay;
-
+    public AudioClip gameBGM;
     public AudioClip topScreen;
+
+    [Header("Item Sound Effect")]
     public AudioClip itemSE;
     public AudioClip damageSE;
-    public AudioClip gameBGM;
     public AudioClip dashBoardSE;
     public AudioClip stingPickSE;
 
+    [Header("UI Sound Effect")]
+    public AudioClip tapSE;
+    public AudioClip countDownSE;
+    public AudioClip finishSE;
+    public AudioClip itemIndication;
+    public AudioClip rankDisplay;
+
+    #endregion
     void Start()
+    {
+        GetResourcesAudio();
+        //TapSE();
+    }
+
+    void GetResourcesAudio()
     {
         tapSE = Resources.Load<AudioClip>("Audio/No1");
         topScreen = Resources.Load<AudioClip>("Audio/No2");
@@ -34,8 +47,6 @@ public class SoundManagers : MonoBehaviour
         rankDisplay = Resources.Load<AudioClip>("Audio/No10");
         dashBoardSE = Resources.Load<AudioClip>("Audio/No11");
         stingPickSE = Resources.Load<AudioClip>("Audio/No12");
-
-        TapSE();
     }
 
     public void PlaySound(string clip)
@@ -48,10 +59,12 @@ public class SoundManagers : MonoBehaviour
                 break;
 
             case "TopScreen":
-                audio_source.clip = topScreen;
                 audio_source.loop = true;
-                audio_source.PlayOneShot(topScreen, 0.2f);
-                StartCoroutine(ReSound("TopScreen"));
+                audio_source.clip = topScreen;
+                audio_source.volume = 0.2f;
+                audio_source.Play();
+                //audio_source.PlayOneShot(topScreen, 0.2f);
+                //StartCoroutine(ReSound("TopScreen"));
                 break;
 
 
@@ -76,17 +89,21 @@ public class SoundManagers : MonoBehaviour
                 break;
 
             case "BGM":
-                audio_source.clip = gameBGM;
                 audio_source.loop = true;
-                audio_source.PlayOneShot(gameBGM, 0.2f);
-                StartCoroutine(ReSound("BGM"));
+                audio_source.clip = gameBGM;
+                audio_source.volume = 0.2f;
+                audio_source.Play();
+                //audio_source.PlayOneShot(gameBGM, 0.2f);
+                //StartCoroutine(ReSound("BGM"));
                 break;
 
             case "Clear":
-                audio_source.clip = clearBGM;
                 audio_source.loop = true;
-                audio_source.PlayOneShot(clearBGM, 0.2f);
-                StartCoroutine(ReSound("Clear"));
+                audio_source.clip = clearBGM;
+                audio_source.volume = 0.2f;
+                audio_source.Play();
+                //audio_source.PlayOneShot(clearBGM, 0.2f);
+                //StartCoroutine(ReSound("Clear"));
                 break;
 
             case "Indication":

@@ -76,17 +76,13 @@ public class SelectManager : MonoBehaviour
     public TextMeshProUGUI Text_TapToStart;
 
     #endregion
-    //Onstart to open Scene1
+    #region Unity Method
     void Start()
     {
-        isSelectScene_01 = true;
-        isSelectScene_02 = false;
-        isSelectScene_03 = false;
-        isSelectScene_04 = false;
+        GetEnableStart();
         audio_source = FindObjectOfType<SoundManagers>();
         pinoAnimatorRotate = SelectPinos.GetComponent<PinoAnimatorRotate>();
     }
-
 
     void Update()
     {
@@ -94,7 +90,17 @@ public class SelectManager : MonoBehaviour
         checkAnimation();
     }
 
+    #endregion
     #region Selected
+    void GetEnableStart()
+    {
+        isSelectScene_01 = true;
+        isSelectScene_02 = false;
+        isSelectScene_03 = false;
+        isSelectScene_04 = false;
+        SelectPinos.gameObject.SetActive(false);
+    }
+
     //StartUI to select stage 
     public void TapToPlay()
     {
@@ -111,6 +117,7 @@ public class SelectManager : MonoBehaviour
     // Remove this function
     public void checkScene()
     {
+        //Check Stage is selected or not
         if (!isSelectStage_01 && !isSelectStage_02 && !isSelectStage_03)
         {
             buttonSelectStage.gameObject.SetActive(false);
@@ -119,6 +126,7 @@ public class SelectManager : MonoBehaviour
         {
             buttonSelectStage.gameObject.SetActive(true);
         }
+        //Check Pino is selected or not
         if (!isSelectPino_01 && !isSelectPino_02 && !isSelectPino_03)
         {
             buttonAction.gameObject.SetActive(false);
@@ -127,6 +135,8 @@ public class SelectManager : MonoBehaviour
         {
             buttonAction.gameObject.SetActive(true);
         }
+
+        //Active scene when select 
         if (isSelectScene_01)
         {
             scene_01.gameObject.SetActive(true);
@@ -140,7 +150,6 @@ public class SelectManager : MonoBehaviour
             scene_01.gameObject.SetActive(false);
             scene_03.gameObject.SetActive(false);
             scene_04.gameObject.SetActive(false);
-            //animatorSelected.none = true;
         }
         else if (isSelectScene_03)
         {
@@ -228,6 +237,70 @@ public class SelectManager : MonoBehaviour
     {
         if (isSelectPino_01)
         {
+            selectedPino = 1;
+            isSelectPino_02 = false;
+            isSelectPino_03 = false;
+        }
+        else if (isSelectPino_02)
+        {
+            selectedPino = 2;
+            isSelectPino_01 = false;
+            isSelectPino_03 = false;
+        }
+        else if (isSelectPino_03)
+        {
+            selectedPino = 3;
+            isSelectPino_02 = false;
+            isSelectPino_01 = false;
+        }
+    }
+
+
+    //Press button to play 
+    public void AcceptPlay()
+    {
+        UIManager.pinoSelected = selectedPino;
+        SceneManager.LoadScene(selectedStage);
+        Time.timeScale = 1f;
+    }
+
+
+    //Return to menu
+    public void ReturnMenu()
+    {
+        scene_04.gameObject.SetActive(false);
+
+        isSelectStage_01 = false;
+        isSelectStage_02 = false;
+        isSelectStage_03 = false;
+
+
+        isSelectPino_01 = false;
+        isSelectPino_02 = false;
+        isSelectPino_03 = false;
+
+        isSelectScene_02 = true;
+        isSelectScene_03 = false;
+        isSelectScene_04 = false;
+
+        selectedUI.ActiveStage1.gameObject.SetActive(false);
+        selectedUI.ActiveStage2.gameObject.SetActive(false);
+    }
+
+    public void TapSE()
+    {
+        audio_source.PlaySound("Tap");
+    }
+
+
+    #endregion
+    #region Backup
+
+    /** ---------> Backup <---------
+    public void isSelectedPino()
+    {
+        if (isSelectPino_01)
+        {
             //SelectPinos.gameObject.SetActive(false);
             selectedPino = 1;
             isSelectPino_02 = false;
@@ -279,7 +352,7 @@ public class SelectManager : MonoBehaviour
         }
         //scene_03.gameObject.SetActive(false);
     }
-
+    **/
     /**
     public void SelectPino()
     {
@@ -339,52 +412,5 @@ public class SelectManager : MonoBehaviour
        
     }
     **/
-
-
-    //Press button to play 
-    public void AcceptPlay()
-    {
-        UIManager.pinoSelected = selectedPino;
-        SceneManager.LoadScene(selectedStage);
-        // Debug.Log(selectedPino);
-        //Remote select scene
-        //for(int i = 0; i<selectedStage; i++)
-        //{
-        //    SceneManager.LoadScene(selectedStage);
-        //}
-        Time.timeScale = 1f;
-    }
-
-
-    //Return to menu
-    public void ReturnMenu()
-    {
-        scene_04.gameObject.SetActive(false);
-
-        //Set default all & return scene 2
-
-        isSelectStage_01 = false;
-        isSelectStage_02 = false;
-        isSelectStage_03 = false;
-
-
-        isSelectPino_01 = false;
-        isSelectPino_02 = false;
-        isSelectPino_03 = false;
-
-        isSelectScene_02 = true;
-        isSelectScene_03 = false;
-        isSelectScene_04 = false;
-
-        selectedUI.ActiveStage1.gameObject.SetActive(false);
-        selectedUI.ActiveStage2.gameObject.SetActive(false);
-    }
-
-    public void TapSE()
-    {
-        audio_source.PlaySound("Tap");
-    }
-
-
     #endregion
 }
