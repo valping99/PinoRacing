@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ButtonSelectedUI : MonoBehaviour
 {
+    #region Variables
     public SelectManager selected;
 
     public GameObject ActiveStage1;
@@ -12,7 +13,8 @@ public class ButtonSelectedUI : MonoBehaviour
     public bool timeCheckCD;
 
     public float timer = 0.8f;
-    #region Select Variables
+    #endregion
+    #region Select Button
     public void OnStart()
     {
         selected.TapToPlay();
@@ -23,27 +25,12 @@ public class ButtonSelectedUI : MonoBehaviour
         timeCheckCD = true;
     }
 
-    /**
-    public void SelectStage()
-    {
-        selected.SelectPino();
-    }
-    public void SelectPino()
-    {
-        selected.ShowStatusPino();
-    }
-    
-    **/
-
-
     public void selectedStage01()
     {
         selected.isSelectStage_01 = true;
         selected.isSelectStage_02 = false;
         ActiveStage1.gameObject.SetActive(true);
         ActiveStage2.gameObject.SetActive(false);
-        //selected.SelectPinos.gameObject.SetActive(true);
-        //selected.isSelectStage();
     }
     public void selectedStage02()
     {
@@ -51,14 +38,10 @@ public class ButtonSelectedUI : MonoBehaviour
         selected.isSelectStage_01 = false;
         ActiveStage1.gameObject.SetActive(false);
         ActiveStage2.gameObject.SetActive(true);
-        //selected.SelectPinos.gameObject.SetActive(true);
-        //selected.isSelectStage();
     }
     public void selectedStage03()
     {
         selected.isSelectStage_03 = true;
-        //selected.SelectPinos.gameObject.SetActive(true);
-        //selected.isSelectStage();
     }
 
     public void SelectStageAction()
@@ -66,10 +49,6 @@ public class ButtonSelectedUI : MonoBehaviour
         selected.SelectPinos.gameObject.SetActive(true);
         selected.isSelectStage();
     }
-
-
-    // Select Pino
-
 
     public void selectedPino_01()
     {
@@ -82,19 +61,9 @@ public class ButtonSelectedUI : MonoBehaviour
             selected.isSelectPino_01 = true;
             selected.isSelectedPino();
         }
-        //if (selected.isSelectPino_01)
-        //{
-        //    selected.SelectPinos.gameObject.SetActive(false);
-        //    //selected.isSelectedPino();
-        //}
     }
     public void selectedPino_02()
     {
-        //if (selected.isSelectPino_02)
-        //{
-        //    selected.SelectPinos.gameObject.SetActive(false);
-        //    //selected.isSelectedPino();
-        //}
         if (timeCheckCD)
         {
             timeCheckCD = false;
@@ -109,11 +78,6 @@ public class ButtonSelectedUI : MonoBehaviour
     }
     public void selectedPino_03()
     {
-        //if (selected.isSelectPino_03)
-        //{
-        //    selected.SelectPinos.gameObject.SetActive(false);
-        //    //selected.isSelectedPino();
-        //}
         if (timeCheckCD)
         {
             timeCheckCD = false;

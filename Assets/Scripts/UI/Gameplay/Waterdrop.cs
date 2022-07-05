@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class Waterdrop : MonoBehaviour
 {
-    public GameObject waterDrop;
+    #region Variables
     private UIManager managers;
+
+    public GameObject waterDrop;
     public Animator animWaterDrop;
     public CharacterController charInput;
 
     public float timeToDrip;
     public float timeToFaster = 60f;
 
+    public bool enableAnim = false;
+    public bool fasterAnim = false;
+
     const string k_AnimDropWater = "WaterDrop";
     const string k_AnimStun = "Stun";
     const string k_AnimFaster = "Faster";
-    public bool enableAnim = false;
-    public bool fasterAnim = false;
-    // Start is called before the first frame update
+    #endregion
+
+    #region Unity Method
     void Start()
     {
         managers = FindObjectOfType<UIManager>();
@@ -47,6 +52,9 @@ public class Waterdrop : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Class
     void EnableWaterDrop()
     {
         waterDrop.gameObject.SetActive(true);
@@ -62,4 +70,5 @@ public class Waterdrop : MonoBehaviour
         animWaterDrop.SetBool(k_AnimStun, charInput.m_Stuns);
         animWaterDrop.SetBool(k_AnimFaster, fasterAnim);
     }
+    #endregion
 }

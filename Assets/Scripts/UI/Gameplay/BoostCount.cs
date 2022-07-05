@@ -39,6 +39,7 @@ public class BoostCount : MonoBehaviour
         }
     }
     #endregion
+
     #region Function
     public void NumberPopup()
     {

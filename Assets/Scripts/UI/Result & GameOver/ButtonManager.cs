@@ -10,15 +10,6 @@ public class ButtonManager : MonoBehaviour
     public Character charColl;
     public UIManager managers;
     #endregion
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void ClickResume()
     {
         managers.PauseGame();

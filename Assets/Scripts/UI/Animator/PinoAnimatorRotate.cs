@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PinoAnimatorRotate : MonoBehaviour
 {
+    #region Varibles
     [Header("Scripts")]
     public SelectManager selected;
     public Animator pinoAnimator;
@@ -23,8 +24,8 @@ public class PinoAnimatorRotate : MonoBehaviour
     const string k_AnimRotatePino1 = "Pino1";
     const string k_AnimRotatePino2 = "Pino2";
     const string k_AnimRotatePino3 = "Pino3";
-
-    // Start is called before the first frame update
+    #endregion
+    #region Unity Method
     void Start()
     {
         selected = FindObjectOfType<SelectManager>();
@@ -40,7 +41,8 @@ public class PinoAnimatorRotate : MonoBehaviour
         CheckAnimation();
         CheckGlow();
     }
-
+    #endregion
+    #region Class
     void CheckAnimation()
     {
         pinoAnimator.SetBool(k_AnimRotatePino1, selected.isSelectPino_01);
@@ -78,6 +80,6 @@ public class PinoAnimatorRotate : MonoBehaviour
             stickOutline.enabled = false;
         }
     }
-
+    #endregion
 
 }

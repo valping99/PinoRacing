@@ -2443,18 +2443,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audio_source: {fileID: 314051319}
-  tapSE: {fileID: 0}
-  countDownSE: {fileID: 0}
-  finishSE: {fileID: 0}
   clearBGM: {fileID: 0}
-  itemIndication: {fileID: 0}
-  rankDisplay: {fileID: 0}
+  gameBGM: {fileID: 0}
   topScreen: {fileID: 0}
   itemSE: {fileID: 0}
   damageSE: {fileID: 0}
-  gameBGM: {fileID: 0}
   dashBoardSE: {fileID: 0}
   stingPickSE: {fileID: 0}
+  tapSE: {fileID: 0}
+  countDownSE: {fileID: 0}
+  finishSE: {fileID: 0}
+  itemIndication: {fileID: 0}
+  rankDisplay: {fileID: 0}
 --- !u!4 &314051318
 Transform:
   m_ObjectHideFlags: 0
@@ -2822,6 +2822,7 @@ MonoBehaviour:
   ActiveStage1: {fileID: 0}
   ActiveStage2: {fileID: 0}
   timeCheckCD: 1
+  timer: 0.8
 --- !u!114 &330466879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3507,6 +3508,7 @@ MonoBehaviour:
   ActiveStage1: {fileID: 0}
   ActiveStage2: {fileID: 0}
   timeCheckCD: 1
+  timer: 0.8
 --- !u!1 &413886200
 GameObject:
   m_ObjectHideFlags: 0
@@ -9068,6 +9070,7 @@ MonoBehaviour:
   ActiveStage1: {fileID: 0}
   ActiveStage2: {fileID: 0}
   timeCheckCD: 1
+  timer: 0.8
 --- !u!1 &1217033993
 GameObject:
   m_ObjectHideFlags: 0
@@ -9219,6 +9222,7 @@ MonoBehaviour:
   ActiveStage1: {fileID: 0}
   ActiveStage2: {fileID: 0}
   timeCheckCD: 1
+  timer: 0.8
 --- !u!1 &1218448661
 GameObject:
   m_ObjectHideFlags: 0
@@ -11293,7 +11297,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 426533279819d0947a0f4b6102235008, type: 3}
+  m_Texture: {fileID: 2800000, guid: 8b0630e223be7d94da5e57538b95f589, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -13522,7 +13526,6 @@ MonoBehaviour:
   statusOfPino_01: {fileID: 1475203510}
   statusOfPino_02: {fileID: 626703131}
   statusOfPino_03: {fileID: 580660057}
-  timeCheckCD: 1
   Text_TapToStart: {fileID: 0}
 --- !u!4 &2036843012
 Transform:
@@ -13570,6 +13573,7 @@ MonoBehaviour:
   ActiveStage1: {fileID: 895403990}
   ActiveStage2: {fileID: 209455137}
   timeCheckCD: 1
+  timer: 0.8
 --- !u!1 &2040031278
 GameObject:
   m_ObjectHideFlags: 0
