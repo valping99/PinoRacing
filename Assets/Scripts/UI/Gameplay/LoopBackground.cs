@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LoopBackground : MonoBehaviour
 {
+    #region 
     public GameObject[] RoadPieces;
     public float RoadLength = 30f; //length of roads
     void Update()
@@ -18,4 +19,5 @@ public class LoopBackground : MonoBehaviour
             road.transform.position = newRoadPos;
         }
     }
+    #endregion
 }

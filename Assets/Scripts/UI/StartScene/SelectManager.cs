@@ -72,7 +72,7 @@ public class SelectManager : MonoBehaviour
     public GameObject statusOfPino_02;
     public GameObject statusOfPino_03;
 
-    //Text & Variables 
+    [Header("Text & Variables ")]
     public TextMeshProUGUI Text_TapToStart;
 
     #endregion
@@ -101,7 +101,7 @@ public class SelectManager : MonoBehaviour
         SelectPinos.gameObject.SetActive(false);
     }
 
-    //StartUI to select stage 
+    [Tooltip("StartUI to select stage")]
     public void TapToPlay()
     {
         if (isSelectScene_01)
@@ -113,8 +113,8 @@ public class SelectManager : MonoBehaviour
         }
     }
 
-    // Check Scene to active gameObject
-    // Remove this function
+
+    [Tooltip("Check Scene to active gameObject")] 
     public void checkScene()
     {
         //Check Stage is selected or not
@@ -171,6 +171,8 @@ public class SelectManager : MonoBehaviour
         }
     }
 
+
+    [Tooltip("Check Pino Selected")]
     public void checkAnimation()
     {
         if (isSelectPino_01)
@@ -196,7 +198,8 @@ public class SelectManager : MonoBehaviour
         }
     }
 
-    //Select stages
+
+    [Tooltip("Select stages")]
     public void isSelectStage()
     {
         if (isSelectStage_01)
@@ -231,8 +234,7 @@ public class SelectManager : MonoBehaviour
         scene_02.gameObject.SetActive(false);
     }
 
-
-    // Select Pinos
+    [Tooltip("Select Pinos")]
     public void isSelectedPino()
     {
         if (isSelectPino_01)
@@ -256,7 +258,7 @@ public class SelectManager : MonoBehaviour
     }
 
 
-    //Press button to play 
+    [Tooltip("Press button to play")]
     public void AcceptPlay()
     {
         UIManager.pinoSelected = selectedPino;
@@ -265,7 +267,7 @@ public class SelectManager : MonoBehaviour
     }
 
 
-    //Return to menu
+    [Tooltip("Return to menu")]
     public void ReturnMenu()
     {
         scene_04.gameObject.SetActive(false);

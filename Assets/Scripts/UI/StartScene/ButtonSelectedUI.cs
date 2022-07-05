@@ -68,12 +68,12 @@ public class ButtonSelectedUI : MonoBehaviour
         {
             timeCheckCD = false;
             StartCoroutine(timeToTap());
-            Debug.Log("CD");
+            // Debug.Log("CD");
             selected.isSelectPino_01 = false;
             selected.isSelectPino_03 = false;
             selected.isSelectPino_02 = true;
             selected.isSelectedPino();
-            Debug.Log("Done");
+            // Debug.Log("Done");
         }
     }
     public void selectedPino_03()
@@ -120,7 +120,7 @@ public class ButtonSelectedUI : MonoBehaviour
 
         yield return new WaitForSeconds(timer);
         timeCheckCD = true;
-        Debug.Log("IENumerator");
+        // Debug.Log("IENumerator");
     }
     #endregion
 }

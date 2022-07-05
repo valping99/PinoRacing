@@ -212,7 +212,7 @@ public class PinoArBehaviour : MonoBehaviour
         return true;
     }
 #if UNITY_EDITOR
-    private int stubRankingHighScore = 0;
+    static private int stubRankingHighScore = 0;
     private void StubRankingResponse(int score)
     {
         int rank = (1000 - score) / 10;
@@ -251,6 +251,11 @@ public class PinoArBehaviour : MonoBehaviour
     {
         Debug.Log("stub: RegisterScore\n" + score);
     }
+    protected static int GetHighscore(string rankingKey)
+    {
+        Debug.Log("stub: GetHighscore\n" + rankingKey);
+        return stubRankingHighScore;
+    }
     protected static void QuitGame()
     {
         Debug.Log("stub: QuitGame");
@@ -264,6 +269,8 @@ public class PinoArBehaviour : MonoBehaviour
     protected static extern void RegisterRankingKey(string rankingKey);
     [DllImport("__Internal")]
     protected static extern void RegisterScore(int score);
+    [DllImport("__Internal")]
+    protected static extern int GetHighscore(string rankingKey);
     [DllImport("__Internal")]
     protected static extern void QuitGame();
 #endif

@@ -9,13 +9,9 @@ public class ClearLag : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-
         //Wall delete all things when it touch 
         if (other.gameObject.tag == "Item" || other.gameObject.tag == "Obstacle")
-        {
             Destroy(other.gameObject);
-            // Debug.Log("Clear trash name: " + other.name);
-        }
     }
 
     #endregion

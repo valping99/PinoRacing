@@ -22,10 +22,13 @@ public class Pickup : MonoBehaviour
     [Tooltip("Distance the item will move up and down")]
     public float BobbingAmount = 1f;
 
-    [Tooltip("Rotation angle per second")] public float RotatingSpeed = 360f;
+    [Tooltip("Rotation angle per second")] 
+    public float RotatingSpeed = 360f;
 
-    [Tooltip("Sound played on pickup")] public AudioClip PickupSfx;
-    [Tooltip("VFX spawned on pickup")] public GameObject PickupVfxPrefab;
+
+    [Header("Variables")]
+    [Tooltip("Sound played on pickup")] 
+    public AudioClip PickupSfx;
 
     public Rigidbody PickupRigidbody { get; private set; }
 
@@ -34,7 +37,6 @@ public class Pickup : MonoBehaviour
 
     Collider m_Collider;
     Vector3 m_StartPosition;
-    bool m_HasPlayedFeedback;
     #endregion
 
     #region Unity Methods
@@ -45,6 +47,7 @@ public class Pickup : MonoBehaviour
         PickupRigidbody = GetComponent<Rigidbody>();
         m_Collider = GetComponent<Collider>();
 
+        // Get scripts from Hirarchy
         m_CharacterController = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
         m_CharacterCollider = m_CharacterController.GetComponentInChildren<Character>();
         m_SoundManager = GameObject.FindGameObjectWithTag("SoundManagers").GetComponent<SoundManagers>();
@@ -60,7 +63,6 @@ public class Pickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         HandleBobbing();
         HandleRotation();
 
@@ -105,12 +107,7 @@ public class Pickup : MonoBehaviour
 
     public void PlayPickupFeedback()
     {
-        if (m_HasPlayedFeedback)
-            return;
-
         m_SoundManager.PlaySound(PickupSfx.name);
-
-        m_HasPlayedFeedback = true;
     }
 
 #if UNITY_EDITOR

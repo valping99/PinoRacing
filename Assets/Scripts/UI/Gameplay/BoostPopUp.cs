@@ -5,9 +5,11 @@ using TMPro;
 
 public class BoostPopUp : MonoBehaviour
 {
+    #region Variables
     public TextMeshProUGUI text;
     public UIManager uiManagers;
-
+    #endregion
+    #region Unity Method
     private void Start()
     {
         uiManagers = FindObjectOfType<UIManager>();
@@ -17,10 +19,12 @@ public class BoostPopUp : MonoBehaviour
         text = uiManagers.countBoostNumber_Text;
 
     }
+    #endregion
+    #region Class
     public void DestroyParent()
     {
         GameObject parent = gameObject.transform.parent.gameObject;
         Destroy(parent);
     }
-
+    #endregion
 }

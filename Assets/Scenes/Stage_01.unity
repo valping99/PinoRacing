@@ -5307,6 +5307,7 @@ MonoBehaviour:
   raceCrouses: {fileID: 1122337279}
   transformParent: {fileID: 1562919274}
   selectLaps: {fileID: 0}
+  checkIns: 1
 --- !u!114 &568090867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9373,18 +9374,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audio_source: {fileID: 929251062}
-  tapSE: {fileID: 0}
-  countDownSE: {fileID: 0}
-  finishSE: {fileID: 0}
   clearBGM: {fileID: 0}
-  itemIndication: {fileID: 0}
-  rankDisplay: {fileID: 0}
+  gameBGM: {fileID: 0}
   topScreen: {fileID: 0}
   itemSE: {fileID: 0}
   damageSE: {fileID: 0}
-  gameBGM: {fileID: 0}
   dashBoardSE: {fileID: 0}
   stingPickSE: {fileID: 0}
+  tapSE: {fileID: 0}
+  countDownSE: {fileID: 0}
+  finishSE: {fileID: 0}
+  itemIndication: {fileID: 0}
+  rankDisplay: {fileID: 0}
 --- !u!1001 &931054798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16297,7 +16298,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1300960298686953968, guid: e974722fcb5685f48bdc619d599490a2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e974722fcb5685f48bdc619d599490a2, type: 3}
 --- !u!4 &1619783703 stripped
 Transform:
@@ -21420,6 +21422,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FollowingPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700011495006251108, guid: 937c798f012c5404bbcb56d75ce7ce69,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5700011495006251108, guid: 937c798f012c5404bbcb56d75ce7ce69,
         type: 3}
