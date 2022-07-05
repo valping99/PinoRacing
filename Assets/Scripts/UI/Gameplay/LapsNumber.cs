@@ -62,6 +62,7 @@ public class LapsNumber : MonoBehaviour
             {
                 checkIns = false;
                 Destroy(selectLaps);
+                raceCrouses.lapCourse = 1;
                 Instantiate(lapImages[0], transformParent.transform.position, Quaternion.identity, transformParent);
 
             }
