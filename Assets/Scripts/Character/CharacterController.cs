@@ -38,7 +38,7 @@ public class CharacterController : MonoBehaviour
     [HideInInspector, Range(0, 300)] public float m_MilkCollectSpeed;
     [HideInInspector] public float timer;
     [HideInInspector] public float delay;
-    [Range(0, 300)] float m_DriveSpeed;
+    [Range(0, 30000)] float m_DistanceLength;
     [Range(0, 4)] float m_CharacterPosition;
     [Range(0, 3)] int laneNumber;
 
@@ -91,7 +91,7 @@ public class CharacterController : MonoBehaviour
     {
         Debug.Log("Current Speed Controller: " + m_CurrentSpeed +
         " Current Speed: " + m_Character.m_CurrentSpeed +
-        " Driver Speed: " + m_DriveSpeed + " Max Speed: " + m_Character.m_MaxSpeed);
+        " Distance Length: " + m_DistanceLength + " Max Speed: " + m_Character.m_MaxSpeed);
     }
     void InitialComponent()
     {
@@ -162,15 +162,15 @@ public class CharacterController : MonoBehaviour
 
         m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_Character.m_CurrentSpeed, Time.deltaTime);
 
-        m_DriveSpeed += (m_CurrentSpeed * Time.deltaTime) / 10;
+        m_DistanceLength += (m_CurrentSpeed * Time.deltaTime) / 10;
 
-        Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed);
-        Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed - 20f);
-        Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed + 60f);
+        Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(m_DistanceLength);
+        Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DistanceLength - 20f);
+        Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DistanceLength + 60f);
 
-        Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 7f);
-        Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 60f);
-        Quaternion _tempRotationClearLag = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed - 7f);
+        Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DistanceLength + 7f);
+        Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DistanceLength + 60f);
+        Quaternion _tempRotationClearLag = m_PathCreator.path.GetRotationAtDistance(m_DistanceLength - 7f);
 
         m_Character.transform.localPosition = _tempDistance;
         spawnerObject.transform.position = _tempDistanceSpawner;
