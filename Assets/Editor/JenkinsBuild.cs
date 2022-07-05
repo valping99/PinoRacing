@@ -49,6 +49,7 @@ public class JenkinsBuild
                 catch (System.Exception ex)
                 {
                     System.Console.WriteLine("[JenkinsBuild] Incorrect Parameters for -executeMethod Format: -executeMethod BuildIOS <app_name> <output_dir>");
+                    Debug.Log("Bug editor: " + ex.Message);
                 }
 
                 System.Console.WriteLine("AppName: " + appName + ", target: " + targetDir);
@@ -86,6 +87,7 @@ public class JenkinsBuild
                 catch (System.Exception ex)
                 {
                     System.Console.WriteLine("[JenkinsBuild] Incorrect Parameters for -executeMethod Format: -executeMethod BuildAndroid <app_name> <output_dir>");
+                    Debug.Log("Bug editor: " + ex.Message);
                 }
 
                 try
@@ -95,6 +97,7 @@ public class JenkinsBuild
                 catch (System.Exception ex)
                 {
                     System.Console.WriteLine("[JenkinsBuild] Incorrect Parameters for -executeMethod Format: -executeMethod BuildAndroid <app_name> <output_dir>");
+                    Debug.Log("Bug editor: " + ex.Message);
                 }
 
                 System.Console.WriteLine("AppName: " + appName + ", target: " + targetDir);
@@ -132,6 +135,7 @@ public class JenkinsBuild
                 catch (System.Exception ex)
                 {
                     System.Console.WriteLine("[JenkinsBuild] Incorrect Parameters for -executeMethod Format: -executeMethod BuildWebGL <app_name> <output_dir>");
+                    Debug.Log("Bug editor: " + ex.Message);
                 }
 
                 try
@@ -141,6 +145,7 @@ public class JenkinsBuild
                 catch (System.Exception ex)
                 {
                     System.Console.WriteLine("[JenkinsBuild] Incorrect Parameters for -executeMethod Format: -executeMethod BuildWebGL <app_name> <output_dir>");
+                    Debug.Log("Bug editor: " + ex.Message);
                 }
 
                 System.Console.WriteLine("AppName: " + appName + ", target: " + targetDir);

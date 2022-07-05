@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class RoadSpawner : MonoBehaviour
+public class Minimap : MonoBehaviour
 {
     #region Variables
     // Start is called before the first frame update
     public GameObject MainRoad;
-    public List<GameObject> roads;
     public Character charColl;
     public GameObject playerMinimap;
 
@@ -33,23 +32,6 @@ public class RoadSpawner : MonoBehaviour
         playerMinimap.transform.position = playerPosition;
         playerMinimap.transform.eulerAngles = new Vector3(90, charColl.transform.eulerAngles.y, charColl.transform.eulerAngles.z);
         transform.eulerAngles = charColl.transform.eulerAngles;
-    }
-    #endregion
-    #region Function
-    public void MoveRoad()
-    {
-        GameObject moveRoad = roads[0];
-        roads.Remove(moveRoad);
-        float newPosZ = roads[roads.Count - 1].transform.position.z + offset;
-        moveRoad.transform.position = new Vector3(0, 0, newPosZ);
-        roads.Add(moveRoad);
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("CheckGround"))
-        {
-            MoveRoad();
-        }
     }
     #endregion
 }
