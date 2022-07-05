@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class UIReference : MonoBehaviour
 {
-
+    #region Variables
     [HideInInspector] public UIManager managers;
     [HideInInspector] public Character charColl;
     [HideInInspector] public CharacterController charInput;
-
     int currendSpeed;
+    #endregion
+    #region Unity Method
     void Start()
     {
         managers = FindObjectOfType<UIManager>();
@@ -17,21 +18,13 @@ public class UIReference : MonoBehaviour
         charInput = FindObjectOfType<CharacterController>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateUI();
-    }
-
+    #endregion
+    #region Class
     private void StartGame()
     {
         double kphSpeed = charColl.m_CurrentSpeed * 3.6;
         currendSpeed = (int)kphSpeed;
     }
-    private void UpdateUI()
-    {
-
-    }
-
+    #endregion
 
 }

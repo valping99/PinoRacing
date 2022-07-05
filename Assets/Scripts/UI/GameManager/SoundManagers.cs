@@ -27,12 +27,14 @@ public class SoundManagers : MonoBehaviour
     public AudioClip rankDisplay;
 
     #endregion
+    #region Unity Method
     void Start()
     {
         GetResourcesAudio();
-        //TapSE();
     }
-
+    #endregion
+    #region Class
+    [Tooltip("Get Audio in Resources")]
     void GetResourcesAudio()
     {
         tapSE = Resources.Load<AudioClip>("Audio/No1");
@@ -49,6 +51,7 @@ public class SoundManagers : MonoBehaviour
         stingPickSE = Resources.Load<AudioClip>("Audio/No12");
     }
 
+    [Tooltip("Set Audio")]
     public void PlaySound(string clip)
     {
         switch (clip)
@@ -129,4 +132,5 @@ public class SoundManagers : MonoBehaviour
         yield return new WaitUntil(() => audio_source.isPlaying == false);
         PlaySound(sound);
     }
+    #endregion
 }
