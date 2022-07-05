@@ -12,6 +12,7 @@ public class Pickup : MonoBehaviour
     [Header("Scripts")]
     public Character m_CharacterCollider;
     public CharacterController m_CharacterController;
+    public SoundManagers m_SoundManager;
 
     [Header("Effects")]
 
@@ -21,10 +22,13 @@ public class Pickup : MonoBehaviour
     [Tooltip("Distance the item will move up and down")]
     public float BobbingAmount = 1f;
 
-    [Tooltip("Rotation angle per second")] public float RotatingSpeed = 360f;
+    [Tooltip("Rotation angle per second")] 
+    public float RotatingSpeed = 360f;
 
-    [Tooltip("Sound played on pickup")] public AudioClip PickupSfx;
-    [Tooltip("VFX spawned on pickup")] public GameObject PickupVfxPrefab;
+
+    [Header("Variables")]
+    [Tooltip("Sound played on pickup")] 
+    public AudioClip PickupSfx;
 
     public Rigidbody PickupRigidbody { get; private set; }
 
@@ -33,7 +37,6 @@ public class Pickup : MonoBehaviour
 
     Collider m_Collider;
     Vector3 m_StartPosition;
-    bool m_HasPlayedFeedback;
     #endregion
 
     #region Unity Methods
@@ -44,8 +47,10 @@ public class Pickup : MonoBehaviour
         PickupRigidbody = GetComponent<Rigidbody>();
         m_Collider = GetComponent<Collider>();
 
+        // Get scripts from Hirarchy
         m_CharacterController = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
         m_CharacterCollider = m_CharacterController.GetComponentInChildren<Character>();
+        m_SoundManager = GameObject.FindGameObjectWithTag("SoundManagers").GetComponent<SoundManagers>();
 
         // ensure the physics setup is a kinematic rigidbody trigger
         PickupRigidbody.isKinematic = true;
@@ -69,17 +74,12 @@ public class Pickup : MonoBehaviour
     {
         Character pickingPlayer = other.GetComponent<Character>();
 
-        if (pickingPlayer != null)
-        {
+        if (other.gameObject.tag == "RootObject")
             OnPicked(pickingPlayer);
-        }
     }
 
 
     #endregion
-
-
-
 
     #region Class
 
@@ -107,20 +107,7 @@ public class Pickup : MonoBehaviour
 
     public void PlayPickupFeedback()
     {
-        if (m_HasPlayedFeedback)
-            return;
-
-        if (PickupSfx)
-        {
-            AudioUtility.CreateSFX(PickupSfx, m_RootModel.transform.position, AudioUtility.AudioGroups.Pickup, 0f);
-        }
-
-        if (PickupVfxPrefab)
-        {
-            var pickupVfxInstance = Instantiate(PickupVfxPrefab, m_RootModel.transform.position, Quaternion.identity);
-        }
-
-        m_HasPlayedFeedback = true;
+        m_SoundManager.PlaySound(PickupSfx.name);
     }
 
 #if UNITY_EDITOR

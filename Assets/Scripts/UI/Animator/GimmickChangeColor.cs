@@ -32,16 +32,12 @@ public class GimmickChangeColor : MonoBehaviour
         CheckTimeUI();
     }
     #endregion
-    #region Function
+    #region Class
     void ChangeColorStick()
     {
         animator = GameObject.FindGameObjectWithTag("GimmeckSticker").GetComponent<Animator>();
         currentSticker = GameObject.FindGameObjectWithTag("GimmeckSticker");
         uiManagers = FindObjectOfType<UIManager>();
-        //charInput = FindObjectOfType<CharacterInputController>();
-        //charColl = FindObjectOfType<CharacterCollider>();
-        //rootObject = GameObject.FindGameObjectWithTag("RootObject");
-        //Instantiate(stickGimmeck, charColl.transform.position, Quaternion.identity, transformParent);
     }
 
     void CheckTimeUI()
@@ -50,17 +46,6 @@ public class GimmickChangeColor : MonoBehaviour
         {
             animator.SetFloat(m_AnimTimer, uiManagers.timeValueUp);
         }
-        //currentSticker.transform.rotation = rootObject.transform.rotation;
-        //transformParent.position = charColl.transform.position;
-        //transformParent.rotation = charColl.transform.rotation;
-        //if (charinput.m_stuns)
-        //{
-        //    currentsticker.transform.position = rootobject.transform.position;
-        //}
-        //else
-        //{
-        //    currentsticker.transform.position = new vector3(rootobject.transform.position.x, rootobject.transform.position.y + 1.5f, rootobject.transform.position.z);
-        //}
     }
     #endregion
 }

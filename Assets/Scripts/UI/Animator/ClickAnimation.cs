@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class ClickAnimation : MonoBehaviour
 {
+    #region Variables
     public UIManager uiManagers;
 
     public Animator animator_Cursor;
 
 
     const string m_AnimActive = "Active";
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    #endregion
 
+    #region Unity Method
     // Update is called once per frame
     void Update()
     {
@@ -35,4 +33,5 @@ public class ClickAnimation : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+    #endregion
 }

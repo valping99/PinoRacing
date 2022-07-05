@@ -39,6 +39,7 @@ public class JenkinsBuild
                 catch (System.Exception ex)
                 {
                     System.Console.WriteLine("[JenkinsBuild] Incorrect Parameters for -executeMethod Format: -executeMethod BuildIOS <app_name> <output_dir>");
+                    Debug.Log("Bug editor: " + ex.Message);
                 }
 
                 try

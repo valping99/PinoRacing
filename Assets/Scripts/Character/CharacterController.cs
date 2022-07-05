@@ -18,6 +18,7 @@ public class CharacterController : MonoBehaviour
     public Character m_Character;
     public PathCreator m_PathCreator;
     public GameObject spawnerObject;
+    public GameObject[] listSpawner;
     GameObject m_WallClearLag;
     UIManager uiManagers;
 
@@ -37,7 +38,7 @@ public class CharacterController : MonoBehaviour
     [HideInInspector, Range(0, 300)] public float m_MilkCollectSpeed;
     [HideInInspector] public float timer;
     [HideInInspector] public float delay;
-    [Range(0, 300)] float m_DriveSpeed;
+    [Range(0, 30000)] float m_DistanceLength;
     [Range(0, 4)] float m_CharacterPosition;
     [Range(0, 3)] int laneNumber;
 
@@ -90,7 +91,7 @@ public class CharacterController : MonoBehaviour
     {
         Debug.Log("Current Speed Controller: " + m_CurrentSpeed +
         " Current Speed: " + m_Character.m_CurrentSpeed +
-        " Driver Speed: " + m_DriveSpeed + " Max Speed: " + m_Character.m_MaxSpeed);
+        " Distance Length: " + m_DistanceLength + " Max Speed: " + m_Character.m_MaxSpeed);
     }
     void InitialComponent()
     {
@@ -111,6 +112,9 @@ public class CharacterController : MonoBehaviour
         m_PadsIsBoosting = false;
         m_UpSpeed = false;
         m_Stuns = false;
+
+        listSpawner[1].gameObject.transform.localPosition = new Vector3(slideLength, 0, 0);
+        listSpawner[2].gameObject.transform.localPosition = new Vector3(-slideLength, 0, 0);
     }
     void MoveInput()
     {
@@ -158,15 +162,15 @@ public class CharacterController : MonoBehaviour
 
         m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_Character.m_CurrentSpeed, Time.deltaTime);
 
-        m_DriveSpeed += (m_CurrentSpeed * Time.deltaTime) / 10;
+        m_DistanceLength += (m_CurrentSpeed * Time.deltaTime) / 10;
 
-        Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed);
-        Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed - 20f);
-        Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed + 60f);
+        Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(m_DistanceLength);
+        Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DistanceLength - 20f);
+        Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DistanceLength + 60f);
 
-        Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 7f);
-        Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 60f);
-        Quaternion _tempRotationClearLag = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed - 7f);
+        Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DistanceLength + 7f);
+        Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DistanceLength + 60f);
+        Quaternion _tempRotationClearLag = m_PathCreator.path.GetRotationAtDistance(m_DistanceLength - 7f);
 
         m_Character.transform.localPosition = _tempDistance;
         spawnerObject.transform.position = _tempDistanceSpawner;
@@ -218,7 +222,7 @@ public class CharacterController : MonoBehaviour
                 // axes (otherwise we would have to swipe more vertically...)
                 diff = new Vector2(diff.x / Screen.width, diff.y / Screen.width);
 
-                //we set the swip distance to trigger movement to 1% of the screen width
+                // we set the swip distance to trigger movement to 1% of the screen width
                 if (diff.magnitude > 0.01f)
                 {
                     if (!m_Stuns && diff.x < 0 && laneNumber > 1 && m_IsChangeLine)

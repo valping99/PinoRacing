@@ -31,6 +31,8 @@ TagManager:
   - SpawnX
   - SpawnZ
   - CheckSpawnX
+  - BGM
+  - SoundManagers
   layers:
   - Default
   - TransparentFX
