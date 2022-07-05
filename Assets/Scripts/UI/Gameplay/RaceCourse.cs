@@ -34,6 +34,7 @@ public class RaceCourse : MonoBehaviour
         if (uiManagers.startScene)
         {
             lapCourse = 1;
+            Debug.Log(lapCourse);
         }
     }
     private void OnTriggerEnter(Collider other)
