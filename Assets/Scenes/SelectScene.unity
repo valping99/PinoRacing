@@ -2822,6 +2822,7 @@ MonoBehaviour:
   ActiveStage1: {fileID: 0}
   ActiveStage2: {fileID: 0}
   timeCheckCD: 1
+  timer: 0.8
 --- !u!114 &330466879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3507,6 +3508,7 @@ MonoBehaviour:
   ActiveStage1: {fileID: 0}
   ActiveStage2: {fileID: 0}
   timeCheckCD: 1
+  timer: 0.8
 --- !u!1 &413886200
 GameObject:
   m_ObjectHideFlags: 0
@@ -9068,6 +9070,7 @@ MonoBehaviour:
   ActiveStage1: {fileID: 0}
   ActiveStage2: {fileID: 0}
   timeCheckCD: 1
+  timer: 0.8
 --- !u!1 &1217033993
 GameObject:
   m_ObjectHideFlags: 0
@@ -9219,6 +9222,7 @@ MonoBehaviour:
   ActiveStage1: {fileID: 0}
   ActiveStage2: {fileID: 0}
   timeCheckCD: 1
+  timer: 0.8
 --- !u!1 &1218448661
 GameObject:
   m_ObjectHideFlags: 0
@@ -9303,6 +9307,7 @@ GameObject:
   - component: {fileID: 1221037182}
   - component: {fileID: 1221037181}
   - component: {fileID: 1221037180}
+  - component: {fileID: 1221037183}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -9359,6 +9364,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1221037183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221037179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &1240728613
 GameObject:
   m_ObjectHideFlags: 0
@@ -13174,6 +13192,7 @@ GameObject:
   - component: {fileID: 2027898297}
   - component: {fileID: 2027898300}
   - component: {fileID: 2027898301}
+  - component: {fileID: 2027898302}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -13376,6 +13395,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2027898302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027898296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49b4cc203aa6414fae5c798d1d0e7d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &2030904263
 GameObject:
   m_ObjectHideFlags: 0
@@ -13522,7 +13557,6 @@ MonoBehaviour:
   statusOfPino_01: {fileID: 1475203510}
   statusOfPino_02: {fileID: 626703131}
   statusOfPino_03: {fileID: 580660057}
-  timeCheckCD: 1
   Text_TapToStart: {fileID: 0}
 --- !u!4 &2036843012
 Transform:
@@ -13570,6 +13604,7 @@ MonoBehaviour:
   ActiveStage1: {fileID: 895403990}
   ActiveStage2: {fileID: 209455137}
   timeCheckCD: 1
+  timer: 0.8
 --- !u!1 &2040031278
 GameObject:
   m_ObjectHideFlags: 0
