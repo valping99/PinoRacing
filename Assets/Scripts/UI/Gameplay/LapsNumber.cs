@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class LapsNumber : MonoBehaviour
 {
+    #region Variables
     public List<GameObject> lapImages;
     public UIManager managers;
     public RaceCourse raceCrouses;
     public Transform transformParent;
     public GameObject selectLaps;
     int lapCourse;
+    #endregion
     // Start is called before the first frame update
+    #region Unity Method
     void Start()
     {
         Instantiate(lapImages[0], transformParent.transform.position, Quaternion.identity, transformParent);
@@ -21,8 +24,10 @@ public class LapsNumber : MonoBehaviour
     {
         selectLaps = GameObject.FindGameObjectWithTag("LapNumbers");
     }
+    #endregion
 
-    public void checkLaps() 
+    #region Class
+    public void checkLaps()
     {
         lapCourse = raceCrouses.lapCourse;
         if (lapCourse == 2)
@@ -30,10 +35,11 @@ public class LapsNumber : MonoBehaviour
             Destroy(selectLaps);
             Instantiate(lapImages[1], transformParent.transform.position, Quaternion.identity, transformParent);
         }
-        else if(lapCourse >2)
+        else if (lapCourse > 2)
         {
             Destroy(selectLaps);
             Instantiate(lapImages[2], transformParent.transform.position, Quaternion.identity, transformParent);
         }
     }
+    #endregion
 }

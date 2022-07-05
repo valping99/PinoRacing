@@ -6,33 +6,22 @@ public class RaceCourse : MonoBehaviour
 {
     #region Variables
     public Character m_charCollider;
-
     public SoundManagers audio_sources;
     public SoundManagers audio_BGM;
-    //public GameObject playerPino;
     public int lapCourse;
     private UIManager uiManagers;
     private LapsNumber lapNums;
     public int lapToWin = 3;
     #endregion
-    // Start is called before the first frame update
+
     #region UnityMethod
     void Start()
     {
-        lapNums = FindObjectOfType<LapsNumber>();
-        m_charCollider = FindObjectOfType<Character>();
-        //playerPino = GameObject.FindGameObjectWithTag("RootObject");
-        uiManagers = FindObjectOfType<UIManager>();
-        lapCourse = 1;
-        uiManagers.finishLap.gameObject.SetActive(false);
-        audio_sources = GameObject.FindGameObjectWithTag("SoundManagers").GetComponent<SoundManagers>();
-        audio_BGM = GameObject.FindGameObjectWithTag("BGM").GetComponent<SoundManagers>();
+        GetVariables();
     }
-
-
-    // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
+        CheckLapCourse();
         uiManagers.lapsToGameOver = lapCourse;
         if (lapCourse == lapToWin)
         {
@@ -40,10 +29,12 @@ public class RaceCourse : MonoBehaviour
         }
     }
 
-    private void ShowFinishLap()
+    void CheckLapCourse()
     {
-        uiManagers.finishLap.gameObject.SetActive(true);
-
+        if (uiManagers.startScene)
+        {
+            lapCourse = 1;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -59,12 +50,32 @@ public class RaceCourse : MonoBehaviour
             }
             else
             {
-                // Debug.Log("True");
                 lapCourse += 1;
                 lapNums.checkLaps();
 
             }
         }
+    }
+    #endregion
+
+    #region Class
+    void GetVariables()
+    {
+        lapNums = FindObjectOfType<LapsNumber>();
+        m_charCollider = FindObjectOfType<Character>();
+        uiManagers = FindObjectOfType<UIManager>();
+        lapCourse = 1;
+        uiManagers.finishLap.gameObject.SetActive(false);
+        audio_sources = GameObject.FindGameObjectWithTag("SoundManagers").GetComponent<SoundManagers>();
+        audio_BGM = GameObject.FindGameObjectWithTag("BGM").GetComponent<SoundManagers>();
+    }
+
+    // Update is called once per frame
+
+    private void ShowFinishLap()
+    {
+        uiManagers.finishLap.gameObject.SetActive(true);
+
     }
     #endregion
 }

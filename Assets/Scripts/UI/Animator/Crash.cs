@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Crash : MonoBehaviour
 {
+    #region Variables
     [SerializeField]
     private Animator animator;
 
@@ -12,7 +13,8 @@ public class Crash : MonoBehaviour
     public bool checkCrash;
     [Header("Animator")]
     const string k_AnimCrash = "isCrash";
-    // Start is called before the first frame update
+    #endregion
+    #region Unity Method
     void Start()
     {
         charColl = FindObjectOfType<CharacterController>();
@@ -24,4 +26,5 @@ public class Crash : MonoBehaviour
         checkCrash = charColl.m_Stuns;
         animator.SetBool(k_AnimCrash, checkCrash);
     }
+    #endregion
 }

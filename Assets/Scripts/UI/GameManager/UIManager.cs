@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
     public bool checkBoost;
     public bool checkRunning = false;
     public bool checkDashBoost = false;
-    private bool startScene = true;
+    public bool startScene = true;
     private bool checkCount = true;
 
     [Header("Object UI")]
@@ -118,8 +118,6 @@ public class UIManager : MonoBehaviour
         StartGame();
         audio_BGM.PlaySound("BGM");
     }
-
-
     private void GetComponent()
     {
         clickAnim = FindObjectOfType<ClickAnimation>();
@@ -162,33 +160,31 @@ public class UIManager : MonoBehaviour
     //Active PauseUI
     public void PauseGame()
     {
-        if (checkPlaying)
+        if (!checkPause)
         {
-            if (!checkPause)
-            {
-                //Enable PauseUI and disable other UI
-                pauseUI.gameObject.SetActive(true);
-                mainSceneUI.gameObject.SetActive(false);
-                gameOverUI.gameObject.SetActive(false);
-                checkPause = !checkPause;
-                miniMap.gameObject.SetActive(false);
-                lapsObjects.gameObject.SetActive(false);
-                Time.timeScale = 0f;
-                Debug.Log("Pause");
-            }
-            else
-            {
-                //Disable PauseUI and enable other UI
-                pauseUI.gameObject.SetActive(false);
-                mainSceneUI.gameObject.SetActive(true);
-                gameOverUI.gameObject.SetActive(false);
-                lapsObjects.gameObject.SetActive(true);
-                miniMap.gameObject.SetActive(true);
-                checkPause = !checkPause;
-                Time.timeScale = 1f;
-                Debug.Log("Resume");
-            }
+            //Enable PauseUI and disable other UI
+            pauseUI.gameObject.SetActive(true);
+            mainSceneUI.gameObject.SetActive(false);
+            gameOverUI.gameObject.SetActive(false);
+            checkPause = !checkPause;
+            miniMap.gameObject.SetActive(false);
+            lapsObjects.gameObject.SetActive(false);
+            Time.timeScale = 0f;
+            Debug.Log("Pause");
         }
+        else
+        {
+            //Disable PauseUI and enable other UI
+            pauseUI.gameObject.SetActive(false);
+            mainSceneUI.gameObject.SetActive(true);
+            gameOverUI.gameObject.SetActive(false);
+            lapsObjects.gameObject.SetActive(true);
+            miniMap.gameObject.SetActive(true);
+            checkPause = !checkPause;
+            Time.timeScale = 1f;
+            Debug.Log("Resume");
+        }
+        
 
     }
     private void GamePlaying()
@@ -257,12 +253,29 @@ public class UIManager : MonoBehaviour
         {
             GameClear();
         }
+        CheckTimeScale();
     }
 
+    //Hide display when start
     public void waitForDisplay()
     {
         startScene = false;
     }
+
+    //Check Time Scale
+    void CheckTimeScale()
+    {
+        if(Time.timeScale == 0f)
+        {
+            checkPlaying = false;
+        }
+        else
+        {
+            checkPlaying = true;
+        }
+
+    }
+    //Get Speed & Milk
     private void GetVariables()
     {
         //Get kph speed
@@ -302,6 +315,8 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    //Check Boost When tap 16 times
     public void BoostStart()
     {
         boostCount = b_count.boostCount;
@@ -363,6 +378,8 @@ public class UIManager : MonoBehaviour
         }
         DisplayTimerCountUp(timeValueUp);
     }
+
+    //Show Timer
     private void DisplayTimerCountUp(float timeToDisplayCountUp)
     {
         if (timeToDisplayCountUp == maxTimeValue)
@@ -379,6 +396,8 @@ public class UIManager : MonoBehaviour
         limitedTimer_Text.text = string.Format("{0:0}:{1:00}:{2:000}", minutes, seconds, milliSeconds);
         gameOverScoreText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
+
+    //Check GameOver
     private void TimeOut()
     {
         if (checkGameOver)
@@ -391,7 +410,11 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 0f;
             miniMap.gameObject.SetActive(false);
         }
+        audio_BGM.PlaySound("Stop");
+        audio_BGM.PlaySound("Clear");
     }
+
+    //Check BoostSpeed
     void IsBoostingSpeed()
     {
         if (charInput.m_IsBoosting)
