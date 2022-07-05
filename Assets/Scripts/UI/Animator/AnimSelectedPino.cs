@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AnimSelectedPino : MonoBehaviour
 {
+    #region Variables
     public SelectManager selected;
 
     public bool none = true;
@@ -23,7 +24,9 @@ public class AnimSelectedPino : MonoBehaviour
     const string k_AnimIsPino1_Trig = "Pino_1_Trig";
     const string k_AnimIsPino2_Trig = "Pino_2_Trig";
     const string k_AnimIsPino3_Trig = "Pino_3_Trig";
+    #endregion
     // Start is called before the first frame update
+    #region Unity Method
     void Start()
     {
         selected = FindObjectOfType<SelectManager>();
@@ -70,27 +73,8 @@ public class AnimSelectedPino : MonoBehaviour
                 animator.ResetTrigger(k_AnimIsPino1_Trig);
             }
         }
-        //if(isSelect1)
-        //{
-        //    isSelect2 = false;
-        //    isSelect3 = false;
-        //}else if (isSelect2)
-        //{
-        //    isSelect1 = false;
-        //    isSelect3 = false;
-        //}
-        //else if(isSelect3)
-        //{
-        //    isSelect2 = false;
-        //    isSelect1 = false;
-        //}
-        //else
-        //{
-        //    isSelect1 = false;
-        //    isSelect2 = false;
-        //    isSelect3 = false;
-        //}
     }
+    #endregion
     void CheckAnimation()
     {
         animator.SetBool(k_AnimNoAnim, none);
