@@ -137,7 +137,7 @@ public class UIManager : MonoBehaviour
 
     #endregion
     #region UIManager
-    //Active when game start
+    [Tooltip("Active when game start")]
     private void StartGame()
     {
         if (checkPlaying)
@@ -157,7 +157,7 @@ public class UIManager : MonoBehaviour
 
     }
 
-    //Active PauseUI
+    [Tooltip("Active PauseUI")]
     public void PauseGame()
     {
         if (!checkPause)
@@ -184,9 +184,9 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 1f;
             Debug.Log("Resume");
         }
-        
-
     }
+
+    [Tooltip("Check GamePlaying")]
     private void GamePlaying()
     {
         if (b_count.boostCount < 16)
@@ -256,13 +256,13 @@ public class UIManager : MonoBehaviour
         CheckTimeScale();
     }
 
-    //Hide display when start
+    [Tooltip("Hide display when start")]
     public void waitForDisplay()
     {
         startScene = false;
     }
 
-    //Check Time Scale
+    [Tooltip("Check Time Scale")]
     void CheckTimeScale()
     {
         if(Time.timeScale == 0f)
@@ -275,7 +275,7 @@ public class UIManager : MonoBehaviour
         }
 
     }
-    //Get Speed & Milk
+    [Tooltip("Get Speed & Milk")]
     private void GetVariables()
     {
         //Get kph speed
@@ -289,7 +289,7 @@ public class UIManager : MonoBehaviour
 
     }
 
-    //Active GameClearUI
+    [Tooltip("Active GameClearUI")]
     private void GameClear()
     {
         if (checkGameClear)
@@ -310,13 +310,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    //Return to GameStart Scene
+    [Tooltip("Return to GameStart Scene")]
     public void BackToMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    //Check Boost When tap 16 times
+    [Tooltip("Check Boost When tap 16 times")]
     public void BoostStart()
     {
         boostCount = b_count.boostCount;
@@ -333,7 +333,7 @@ public class UIManager : MonoBehaviour
             changeToRocketStart.gameObject.SetActive(false);
         }
     }
-    //Time to countdown
+    [Tooltip("Time to countdown")]
     public void CountDown()
     {
         if (timeValue > 0)
@@ -350,7 +350,7 @@ public class UIManager : MonoBehaviour
         }
         DisplayTimer(timeValue);
     }
-    //DisplayTimer
+    [Tooltip("DisplayTimer")]
     public void DisplayTimer(float timeToDisplay)
     {
         if (timeToDisplay < 0)
@@ -364,7 +364,7 @@ public class UIManager : MonoBehaviour
 
         countdownTimer_Text.text = seconds + "";
     }
-    //TimeCountUp
+    [Tooltip("TimeCountUp")]
     private void TimeUp()
     {
         if (timeValueUp < maxTimeValue)

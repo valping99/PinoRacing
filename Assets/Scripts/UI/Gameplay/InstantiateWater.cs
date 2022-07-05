@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class InstantiateWater : MonoBehaviour
 {
+    #region Variables
     public GameObject waterDrop;
     public Transform transformParent;
     public Waterdrop waterObjects;
     private UIManager managers;
     private CharacterController charInput;
-
-    // Start is called before the first frame update
+    #endregion
+    #region Unity Method
     void Start()
     {
         transformParent = GameObject.FindGameObjectWithTag("RootObject").transform;
@@ -34,5 +35,5 @@ public class InstantiateWater : MonoBehaviour
             }
         }
     }
-
+    #endregion
 }

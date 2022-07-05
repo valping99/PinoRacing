@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class SpawnRootObject : MonoBehaviour
 {
+    #region Variables
     public Transform transformParent;
     public Character charColl;
     public CharacterController charInput;
     public GameObject rootObject;
     public GameObject currentRootObject;
-    // Start is called before the first frame update
+    #endregion
+    #region Unity Method
     void Start()
     {
         transformParent = FindObjectOfType<CharacterController>().transform;
@@ -32,4 +34,5 @@ public class SpawnRootObject : MonoBehaviour
             currentRootObject.transform.rotation = charColl.transform.rotation;
         }
     }
+    #endregion
 }

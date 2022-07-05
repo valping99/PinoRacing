@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PositionSticker : MonoBehaviour
 {
+    #region Variables
     public GameObject stick;
     private Character charColl;
     [SerializeField]
     private GameObject pinoModel;
-    // Start is called before the first frame update
+    #endregion
+    #region Unity Method
     void Start()
     {
         charColl = FindObjectOfType<Character>();
@@ -20,5 +22,5 @@ public class PositionSticker : MonoBehaviour
     {
         //stick.transform.position = charColl.transform.position;
     }
-
+    #endregion
 }
