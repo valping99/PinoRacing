@@ -5,13 +5,15 @@ using UnityEngine.Networking;
 
 public class FormImage : MonoBehaviour
 {
+    [Tooltip("Image URL")]
     public string screenShotURL = "https://unity3d.com/files/images/ogimg.jpg";
-    // Start is called before the first frame update
+
+
     void Start()
     {
         StartCoroutine(UploadImage());
     }
-
+    //Upload Image Class (Maybe not used)
     IEnumerator UploadImage()
     {
         yield return new WaitForEndOfFrame();

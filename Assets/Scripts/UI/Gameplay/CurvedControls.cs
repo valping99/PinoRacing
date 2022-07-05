@@ -5,7 +5,8 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class CurvedControls : MonoBehaviour
 {
-	[Range(-0.1f, 0.1f)]
+    #region Test Curved world
+    [Range(-0.1f, 0.1f)]
 	public float curveStrength = 0.0005f;
 
 	int m_CurveStrengthID;
@@ -19,4 +20,5 @@ public class CurvedControls : MonoBehaviour
 	{
 		Shader.SetGlobalFloat(m_CurveStrengthID, curveStrength);
 	}
+    #endregion
 }

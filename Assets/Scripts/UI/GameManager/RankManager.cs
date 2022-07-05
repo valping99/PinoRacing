@@ -19,11 +19,12 @@ public class RankManager : MonoBehaviour
 
     public bool checkRank = true;
     #endregion
+    #region Unity Method
     void Start()
     {
         managers = FindObjectOfType<UIManager>();
     }
-
+    #endregion
     #region class
     public void setRank()
     {

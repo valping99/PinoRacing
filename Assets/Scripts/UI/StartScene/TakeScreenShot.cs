@@ -5,18 +5,19 @@ using UnityEngine.UI;
 
 public class TakeScreenShot : MonoBehaviour
 {
+    #region Variables
     private static TakeScreenShot instance;
-
     private Camera myCamera;
     private bool takeScreenshotOnNextFrame;
-
-
+    #endregion
+    #region Unity Method
     private void Awake()
     {
         instance = this;
         myCamera = gameObject.GetComponent<Camera>();
     }
-
+    #endregion
+    #region Class
     private void OnPostRender()
     {
         if (takeScreenshotOnNextFrame)
@@ -48,4 +49,5 @@ public class TakeScreenShot : MonoBehaviour
     {
         instance.TakeScreenshot(width, height);
     }
+    #endregion
 }

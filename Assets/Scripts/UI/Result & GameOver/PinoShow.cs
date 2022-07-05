@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PinoShow : MonoBehaviour
 {
+    #region Variables
     [SerializeField]
     private int isSelectedPinos;
 
@@ -14,7 +15,8 @@ public class PinoShow : MonoBehaviour
     public CharacterSelected charSelect;
 
     public bool IsShowPinos;
-    // Start is called before the first frame update
+    #endregion
+    #region Unity Method
     void Start()
     {
         charSelect = FindObjectOfType<CharacterSelected>();
@@ -28,7 +30,8 @@ public class PinoShow : MonoBehaviour
             OnlyOne();
         }
     }
-
+    #endregion
+    #region Class
     void OnlyOne()
     {
         GameObject pinos = Instantiate(pinoOnly, this.transform.position, Quaternion.identity, transformParent);
@@ -46,4 +49,5 @@ public class PinoShow : MonoBehaviour
             }
         }
     }
+    #endregion
 }

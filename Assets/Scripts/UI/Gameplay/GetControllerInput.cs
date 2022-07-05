@@ -4,22 +4,19 @@ using UnityEngine;
 
 public class GetControllerInput : MonoBehaviour
 {
-    // Start is called before the first frame update
-
+    #region Variables
     public CharacterController charInput;
     public Character charColl;
+    #endregion
+    #region Unity Method
     void Awake()
     {
         charColl = FindObjectOfType<Character>();
         charInput = (CharacterController)FindObjectOfType(typeof(CharacterController));
         checkInput();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    #endregion
+    #region Class
 
     void checkInput()
     {
@@ -29,4 +26,5 @@ public class GetControllerInput : MonoBehaviour
             charColl.m_CharacterController = charInput;
         }
     }
+    #endregion
 }
