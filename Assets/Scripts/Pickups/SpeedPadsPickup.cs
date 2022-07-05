@@ -3,31 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>  
-/// Brief summary of what the class does
-/// </summary>
 public class SpeedPadsPickup : Pickup
 {
-
-    #region Variables
-
-    [Header("Parameters")]
-
-    public int amountSpeedPads = 1;
-    [Tooltip("Time boost when pick up")]
-    public float timeSpeedPads = 1f;
-
-    #endregion
 
     #region Class
     protected override void OnPicked(Character player)
     {
-        // SpeedPads speedPadsPickup = player.GetComponent<SpeedPads>();
-        // if (speedPadsPickup && speedPadsPickup.CanPickup())
-        // {
-        //     speedPadsPickup.Collect(amountSpeedPads);
-        //     Destroy(gameObject);
-        // }
         PlayPickupFeedback();
         Destroy(gameObject);
     }

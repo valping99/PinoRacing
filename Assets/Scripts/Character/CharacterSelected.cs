@@ -4,32 +4,18 @@ using UnityEngine;
 
 public class CharacterSelected : MonoBehaviour
 {
-    //SelectManager selectManager;
-    //public GameObject nameGameObject;
+    public UIManager uiManagers;
     public Transform transformParent;
     public Character nameCollider;
     public Character nameGameObject;
     public CharacterController charInput;
     public List<GameObject> playerList;
-    public UIManager uiManagers;
-    //public List<GameObject> roadToSpawn;
     public int isSelected;
-    //public float positionZToRespawn = 0;
-    //public float roadLength = 50;
-    //public Vector3 playerPosition;
-    //private Vector3 newRoad = new Vector3(0, 0, 0);
-
-    // Start is called before the first frame update
     void Start()
     {
         GameStart();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     //Select Pino & add to UIManager
     public void GameStart()
@@ -43,7 +29,6 @@ public class CharacterSelected : MonoBehaviour
             if (i == isSelected)
             {
                 //Get Pino to stage
-                // Debug.Log("Instantiate");
                 Instantiate(playerList[i - 1], new Vector3(0, 0, 0), Quaternion.identity, transformParent);
 
 

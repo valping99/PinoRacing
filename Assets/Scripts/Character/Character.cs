@@ -180,8 +180,6 @@ public class Character : MonoBehaviour
 
                 if (child.CompareTag("SpeedPads"))
                 {
-                    SpeedPads crystal = other.GetComponent<SpeedPads>();
-
                     m_CharacterController.timer = m_CharacterController.delay;
 
                     if (m_CurrentSpeed < m_MaxSpeed)
