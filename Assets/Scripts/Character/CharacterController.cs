@@ -222,7 +222,7 @@ public class CharacterController : MonoBehaviour
                 // axes (otherwise we would have to swipe more vertically...)
                 diff = new Vector2(diff.x / Screen.width, diff.y / Screen.width);
 
-                //we set the swip distance to trigger movement to 1% of the screen width
+                // we set the swip distance to trigger movement to 1% of the screen width
                 if (diff.magnitude > 0.01f)
                 {
                     if (!m_Stuns && diff.x < 0 && laneNumber > 1 && m_IsChangeLine)
