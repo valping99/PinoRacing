@@ -16424,7 +16424,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1300960298686953968, guid: e974722fcb5685f48bdc619d599490a2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e974722fcb5685f48bdc619d599490a2, type: 3}
 --- !u!4 &1619783703 stripped
 Transform:
@@ -21547,6 +21548,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FollowingPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700011495006251108, guid: 937c798f012c5404bbcb56d75ce7ce69,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5700011495006251108, guid: 937c798f012c5404bbcb56d75ce7ce69,
         type: 3}

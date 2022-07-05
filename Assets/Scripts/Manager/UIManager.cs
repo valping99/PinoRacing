@@ -170,7 +170,7 @@ public class UIManager : MonoBehaviour
             miniMap.gameObject.SetActive(false);
             lapsObjects.gameObject.SetActive(false);
             Time.timeScale = 0f;
-            Debug.Log("Pause");
+            // Debug.Log("Pause");
         }
         else
         {
@@ -182,7 +182,7 @@ public class UIManager : MonoBehaviour
             miniMap.gameObject.SetActive(true);
             checkPause = !checkPause;
             Time.timeScale = 1f;
-            Debug.Log("Resume");
+            // Debug.Log("Resume");
         }
     }
 

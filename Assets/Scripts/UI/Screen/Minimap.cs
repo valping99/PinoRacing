@@ -28,39 +28,10 @@ public class Minimap : MonoBehaviour
     {
         charPosition = new Vector3(charColl.transform.position.x, charColl.transform.position.y + 1, charColl.transform.position.z);
         Vector3 playerPosition = charColl.transform.position;
-        //CheckOnGround();
-        //charPosition = charColl.transform.position;
         MainRoad.transform.position = charPosition;
         playerMinimap.transform.position = playerPosition;
         playerMinimap.transform.eulerAngles = new Vector3(90, charColl.transform.eulerAngles.y, charColl.transform.eulerAngles.z);
         transform.eulerAngles = charColl.transform.eulerAngles;
     }
-    #endregion
-    #region Function
-    //public void MoveRoad()
-    //{
-    //    GameObject moveRoad = roads[0];
-    //    roads.Remove(moveRoad);
-    //    float newPosZ = roads[roads.Count - 1].transform.position.z + offset;
-    //    moveRoad.transform.position = new Vector3(0, 0, newPosZ);
-    //    roads.Add(moveRoad);
-    //}
-    /**
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("SpawnTrigger"))
-        {
-            MoveRoad();
-        }
-    }
-    **/
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.CompareTag("CheckGround"))
-    //    {
-    //        MoveRoad();
-    //    }
-    //}
     #endregion
 }

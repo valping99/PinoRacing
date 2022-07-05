@@ -115,10 +115,8 @@ public class ButtonSelectedUI : MonoBehaviour
 
     IEnumerator timeToTap()
     {
-
         yield return new WaitForSeconds(timer);
         timeCheckCD = true;
-        Debug.Log("IENumerator");
     }
     #endregion
 }

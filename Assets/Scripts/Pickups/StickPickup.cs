@@ -22,13 +22,6 @@ public class StickPickup : Pickup
 
     protected override void OnPicked(Character player)
     {
-        // Stick stickPickup = player.GetComponent<Stick>();
-        // if (stickPickup && stickPickup.CanPickup())
-        // {
-        //     stickPickup.TakeDamage(HurtAmount, gameObject);
-        //     PlayPickupFeedback();
-        //     Destroy(gameObject);
-        // }
         PlayPickupFeedback();
         Destroy(gameObject);
     }
