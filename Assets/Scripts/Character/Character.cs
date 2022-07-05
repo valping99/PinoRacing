@@ -58,6 +58,7 @@ public class Character : MonoBehaviour
         {
             Obstacles(other);
             Item(other);
+            Sound(other);
         }
         catch (System.Exception ex)
         {
@@ -81,7 +82,7 @@ public class Character : MonoBehaviour
         m_InitialMaxSpeed = m_MaxSpeed;
         m_CurrentSpeed = m_InitialSpeed;
 
-        m_SpeedMilk = 5f / 100f;
+        m_SpeedMilk = 0.05f;
     }
     void Obstacles(Collider other)
     {
@@ -179,15 +180,12 @@ public class Character : MonoBehaviour
 
                 if (child.CompareTag("SpeedPads"))
                 {
-                    SpeedPads crystal = other.GetComponent<SpeedPads>();
+                    m_CharacterController.timer = m_CharacterController.delay;
 
-                    if (!m_CharacterController.m_PadsIsBoosting)
-                    {
-                        if (m_CurrentSpeed < m_MaxSpeed)
-                            m_CurrentSpeed = m_MaxSpeed;
+                    if (m_CurrentSpeed < m_MaxSpeed)
+                        m_CurrentSpeed = m_MaxSpeed;
 
-                        m_CharacterController.m_PadsIsBoosting = true;
-                    }
+                    m_CharacterController.m_PadsIsBoosting = true;
 
                     Destroy(m_RootItem.gameObject);
                 }
@@ -195,9 +193,18 @@ public class Character : MonoBehaviour
             }
         }
     }
+
+    void Sound(Collider other)
+    {
+        if (other.gameObject.name == "New Game Object")
+        {
+            m_RootItem = other.gameObject;
+            Destroy(m_RootItem.gameObject);
+        }
+    }
     void FixSpeedUpdate()
     {
-        if (m_CurrentSpeed >= m_MaxSpeed && m_CharacterController.m_UpSpeed)
+        if (m_CharacterController.m_UpSpeed)
         {
             m_CharacterController.m_UpSpeed = false;
 
@@ -207,8 +214,8 @@ public class Character : MonoBehaviour
     }
     IEnumerator SpeedUp()
     {
-        yield return new WaitForSeconds(.3f);
-        m_MaxSpeed = m_InitialMaxSpeed * m_SpeedMilk * m_CurrentBottleMilk + m_InitialMaxSpeed;
+        yield return new WaitForSeconds(.01f);
+        m_MaxSpeed = (m_InitialMaxSpeed * m_SpeedMilk * m_CurrentBottleMilk) + m_InitialMaxSpeed;
     }
     #endregion
 }

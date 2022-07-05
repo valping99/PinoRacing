@@ -18,6 +18,7 @@ public class CharacterController : MonoBehaviour
     public Character m_Character;
     public PathCreator m_PathCreator;
     public GameObject spawnerObject;
+    public GameObject[] listSpawner;
     GameObject m_WallClearLag;
     UIManager uiManagers;
 
@@ -35,7 +36,9 @@ public class CharacterController : MonoBehaviour
     [HideInInspector] public bool m_Stuns;
     [HideInInspector, Range(0, 300)] public float m_CurrentSpeed;
     [HideInInspector, Range(0, 300)] public float m_MilkCollectSpeed;
-    [Range(0, 300)] float m_DriveSpeed;
+    [HideInInspector] public float timer;
+    [HideInInspector] public float delay;
+    [Range(0, 30000)] float m_DistanceLength;
     [Range(0, 4)] float m_CharacterPosition;
     [Range(0, 3)] int laneNumber;
 
@@ -48,6 +51,8 @@ public class CharacterController : MonoBehaviour
     Vector3 m_Direction;
     Quaternion m_Rotation;
 
+    float repeatRate;
+
     #endregion
 
     #region Unity Methods
@@ -59,6 +64,12 @@ public class CharacterController : MonoBehaviour
     }
 
     void Update()
+    {
+        WheelRotation();
+        ChangePosition();
+    }
+
+    void FixedUpdate()
     {
         if (!spawnerObject && !m_Character && !m_WallClearLag)
             GetComponentInGame();
@@ -80,14 +91,17 @@ public class CharacterController : MonoBehaviour
     {
         Debug.Log("Current Speed Controller: " + m_CurrentSpeed +
         " Current Speed: " + m_Character.m_CurrentSpeed +
-        " Driver Speed: " + m_DriveSpeed + " Max Speed: " + m_Character.m_MaxSpeed);
+        " Distance Length: " + m_DistanceLength + " Max Speed: " + m_Character.m_MaxSpeed);
     }
     void InitialComponent()
     {
         m_MilkCollectSpeed = m_Character.m_InitialSpeed;
 
-        laneNumber = 2;
         m_CharacterPosition = 0;
+        timer = 0;
+        laneNumber = 2;
+        delay = 2;
+        repeatRate = delay;
 
         m_IsChangeLine = true;
         m_VelocityUp = true;
@@ -98,26 +112,21 @@ public class CharacterController : MonoBehaviour
         m_PadsIsBoosting = false;
         m_UpSpeed = false;
         m_Stuns = false;
+
+        listSpawner[1].gameObject.transform.localPosition = new Vector3(slideLength, 0, 0);
+        listSpawner[2].gameObject.transform.localPosition = new Vector3(-slideLength, 0, 0);
     }
     void MoveInput()
     {
         CharacterMove();
-
-        ChangePosition();
-
         GotStuns();
-
         SpeedUp();
-
-        WheelRotation();
     }
     void WheelRotation()
     {
         if (!m_Stuns && m_CurrentSpeed >= 1f)
             foreach (var wheel in m_Character.wheelCream)
-                wheel.transform.Rotate(Vector3.right, 180 * m_Character.m_CurrentSpeed * Time.deltaTime);
-
-
+                wheel.transform.Rotate(Vector3.right, 360 * m_Character.m_CurrentSpeed * Time.deltaTime);
     }
     void GetComponentInGame()
     {
@@ -127,15 +136,12 @@ public class CharacterController : MonoBehaviour
     }
     void GotStuns()
     {
-
         if (m_Stuns)
         {
-
             m_Character.animStuns.applyRootMotion = false;
             m_Character.animShadow.applyRootMotion = false;
             m_Character.animStuns.SetBool("isCrash", m_Stuns);
             m_Character.animShadow.SetBool("isCrash", m_Stuns);
-            // m_Character.m_CarShadow.gameObject.SetActive(!m_Stuns);
 
             StartCoroutine(ReturnRotationStun());
         }
@@ -154,36 +160,42 @@ public class CharacterController : MonoBehaviour
     {
         CheckSpeed();
 
-        m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_Character.m_CurrentSpeed, m_Character.m_InitialVelocity * Time.deltaTime);
+        m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_Character.m_CurrentSpeed, Time.deltaTime);
 
-        m_DriveSpeed += (m_CurrentSpeed * Time.deltaTime) / 10;
+        m_DistanceLength += (m_CurrentSpeed * Time.deltaTime) / 10;
 
-        Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed);
-        Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed - 20f);
-        Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DriveSpeed + 60f);
+        Vector3 _tempDistance = m_PathCreator.path.GetPointAtDistance(m_DistanceLength);
+        Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DistanceLength - 20f);
+        Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DistanceLength + 60f);
 
-        Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 7f);
-        Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed + 60f);
-        Quaternion _tempRotationClearLag = m_PathCreator.path.GetRotationAtDistance(m_DriveSpeed - 7f);
+        Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DistanceLength + 7f);
+        Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DistanceLength + 60f);
+        Quaternion _tempRotationClearLag = m_PathCreator.path.GetRotationAtDistance(m_DistanceLength - 7f);
 
         m_Character.transform.localPosition = _tempDistance;
-        spawnerObject.transform.localPosition = _tempDistanceSpawner;
+        spawnerObject.transform.position = _tempDistanceSpawner;
         m_WallClearLag.transform.localPosition = _tempDistanceClearLag;
 
 
-        m_Character.transform.localRotation = Quaternion.Lerp(m_Character.transform.localRotation, _tempRotation, 2f * Time.deltaTime);
+        m_Character.transform.localRotation = Quaternion.Lerp(m_Character.transform.localRotation, _tempRotation, 7f * Time.deltaTime);
         spawnerObject.transform.localRotation = Quaternion.Lerp(spawnerObject.transform.localRotation, _tempRotationSpawner, 2f * Time.deltaTime);
         m_WallClearLag.transform.localRotation = Quaternion.Lerp(m_WallClearLag.transform.localRotation, _tempRotationClearLag, 7f * Time.deltaTime);
 
         spawnerObject.transform.localRotation = _tempRotationSpawner;
 
         //Test boost in unity editor
-        if (Input.GetKeyDown(KeyCode.R))
-            DashBoost();
+        if (Input.GetKey(KeyCode.R))
+            m_PadsIsBoosting = true;
 
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKey(KeyCode.M))
         {
-            m_Character.m_CurrentBottleMilk += 1;
+            m_Character.m_CurrentBottleMilk += 500;
+            ChangeSpeed();
+        }
+        if (Input.GetKey(KeyCode.N))
+        {
+            if (m_Character.m_CurrentBottleMilk >= 500)
+                m_Character.m_CurrentBottleMilk -= 500;
             ChangeSpeed();
         }
 
@@ -210,7 +222,7 @@ public class CharacterController : MonoBehaviour
                 // axes (otherwise we would have to swipe more vertically...)
                 diff = new Vector2(diff.x / Screen.width, diff.y / Screen.width);
 
-                //we set the swip distance to trigger movement to 1% of the screen width
+                // we set the swip distance to trigger movement to 1% of the screen width
                 if (diff.magnitude > 0.01f)
                 {
                     if (!m_Stuns && diff.x < 0 && laneNumber > 1 && m_IsChangeLine)
@@ -246,18 +258,21 @@ public class CharacterController : MonoBehaviour
         if (m_Character.m_CurrentSpeed > m_Character.m_MaxSpeed)
             m_Character.m_CurrentSpeed = m_Character.m_MaxSpeed;
 
+        CheckBoostPad();
+
         if (m_PadsIsBoosting)
         {
             bool _isBoosting = true;
 
-            StartCoroutine(CheckBoost());
-
             if (_isBoosting)
             {
-                m_Character.m_CurrentSpeed += 20;
+                float _speed = m_Character.m_CurrentSpeed * 0.2f;
+                m_Character.m_CurrentSpeed += _speed;
                 _isBoosting = false;
             }
         }
+
+        timer -= Time.deltaTime;
     }
     void ChangeLane(int _direction)
     {
@@ -305,6 +320,7 @@ public class CharacterController : MonoBehaviour
         if (m_PadsIsBoosting || m_Stuns)
             StartCoroutine(CheckRemainBoost());
 
+        m_UpSpeed = true;
     }
     public void DashBoost()
     {
@@ -313,11 +329,13 @@ public class CharacterController : MonoBehaviour
 
         m_IsRemainBoost = true;
     }
-    IEnumerator CheckBoost()
+    void CheckBoostPad()
     {
-        yield return new WaitForSeconds(3f);
-
-        m_PadsIsBoosting = false;
+        if (timer < 0)
+        {
+            timer = repeatRate;
+            m_PadsIsBoosting = false;
+        }
     }
     IEnumerator CheckRemainBoost()
     {
@@ -337,10 +355,7 @@ public class CharacterController : MonoBehaviour
     }
     IEnumerator ReturnRotationStun()
     {
-        // yield return new WaitForSeconds(1f);
-
-        yield return new WaitForSeconds(2f);
-        // m_Character.m_CarShadow.gameObject.SetActive(true);
+        yield return new WaitForSeconds(4f);
 
         m_Character.m_Stuns = false;
         m_Stuns = false;
@@ -348,7 +363,6 @@ public class CharacterController : MonoBehaviour
         m_Character.animShadow.applyRootMotion = true;
 
         m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
-        // m_Character.childRootObject.transform.localPosition = Vector3.zero;
         m_Character.rootObject.transform.localRotation = Quaternion.identity;
 
         m_Character.animStuns.SetBool("isCrash", m_Stuns);
@@ -370,5 +384,6 @@ public class CharacterController : MonoBehaviour
         m_VelocityUp = true;
         m_UpSpeed = false;
     }
+
     #endregion
 }

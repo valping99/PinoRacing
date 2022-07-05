@@ -26,6 +26,13 @@ TagManager:
   - Ice
   - Fire
   - ButtonStartScene
+  - Shadow
+  - LapNumbers
+  - SpawnX
+  - SpawnZ
+  - CheckSpawnX
+  - BGM
+  - SoundManagers
   layers:
   - Default
   - TransparentFX
