@@ -116,7 +116,7 @@ public class UIManager : MonoBehaviour
         checkPlaying = true;
         GetComponent();
         StartGame();
-        audio_BGM.PlaySound("BGM");
+        audio_BGM.PlaySound(SoundType.BGM);
     }
     private void GetComponent()
     {
@@ -229,7 +229,7 @@ public class UIManager : MonoBehaviour
                 CountDown();
                 if (checkCount)
                 {
-                    audio_source.PlaySound("CountDown");
+                    audio_source.PlaySound(SoundType.CountDown);
                     StartCoroutine(CountNumber());
                     checkCount = false;
                 }
@@ -410,8 +410,8 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 0f;
             miniMap.gameObject.SetActive(false);
         }
-        audio_BGM.PlaySound("Stop");
-        audio_BGM.PlaySound("Clear");
+        audio_BGM.PlaySound(SoundType.Stop);
+        audio_BGM.PlaySound(SoundType.Clear);
     }
 
     //Check BoostSpeed

@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8521599648283979536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8521599648283979542}
+  - component: {fileID: 8521599648283979537}
+  - component: {fileID: 8521599648283979540}
+  m_Layer: 0
+  m_Name: SelectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8521599648283979542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8521599648283979536}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 336.12396, y: 945.7656, z: 20.744507}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8521599648283979537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8521599648283979536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a80f280a55ceb14c944bc48087494cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charSelect: {fileID: 0}
+  uiManagers: {fileID: 0}
+  animatorSelected: {fileID: 0}
+  pinoAnimatorRotate: {fileID: 0}
+  buttonAction: {fileID: 0}
+  buttonSelectStage: {fileID: 0}
+  selectedUI: {fileID: 8521599648283979540}
+  audio_source: {fileID: 0}
+  selectedStage: 0
+  selectedPino: 0
+  isSelectScene_01: 0
+  isSelectScene_02: 0
+  isSelectScene_03: 0
+  isSelectScene_04: 0
+  isSelectStage_01: 0
+  isSelectStage_02: 0
+  isSelectStage_03: 0
+  isSelectPino_01: 0
+  isSelectPino_02: 0
+  isSelectPino_03: 0
+  SelectPinos: {fileID: 0}
+  Pino_01: {fileID: 0}
+  Pino_02: {fileID: 0}
+  Pino_03: {fileID: 0}
+  scene_01: {fileID: 0}
+  scene_02: {fileID: 0}
+  scene_03: {fileID: 0}
+  scene_04: {fileID: 0}
+  selectStage_01: {fileID: 0}
+  selectStage_02: {fileID: 0}
+  selectStage_03: {fileID: 0}
+  typeOfPino_01: {fileID: 0}
+  nameOfPino_01: {fileID: 0}
+  typeOfPino_02: {fileID: 0}
+  nameOfPino_02: {fileID: 0}
+  typeOfPino_03: {fileID: 0}
+  nameOfPino_03: {fileID: 0}
+  statusOfPino_01: {fileID: 0}
+  statusOfPino_02: {fileID: 0}
+  statusOfPino_03: {fileID: 0}
+  Text_TapToStart: {fileID: 0}
+--- !u!114 &8521599648283979540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8521599648283979536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3074d2ced5355f4d8c10096cf1fbf53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected: {fileID: 8521599648283979537}
+  ActiveStage1: {fileID: 0}
+  ActiveStage2: {fileID: 0}
+  timeCheckCD: 1
+  timer: 0.8
