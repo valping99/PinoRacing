@@ -9,6 +9,12 @@ mergeInto(LibraryManager.library, {
       window.pinoGameJSLibRegisterScore(score);
     }
   },
+  GetHighscore: function (text) {
+    if (window.pinoGameJSLibGetHighscore) {
+      return window.pinoGameJSLibGetHighscore(Pointer_stringify(text));
+    }
+    return -1;
+  },
   ShareResult: function (text) {
     if (window.pinoGameJSLibShareResult) {
       window.pinoGameJSLibShareResult(Pointer_stringify(text));
