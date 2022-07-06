@@ -5257,17 +5257,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddb6a20cfee1d4a4791885a18a2d7305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio_source: {fileID: 929251063}
+  m_AudioSource: {fileID: 929251063}
   clearBGM: {fileID: 0}
   gameBGM: {fileID: 0}
-  topScreen: {fileID: 0}
-  itemSE: {fileID: 0}
-  damageSE: {fileID: 0}
-  dashBoardSE: {fileID: 0}
-  stingPickSE: {fileID: 0}
-  tapSE: {fileID: 0}
-  countDownSE: {fileID: 0}
-  finishSE: {fileID: 0}
+  topScreenBGM: {fileID: 0}
+  milkSound: {fileID: 0}
+  iceSound: {fileID: 0}
+  dashBoardSound: {fileID: 0}
+  stickSound: {fileID: 0}
+  tapSound: {fileID: 0}
+  countDownSound: {fileID: 0}
+  finishSound: {fileID: 0}
   itemIndication: {fileID: 0}
   rankDisplay: {fileID: 0}
 --- !u!82 &929251063
@@ -8073,6 +8073,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 22586968516271796, guid: f151432db6208db4881342731ffc4264,
+        type: 3}
+      propertyPath: m_AudioSource
+      value: 
+      objectReference: {fileID: 1455621044}
     - target: {fileID: 22586968516271797, guid: f151432db6208db4881342731ffc4264,
         type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -8099,6 +8104,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddb6a20cfee1d4a4791885a18a2d7305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1455621044 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 22586968516271797, guid: f151432db6208db4881342731ffc4264,
+    type: 3}
+  m_PrefabInstance: {fileID: 1455621041}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1464131901
 GameObject:
   m_ObjectHideFlags: 0

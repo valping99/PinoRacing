@@ -47,7 +47,8 @@ public class StopSound : Command
     }
 }
 
-public class PlayLoopSound : Command{
+public class PlayLoopSound : Command
+{
     public override void Execute(AudioSource source, AudioClip audioClip, float volume)
     {
         // Get sound
@@ -62,4 +63,9 @@ public class PlayLoopSound : Command{
         source.volume = volume;
         source.Play();
     }
+}
+public enum SoundType
+{
+    Tap, TopScreen, CountDown, Milk, Ice,
+    Finish, BGM, Clear, Indication, Rank, DashBoost, Stop, Stick
 }

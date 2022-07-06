@@ -291,7 +291,7 @@ public class SelectManager : MonoBehaviour
 
     public void TapSE()
     {
-        audio_source.PlaySound("Tap");
+        audio_source.PlaySound(SoundType.Tap);
     }
 
 

@@ -22,12 +22,12 @@ public class Pickup : MonoBehaviour
     [Tooltip("Distance the item will move up and down")]
     public float BobbingAmount = 1f;
 
-    [Tooltip("Rotation angle per second")] 
+    [Tooltip("Rotation angle per second")]
     public float RotatingSpeed = 360f;
 
 
     [Header("Variables")]
-    [Tooltip("Sound played on pickup")] 
+    [Tooltip("Sound played on pickup")]
     public AudioClip PickupSfx;
 
     public Rigidbody PickupRigidbody { get; private set; }
@@ -107,7 +107,15 @@ public class Pickup : MonoBehaviour
 
     public void PlayPickupFeedback()
     {
-        m_SoundManager.PlaySound(PickupSfx.name);
+        if (PickupSfx.name == "No5")
+            m_SoundManager.PlaySound(SoundType.Ice); // ice
+        else if (PickupSfx.name == "No4")
+            m_SoundManager.PlaySound(SoundType.Milk); // milk
+        else if (PickupSfx.name == "No11")
+            m_SoundManager.PlaySound(SoundType.DashBoost); // dash
+        else if (PickupSfx.name == "No12")
+            m_SoundManager.PlaySound(SoundType.Stick); // stick
+
     }
 
 #if UNITY_EDITOR
