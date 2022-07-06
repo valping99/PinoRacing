@@ -33,6 +33,10 @@ TagManager:
   - CheckSpawnX
   - BGM
   - SoundManagers
+  - TutorialSheet
+  - Title_Tutorial
+  - Content_Tutorial
+  - Sheet_Tutorial
   layers:
   - Default
   - TransparentFX
