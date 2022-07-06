@@ -41,9 +41,9 @@ public class RaceCourse : MonoBehaviour
         {
             if (lapCourse >= lapToWin)
             {
-                audio_sources.PlaySound("Finish");
-                audio_BGM.PlaySound("Stop");
-                audio_BGM.PlaySound("Clear");
+                audio_sources.PlaySound(SoundType.Finish);
+                audio_BGM.PlaySound(SoundType.Stop);
+                audio_BGM.PlaySound(SoundType.Clear);
                 uiManagers.checkGameClear = true;
                 lapCourse = 1;
             }
