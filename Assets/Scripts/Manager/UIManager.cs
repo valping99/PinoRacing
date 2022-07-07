@@ -47,6 +47,7 @@ public class UIManager : MonoBehaviour
     public bool startScene = true;
     public bool endGame;
     private bool checkCount = true;
+    private bool checkSoundOver = true;
 
     [Header("Object UI")]
     [SerializeField]
@@ -309,6 +310,7 @@ public class UIManager : MonoBehaviour
             }
             Time.timeScale = 0f;
             endGame = true;
+            checkGameClear = false;
         }
     }
 
@@ -381,6 +383,17 @@ public class UIManager : MonoBehaviour
         DisplayTimerCountUp(timeValueUp);
     }
 
+
+    void checkSoundGameOver()
+    {
+        if (checkSoundOver)
+        {
+            audio_BGM.PlaySound(SoundType.Stop);
+            audio_BGM.PlaySound(SoundType.Clear);
+            checkSoundOver = false;
+        }
+
+    }
     //Show Timer
     private void DisplayTimerCountUp(float timeToDisplayCountUp)
     {
@@ -411,9 +424,8 @@ public class UIManager : MonoBehaviour
             mainSceneUI.gameObject.SetActive(false);
             Time.timeScale = 0f;
             miniMap.gameObject.SetActive(false);
+            checkSoundGameOver();
         }
-        audio_BGM.PlaySound(SoundType.Stop);
-        audio_BGM.PlaySound(SoundType.Clear);
     }
 
     //Check BoostSpeed
