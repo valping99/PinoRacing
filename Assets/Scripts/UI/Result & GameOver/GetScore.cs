@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetScore : MonoBehaviour
+public class GetScore : PinoArBehaviour
 {
     #region Variables
     [Tooltip("Get Component")]
@@ -27,6 +27,10 @@ public class GetScore : MonoBehaviour
     {
         GetValue();
         SetScore();
+        if(managers.endGame){
+            RegisterScore((int)m_score);
+            managers.endGame = false;
+        }
     }
     #endregion
     #region Class
@@ -39,6 +43,11 @@ public class GetScore : MonoBehaviour
     {
         m_timeRemaining = m_maxTimer - m_currentTimer;
         m_score = m_tempScore * m_timeRemaining;
+    }
+
+    public void RegisterScore(int score)
+    {
+        PinoArBehaviour.RegisterScore(score);
     }
     #endregion
 }

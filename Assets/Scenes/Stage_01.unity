@@ -22006,6 +22006,41 @@ PrefabInstance:
       propertyPath: transformParent
       value: 
       objectReference: {fileID: 2062574113}
+    - target: {fileID: 8674238104440327606, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: textRank.Array.data[0]
+      value: Rank F
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674238104440327606, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: textRank.Array.data[1]
+      value: Rank E
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674238104440327606, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: textRank.Array.data[2]
+      value: Rank D
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674238104440327606, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: textRank.Array.data[3]
+      value: Rank C
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674238104440327606, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: textRank.Array.data[4]
+      value: Rank B
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674238104440327606, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: textRank.Array.data[5]
+      value: Rank A
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674238104440327606, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: textRank.Array.data[6]
+      value: Rank S
+      objectReference: {fileID: 0}
     - target: {fileID: 8674238104440327607, guid: d0a807eaa2daf134485f73596a9c3f27,
         type: 3}
       propertyPath: m_Pivot.x

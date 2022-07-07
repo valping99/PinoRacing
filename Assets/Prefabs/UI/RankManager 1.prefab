@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8674238104440327561}
   - component: {fileID: 8674238104440327606}
   - component: {fileID: 8674238104812357036}
+  - component: {fileID: 3512661206096041806}
   m_Layer: 0
   m_Name: RankManager 1
   m_TagString: Untagged
@@ -87,6 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca4d53b18d2a3247b89409012686afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  box: {fileID: 0}
+  arCamera: {fileID: 0}
   listRanking:
   - {fileID: 3880250482274083958, guid: 1a5d7cfae1f91fd479b234f61b4f2c9a, type: 3}
   - {fileID: 8180426565854503868, guid: f58a2526098f0a54ca257251d701fbbf, type: 3}
@@ -97,13 +100,13 @@ MonoBehaviour:
   - {fileID: 6993428252251226603, guid: b5c19e1b95f9e8f4e81ad35ec6498e9b, type: 3}
   rectTransform: {fileID: 0}
   textRank:
-  - Text (Rank F)
-  - Text (Rank E)
-  - Text (Rank D)
-  - Text (Rank C)
-  - Text (Rank B)
-  - Text (Rank A)
-  - Text (Rank S)
+  - Rank F
+  - Rank E
+  - Rank D
+  - Rank C
+  - Rank B
+  - Rank A
+  - Rank S
   transformParent: {fileID: 0}
   setRankByTimed: 5e010000fa000000c800000096000000780000006400000032000000
   checkRank: 1
@@ -119,6 +122,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb4e41587cb5b54cb8120b9d48d09ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  box: {fileID: 0}
+  arCamera: {fileID: 0}
+  managers: {fileID: 0}
+  m_score: 0
+  m_timeRemaining: 0
+  m_currentTimer: 0
+  m_maxTimer: 0
+  m_tempScore: 80
+--- !u!114 &3512661206096041806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8674238104440327604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb4e41587cb5b54cb8120b9d48d09ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  box: {fileID: 0}
+  arCamera: {fileID: 0}
   managers: {fileID: 0}
   m_score: 0
   m_timeRemaining: 0
