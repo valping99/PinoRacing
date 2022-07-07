@@ -45,6 +45,7 @@ public class UIManager : MonoBehaviour
     public bool checkRunning = false;
     public bool checkDashBoost = false;
     public bool startScene = true;
+    public bool endGame;
     private bool checkCount = true;
 
     [Header("Object UI")]
@@ -307,6 +308,7 @@ public class UIManager : MonoBehaviour
                 rankManagers.setRank();
             }
             Time.timeScale = 0f;
+            endGame = true;
         }
     }
 

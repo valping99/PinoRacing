@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RankManager : MonoBehaviour
+public class RankManager : PinoArBehaviour
 {
     #region Variables
     public List<GameObject> listRanking;
@@ -46,9 +46,24 @@ public class RankManager : MonoBehaviour
             }
         }
         // Debug.Log(values);
+        
         managers.messageText.text = textRank[values];
         Instantiate(listRanking[values], rectTransform.transform.position, Quaternion.identity, transformParent);
         checkRank = false;
+
+        // Pino AR
+        RegisterRankingKey(textRank[values]);
+        GetHighscore(textRank[values]);
+    }
+
+    public void RegisterRankingKey(string key)
+    {
+        PinoArBehaviour.RegisterRankingKey(key);
+    }
+    
+    public void GetHighscore(string key)
+    {
+        PinoArBehaviour.GetHighscore(key);
     }
     #endregion
 }
