@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class PinoArBehaviorSample : PinoArBehaviour
 {
-    #region  //UI‚ÌQÆ//
+    #region  //UIã®å‚ç…§//
 
-    [Header("‚±‚±‚©‚çSample")]
+    [Header("ã“ã“ã‹ã‚‰Sample")]
     [Space(20)]
     [SerializeField]
     private Text scoreLabel;
     [SerializeField]
     private Text rankingLabel;
+    [SerializeField]
+    private Text highscoreLabel;
     [SerializeField]
     private Text nicknameLabel;
     [SerializeField]
@@ -24,13 +26,15 @@ public class PinoArBehaviorSample : PinoArBehaviour
     [SerializeField]
     private Button minusButton;
     [SerializeField]
+    private Button highscoreButton;
+    [SerializeField]
     private Button quitButton;
 
-    #endregion //UI‚ÌQÆ//
+    #endregion //UIã®å‚ç…§//
 
-    #region //î•ñƒL[ƒv—p•Ï”//
+    #region //æƒ…å ±ã‚­ãƒ¼ãƒ—ç”¨å¤‰æ•°//
     private int score = 0;
-    #endregion //î•ñƒL[ƒv—p•Ï”//
+    #endregion //æƒ…å ±ã‚­ãƒ¼ãƒ—ç”¨å¤‰æ•°//
 
     private void Start()
     {
@@ -39,9 +43,12 @@ public class PinoArBehaviorSample : PinoArBehaviour
         plusButton.onClick.AddListener(OnClickPointUp);
         minusButton.onClick.AddListener(OnClickPointDown);
         quitButton.onClick.AddListener(OnClickQuit);
+
+        highscoreButton.onClick.AddListener(ReloadHighscore);
+        ReloadHighscore();
     }
 
-    #region //ƒ{ƒ^ƒ“ƒCƒxƒ“ƒg//
+    #region //ãƒœã‚¿ãƒ³ã‚¤ãƒ™ãƒ³ãƒˆ//
 
     public void SetNickname(string s)
     {
@@ -80,14 +87,20 @@ public class PinoArBehaviorSample : PinoArBehaviour
         QuitGame();
     }
 
-    #endregion //ƒ{ƒ^ƒ“ƒCƒxƒ“ƒg//
+    private void ReloadHighscore() {
+        int h = GetHighscore("sample");
+        highscoreLabel.text = "highscore: " + h.ToString();
+    }
 
-    #region //’ÊMŠ®—¹‚Ìˆ—//
+    #endregion //ãƒœã‚¿ãƒ³ã‚¤ãƒ™ãƒ³ãƒˆ//
+
+    #region //é€šä¿¡å®Œäº†æ™‚ã®å‡¦ç†//
 
     override protected void OnRegisteredRanking(int ranking, bool isHighScore)
     {
         rankingLabel.text = ranking + "st / " + isHighScore.ToString();
+        ReloadHighscore();
     }
 
-    #endregion //’ÊMŠ®—¹‚Ìˆ—//
+    #endregion //é€šä¿¡å®Œäº†æ™‚ã®å‡¦ç†//
 }
