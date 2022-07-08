@@ -148,6 +148,7 @@ public class Character : MonoBehaviour
                     }
                     m_CharacterController.ChangeSpeed();
 
+                    MediatorPlayer.GetMilk();
                     Destroy(m_RootItem.gameObject);
                 }
 
@@ -175,6 +176,7 @@ public class Character : MonoBehaviour
                     }
                     m_CharacterController.ChangeSpeed();
 
+                    MediatorPlayer.GetMilk();
                     Destroy(m_RootItem.gameObject);
                 }
 
