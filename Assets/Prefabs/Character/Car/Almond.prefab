@@ -600,7 +600,7 @@ MonoBehaviour:
   childRootObject: {fileID: 2073973099249101381}
   m_MilkPrefabs: {fileID: 1154960059834158301, guid: f905d99bc7465f045940c34e7810168a,
     type: 3}
-  m_InitialVelocity: 1
+  m_InitialAcceleration: 1
   m_InitialSpeed: 50
   m_MaxSpeed: 150
   m_CurrentBottleMilk: 0

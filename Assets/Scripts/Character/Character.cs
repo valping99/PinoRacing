@@ -19,8 +19,8 @@ public class Character : MonoBehaviour
     public GameObject childRootObject;
     public GameObject m_MilkPrefabs;
 
-    [Header("Initial Values"), Tooltip("Initial Velocity of the character"), Range(0, 5)]
-    public int m_InitialVelocity;
+    [Header("Initial Values"), Tooltip("Initial acceleration of the character"), Range(0, 5)]
+    public int m_InitialAcceleration;
     [Tooltip("Speed initial of the character - min speed"), Range(0, 300)]
     public float m_InitialSpeed;
     [Tooltip("Max speed of the character"), Range(0, 300)]
