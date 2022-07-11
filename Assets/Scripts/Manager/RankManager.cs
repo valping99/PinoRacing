@@ -32,6 +32,11 @@ public class RankManager : PinoArBehaviour
         int timer = (int)managers.currentTime;
         for (int i = 0; i < setRankByTimed.Length; i++)
         {
+            if (i >= setRankByTimed.Length)
+            {
+                values = i - 1;
+                return;
+            }
             if (timer >= setRankByTimed[i] && timer < setRankByTimed[i - 1])
             {
                 if (i >= 1)

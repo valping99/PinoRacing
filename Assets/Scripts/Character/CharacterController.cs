@@ -191,12 +191,14 @@ public class CharacterController : MonoBehaviour
         {
             m_Character.m_CurrentBottleMilk += 500;
             ChangeSpeed();
+            MediatorPlayer.GetMilk();
         }
         if (Input.GetKey(KeyCode.N))
         {
             if (m_Character.m_CurrentBottleMilk >= 500)
                 m_Character.m_CurrentBottleMilk -= 500;
             ChangeSpeed();
+            MediatorPlayer.GetMilk();
         }
 
 #if UNITY_EDITOR || UNITY_STANDALONE
