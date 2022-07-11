@@ -3356,7 +3356,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
 --- !u!114 &399185230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13250,7 +13250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824d4b853d16b9946949dcee8570fe60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableTutorialButton: 1
+  enableTutorialButton: 0
   titleList:
   - {fileID: 5689431118078016656, guid: 650cb2c41a81ed746923d113083d6669, type: 3}
   - {fileID: 5689431118078016656, guid: 34f45509c8b7e8947bdae784348bf76f, type: 3}
