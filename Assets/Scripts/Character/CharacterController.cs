@@ -150,8 +150,8 @@ public class CharacterController : MonoBehaviour
     {
         if (m_VelocityUp && !m_Stuns && m_CurrentSpeed < m_Character.m_MaxSpeed && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
         {
-            m_Character.m_CurrentSpeed += (m_Character.m_InitialVelocity + (m_Character.m_CurrentBottleMilk * 5f));
-            m_MilkCollectSpeed += (m_Character.m_InitialVelocity + (m_Character.m_CurrentBottleMilk * 5f));
+            m_Character.m_CurrentSpeed += m_Character.m_InitialAcceleration;
+            m_MilkCollectSpeed += m_Character.m_InitialAcceleration;
             m_VelocityUp = false;
             StartCoroutine(VelocityUp());
         }
