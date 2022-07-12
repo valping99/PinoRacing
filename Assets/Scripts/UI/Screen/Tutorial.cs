@@ -51,9 +51,9 @@ public class Tutorial : MonoBehaviour
 
     void Update()
     {
-        EnableButton();
+        //EnableButton();
         GetVariables();
-        ActiveTutorialSheet();
+        //ActiveTutorialSheet();
         CheckChangeSheet();
         //ShowCurrentSheet();
     }
@@ -62,10 +62,12 @@ public class Tutorial : MonoBehaviour
     public void BackToMenu()
     {
         checkActive = false;
+        ActiveTutorialSheet();
     }
     public void TutorialButton()
     {
         checkActive = true;
+        ActiveTutorialSheet();
     }
     public void ChangeLeft()
     {
@@ -117,11 +119,12 @@ public class Tutorial : MonoBehaviour
         }
     }
     //Enable/Hide Button when click
-    void EnableButton()
+    public void EnableButton()
     {
         if (enableTutorialButton)
         {
-            buttonToActive.gameObject.SetActive(true);
+            //Remove show button
+            //buttonToActive.gameObject.SetActive(true);
         }
         else
         {
@@ -141,7 +144,8 @@ public class Tutorial : MonoBehaviour
             }
             else
             {
-                buttonToActive.gameObject.SetActive(true);
+                //Remove show button
+                //buttonToActive.gameObject.SetActive(true);
                 tutorialScene.gameObject.SetActive(false);
             }
         }

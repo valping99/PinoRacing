@@ -281,7 +281,9 @@ public class SelectManager : MonoBehaviour
         isSelectPino_02 = false;
         isSelectPino_03 = false;
 
-        isSelectScene_02 = true;
+        //Add isSelectScene_02 & change isSelectScene_02 -> 01
+        isSelectScene_01 = true;
+        isSelectScene_02 = false;
         isSelectScene_03 = false;
         isSelectScene_04 = false;
 
