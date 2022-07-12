@@ -24,7 +24,7 @@ public class Tutorial : MonoBehaviour
     public int currentSheet;
     public int totalSheet;
 
-    [Header("Check active")]
+    [Header("Check Active")]
     public bool checkActive;
     public GameObject buttonToActive;
 
