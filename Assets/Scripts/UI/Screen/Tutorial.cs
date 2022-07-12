@@ -116,7 +116,7 @@ public class Tutorial : MonoBehaviour
             }
         }
     }
-
+    //Enable/Hide Button when click
     void EnableButton()
     {
         if (enableTutorialButton)

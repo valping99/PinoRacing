@@ -20430,7 +20430,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
 --- !u!114 &2071708846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21780,6 +21780,11 @@ PrefabInstance:
       objectReference: {fileID: 664379664}
     - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
         type: 3}
+      propertyPath: ListCountdown.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
+        type: 3}
       propertyPath: ListCountdown.Array.data[0]
       value: 
       objectReference: {fileID: 2094714713}
@@ -22040,6 +22045,41 @@ PrefabInstance:
         type: 3}
       propertyPath: textRank.Array.data[6]
       value: Rank S
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674238104440327606, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: setRankByTimed.Array.data[0]
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674238104440327606, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: setRankByTimed.Array.data[1]
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674238104440327606, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: setRankByTimed.Array.data[2]
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674238104440327606, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: setRankByTimed.Array.data[3]
+      value: 230
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674238104440327606, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: setRankByTimed.Array.data[4]
+      value: 210
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674238104440327606, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: setRankByTimed.Array.data[5]
+      value: 195
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674238104440327606, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: setRankByTimed.Array.data[6]
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 8674238104440327607, guid: d0a807eaa2daf134485f73596a9c3f27,
         type: 3}
