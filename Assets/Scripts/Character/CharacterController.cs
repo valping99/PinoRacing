@@ -47,6 +47,7 @@ public class CharacterController : MonoBehaviour
     bool m_IsGotMilk;
     bool m_VelocityUp;
     bool m_IsChangePosition;
+    bool m_IsDebugOn;
 
     Vector3 m_Direction;
     Quaternion m_Rotation;
@@ -78,6 +79,9 @@ public class CharacterController : MonoBehaviour
 
 #if UNITY_EDITOR || UNITY_STANDALONE
 
+        if (Input.GetKeyDown(KeyCode.B))
+            m_IsDebugOn = !m_IsDebugOn;
+
 #else
         DebugLog();
 #endif
@@ -90,8 +94,8 @@ public class CharacterController : MonoBehaviour
     void DebugLog()
     {
         Debug.Log("Current Speed Controller: " + m_CurrentSpeed +
-        " Current Speed: " + m_Character.m_CurrentSpeed +
-        " Distance Length: " + m_DistanceLength + " Max Speed: " + m_Character.m_MaxSpeed);
+        "\nCurrent Speed: " + m_Character.m_CurrentSpeed +
+        "\nDistance Length: " + m_DistanceLength + "\nMax Speed: " + m_Character.m_MaxSpeed);
     }
     void InitialComponent()
     {
@@ -112,6 +116,7 @@ public class CharacterController : MonoBehaviour
         m_PadsIsBoosting = false;
         m_UpSpeed = false;
         m_Stuns = false;
+        m_IsDebugOn = false;
 
         listSpawner[1].gameObject.transform.localPosition = new Vector3(slideLength, 0, 0);
         listSpawner[2].gameObject.transform.localPosition = new Vector3(-slideLength, 0, 0);
@@ -200,6 +205,9 @@ public class CharacterController : MonoBehaviour
             ChangeSpeed();
             MediatorPlayer.GetMilk();
         }
+        
+        if (m_IsDebugOn)
+            DebugLog();
 
 #if UNITY_EDITOR || UNITY_STANDALONE
         if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns)
