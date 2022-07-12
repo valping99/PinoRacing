@@ -21780,6 +21780,11 @@ PrefabInstance:
       objectReference: {fileID: 664379664}
     - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
         type: 3}
+      propertyPath: ListCountdown.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
+        type: 3}
       propertyPath: ListCountdown.Array.data[0]
       value: 
       objectReference: {fileID: 2094714713}

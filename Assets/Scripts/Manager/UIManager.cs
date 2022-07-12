@@ -48,6 +48,7 @@ public class UIManager : MonoBehaviour
     public bool endGame;
     private bool checkCount = true;
     private bool checkSoundOver = true;
+    public bool boostFail = true;
 
     [Header("Object UI")]
     [SerializeField]
@@ -203,6 +204,15 @@ public class UIManager : MonoBehaviour
                 charInput.DashBoost();
                 checkDashBoost = false;
             }
+            else
+            {
+                if (boostFail && b_count.boostCount != 0)
+                {
+                    charColl.animStuns.SetBool("boostFail", boostFail);
+                    Invoke("DisableAnimation", .5f);
+                }
+            }
+            
             if (timeGo > 0)
             {
                 timeGo -= Time.deltaTime;
@@ -259,6 +269,12 @@ public class UIManager : MonoBehaviour
         CheckTimeScale();
     }
 
+    private void DisableAnimation()
+    {
+        boostFail = false;
+        charColl.animStuns.SetBool("boostFail", boostFail);
+        
+    }
     //Hide display when start
     public void waitForDisplay()
     {
@@ -338,6 +354,7 @@ public class UIManager : MonoBehaviour
         {
             boostSpeedButton.gameObject.SetActive(true);
             changeToRocketStart.gameObject.SetActive(false);
+
         }
     }
     //Time to countdown when game start
@@ -433,7 +450,7 @@ public class UIManager : MonoBehaviour
     IEnumerator CountNumber()
     {
 
-        for (int i = 3; i <= ListCountdown.Count; i--)
+        for (int i = 2; i <= ListCountdown.Count; i--)
         {
             if (i < 0)
             {
