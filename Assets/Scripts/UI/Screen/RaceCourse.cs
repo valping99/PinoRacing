@@ -27,6 +27,10 @@ public class RaceCourse : MonoBehaviour
         {
             Invoke("ShowFinishLap", 2f);
         }
+        else
+        {
+            uiManagers.finishLap.gameObject.SetActive(false);
+        }
     }
 
     void CheckLapCourse()

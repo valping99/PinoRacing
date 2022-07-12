@@ -63,6 +63,7 @@ public class Tutorial : MonoBehaviour
     {
         checkActive = false;
         ActiveTutorialSheet();
+        SetDefault();
     }
     public void TutorialButton()
     {
@@ -102,6 +103,12 @@ public class Tutorial : MonoBehaviour
                 return;
             }
         }
+    }
+
+    void SetDefault()
+    {
+        currentSheet = 1;
+        SetInstantiate();
     }
 
     //Show current sheet
