@@ -205,7 +205,6 @@ public class CharacterController : MonoBehaviour
             ChangeSpeed();
             MediatorPlayer.GetMilk();
         }
-        
         if (m_IsDebugOn)
             DebugLog();
 
