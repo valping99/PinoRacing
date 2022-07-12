@@ -429,7 +429,7 @@ public class UIManager : MonoBehaviour
         currentTime = timeToDisplayCountUp;
 
         limitedTimer_Text.text = string.Format("{0:0}:{1:00}:{2:000}", minutes, seconds, milliSeconds);
-        gameOverScoreText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        gameOverScoreText.text = string.Format("{0:0}:{1:00}:{2:000}", minutes, seconds, milliSeconds);
     }
 
     //Check GameOver
