@@ -223,7 +223,7 @@ public class CharacterController : StateMachine
         if (m_IsDebugOn)
             DebugLog();
 
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
         if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns)
         {
             ChangeLane(-slideLength);
