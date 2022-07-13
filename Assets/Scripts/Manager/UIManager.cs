@@ -24,6 +24,8 @@ public class UIManager : MonoBehaviour
     [Header("Sound Managers")]
     public SoundManagers audio_source;
     public SoundManagers audio_BGM;
+    public SoundManagers audio_warning;
+    public SoundManagers audio_player;
 
     [Header("Player Variables")]
     public int boostCount = 16;
@@ -49,6 +51,9 @@ public class UIManager : MonoBehaviour
     private bool checkCount = true;
     private bool checkSoundOver = true;
     public bool boostFail = true;
+    private bool checkWarning = true;
+    private bool checkEngine = true;
+    private bool enableEngine;
 
     [Header("Object UI")]
     [SerializeField]
@@ -111,6 +116,7 @@ public class UIManager : MonoBehaviour
     private int score;
     public int lapsToGameOver;
     public float timeGo = 0.5f;
+    public float timeToWarning;
     #endregion
     #region Unity Method
     //Game Start
@@ -155,8 +161,12 @@ public class UIManager : MonoBehaviour
         screenShot = FindObjectOfType<HiresScreenShots>();
         obstacles = FindObjectOfType<ObstaclesManager>();
         b_count = FindObjectOfType<BoostCount>();
+
         audio_source = GameObject.FindGameObjectWithTag("SoundManagers").GetComponent<SoundManagers>();
         audio_BGM = GameObject.FindGameObjectWithTag("BGM").GetComponent<SoundManagers>();
+        audio_warning = GameObject.FindGameObjectWithTag("SE_Warning").GetComponent<SoundManagers>();
+        audio_player = GameObject.FindGameObjectWithTag("SE_Player").GetComponent<SoundManagers>();
+
         rankManagers = FindObjectOfType<RankManager>();
         displayScene = GameObject.Find("PanelWaitForDisplay");
     }
@@ -260,13 +270,20 @@ public class UIManager : MonoBehaviour
         if (checkGameOver)
         {
             TimeOut();
+            audio_warning.PlaySound(SoundType.Stop);
+            audio_player.PlaySound(SoundType.Stop);
         }
 
         if (checkGameClear)
         {
             GameClear();
+            audio_warning.PlaySound(SoundType.Stop);
+            audio_player.PlaySound(SoundType.Stop);
+
         }
-        CheckTimeScale();
+        CheckTimeScale(); 
+        AddSoundEngine();
+        checkTimeToWarning();
     }
 
     private void DisableAnimation()
@@ -348,6 +365,7 @@ public class UIManager : MonoBehaviour
         {
             boostSpeedButton.gameObject.SetActive(false);
             changeToRocketStart.gameObject.SetActive(true);
+            audio_warning.PlaySound(SoundType.Stroke);
             checkDashBoost = true;
         }
         else
@@ -370,7 +388,7 @@ public class UIManager : MonoBehaviour
         {
             checkRunning = true;
             timeValue = 0;
-
+            charColl.m_Engine = true;
         }
         DisplayTimer(timeValue);
     }
@@ -388,6 +406,21 @@ public class UIManager : MonoBehaviour
 
         countdownTimer_Text.text = seconds + "";
     }
+    //Add sound engine
+    void AddSoundEngine()
+    {
+        if (charColl.m_Engine)
+        {
+            audio_player.PlaySound(SoundType.Engine);
+            charColl.m_Engine = false;
+        }
+    }
+
+    public void DisableEngineSound()
+    {
+        audio_player.PlaySound(SoundType.Stop);
+    }
+
     //Timer
     private void TimeUp()
     {
@@ -409,10 +442,27 @@ public class UIManager : MonoBehaviour
         if (checkSoundOver)
         {
             audio_BGM.PlaySound(SoundType.Stop);
-            audio_BGM.PlaySound(SoundType.Clear);
+            audio_BGM.PlaySound(SoundType.GameOver);
             checkSoundOver = false;
         }
 
+    }
+    //Add sound warning
+    void CheckSoundWarning()
+    {
+        if (checkWarning)
+        {
+            audio_warning.PlaySound(SoundType.Warning);
+            checkWarning = false;
+        }
+    }
+
+    void checkTimeToWarning()
+    {
+        if(currentTime >= timeToWarning)
+        {
+            CheckSoundWarning();
+        }
     }
     //Show Timer
     private void DisplayTimerCountUp(float timeToDisplayCountUp)

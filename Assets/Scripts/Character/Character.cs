@@ -31,6 +31,7 @@ public class Character : MonoBehaviour
     [Range(0, 300)] public float m_CurrentSpeed;
     public bool m_IsEnoughBoost;
     public bool m_Stuns;
+    public bool m_Engine;
 
     [Range(0, 300)] float m_SpeedMilk;
     [Range(0, 300)] float m_InitialMaxSpeed;
@@ -106,6 +107,8 @@ public class Character : MonoBehaviour
                 {
                     IcePickup ice = m_RootItem.GetComponent<IcePickup>();
 
+                    MediatorPlayer.DisableEngineSound();
+
                     if (!m_CharacterController.m_Stuns)
                     {
                         m_CurrentSpeed = 0;
@@ -120,6 +123,7 @@ public class Character : MonoBehaviour
                     }
 
                     Destroy(m_RootItem.gameObject);
+                    Invoke("EnableEngine", 4f);
                 }
 
                 if (child.CompareTag("Stick"))
@@ -154,6 +158,11 @@ public class Character : MonoBehaviour
 
             }
         }
+    }
+
+    void EnableEngine()
+    {
+        m_Engine = true;
     }
     void Item(Collider other)
     {

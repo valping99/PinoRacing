@@ -103,13 +103,13 @@ public class SoundManagers : MonoBehaviour
                 hit.Execute(m_AudioSource, strokeSound, 0.6f);
                 break;
             case SoundType.Warning:
-                hit.Execute(m_AudioSource, warningSound, 0.6f);
+                loop.Execute(m_AudioSource, warningSound, 0.6f);
                 break;
             case SoundType.LaneMove:
-                hit.Execute(m_AudioSource, laneMoveSound, 0.6f);
+                hit.Execute(m_AudioSource, laneMoveSound, 1f);
                 break;
             case SoundType.Engine:
-                loop.Execute(m_AudioSource, engineSound, 0.1f);
+                loop.Execute(m_AudioSource, engineSound, 1f);
                 break;
             case SoundType.GameOver:
                 loop.Execute(m_AudioSource, gameOverBGM, 0.2f);
@@ -120,6 +120,10 @@ public class SoundManagers : MonoBehaviour
     public void TapSE()
     {
         PlaySound(SoundType.Tap);
+    }
+    public void Stroke()
+    {
+        PlaySound(SoundType.Stroke);
     }
 
     #endregion

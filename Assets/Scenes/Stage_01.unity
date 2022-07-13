@@ -9492,6 +9492,7 @@ MonoBehaviour:
   clearBGM: {fileID: 0}
   gameBGM: {fileID: 0}
   topScreenBGM: {fileID: 0}
+  gameOverBGM: {fileID: 0}
   milkSound: {fileID: 0}
   iceSound: {fileID: 0}
   dashBoardSound: {fileID: 0}
@@ -9501,6 +9502,10 @@ MonoBehaviour:
   finishSound: {fileID: 0}
   itemIndication: {fileID: 0}
   rankDisplay: {fileID: 0}
+  strokeSound: {fileID: 0}
+  warningSound: {fileID: 0}
+  laneMoveSound: {fileID: 0}
+  engineSound: {fileID: 0}
 --- !u!1001 &931054798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21068,6 +21073,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1968838555}
     m_Modifications:
+    - target: {fileID: 213972639, guid: f151432db6208db4881342731ffc4264, type: 3}
+      propertyPath: m_AudioSource
+      value: 
+      objectReference: {fileID: 22586968347521931}
+    - target: {fileID: 925966060, guid: f151432db6208db4881342731ffc4264, type: 3}
+      propertyPath: m_AudioSource
+      value: 
+      objectReference: {fileID: 22586968347521930}
     - target: {fileID: 22586968516271794, guid: f151432db6208db4881342731ffc4264,
         type: 3}
       propertyPath: m_Name
@@ -21128,22 +21141,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 22586968516271796, guid: f151432db6208db4881342731ffc4264,
+    - target: {fileID: 5455667642472944215, guid: f151432db6208db4881342731ffc4264,
         type: 3}
       propertyPath: m_AudioSource
       value: 
       objectReference: {fileID: 22586968347521929}
-    - target: {fileID: 22586968516271797, guid: f151432db6208db4881342731ffc4264,
-        type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 6986ad3214ab8084f9bd5e49fb2f8416,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f151432db6208db4881342731ffc4264, type: 3}
 --- !u!82 &22586968347521929 stripped
 AudioSource:
-  m_CorrespondingSourceObject: {fileID: 22586968516271797, guid: f151432db6208db4881342731ffc4264,
+  m_CorrespondingSourceObject: {fileID: 5377985258423399378, guid: f151432db6208db4881342731ffc4264,
+    type: 3}
+  m_PrefabInstance: {fileID: 22586968347521928}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &22586968347521930 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 925966061, guid: f151432db6208db4881342731ffc4264,
+    type: 3}
+  m_PrefabInstance: {fileID: 22586968347521928}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &22586968347521931 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 213972640, guid: f151432db6208db4881342731ffc4264,
     type: 3}
   m_PrefabInstance: {fileID: 22586968347521928}
   m_PrefabAsset: {fileID: 0}
@@ -21720,6 +21739,11 @@ PrefabInstance:
       objectReference: {fileID: 621439009}
     - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
         type: 3}
+      propertyPath: timeToWarning
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
+        type: 3}
       propertyPath: boostSpeedGObj
       value: 
       objectReference: {fileID: 2131492074}
@@ -21905,10 +21929,20 @@ MonoBehaviour:
   m_IsBoosting: 0
   m_PadsIsBoosting: 0
   m_Stuns: 0
+  m_IsChangeLine: 0
+  m_IsGotMilk: 0
+  m_VelocityUp: 0
+  m_IsChangePosition: 0
+  m_IsDebugOn: 0
   m_CurrentSpeed: 0
   m_MilkCollectSpeed: 0
   timer: 0
   delay: 0
+  m_DistanceLength: 0
+  m_CharacterPosition: 0
+  laneNumber: 0
+  m_audioSource: {fileID: 0}
+  m_audioSource_ChangeLane: {fileID: 0}
 --- !u!4 &7651326599288477483
 Transform:
   m_ObjectHideFlags: 0
