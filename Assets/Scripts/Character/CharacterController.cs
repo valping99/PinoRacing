@@ -47,6 +47,10 @@ public class CharacterController : StateMachine
     [Range(0, 4)] public float m_CharacterPosition;
     [Range(0, 3)] public int laneNumber;
 
+    [Tooltip("Sound Manager")]
+    public SoundManagers m_audioSource;
+    public SoundManagers m_audioSource_ChangeLane;
+
 
 
     Vector3 m_Direction;
@@ -134,13 +138,20 @@ public class CharacterController : StateMachine
     void WheelRotation()
     {
         if (!m_Stuns && m_CurrentSpeed >= 1f)
+        {
             foreach (var wheel in m_Character.wheelCream)
+            {
                 wheel.transform.Rotate(Vector3.right, 360 * m_Character.m_CurrentSpeed * Time.deltaTime);
+            }
+        }
+            
     }
     void GetComponentInGame()
     {
         m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
         spawnerObject = GameObject.FindGameObjectWithTag("Spawner");
+        m_audioSource = GameObject.FindGameObjectWithTag("SE_Player").GetComponent<SoundManagers>();
+        m_audioSource_ChangeLane = GameObject.FindGameObjectWithTag("SE_ChangeLane").GetComponent<SoundManagers>();
         m_Character = gameObject.GetComponentInChildren<Character>();
     }
     void GotStuns()
@@ -297,6 +308,8 @@ public class CharacterController : StateMachine
 
         m_IsChangePosition = true;
         m_IsChangeLine = false;
+
+        m_audioSource_ChangeLane.PlaySound(SoundType.LaneMove); 
     }
     void ChangeRotation(int _direction)
     {

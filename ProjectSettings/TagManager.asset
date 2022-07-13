@@ -37,6 +37,9 @@ TagManager:
   - Title_Tutorial
   - Content_Tutorial
   - Sheet_Tutorial
+  - SE_Warning
+  - SE_Player
+  - SE_ChangeLane
   layers:
   - Default
   - TransparentFX
