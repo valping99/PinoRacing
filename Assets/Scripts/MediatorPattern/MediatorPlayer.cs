@@ -8,6 +8,11 @@ public class MediatorPlayer : MonoBehaviour
     {
         UIManager _managers = FindObjectOfType<UIManager>();
         _managers.GetMilk();
-
     }
+    public static void DisableEngineSound()
+    {
+        UIManager _managers = FindObjectOfType<UIManager>();
+        _managers.DisableEngineSound();
+    }
+
 }
