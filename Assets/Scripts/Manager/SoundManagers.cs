@@ -11,13 +11,13 @@ public class SoundManagers : MonoBehaviour
     public AudioSource m_AudioSource;
 
     [Tooltip("BGM")]
-    public AudioClip clearBGM, gameBGM, topScreenBGM;
+    public AudioClip clearBGM, gameBGM, topScreenBGM, gameOverBGM;
 
     [Tooltip("Item Sound Effect")]
     public AudioClip milkSound, iceSound, dashBoardSound, stickSound;
 
     [Tooltip("UI Sound Effect")]
-    public AudioClip tapSound, countDownSound, finishSound, itemIndication, rankDisplay;
+    public AudioClip tapSound, countDownSound, finishSound, itemIndication, rankDisplay, strokeSound, warningSound, laneMoveSound, engineSound;
 
     private Command hit, stop, loop;
 
@@ -45,6 +45,11 @@ public class SoundManagers : MonoBehaviour
         rankDisplay = Resources.Load<AudioClip>("Audio/No10");
         dashBoardSound = Resources.Load<AudioClip>("Audio/No11");
         stickSound = Resources.Load<AudioClip>("Audio/No12");
+        strokeSound = Resources.Load<AudioClip>("Audio/No13");
+        warningSound = Resources.Load<AudioClip>("Audio/No14");
+        laneMoveSound = Resources.Load<AudioClip>("Audio/No15");
+        engineSound = Resources.Load<AudioClip>("Audio/No16");
+        gameOverBGM = Resources.Load<AudioClip>("Audio/No17");
 
         hit = new PlaySound();
         stop = new StopSound();
@@ -93,6 +98,21 @@ public class SoundManagers : MonoBehaviour
                 break;
             case SoundType.Stick:
                 hit.Execute(m_AudioSource, stickSound, 1f);
+                break;
+            case SoundType.Stroke:
+                hit.Execute(m_AudioSource, strokeSound, 0.6f);
+                break;
+            case SoundType.Warning:
+                hit.Execute(m_AudioSource, warningSound, 0.6f);
+                break;
+            case SoundType.LaneMove:
+                hit.Execute(m_AudioSource, laneMoveSound, 0.6f);
+                break;
+            case SoundType.Engine:
+                loop.Execute(m_AudioSource, engineSound, 0.1f);
+                break;
+            case SoundType.GameOver:
+                loop.Execute(m_AudioSource, gameOverBGM, 0.2f);
                 break;
         }
     }
