@@ -109,7 +109,7 @@ public class SoundManagers : MonoBehaviour
                 hit.Execute(m_AudioSource, laneMoveSound, 1f);
                 break;
             case SoundType.Engine:
-                loop.Execute(m_AudioSource, engineSound, 0.5f);
+                loop.Execute(m_AudioSource, engineSound, 1f);
                 break;
             case SoundType.GameOver:
                 loop.Execute(m_AudioSource, gameOverBGM, 0.2f);
