@@ -27,6 +27,7 @@ public class Tutorial : MonoBehaviour
     [Header("Check Active")]
     public bool checkActive;
     public GameObject buttonToActive;
+    public GameObject tutorialBackground;
 
     [Header("Object Active")]
     public GameObject isActiveSheet;
@@ -38,6 +39,7 @@ public class Tutorial : MonoBehaviour
     public Transform titleParent;
     public Transform sheetParent;
     public Transform contentParent;
+    public Transform TutorialParent;
 
     [Tooltip("Tutorial")]
     private GameObject tutorialScene;
@@ -142,20 +144,18 @@ public class Tutorial : MonoBehaviour
     //Show - Hide Button
     void ActiveTutorialSheet()
     {
-        if (enableTutorialButton)
+        if (checkActive)
         {
-            if (checkActive)
-            {
-                tutorialScene.gameObject.SetActive(true);
-                buttonToActive.gameObject.SetActive(false);
-            }
-            else
-            {
-                //Remove show button
-                //buttonToActive.gameObject.SetActive(true);
-                tutorialScene.gameObject.SetActive(false);
-            }
+            buttonToActive.gameObject.SetActive(false);
+            tutorialScene.gameObject.SetActive(true);
         }
+        else
+        {
+            //Remove show button
+            buttonToActive.gameObject.SetActive(true);
+            tutorialScene.gameObject.SetActive(false);
+        }
+        
     }
 
     //Active Arrow Object
@@ -188,6 +188,7 @@ public class Tutorial : MonoBehaviour
         currentSheet = 1;
         tutorialScene = GameObject.FindGameObjectWithTag("TutorialSheet");
         tutorialScene.gameObject.SetActive(false);
+        tutorialBackground.gameObject.SetActive(true);
         Instantiate(titleList[0], titleParent.position, Quaternion.identity, titleParent);
         Instantiate(tutorialList[0], sheetParent.position, Quaternion.identity, sheetParent);
         Instantiate(contentList[0], contentParent.position, Quaternion.identity, contentParent);

@@ -40,6 +40,7 @@ TagManager:
   - SE_Warning
   - SE_Player
   - SE_ChangeLane
+  - Description
   layers:
   - Default
   - TransparentFX
