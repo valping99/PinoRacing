@@ -67,5 +67,6 @@ public class PlayLoopSound : Command
 public enum SoundType
 {
     Tap, TopScreen, CountDown, Milk, Ice,
-    Finish, BGM, Clear, Indication, Rank, DashBoost, Stop, Stick
+    Finish, BGM, Clear, Indication, Rank, DashBoost, Stop, Stick,
+    Stroke, Warning, LaneMove, Engine, GameOver
 }
