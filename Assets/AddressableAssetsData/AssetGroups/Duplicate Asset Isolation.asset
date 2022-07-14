@@ -16,11 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: a8fe4e1fa1fea394a996ab4b4963537b
-  m_SerializeEntries:
-  - m_GUID: d7581ae65f6321447a66ee3ae24fe8a1
-    m_Address: Assets/Textures/BlobShadow.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 735e874f947d0e143a6b4e83f8a7283a, type: 2}
   m_SchemaSet:

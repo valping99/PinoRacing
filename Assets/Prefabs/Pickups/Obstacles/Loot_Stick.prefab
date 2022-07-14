@@ -78,12 +78,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CharacterCollider: {fileID: 0}
   m_CharacterController: {fileID: 0}
+  m_SoundManager: {fileID: 0}
   VerticalBobFrequency: 0
   BobbingAmount: 0
   RotatingSpeed: 360
-  PickupSfx: {fileID: 8300000, guid: 9e5b6bd2914ba1e489cfa3fbbe791e43, type: 3}
-  PickupVfxPrefab: {fileID: 8929146388027618498, guid: 7468cd18030a0204ab08baf7ac36ff1e,
-    type: 3}
+  PickupSfx: {fileID: 8300000, guid: 6b685c37075223442b5175c43f40d7a7, type: 3}
   m_RootModel: {fileID: 9220407134902506963}
   m_Distance: 10
   HurtAmount: 10

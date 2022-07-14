@@ -83,9 +83,7 @@ MonoBehaviour:
   VerticalBobFrequency: 3
   BobbingAmount: 2
   RotatingSpeed: 360
-  PickupSfx: {fileID: 8300000, guid: 781097d53dae0e944ae4ad91af2426d2, type: 3}
-  PickupVfxPrefab: {fileID: 8929146388027618498, guid: 7468cd18030a0204ab08baf7ac36ff1e,
-    type: 3}
+  PickupSfx: {fileID: 8300000, guid: 94ced8910f1bbe5478ed9b7e8c89e352, type: 3}
   m_RootModel: {fileID: 3934114034674209043}
   m_Distance: 10
   amountMilkBottle: 1
