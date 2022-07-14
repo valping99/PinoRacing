@@ -12,42 +12,42 @@ public class UIManager : MonoBehaviour
     #region UIVariables
     // Start is called before the first frame update
 
-    [Header("Set Object player")]
-    public CharacterController charInput;
-    public Character charColl;
-    public ObstaclesManager obstacles;
+    [Tooltip("Set Object player")]
+    [HideInInspector] public CharacterController charInput;
+    [HideInInspector] public Character charColl;
+    [HideInInspector] public ObstaclesManager obstacles;
     // Get player for get Speed;
-    public GameObject m_Player;
-    public BoostCount b_count;
-    private RankManager rankManagers;
+    [HideInInspector] public GameObject m_Player;
+    [HideInInspector] public BoostCount b_count;
+    [HideInInspector] public RankManager rankManagers;
 
-    [Header("Sound Managers")]
-    public SoundManagers audio_source;
-    public SoundManagers audio_BGM;
-    public SoundManagers audio_warning;
-    public SoundManagers audio_player;
+    [Tooltip("Sound Managers")]
+    [HideInInspector] public SoundManagers audio_source;
+    [HideInInspector] public SoundManagers audio_BGM;
+    [HideInInspector] public SoundManagers audio_warning;
+    [HideInInspector] public SoundManagers audio_player;
 
     [Header("Player Variables")]
     public int boostCount = 16;
     public float currentScore;
     public float currentSpeed;
     public float currentMilk;
-    public float currentStamina;
-    public int crystalCollected;
-    public static int pinoSelected;
-    public float healthDown;
+    [HideInInspector] public float currentStamina;
+    [HideInInspector] public int crystalCollected;
+    [HideInInspector] public static int pinoSelected;
+    [HideInInspector] public float healthDown;
 
     //Check to active UI & button;
     [Header("Check active")]
-    public bool checkPause;
-    public bool checkGameOver;
-    public bool checkGameClear;
-    public bool checkPlaying;
-    public bool checkBoost;
-    public bool checkRunning = false;
-    public bool checkDashBoost = false;
-    public bool startScene = true;
-    public bool endGame;
+    [HideInInspector] public bool checkPause;
+    [HideInInspector] public bool checkGameOver;
+    [HideInInspector] public bool checkGameClear;
+    [HideInInspector] public bool checkPlaying;
+    [HideInInspector] public bool checkBoost;
+    [HideInInspector] public bool checkRunning = false;
+    [HideInInspector] public bool checkDashBoost = false;
+    [HideInInspector] public bool startScene = true;
+    [HideInInspector] public bool endGame;
     private bool checkCount = true;
     private bool checkSoundOver = true;
     public bool boostFail = true;
@@ -122,10 +122,7 @@ public class UIManager : MonoBehaviour
     //Game Start
     void Start()
     {
-        checkPlaying = true;
-        GetComponent();
         StartGame();
-        audio_BGM.PlaySound(SoundType.BGM);
     }
     void Update()
     {
@@ -152,7 +149,9 @@ public class UIManager : MonoBehaviour
             boostSpeedButton.gameObject.SetActive(true);
             mainSceneUI.gameObject.SetActive(false);
         }
-
+        checkPlaying = true;
+        GetComponent();
+        audio_BGM.PlaySound(SoundType.BGM);
     }
     //Get component
     private void GetComponent()
@@ -184,7 +183,6 @@ public class UIManager : MonoBehaviour
             miniMap.gameObject.SetActive(false);
             lapsObjects.gameObject.SetActive(false);
             Time.timeScale = 0f;
-            // Debug.Log("Pause");
         }
         else
         {
@@ -196,7 +194,6 @@ public class UIManager : MonoBehaviour
             miniMap.gameObject.SetActive(true);
             checkPause = !checkPause;
             Time.timeScale = 1f;
-            // Debug.Log("Resume");
         }
     }
 
@@ -285,12 +282,11 @@ public class UIManager : MonoBehaviour
         AddSoundEngine();
         checkTimeToWarning();
     }
-
+    //Disable Animation when boost fail
     private void DisableAnimation()
     {
         boostFail = false;
-        charColl.animStuns.SetBool("boostFail", boostFail);
-        
+        charColl.animStuns.SetBool("boostFail", boostFail);        
     }
     //Hide display when start
     public void waitForDisplay()
