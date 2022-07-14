@@ -61,7 +61,7 @@ public class SoundManagers : MonoBehaviour
         switch (type)
         {
             case SoundType.Tap:
-                hit.Execute(m_AudioSource, tapSound, 0.6f);
+                hit.Execute(m_AudioSource, tapSound, 0.3f);
                 break;
             case SoundType.TopScreen:
                 loop.Execute(m_AudioSource, topScreenBGM, 0.2f);
