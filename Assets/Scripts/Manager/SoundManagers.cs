@@ -79,7 +79,7 @@ public class SoundManagers : MonoBehaviour
                 hit.Execute(m_AudioSource, finishSound, 0.6f);
                 break;
             case SoundType.BGM:
-                loop.Execute(m_AudioSource, gameBGM, 0.2f);
+                loop.Execute(m_AudioSource, gameBGM, 0.5f);
                 break;
             case SoundType.Clear:
                 loop.Execute(m_AudioSource, clearBGM, 0.2f);

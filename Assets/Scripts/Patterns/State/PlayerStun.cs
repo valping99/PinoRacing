@@ -87,4 +87,14 @@ public class PlayerBehavior : State
         CharacterController.ChangeSpeed();
     }
 
+    // <summary>
+    // This method is used to return the normal speed when user boost fail.
+    // </summary>
+    public override IEnumerator ReturnNormal()
+    {
+        yield return new WaitForSeconds(3f);
+
+        CharacterController.m_IsBoostSuccess = false;
+    }
+
 }
