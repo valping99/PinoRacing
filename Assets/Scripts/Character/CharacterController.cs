@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,6 +39,7 @@ public class CharacterController : StateMachine
     [HideInInspector] public bool m_VelocityUp;
     [HideInInspector] public bool m_IsChangePosition;
     [HideInInspector] public bool m_IsDebugOn;
+    [HideInInspector] public bool m_IsBoostSuccess;
     [HideInInspector, Range(0, 300)] public float m_CurrentSpeed;
     [HideInInspector, Range(0, 300)] public float m_MilkCollectSpeed;
     [HideInInspector] public float timer;
@@ -124,6 +125,7 @@ public class CharacterController : StateMachine
         m_UpSpeed = false;
         m_Stuns = false;
         m_IsDebugOn = false;
+        m_IsBoostSuccess = true;
 
         listSpawner[1].gameObject.transform.localPosition = new Vector3(slideLength, 0, 0);
         listSpawner[2].gameObject.transform.localPosition = new Vector3(-slideLength, 0, 0);
@@ -144,7 +146,7 @@ public class CharacterController : StateMachine
                 wheel.transform.Rotate(Vector3.right, 360 * m_Character.m_CurrentSpeed * Time.deltaTime);
             }
         }
-            
+
     }
     void GetComponentInGame()
     {
@@ -223,13 +225,13 @@ public class CharacterController : StateMachine
         if (m_IsDebugOn)
             DebugLog();
 
-#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns)
+#if UNITY_EDITOR || UNITY_STANDALONE
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns && !m_IsBoostSuccess)
         {
             ChangeLane(-slideLength);
             laneNumber -= 1;
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_Stuns)
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_Stuns && !m_IsBoostSuccess)
         {
             ChangeLane(slideLength);
             laneNumber += 1;
@@ -249,12 +251,12 @@ public class CharacterController : StateMachine
                 // we set the swip distance to trigger movement to 1% of the screen width
                 if (diff.magnitude > 0.01f)
                 {
-                    if (!m_Stuns && diff.x < 0 && laneNumber > 1 && m_IsChangeLine)
+                    if (!m_Stuns && diff.x < 0 && laneNumber > 1 && m_IsChangeLine && !m_IsBoostSuccess)
                     {
                         ChangeLane(-slideLength);
                         laneNumber -= 1;
                     }
-                    else if (!m_Stuns && diff.x >= 0 && laneNumber < 3 && m_IsChangeLine)
+                    else if (!m_Stuns && diff.x >= 0 && laneNumber < 3 && m_IsChangeLine && !m_IsBoostSuccess)
                     {
                         ChangeLane(slideLength);
                         laneNumber += 1;
@@ -297,6 +299,10 @@ public class CharacterController : StateMachine
         }
 
         timer -= Time.deltaTime;
+
+        if (m_IsBoostSuccess)
+            StartCoroutine(State.ReturnNormal());
+
     }
     void ChangeLane(int _direction)
     {
@@ -309,7 +315,7 @@ public class CharacterController : StateMachine
         m_IsChangePosition = true;
         m_IsChangeLine = false;
 
-        m_audioSource_ChangeLane.PlaySound(SoundType.LaneMove); 
+        m_audioSource_ChangeLane.PlaySound(SoundType.LaneMove);
     }
     void ChangeRotation(int _direction)
     {

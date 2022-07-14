@@ -220,9 +220,10 @@ public class UIManager : MonoBehaviour
                 {
                     charColl.animStuns.SetBool("boostFail", boostFail);
                     Invoke("DisableAnimation", .5f);
+                    charInput.m_IsBoostSuccess = true;
                 }
             }
-            
+
             if (timeGo > 0)
             {
                 timeGo -= Time.deltaTime;
@@ -281,7 +282,7 @@ public class UIManager : MonoBehaviour
             audio_player.PlaySound(SoundType.Stop);
 
         }
-        CheckTimeScale(); 
+        CheckTimeScale();
         AddSoundEngine();
         checkTimeToWarning();
     }
@@ -290,7 +291,6 @@ public class UIManager : MonoBehaviour
     {
         boostFail = false;
         charColl.animStuns.SetBool("boostFail", boostFail);
-        
     }
     //Hide display when start
     public void waitForDisplay()
@@ -301,7 +301,7 @@ public class UIManager : MonoBehaviour
     //Check Time Scale
     void CheckTimeScale()
     {
-        if(Time.timeScale == 0f)
+        if (Time.timeScale == 0f)
         {
             checkPlaying = false;
         }
@@ -459,7 +459,7 @@ public class UIManager : MonoBehaviour
 
     void checkTimeToWarning()
     {
-        if(currentTime >= timeToWarning)
+        if (currentTime >= timeToWarning)
         {
             CheckSoundWarning();
         }
@@ -655,7 +655,7 @@ public class UIManager : MonoBehaviour
         }
     }
     **/
-    
+
 
     /**
     //TimeOver
