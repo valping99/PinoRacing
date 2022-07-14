@@ -287,9 +287,7 @@ public class UIManager : MonoBehaviour
     private void DisableAnimation()
     {
         boostFail = false;
-
-        charColl.animStuns.SetBool("boostFail", boostFail);
-
+        charColl.animStuns.SetBool("boostFail", boostFail);  
     }
     //Hide display when start
     public void waitForDisplay()

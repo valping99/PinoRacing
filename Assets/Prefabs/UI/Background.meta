@@ -1,10 +1,19 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<<< HEAD:Assets/Prefabs/UI/Background.meta
+guid: f91348f1e65019c4bb68a9cc500e0951
+folderAsset: yes
+========
+guid: 36ae2e48e7a7343fcb1503f56b5d4485
+>>>>>>>> origin/William:Assets/ConsolePro/Remote/LiteNetLib/LiteNetLib.csproj.meta
+=======
 <<<<<<<< HEAD:Assets/ConsolePro/Remote/LiteNetLib/LiteNetLib.csproj.meta
 guid: a3d6ba8d8ae302f439c2c70f073025db
 ========
 guid: f91348f1e65019c4bb68a9cc500e0951
 folderAsset: yes
 >>>>>>>> origin/DatDiep:Assets/Prefabs/UI/Background.meta
+>>>>>>> origin/William
 DefaultImporter:
   externalObjects: {}
   userData: 
