@@ -121,10 +121,5 @@ public class SoundManagers : MonoBehaviour
     {
         PlaySound(SoundType.Tap);
     }
-    public void Stroke()
-    {
-        PlaySound(SoundType.Stroke);
-    }
-
     #endregion
 }
