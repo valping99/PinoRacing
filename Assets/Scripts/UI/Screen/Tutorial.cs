@@ -111,6 +111,7 @@ public class Tutorial : MonoBehaviour
     {
         currentSheet = 1;
         SetInstantiate();
+        SetActiveCurrentDot();
     }
 
     //Show current sheet
