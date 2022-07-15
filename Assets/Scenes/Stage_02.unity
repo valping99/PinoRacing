@@ -1036,7 +1036,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 84b5423c6c874634ab238f82f16830a2, type: 3}
+  m_Texture: {fileID: 2800000, guid: d314dc1aad189f145b2ec2595d714da7, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -5197,6 +5197,7 @@ MonoBehaviour:
   warningSound: {fileID: 0}
   laneMoveSound: {fileID: 0}
   engineSound: {fileID: 0}
+  finishLapSound: {fileID: 0}
 --- !u!82 &929251063
 AudioSource:
   m_ObjectHideFlags: 0
