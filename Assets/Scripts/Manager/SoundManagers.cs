@@ -17,7 +17,7 @@ public class SoundManagers : MonoBehaviour
     public AudioClip milkSound, iceSound, dashBoardSound, stickSound;
 
     [Tooltip("UI Sound Effect")]
-    public AudioClip tapSound, countDownSound, finishSound, itemIndication, rankDisplay, strokeSound, warningSound, laneMoveSound, engineSound;
+    public AudioClip tapSound, countDownSound, finishSound, itemIndication, rankDisplay, strokeSound, warningSound, laneMoveSound, engineSound, finishLapSound;
 
     private Command hit, stop, loop;
 
@@ -50,6 +50,7 @@ public class SoundManagers : MonoBehaviour
         laneMoveSound = Resources.Load<AudioClip>("Audio/No15");
         engineSound = Resources.Load<AudioClip>("Audio/No16");
         gameOverBGM = Resources.Load<AudioClip>("Audio/No17");
+        finishLapSound = Resources.Load<AudioClip>("Audio/No18");
 
         hit = new PlaySound();
         stop = new StopSound();
@@ -101,6 +102,9 @@ public class SoundManagers : MonoBehaviour
                 break;
             case SoundType.Stroke:
                 hit.Execute(m_AudioSource, strokeSound, 0.5f);
+                break;
+            case SoundType.FinishLap:
+                hit.Execute(m_AudioSource, finishLapSound, 0.5f);
                 break;
             case SoundType.Warning:
                 loop.Execute(m_AudioSource, warningSound, 0.5f);
