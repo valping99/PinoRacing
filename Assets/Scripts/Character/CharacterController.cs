@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
 
-public class CharacterController : MonoBehaviour
+public class CharacterController : StateMachine
 {
     #region Variables
 
@@ -34,19 +34,25 @@ public class CharacterController : MonoBehaviour
     [HideInInspector] public bool m_IsBoosting;
     [HideInInspector] public bool m_PadsIsBoosting;
     [HideInInspector] public bool m_Stuns;
+    [HideInInspector] public bool m_IsChangeLine;
+    [HideInInspector] public bool m_IsGotMilk;
+    [HideInInspector] public bool m_VelocityUp;
+    [HideInInspector] public bool m_IsChangePosition;
+    [HideInInspector] public bool m_IsDebugOn;
+    [HideInInspector] public bool m_IsBoostSuccess;
     [HideInInspector, Range(0, 300)] public float m_CurrentSpeed;
     [HideInInspector, Range(0, 300)] public float m_MilkCollectSpeed;
     [HideInInspector] public float timer;
     [HideInInspector] public float delay;
-    [Range(0, 30000)] float m_DistanceLength;
-    [Range(0, 4)] float m_CharacterPosition;
-    [Range(0, 3)] int laneNumber;
+    [Range(0, 30000)] public float m_DistanceLength;
+    [Range(0, 4)] public float m_CharacterPosition;
+    [Range(0, 3)] public int laneNumber;
+
+    [Tooltip("Sound Manager")]
+    public SoundManagers m_audioSource;
+    public SoundManagers m_audioSource_ChangeLane;
 
 
-    bool m_IsChangeLine;
-    bool m_IsGotMilk;
-    bool m_VelocityUp;
-    bool m_IsChangePosition;
 
     Vector3 m_Direction;
     Quaternion m_Rotation;
@@ -78,6 +84,9 @@ public class CharacterController : MonoBehaviour
 
 #if UNITY_EDITOR || UNITY_STANDALONE
 
+        if (Input.GetKeyDown(KeyCode.B))
+            m_IsDebugOn = !m_IsDebugOn;
+
 #else
         DebugLog();
 #endif
@@ -90,11 +99,14 @@ public class CharacterController : MonoBehaviour
     void DebugLog()
     {
         Debug.Log("Current Speed Controller: " + m_CurrentSpeed +
-        " Current Speed: " + m_Character.m_CurrentSpeed +
-        " Distance Length: " + m_DistanceLength + " Max Speed: " + m_Character.m_MaxSpeed);
+        "\nCurrent Speed: " + m_Character.m_CurrentSpeed +
+        "\nDistance Length: " + m_DistanceLength + "\nMax Speed: " + m_Character.m_MaxSpeed);
     }
     void InitialComponent()
     {
+        // Initialize the state machine
+        SetState(new PlayerBehavior(this));
+
         m_MilkCollectSpeed = m_Character.m_InitialSpeed;
 
         m_CharacterPosition = 0;
@@ -112,9 +124,12 @@ public class CharacterController : MonoBehaviour
         m_PadsIsBoosting = false;
         m_UpSpeed = false;
         m_Stuns = false;
+        m_IsDebugOn = false;
+        m_IsBoostSuccess = true;
 
         listSpawner[1].gameObject.transform.localPosition = new Vector3(slideLength, 0, 0);
         listSpawner[2].gameObject.transform.localPosition = new Vector3(-slideLength, 0, 0);
+
     }
     void MoveInput()
     {
@@ -125,13 +140,20 @@ public class CharacterController : MonoBehaviour
     void WheelRotation()
     {
         if (!m_Stuns && m_CurrentSpeed >= 1f)
+        {
             foreach (var wheel in m_Character.wheelCream)
+            {
                 wheel.transform.Rotate(Vector3.right, 360 * m_Character.m_CurrentSpeed * Time.deltaTime);
+            }
+        }
+
     }
     void GetComponentInGame()
     {
         m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
         spawnerObject = GameObject.FindGameObjectWithTag("Spawner");
+        m_audioSource = GameObject.FindGameObjectWithTag("SE_Player").GetComponent<SoundManagers>();
+        m_audioSource_ChangeLane = GameObject.FindGameObjectWithTag("SE_ChangeLane").GetComponent<SoundManagers>();
         m_Character = gameObject.GetComponentInChildren<Character>();
     }
     void GotStuns()
@@ -143,17 +165,17 @@ public class CharacterController : MonoBehaviour
             m_Character.animStuns.SetBool("isCrash", m_Stuns);
             m_Character.animShadow.SetBool("isCrash", m_Stuns);
 
-            StartCoroutine(ReturnRotationStun());
+            StartCoroutine(State.FallenStuns());
         }
     }
     void SpeedUp()
     {
         if (m_VelocityUp && !m_Stuns && m_CurrentSpeed < m_Character.m_MaxSpeed && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
         {
-            m_Character.m_CurrentSpeed += (m_Character.m_InitialVelocity + (m_Character.m_CurrentBottleMilk * 5f));
-            m_MilkCollectSpeed += (m_Character.m_InitialVelocity + (m_Character.m_CurrentBottleMilk * 5f));
+            m_Character.m_CurrentSpeed += m_Character.m_InitialAcceleration;
+            m_MilkCollectSpeed += m_Character.m_InitialAcceleration;
             m_VelocityUp = false;
-            StartCoroutine(VelocityUp());
+            StartCoroutine(State.AccelerationUp());
         }
     }
     void CharacterMove()
@@ -191,21 +213,25 @@ public class CharacterController : MonoBehaviour
         {
             m_Character.m_CurrentBottleMilk += 500;
             ChangeSpeed();
+            MediatorPlayer.GetMilk();
         }
         if (Input.GetKey(KeyCode.N))
         {
             if (m_Character.m_CurrentBottleMilk >= 500)
                 m_Character.m_CurrentBottleMilk -= 500;
             ChangeSpeed();
+            MediatorPlayer.GetMilk();
         }
+        if (m_IsDebugOn)
+            DebugLog();
 
 #if UNITY_EDITOR || UNITY_STANDALONE
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns && !m_IsBoostSuccess)
         {
             ChangeLane(-slideLength);
             laneNumber -= 1;
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_Stuns)
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_Stuns && !m_IsBoostSuccess)
         {
             ChangeLane(slideLength);
             laneNumber += 1;
@@ -225,12 +251,12 @@ public class CharacterController : MonoBehaviour
                 // we set the swip distance to trigger movement to 1% of the screen width
                 if (diff.magnitude > 0.01f)
                 {
-                    if (!m_Stuns && diff.x < 0 && laneNumber > 1 && m_IsChangeLine)
+                    if (!m_Stuns && diff.x < 0 && laneNumber > 1 && m_IsChangeLine && !m_IsBoostSuccess)
                     {
                         ChangeLane(-slideLength);
                         laneNumber -= 1;
                     }
-                    else if (!m_Stuns && diff.x >= 0 && laneNumber < 3 && m_IsChangeLine)
+                    else if (!m_Stuns && diff.x >= 0 && laneNumber < 3 && m_IsChangeLine && !m_IsBoostSuccess)
                     {
                         ChangeLane(slideLength);
                         laneNumber += 1;
@@ -273,17 +299,23 @@ public class CharacterController : MonoBehaviour
         }
 
         timer -= Time.deltaTime;
+
+        if (m_IsBoostSuccess)
+            StartCoroutine(State.ReturnNormal());
+
     }
     void ChangeLane(int _direction)
     {
         m_CharacterPosition = _direction;
 
         ChangeRotation(_direction);
-        StartCoroutine(ReturnRotation());
-        StartCoroutine(StopMoving());
+        StartCoroutine(State.ReturnRotation());
+        StartCoroutine(State.StopMoving());
 
         m_IsChangePosition = true;
         m_IsChangeLine = false;
+
+        m_audioSource_ChangeLane.PlaySound(SoundType.LaneMove);
     }
     void ChangeRotation(int _direction)
     {
@@ -318,7 +350,7 @@ public class CharacterController : MonoBehaviour
     public void ChangeSpeed()
     {
         if (m_PadsIsBoosting || m_Stuns)
-            StartCoroutine(CheckRemainBoost());
+            StartCoroutine(State.CheckRemainBoost());
 
         m_UpSpeed = true;
     }
@@ -336,53 +368,6 @@ public class CharacterController : MonoBehaviour
             timer = repeatRate;
             m_PadsIsBoosting = false;
         }
-    }
-    IEnumerator CheckRemainBoost()
-    {
-        yield return new WaitForSeconds(2f);
-
-        ChangeSpeed();
-    }
-    IEnumerator ReturnRotation()
-    {
-        yield return new WaitForSeconds(m_SecondChangeLine);
-
-        m_Character.rootObject.transform.localRotation = Quaternion.identity;
-
-        m_Character.wheelCream[0].transform.localRotation = Quaternion.identity;
-        m_Character.wheelCream[1].transform.localRotation = Quaternion.identity;
-
-    }
-    IEnumerator ReturnRotationStun()
-    {
-        yield return new WaitForSeconds(4f);
-
-        m_Character.m_Stuns = false;
-        m_Stuns = false;
-        m_Character.animStuns.applyRootMotion = true;
-        m_Character.animShadow.applyRootMotion = true;
-
-        m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
-        m_Character.rootObject.transform.localRotation = Quaternion.identity;
-
-        m_Character.animStuns.SetBool("isCrash", m_Stuns);
-        m_Character.animShadow.SetBool("isCrash", m_Stuns);
-    }
-    IEnumerator StopMoving()
-    {
-        yield return new WaitForSeconds(m_SecondChangeLine);
-
-        m_CharacterPosition = 0;
-
-        m_IsChangeLine = true;
-        m_IsChangePosition = false;
-    }
-    IEnumerator VelocityUp()
-    {
-        yield return new WaitForSeconds(1f);
-
-        m_VelocityUp = true;
-        m_UpSpeed = false;
     }
 
     #endregion

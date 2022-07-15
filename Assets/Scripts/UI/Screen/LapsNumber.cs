@@ -12,6 +12,7 @@ public class LapsNumber : MonoBehaviour
     public GameObject selectLaps;
     public bool checkIns = true;
     int lapCourse;
+
     #endregion
     // Start is called before the first frame update
     #region Unity Method

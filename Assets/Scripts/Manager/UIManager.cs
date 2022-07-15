@@ -12,40 +12,48 @@ public class UIManager : MonoBehaviour
     #region UIVariables
     // Start is called before the first frame update
 
-    [Header("Set Object player")]
-    public CharacterController charInput;
-    public Character charColl;
-    public ObstaclesManager obstacles;
+    [Tooltip("Set Object player")]
+    [HideInInspector] public CharacterController charInput;
+    [HideInInspector] public Character charColl;
+    [HideInInspector] public ObstaclesManager obstacles;
     // Get player for get Speed;
-    public GameObject m_Player;
-    public BoostCount b_count;
-    private RankManager rankManagers;
+    [HideInInspector] public GameObject m_Player;
+    [HideInInspector] public BoostCount b_count;
+    [HideInInspector] public RankManager rankManagers;
 
-    [Header("Sound Managers")]
-    public SoundManagers audio_source;
-    public SoundManagers audio_BGM;
+    [Tooltip("Sound Managers")]
+    [HideInInspector] public SoundManagers audio_source;
+    [HideInInspector] public SoundManagers audio_BGM;
+    [HideInInspector] public SoundManagers audio_warning;
+    [HideInInspector] public SoundManagers audio_player;
 
     [Header("Player Variables")]
     public int boostCount = 16;
     public float currentScore;
     public float currentSpeed;
     public float currentMilk;
-    public float currentStamina;
-    public int crystalCollected;
-    public static int pinoSelected;
-    public float healthDown;
+    [HideInInspector] public float currentStamina;
+    [HideInInspector] public int crystalCollected;
+    [HideInInspector] public static int pinoSelected;
+    [HideInInspector] public float healthDown;
 
     //Check to active UI & button;
     [Header("Check active")]
-    public bool checkPause;
-    public bool checkGameOver;
-    public bool checkGameClear;
-    public bool checkPlaying;
-    public bool checkBoost;
-    public bool checkRunning = false;
-    public bool checkDashBoost = false;
-    public bool startScene = true;
+    [HideInInspector] public bool checkPause;
+    [HideInInspector] public bool checkGameOver;
+    [HideInInspector] public bool checkGameClear;
+    [HideInInspector] public bool checkPlaying;
+    [HideInInspector] public bool checkBoost;
+    [HideInInspector] public bool checkRunning = false;
+    [HideInInspector] public bool checkDashBoost = false;
+    [HideInInspector] public bool startScene = true;
+    [HideInInspector] public bool endGame;
     private bool checkCount = true;
+    private bool checkSoundOver = true;
+    public bool boostFail = true;
+    private bool checkWarning = true;
+    private bool checkEngine = true;
+    private bool enableEngine;
 
     [Header("Object UI")]
     [SerializeField]
@@ -108,27 +116,13 @@ public class UIManager : MonoBehaviour
     private int score;
     public int lapsToGameOver;
     public float timeGo = 0.5f;
+    public float timeToWarning;
     #endregion
     #region Unity Method
     //Game Start
     void Start()
     {
-        checkPlaying = true;
-        GetComponent();
         StartGame();
-        audio_BGM.PlaySound("BGM");
-    }
-    private void GetComponent()
-    {
-        clickAnim = FindObjectOfType<ClickAnimation>();
-        screenShot = FindObjectOfType<HiresScreenShots>();
-        obstacles = FindObjectOfType<ObstaclesManager>();
-        b_count = FindObjectOfType<BoostCount>();
-        audio_source = GameObject.FindGameObjectWithTag("SoundManagers").GetComponent<SoundManagers>();
-        audio_BGM = GameObject.FindGameObjectWithTag("BGM").GetComponent<SoundManagers>();
-        rankManagers = FindObjectOfType<RankManager>();
-        displayScene = GameObject.Find("PanelWaitForDisplay");
-
     }
     void Update()
     {
@@ -137,7 +131,7 @@ public class UIManager : MonoBehaviour
 
     #endregion
     #region UIManager
-    [Tooltip("Active when game start")]
+    //Active when game start
     private void StartGame()
     {
         if (checkPlaying)
@@ -146,6 +140,7 @@ public class UIManager : MonoBehaviour
             gameOverUI.gameObject.SetActive(false);
             gameClearUI.gameObject.SetActive(false);
             boostSpeedGObj.gameObject.SetActive(false);
+            GetMilk();
         }
         if (!checkRunning)
         {
@@ -154,10 +149,28 @@ public class UIManager : MonoBehaviour
             boostSpeedButton.gameObject.SetActive(true);
             mainSceneUI.gameObject.SetActive(false);
         }
+        checkPlaying = true;
+        GetComponent();
+        audio_BGM.PlaySound(SoundType.BGM);
+    }
+    //Get component
+    private void GetComponent()
+    {
+        clickAnim = FindObjectOfType<ClickAnimation>();
+        screenShot = FindObjectOfType<HiresScreenShots>();
+        obstacles = FindObjectOfType<ObstaclesManager>();
+        b_count = FindObjectOfType<BoostCount>();
 
+        audio_source = GameObject.FindGameObjectWithTag("SoundManagers").GetComponent<SoundManagers>();
+        audio_BGM = GameObject.FindGameObjectWithTag("BGM").GetComponent<SoundManagers>();
+        audio_warning = GameObject.FindGameObjectWithTag("SE_Warning").GetComponent<SoundManagers>();
+        audio_player = GameObject.FindGameObjectWithTag("SE_Player").GetComponent<SoundManagers>();
+
+        rankManagers = FindObjectOfType<RankManager>();
+        displayScene = GameObject.Find("PanelWaitForDisplay");
     }
 
-    [Tooltip("Active PauseUI")]
+    //Active PauseUI
     public void PauseGame()
     {
         if (!checkPause)
@@ -170,7 +183,6 @@ public class UIManager : MonoBehaviour
             miniMap.gameObject.SetActive(false);
             lapsObjects.gameObject.SetActive(false);
             Time.timeScale = 0f;
-            // Debug.Log("Pause");
         }
         else
         {
@@ -182,11 +194,10 @@ public class UIManager : MonoBehaviour
             miniMap.gameObject.SetActive(true);
             checkPause = !checkPause;
             Time.timeScale = 1f;
-            // Debug.Log("Resume");
         }
     }
 
-    [Tooltip("Check GamePlaying")]
+    //Check GamePlaying
     private void GamePlaying()
     {
         if (b_count.boostCount < 16)
@@ -200,6 +211,16 @@ public class UIManager : MonoBehaviour
                 charInput.DashBoost();
                 checkDashBoost = false;
             }
+            else
+            {
+                if (boostFail && b_count.boostCount != 0)
+                {
+                    charColl.animStuns.SetBool("boostFail", boostFail);
+                    Invoke("DisableAnimation", .5f);
+                    charInput.m_IsBoostSuccess = true;
+                }
+            }
+
             if (timeGo > 0)
             {
                 timeGo -= Time.deltaTime;
@@ -229,7 +250,7 @@ public class UIManager : MonoBehaviour
                 CountDown();
                 if (checkCount)
                 {
-                    audio_source.PlaySound("CountDown");
+                    audio_source.PlaySound(SoundType.CountDown);
                     StartCoroutine(CountNumber());
                     checkCount = false;
                 }
@@ -247,25 +268,37 @@ public class UIManager : MonoBehaviour
         if (checkGameOver)
         {
             TimeOut();
+            audio_warning.PlaySound(SoundType.Stop);
+            audio_player.PlaySound(SoundType.Stop);
         }
 
         if (checkGameClear)
         {
             GameClear();
+            audio_warning.PlaySound(SoundType.Stop);
+            audio_player.PlaySound(SoundType.Stop);
+
         }
         CheckTimeScale();
+        AddSoundEngine();
+        checkTimeToWarning();
     }
-
-    [Tooltip("Hide display when start")]
+    //Disable Animation when boost fail
+    private void DisableAnimation()
+    {
+        boostFail = false;
+        charColl.animStuns.SetBool("boostFail", boostFail);  
+    }
+    //Hide display when start
     public void waitForDisplay()
     {
         startScene = false;
     }
 
-    [Tooltip("Check Time Scale")]
+    //Check Time Scale
     void CheckTimeScale()
     {
-        if(Time.timeScale == 0f)
+        if (Time.timeScale == 0f)
         {
             checkPlaying = false;
         }
@@ -275,21 +308,23 @@ public class UIManager : MonoBehaviour
         }
 
     }
-    [Tooltip("Get Speed & Milk")]
-    private void GetVariables()
+    //Get Speed & Milk
+    public void GetVariables()
     {
         //Get kph speed
         double kphSpeed = charInput.m_CurrentSpeed;
         kphText.text = Math.Round(kphSpeed) + "";
+    }
 
+    public void GetMilk()
+    {
         //Get current milk
         currentMilk = charColl.m_CurrentBottleMilk;
         milkNumberText.text = currentMilk + "";
 
-
     }
 
-    [Tooltip("Active GameClearUI")]
+    //Active GameClearUI
     private void GameClear()
     {
         if (checkGameClear)
@@ -307,16 +342,18 @@ public class UIManager : MonoBehaviour
                 rankManagers.setRank();
             }
             Time.timeScale = 0f;
+            endGame = true;
+            checkGameClear = false;
         }
     }
 
-    [Tooltip("Return to GameStart Scene")]
+    //Return to GameStart Scene
     public void BackToMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    [Tooltip("Check Boost When tap 16 times")]
+    //Check Boost When tap 16 times
     public void BoostStart()
     {
         boostCount = b_count.boostCount;
@@ -325,15 +362,17 @@ public class UIManager : MonoBehaviour
         {
             boostSpeedButton.gameObject.SetActive(false);
             changeToRocketStart.gameObject.SetActive(true);
+            audio_warning.PlaySound(SoundType.Stroke);
             checkDashBoost = true;
         }
         else
         {
             boostSpeedButton.gameObject.SetActive(true);
             changeToRocketStart.gameObject.SetActive(false);
+
         }
     }
-    [Tooltip("Time to countdown")]
+    //Time to countdown when game start
     public void CountDown()
     {
         if (timeValue > 0)
@@ -346,11 +385,11 @@ public class UIManager : MonoBehaviour
         {
             checkRunning = true;
             timeValue = 0;
-
+            charColl.m_Engine = true;
         }
         DisplayTimer(timeValue);
     }
-    [Tooltip("DisplayTimer")]
+    //Display Timer on UI
     public void DisplayTimer(float timeToDisplay)
     {
         if (timeToDisplay < 0)
@@ -364,7 +403,22 @@ public class UIManager : MonoBehaviour
 
         countdownTimer_Text.text = seconds + "";
     }
-    [Tooltip("TimeCountUp")]
+    //Add sound engine
+    void AddSoundEngine()
+    {
+        if (charColl.m_Engine)
+        {
+            audio_player.PlaySound(SoundType.Engine);
+            charColl.m_Engine = false;
+        }
+    }
+
+    public void DisableEngineSound()
+    {
+        audio_player.PlaySound(SoundType.Stop);
+    }
+
+    //Timer
     private void TimeUp()
     {
         if (timeValueUp < maxTimeValue)
@@ -379,6 +433,34 @@ public class UIManager : MonoBehaviour
         DisplayTimerCountUp(timeValueUp);
     }
 
+    //Play Sound when game over
+    void checkSoundGameOver()
+    {
+        if (checkSoundOver)
+        {
+            audio_BGM.PlaySound(SoundType.Stop);
+            audio_BGM.PlaySound(SoundType.GameOver);
+            checkSoundOver = false;
+        }
+
+    }
+    //Add sound warning
+    void CheckSoundWarning()
+    {
+        if (checkWarning)
+        {
+            audio_warning.PlaySound(SoundType.Warning);
+            checkWarning = false;
+        }
+    }
+
+    void checkTimeToWarning()
+    {
+        if (currentTime >= timeToWarning)
+        {
+            CheckSoundWarning();
+        }
+    }
     //Show Timer
     private void DisplayTimerCountUp(float timeToDisplayCountUp)
     {
@@ -394,7 +476,7 @@ public class UIManager : MonoBehaviour
         currentTime = timeToDisplayCountUp;
 
         limitedTimer_Text.text = string.Format("{0:0}:{1:00}:{2:000}", minutes, seconds, milliSeconds);
-        gameOverScoreText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        gameOverScoreText.text = string.Format("{0:0}:{1:00}:{2:000}", minutes, seconds, milliSeconds);
     }
 
     //Check GameOver
@@ -409,23 +491,25 @@ public class UIManager : MonoBehaviour
             mainSceneUI.gameObject.SetActive(false);
             Time.timeScale = 0f;
             miniMap.gameObject.SetActive(false);
+            checkSoundGameOver();
         }
-        audio_BGM.PlaySound("Stop");
-        audio_BGM.PlaySound("Clear");
     }
-
-    //Check BoostSpeed
-    void IsBoostingSpeed()
+    IEnumerator CountNumber()
     {
-        if (charInput.m_IsBoosting)
+
+        for (int i = 2; i <= ListCountdown.Count; i--)
         {
-            isBoosting.gameObject.SetActive(true);
-            boostSpeedGObj.gameObject.SetActive(false);
-        }
-        else
-        {
-            isBoosting.gameObject.SetActive(false);
-            boostSpeedGObj.gameObject.SetActive(true);
+            if (i < 0)
+            {
+                break;
+            }
+            else
+            {
+                ListCountdown[i].gameObject.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                ListCountdown[i].gameObject.SetActive(false);
+                // Debug.Log(ListCountdown[i]);
+            }
         }
     }
     #endregion
@@ -486,6 +570,7 @@ public class UIManager : MonoBehaviour
         gameOverScoreText.text = currentScore + "m";
     }
     **/
+    /**
     //Set HP Decrease 
     public void HealthUpdate()
     {
@@ -517,8 +602,25 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-
+    **/
+    /**
+    //Check BoostSpeed
+    void IsBoostingSpeed()
+    {
+        if (charInput.m_IsBoosting)
+        {
+            isBoosting.gameObject.SetActive(true);
+            boostSpeedGObj.gameObject.SetActive(false);
+        }
+        else
+        {
+            isBoosting.gameObject.SetActive(false);
+            boostSpeedGObj.gameObject.SetActive(true);
+        }
+    }
+    **/
     //BoostSpeed
+    /**
     public void BoostSpeed()
     {
         currentMilk = charColl.m_CurrentBottleMilk;
@@ -549,25 +651,8 @@ public class UIManager : MonoBehaviour
             lockSpeedGObj.gameObject.SetActive(true);
         }
     }
+    **/
 
-    IEnumerator CountNumber()
-    {
-
-        for (int i = 3; i <= ListCountdown.Count; i--)
-        {
-            if (i < 0)
-            {
-                break;
-            }
-            else
-            {
-                ListCountdown[i].gameObject.SetActive(true);
-                yield return new WaitForSeconds(1f);
-                ListCountdown[i].gameObject.SetActive(false);
-                // Debug.Log(ListCountdown[i]);
-            }
-        }
-    }
 
     /**
     //TimeOver

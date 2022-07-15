@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4135871905207771373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4135871905207771372}
+  - component: {fileID: 921348978291500855}
+  - component: {fileID: 4884653699511765583}
+  - component: {fileID: 3346599103366625829}
+  - component: {fileID: 4135871905207771370}
+  m_Layer: 0
+  m_Name: RankManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4135871905207771372
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135871905207771373}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 79.351616}
+  m_LocalScale: {x: 0.39375, y: 0.39375, z: 0.39375}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 422.70203, y: -546.1315}
+  m_SizeDelta: {x: 147, y: 126}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &921348978291500855
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135871905207771373}
+  m_CullTransparentMesh: 1
+--- !u!114 &4884653699511765583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135871905207771373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 5f130c0a4709def469fd8f301235724f, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!114 &3346599103366625829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135871905207771373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca4d53b18d2a3247b89409012686afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listRanking:
+  - {fileID: 3880250482274083958, guid: 1a5d7cfae1f91fd479b234f61b4f2c9a, type: 3}
+  - {fileID: 8180426565854503868, guid: f58a2526098f0a54ca257251d701fbbf, type: 3}
+  - {fileID: 388040038604000697, guid: caa4074e41294444d8dc4ce769997f84, type: 3}
+  - {fileID: 8363946793827189991, guid: 2ca3395dae10e64409caf83c7da8cfdf, type: 3}
+  - {fileID: 2856478091741218890, guid: d3a907e1f20df634cbf7d2477bd8a90b, type: 3}
+  - {fileID: 1966780717989713055, guid: 54c733265d6087c4aa4ff5ed7dd6ec00, type: 3}
+  - {fileID: 6993428252251226603, guid: b5c19e1b95f9e8f4e81ad35ec6498e9b, type: 3}
+  rectTransform: {fileID: 0}
+  textRank:
+  - Text (Rank F)
+  - Text (Rank E)
+  - Text (Rank D)
+  - Text (Rank C)
+  - Text (Rank B)
+  - Text (Rank A)
+  - Text (Rank S)
+  transformParent: {fileID: 0}
+  setRankByTimed: 5e010000fa000000c800000096000000780000006400000032000000
+  checkRank: 1
+--- !u!114 &4135871905207771370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135871905207771373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb4e41587cb5b54cb8120b9d48d09ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managers: {fileID: 0}
+  m_score: 0
+  m_timeRemaining: 0
+  m_currentTimer: 0
+  m_maxTimer: 0
+  m_tempScore: 80

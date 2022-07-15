@@ -19,8 +19,8 @@ public class Character : MonoBehaviour
     public GameObject childRootObject;
     public GameObject m_MilkPrefabs;
 
-    [Header("Initial Values"), Tooltip("Initial Velocity of the character"), Range(0, 5)]
-    public int m_InitialVelocity;
+    [Header("Initial Values"), Tooltip("Initial acceleration of the character"), Range(0, 5)]
+    public int m_InitialAcceleration;
     [Tooltip("Speed initial of the character - min speed"), Range(0, 300)]
     public float m_InitialSpeed;
     [Tooltip("Max speed of the character"), Range(0, 300)]
@@ -31,6 +31,7 @@ public class Character : MonoBehaviour
     [Range(0, 300)] public float m_CurrentSpeed;
     public bool m_IsEnoughBoost;
     public bool m_Stuns;
+    public bool m_Engine;
 
     [Range(0, 300)] float m_SpeedMilk;
     [Range(0, 300)] float m_InitialMaxSpeed;
@@ -106,6 +107,8 @@ public class Character : MonoBehaviour
                 {
                     IcePickup ice = m_RootItem.GetComponent<IcePickup>();
 
+                    MediatorPlayer.DisableEngineSound();
+
                     if (!m_CharacterController.m_Stuns)
                     {
                         m_CurrentSpeed = 0;
@@ -120,6 +123,7 @@ public class Character : MonoBehaviour
                     }
 
                     Destroy(m_RootItem.gameObject);
+                    Invoke("EnableEngine", 4f);
                 }
 
                 if (child.CompareTag("Stick"))
@@ -148,11 +152,17 @@ public class Character : MonoBehaviour
                     }
                     m_CharacterController.ChangeSpeed();
 
+                    MediatorPlayer.GetMilk();
                     Destroy(m_RootItem.gameObject);
                 }
 
             }
         }
+    }
+
+    void EnableEngine()
+    {
+        m_Engine = true;
     }
     void Item(Collider other)
     {
@@ -175,6 +185,7 @@ public class Character : MonoBehaviour
                     }
                     m_CharacterController.ChangeSpeed();
 
+                    MediatorPlayer.GetMilk();
                     Destroy(m_RootItem.gameObject);
                 }
 
