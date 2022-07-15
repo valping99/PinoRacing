@@ -67,16 +67,16 @@ public class SoundManagers : MonoBehaviour
                 loop.Execute(m_AudioSource, topScreenBGM, 0.2f);
                 break;
             case SoundType.CountDown:
-                hit.Execute(m_AudioSource, countDownSound, 0.6f);
+                hit.Execute(m_AudioSource, countDownSound, 0.5f);
                 break;
             case SoundType.Milk:
-                hit.Execute(m_AudioSource, milkSound, 0.2f);
+                hit.Execute(m_AudioSource, milkSound, 0.1f);
                 break;
             case SoundType.Ice:
-                hit.Execute(m_AudioSource, iceSound, 0.6f);
+                hit.Execute(m_AudioSource, iceSound, 0.4f);
                 break;
             case SoundType.Finish:
-                hit.Execute(m_AudioSource, finishSound, 0.6f);
+                hit.Execute(m_AudioSource, finishSound, 0.5f);
                 break;
             case SoundType.BGM:
                 loop.Execute(m_AudioSource, gameBGM, 0.5f);
@@ -85,13 +85,13 @@ public class SoundManagers : MonoBehaviour
                 loop.Execute(m_AudioSource, clearBGM, 0.2f);
                 break;
             case SoundType.Indication:
-                hit.Execute(m_AudioSource, itemIndication, 0.6f);
+                hit.Execute(m_AudioSource, itemIndication, 0.5f);
                 break;
             case SoundType.Rank:
-                hit.Execute(m_AudioSource, rankDisplay, 0.6f);
+                hit.Execute(m_AudioSource, rankDisplay, 0.5f);
                 break;
             case SoundType.DashBoost:
-                hit.Execute(m_AudioSource, dashBoardSound, 0.6f);
+                hit.Execute(m_AudioSource, dashBoardSound, 0.3f);
                 break;
             case SoundType.Stop:
                 stop.Execute(m_AudioSource, null, 0);
@@ -100,10 +100,10 @@ public class SoundManagers : MonoBehaviour
                 hit.Execute(m_AudioSource, stickSound, 1f);
                 break;
             case SoundType.Stroke:
-                hit.Execute(m_AudioSource, strokeSound, 0.6f);
+                hit.Execute(m_AudioSource, strokeSound, 0.5f);
                 break;
             case SoundType.Warning:
-                loop.Execute(m_AudioSource, warningSound, 0.6f);
+                loop.Execute(m_AudioSource, warningSound, 0.5f);
                 break;
             case SoundType.LaneMove:
                 hit.Execute(m_AudioSource, laneMoveSound, 1f);
