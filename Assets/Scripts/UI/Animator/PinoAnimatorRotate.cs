@@ -10,10 +10,10 @@ public class PinoAnimatorRotate : MonoBehaviour
     public Animator pinoAnimator;
 
     [Header("Outline")]
-    public Outline chocolateOutline;
-    public Outline almondOutline;
-    public Outline strawberryOutline;
-    public Outline stickOutline;
+    public GameObject chocolateOutline;
+    public GameObject almondOutline;
+    public GameObject strawberryOutline;
+    public GameObject stickOutline;
 
     [Header("Rotation")]
     public Transform chocolateCarRotation;
@@ -29,10 +29,10 @@ public class PinoAnimatorRotate : MonoBehaviour
     void Start()
     {
         selected = FindObjectOfType<SelectManager>();
-        chocolateOutline.enabled = false;
-        almondOutline.enabled = false;
-        strawberryOutline.enabled = false;
-        stickOutline.enabled = false;
+        chocolateOutline.SetActive(false);
+        almondOutline.SetActive(false);
+        strawberryOutline.SetActive(false);
+        stickOutline.SetActive(false);
     }
 
     // Update is called once per frame
@@ -49,35 +49,35 @@ public class PinoAnimatorRotate : MonoBehaviour
         pinoAnimator.SetBool(k_AnimRotatePino2, selected.isSelectPino_02);
         pinoAnimator.SetBool(k_AnimRotatePino3, selected.isSelectPino_03);
 
-        stickOutline.enabled = true;
+        stickOutline.SetActive(true);
     }
 
     void CheckGlow()
     {
         if (selected.isSelectPino_01)
         {
-            chocolateOutline.enabled = true;
-            almondOutline.enabled = false;
-            strawberryOutline.enabled = false;
+            chocolateOutline.SetActive(true);
+            almondOutline.SetActive(false);
+            strawberryOutline.SetActive(false);
         }
         else if (selected.isSelectPino_02)
         {
-            chocolateOutline.enabled = false;
-            almondOutline.enabled = true;
-            strawberryOutline.enabled = false;
+            chocolateOutline.SetActive(false);
+            almondOutline.SetActive(false);
+            strawberryOutline.SetActive(true);
         }
         else if (selected.isSelectPino_03)
         {
-            chocolateOutline.enabled = false;
-            almondOutline.enabled = false;
-            strawberryOutline.enabled = true;
+            chocolateOutline.SetActive(false);
+            almondOutline.SetActive(true);
+            strawberryOutline.SetActive(false);
         }
         else
         {
-            chocolateOutline.enabled = false;
-            almondOutline.enabled = false;
-            strawberryOutline.enabled = false;
-            stickOutline.enabled = false;
+            chocolateOutline.SetActive(false);
+            almondOutline.SetActive(false);
+            strawberryOutline.SetActive(false);
+            stickOutline.SetActive(false);
         }
     }
     #endregion

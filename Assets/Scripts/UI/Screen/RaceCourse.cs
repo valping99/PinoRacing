@@ -37,7 +37,7 @@ public class RaceCourse : MonoBehaviour
     {
         if (uiManagers.startScene)
             lapCourse = 1;
-        
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -53,10 +53,11 @@ public class RaceCourse : MonoBehaviour
             }
             else
             {
+                audio_sources.PlaySound(SoundType.FinishLap);
                 lapCourse += 1;
                 lapNums.checkLaps();
-
             }
+
         }
     }
     #endregion
