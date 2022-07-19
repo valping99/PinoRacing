@@ -34,6 +34,7 @@ public class Tutorial : MonoBehaviour
     public RectTransform sheetTransform;
     public GameObject moveLeft;
     public GameObject moveRight;
+    public GameObject tapToStart;
 
     [Header("Transform Parent")]
     public Transform titleParent;
@@ -64,12 +65,14 @@ public class Tutorial : MonoBehaviour
     public void BackToMenu()
     {
         checkActive = false;
+        tapToStart.gameObject.SetActive(true);
         ActiveTutorialSheet();
         SetDefault();
     }
     public void TutorialButton()
     {
         checkActive = true;
+        tapToStart.gameObject.SetActive(false);
         ActiveTutorialSheet();
     }
     public void ChangeLeft()
