@@ -111,8 +111,8 @@ public class Character : MonoBehaviour
 
                     if (!m_CharacterController.m_Stuns)
                     {
-                        m_CurrentSpeed = 0;
-                        m_CharacterController.m_CurrentSpeed = 0;
+                        m_CurrentSpeed = m_InitialSpeed;
+                        m_CharacterController.m_CurrentSpeed = m_InitialSpeed;
 
                         m_CharacterController.m_Stuns = true;
                         m_CharacterController.ChangeSpeed();
