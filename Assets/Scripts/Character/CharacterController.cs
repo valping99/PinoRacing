@@ -139,7 +139,8 @@ public class CharacterController : StateMachine
     }
     void WheelRotation()
     {
-        if (!m_Stuns && m_CurrentSpeed >= 1f)
+        /*if (!m_Stuns && m_CurrentSpeed >= 1f)*/
+        if (m_CurrentSpeed >= 1f)
         {
             foreach (var wheel in m_Character.wheelCream)
             {
@@ -226,12 +227,14 @@ public class CharacterController : StateMachine
             DebugLog();
 
 #if UNITY_EDITOR || UNITY_STANDALONE
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns && !m_IsBoostSuccess)
+        /*if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns && !m_IsBoostSuccess)*/
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_IsBoostSuccess)
         {
             ChangeLane(-slideLength);
             laneNumber -= 1;
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_Stuns && !m_IsBoostSuccess)
+        /*else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_Stuns && !m_IsBoostSuccess)*/
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_IsBoostSuccess)
         {
             ChangeLane(slideLength);
             laneNumber += 1;
@@ -251,12 +254,14 @@ public class CharacterController : StateMachine
                 // we set the swip distance to trigger movement to 1% of the screen width
                 if (diff.magnitude > 0.01f)
                 {
-                    if (!m_Stuns && diff.x < 0 && laneNumber > 1 && m_IsChangeLine && !m_IsBoostSuccess)
+                    /*if (!m_Stuns && diff.x < 0 && laneNumber > 1 && m_IsChangeLine && !m_IsBoostSuccess)*/
+                    if (diff.x < 0 && laneNumber > 1 && m_IsChangeLine && !m_IsBoostSuccess)
                     {
                         ChangeLane(-slideLength);
                         laneNumber -= 1;
                     }
-                    else if (!m_Stuns && diff.x >= 0 && laneNumber < 3 && m_IsChangeLine && !m_IsBoostSuccess)
+                    /*else if (!m_Stuns && diff.x >= 0 && laneNumber < 3 && m_IsChangeLine && !m_IsBoostSuccess)*/
+                    else if (diff.x >= 0 && laneNumber < 3 && m_IsChangeLine && !m_IsBoostSuccess)
                     {
                         ChangeLane(slideLength);
                         laneNumber += 1;
