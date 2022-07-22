@@ -105,7 +105,7 @@ public class Character : MonoBehaviour
             {
                 if (child.CompareTag("Ice"))
                 {
-                    IcePickup ice = m_RootItem.GetComponent<IcePickup>();
+                    m_CharacterController.stunTimer = 10;
 
                     MediatorPlayer.DisableEngineSound();
 
@@ -191,7 +191,7 @@ public class Character : MonoBehaviour
 
                 if (child.CompareTag("SpeedPads"))
                 {
-                    m_CharacterController.timer = m_CharacterController.delay;
+                    m_CharacterController.padTimer = m_CharacterController.delay;
 
                     if (m_CurrentSpeed < m_MaxSpeed)
                         m_CurrentSpeed = m_MaxSpeed;

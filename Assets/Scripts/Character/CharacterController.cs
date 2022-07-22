@@ -42,7 +42,8 @@ public class CharacterController : StateMachine
     [HideInInspector] public bool m_IsBoostSuccess;
     [HideInInspector, Range(0, 300)] public float m_CurrentSpeed;
     [HideInInspector, Range(0, 300)] public float m_MilkCollectSpeed;
-    [HideInInspector] public float timer;
+    [HideInInspector] public float padTimer;
+    [HideInInspector] public float stunTimer;
     [HideInInspector] public float delay;
     [Range(0, 30000)] public float m_DistanceLength;
     [Range(0, 4)] public float m_CharacterPosition;
@@ -110,7 +111,8 @@ public class CharacterController : StateMachine
         m_MilkCollectSpeed = m_Character.m_InitialSpeed;
 
         m_CharacterPosition = 0;
-        timer = 0;
+        padTimer = 0;
+        stunTimer = 0;
         laneNumber = 2;
         delay = 2;
         repeatRate = delay;
@@ -166,7 +168,24 @@ public class CharacterController : StateMachine
             m_Character.animStuns.SetBool("isCrash", m_Stuns);
             m_Character.animShadow.SetBool("isCrash", m_Stuns);
 
-            StartCoroutine(State.FallenStuns());
+            if (stunTimer < 0)
+            {
+                stunTimer = repeatRate;
+
+                m_Character.m_Stuns = false;
+                m_Stuns = false;
+                m_Character.animStuns.applyRootMotion = true;
+                m_Character.animShadow.applyRootMotion = true;
+
+                m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
+                m_Character.rootObject.transform.localRotation = Quaternion.identity;
+
+                m_Character.animStuns.SetBool("isCrash", m_Stuns);
+                m_Character.animShadow.SetBool("isCrash", m_Stuns);
+
+                // StartCoroutine(State.FallenStuns());
+            }
+
         }
     }
     void SpeedUp()
@@ -303,7 +322,8 @@ public class CharacterController : StateMachine
             }
         }
 
-        timer -= Time.deltaTime;
+        padTimer -= Time.deltaTime;
+        stunTimer -= Time.deltaTime;
 
         if (m_IsBoostSuccess)
             StartCoroutine(State.ReturnNormal());
@@ -368,9 +388,9 @@ public class CharacterController : StateMachine
     }
     void CheckBoostPad()
     {
-        if (timer < 0)
+        if (padTimer < 0)
         {
-            timer = repeatRate;
+            padTimer = repeatRate;
             m_PadsIsBoosting = false;
         }
     }
