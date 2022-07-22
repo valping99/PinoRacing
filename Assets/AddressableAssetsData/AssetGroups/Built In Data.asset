@@ -15,30 +15,18 @@ MonoBehaviour:
   m_GroupName: Built In Data
   m_Data:
     m_SerializedData: []
-  m_GUID: 1fe38e9c980a3ac4fadbc3ac950cbcf8
+  m_GUID: 9dcfbb4842e1f554ba6087bad5eea4a0
   m_SerializeEntries:
-  - m_GUID: EditorSceneList
-    m_Address: EditorSceneList
-    m_ReadOnly: 1
-    m_SerializedLabels: []
   - m_GUID: Resources
     m_Address: Resources
     m_ReadOnly: 1
     m_SerializedLabels: []
-  - m_GUID: 4ba6a72335927444383639520b541d04
-    m_Address: Assets/Scenes/SelectScene.unity
-    m_ReadOnly: 0
+  - m_GUID: EditorSceneList
+    m_Address: EditorSceneList
+    m_ReadOnly: 1
     m_SerializedLabels: []
-  - m_GUID: 39cee6b0d4faf8f48a9e056af122faca
-    m_Address: Assets/Scenes/Stage_01.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e2d0b87a640a3ea4295b59ed1b41c6c5
-    m_Address: Assets/Scenes/Stage_02.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  m_ReadOnly: 0
+  m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 735e874f947d0e143a6b4e83f8a7283a, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 3e1da5646a2fc95448d6012c6fe08b85, type: 2}
+    - {fileID: 11400000, guid: 2663b2b2845916542ac9e9be52029140, type: 2}
