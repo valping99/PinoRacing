@@ -166,6 +166,7 @@ public class CharacterController : StateMachine
             m_Character.animStuns.applyRootMotion = false;
             m_Character.animShadow.applyRootMotion = false;
             m_Character.animStuns.SetBool("isCrash", m_Stuns);
+            m_Character.animStuns.SetBool("FlipAgain", m_Character.m_Flip);
             m_Character.animShadow.SetBool("isCrash", m_Stuns);
 
             if (stunTimer < 0)
@@ -181,6 +182,7 @@ public class CharacterController : StateMachine
                 m_Character.rootObject.transform.localRotation = Quaternion.identity;
 
                 m_Character.animStuns.SetBool("isCrash", m_Stuns);
+                m_Character.animStuns.SetBool("FlipAgain", m_Character.m_Flip);
                 m_Character.animShadow.SetBool("isCrash", m_Stuns);
 
                 // StartCoroutine(State.FallenStuns());
@@ -190,7 +192,8 @@ public class CharacterController : StateMachine
     }
     void SpeedUp()
     {
-        if (m_VelocityUp && !m_Stuns && m_CurrentSpeed < m_Character.m_MaxSpeed && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
+        //if (m_VelocityUp && !m_Stuns && m_CurrentSpeed < m_Character.m_MaxSpeed && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
+        if (m_VelocityUp && m_CurrentSpeed < m_Character.m_MaxSpeed && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
         {
             m_Character.m_CurrentSpeed += m_Character.m_InitialAcceleration;
             m_MilkCollectSpeed += m_Character.m_InitialAcceleration;
