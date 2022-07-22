@@ -11,6 +11,8 @@ public class Character : MonoBehaviour
     public CharacterController m_CharacterController;
     public Animator animStuns;
     public Animator animShadow;
+    InstantiateWater waterDrops;
+    Waterdrop m_WaterDrop;
 
 
     [Header("Items")]
@@ -76,6 +78,8 @@ public class Character : MonoBehaviour
     {
         m_CharacterController = GetComponentInParent<CharacterController>();
         m_Audio = GetComponent<AudioSource>();
+        waterDrops = FindObjectOfType<InstantiateWater>();
+        m_WaterDrop = FindObjectOfType<Waterdrop>();
     }
     void InitialComponent()
     {
@@ -107,6 +111,10 @@ public class Character : MonoBehaviour
                 if (child.CompareTag("Ice"))
                 {
                     StartCoroutine(Flip());
+                    if (m_WaterDrop.enableAnim)
+                    {
+                        waterDrops.DisableWater();
+                    }
                     m_CharacterController.stunTimer = 10;
 
                     MediatorPlayer.DisableEngineSound();
@@ -236,5 +244,5 @@ public class Character : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         m_Flip = false;
     }
-    #endregion
 }
+    #endregion

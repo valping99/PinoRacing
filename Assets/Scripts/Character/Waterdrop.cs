@@ -16,6 +16,7 @@ public class Waterdrop : MonoBehaviour
 
     public bool enableAnim = false;
     public bool fasterAnim = false;
+    private bool activeAnim = true;
 
     const string k_AnimDropWater = "WaterDrop";
     const string k_AnimStun = "Stun";
@@ -34,13 +35,10 @@ public class Waterdrop : MonoBehaviour
     void Update()
     {
         CheckAnimation();
-        if (managers.timeValueUp >= timeToDrip)
+        if (activeAnim == true && managers.timeValueUp >= timeToDrip)
         {
             enableAnim = true;
-        }
-        else
-        {
-            enableAnim = false;
+            activeAnim = false;
         }
         if (managers.timeValueUp >= timeToDrip + timeToFaster)
         {
@@ -49,6 +47,15 @@ public class Waterdrop : MonoBehaviour
         else
         {
             fasterAnim = false;
+        }
+        if (enableAnim)
+        {
+            waterDrop.gameObject.SetActive(true);
+        }
+        else
+        {
+
+            waterDrop.gameObject.SetActive(false);
         }
     }
 
