@@ -10,31 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Character
+  m_Name: Scene
   m_EditorClassIdentifier: 
-  m_GroupName: Character
+  m_GroupName: Scene
   m_Data:
     m_SerializedData: []
-  m_GUID: a2ba8d7f9abb29d419961e40aeb4bb27
+  m_GUID: 56cedbb4086549d4e85c055bec1affcb
   m_SerializeEntries:
-  - m_GUID: 712cbd3b10c0b444ea677f72e5894ce6
-    m_Address: Character/Almond.prefab
+  - m_GUID: 4ba6a72335927444383639520b541d04
+    m_Address: SelectScene
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - Car
-  - m_GUID: 6694f72b0d8d35f47a1d8d593a8023ab
-    m_Address: Character/Chocolate.prefab
+    m_SerializedLabels: []
+  - m_GUID: 39cee6b0d4faf8f48a9e056af122faca
+    m_Address: Stage_01
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - Car
-  - m_GUID: 8982e2648a728604cacfd24fab9bc08a
-    m_Address: Character/StrawBerry.prefab
+    m_SerializedLabels: []
+  - m_GUID: e2d0b87a640a3ea4295b59ed1b41c6c5
+    m_Address: Stage_02
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - Car
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 735e874f947d0e143a6b4e83f8a7283a, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 00377cbb151b7a0419b0a0e902baba64, type: 2}
-    - {fileID: 11400000, guid: 5b0dead0952068449ac96995de996259, type: 2}
+    - {fileID: 11400000, guid: a614aed1da12b1544bfe715d19d891c5, type: 2}
+    - {fileID: 11400000, guid: 5d36f69f9155a1445820c13c5926c2f5, type: 2}
