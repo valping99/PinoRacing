@@ -25,7 +25,7 @@ public class PlayerBehavior : State
     // </summary>
     public override IEnumerator FallenStuns()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(10f);
 
         CharacterController.m_Character.m_Stuns = false;
         CharacterController.m_Stuns = false;
