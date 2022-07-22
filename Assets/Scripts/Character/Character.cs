@@ -31,6 +31,7 @@ public class Character : MonoBehaviour
     [Range(0, 300)] public float m_CurrentSpeed;
     public bool m_IsEnoughBoost;
     public bool m_Stuns;
+    public bool m_Flip;
     public bool m_Engine;
 
     [Range(0, 300)] float m_SpeedMilk;
@@ -105,6 +106,7 @@ public class Character : MonoBehaviour
             {
                 if (child.CompareTag("Ice"))
                 {
+                    StartCoroutine(Flip());
                     m_CharacterController.stunTimer = 10;
 
                     MediatorPlayer.DisableEngineSound();
@@ -123,7 +125,7 @@ public class Character : MonoBehaviour
                     }
 
                     Destroy(m_RootItem.gameObject);
-                    Invoke("EnableEngine", 4f);
+                    Invoke("EnableEngine", 1f);
                 }
 
                 if (child.CompareTag("Stick"))
@@ -227,6 +229,12 @@ public class Character : MonoBehaviour
     {
         yield return new WaitForSeconds(.01f);
         m_MaxSpeed = (m_InitialMaxSpeed * m_SpeedMilk * m_CurrentBottleMilk) + m_InitialMaxSpeed;
+    }
+    IEnumerator Flip()
+    {
+        m_Flip = true;
+        yield return new WaitForSeconds(.1f);
+        m_Flip = false;
     }
     #endregion
 }

@@ -25,14 +25,7 @@ public class InstantiateWater : MonoBehaviour
     {
         if (managers.timeValueUp >= 180)
         {
-            if (charInput.m_Stuns)
-            {
-                //waterObjects.gameObject.SetActive(false);
-            }
-            else
-            {
-                waterObjects.gameObject.SetActive(true);
-            }
+            waterObjects.gameObject.SetActive(true);            
         }
     }
     #endregion
