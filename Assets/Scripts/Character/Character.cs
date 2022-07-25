@@ -34,7 +34,6 @@ public class Character : MonoBehaviour
     public bool m_IsEnoughBoost;
     public bool m_Stuns;
     public bool m_Flip;
-    public bool m_Engine;
 
     [Range(0, 300)] float m_SpeedMilk;
     [Range(0, 300)] float m_InitialMaxSpeed;
@@ -120,7 +119,7 @@ public class Character : MonoBehaviour
                     }
                     m_CharacterController.stunTimer = 10;
 
-                    MediatorPlayer.DisableEngineSound();
+                    //MediatorPlayer.DisableEngineSound();
 
                     if (!m_CharacterController.m_Stuns)
                     {
@@ -134,7 +133,6 @@ public class Character : MonoBehaviour
                     }
 
                     Destroy(m_RootItem.gameObject);
-                    Invoke("EnableEngine", 1f);
                 }
 
                 if (child.CompareTag("Stick"))
@@ -171,10 +169,6 @@ public class Character : MonoBehaviour
         }
     }
 
-    void EnableEngine()
-    {
-        m_Engine = true;
-    }
     void Item(Collider other)
     {
         if (other.gameObject.tag == "Item")
