@@ -107,8 +107,8 @@ public class Pickup : MonoBehaviour
 
     public void PlayPickupFeedback()
     {
-        if (PickupSfx.name == "No5")
-            m_SoundManager.PlaySound(SoundType.Ice); // ice
+        if (PickupSfx.name == "No19")
+            m_SoundManager.PlaySound(SoundType.Damaged); // ice
         else if (PickupSfx.name == "No4")
             m_SoundManager.PlaySound(SoundType.Milk); // milk
         else if (PickupSfx.name == "No11")

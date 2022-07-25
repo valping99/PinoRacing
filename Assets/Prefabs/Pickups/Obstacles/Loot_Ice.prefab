@@ -82,7 +82,7 @@ MonoBehaviour:
   VerticalBobFrequency: 0
   BobbingAmount: 0
   RotatingSpeed: 0
-  PickupSfx: {fileID: 8300000, guid: e791afb0b156c764eaaa9abfb4d32bbd, type: 3}
+  PickupSfx: {fileID: 8300000, guid: e109d163c35544e4f8ff39d5dc92d52c, type: 3}
   m_RootModel: {fileID: 5529103100820561513}
   m_Distance: 10
 --- !u!1001 &4646087710822802232
