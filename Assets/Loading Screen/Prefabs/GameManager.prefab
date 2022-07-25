@@ -46,13 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneAsset:
-    m_AssetGUID: 4f04ec184eae8364daab090189e552f3
+    m_AssetGUID: 9a18cc5d35536fd428eb6e90b3402589
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  camera: {fileID: 0}
+  _camera: {fileID: 0}
   downloadProgress: {fileID: 4575065564684261170}
   uiLoading: {fileID: 0}
+  uiSlider: {fileID: 0}
 --- !u!114 &4575065564684261170
 MonoBehaviour:
   m_ObjectHideFlags: 0
