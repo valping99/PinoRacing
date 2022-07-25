@@ -178,7 +178,6 @@ public class CharacterController : StateMachine
                 m_Character.animStuns.applyRootMotion = true;
                 m_Character.animShadow.applyRootMotion = true;
 
-                m_Character.m_CurrentSpeed = m_Character.m_InitialSpeed;
                 m_Character.rootObject.transform.localRotation = Quaternion.identity;
 
                 m_Character.animStuns.SetBool("isCrash", m_Stuns);
