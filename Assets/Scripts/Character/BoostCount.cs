@@ -56,11 +56,13 @@ public class BoostCount : MonoBehaviour
     {
         if (boostCount <= 0)
         {
+            //uiManagers.audio_warning.PlaySound(SoundType.DashBoost);
             boostCount = 0;
         }
         else
         {
             boostCount -= 1;
+            uiManagers.audio_source.PlaySound(SoundType.Stroke);
         }
     }
 

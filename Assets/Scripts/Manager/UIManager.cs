@@ -48,12 +48,13 @@ public class UIManager : MonoBehaviour
     [HideInInspector] public bool checkDashBoost = false;
     [HideInInspector] public bool startScene = true;
     [HideInInspector] public bool endGame;
+    [HideInInspector] public bool m_Engine;
     private bool checkCount = true;
     private bool checkSoundOver = true;
-    public bool boostFail = true;
+    private bool boostFail = true;
     private bool checkWarning = true;
     private bool checkEngine = true;
-    private bool enableEngine;
+    private bool boostSuccess = true;
 
     [Header("Object UI")]
     [SerializeField]
@@ -160,7 +161,6 @@ public class UIManager : MonoBehaviour
         screenShot = FindObjectOfType<HiresScreenShots>();
         obstacles = FindObjectOfType<ObstaclesManager>();
         b_count = FindObjectOfType<BoostCount>();
-
         audio_source = GameObject.FindGameObjectWithTag("SoundManagers").GetComponent<SoundManagers>();
         audio_BGM = GameObject.FindGameObjectWithTag("BGM").GetComponent<SoundManagers>();
         audio_warning = GameObject.FindGameObjectWithTag("SE_Warning").GetComponent<SoundManagers>();
@@ -239,6 +239,7 @@ public class UIManager : MonoBehaviour
                 rankManagers.setRank();
             }
 
+            AddEngineSE();
         }
         else
         {
@@ -267,22 +268,34 @@ public class UIManager : MonoBehaviour
 
         if (checkGameOver)
         {
-            TimeOut();
             audio_warning.PlaySound(SoundType.Stop);
             audio_player.PlaySound(SoundType.Stop);
+            m_Engine = false;
+            TimeOut();
         }
 
         if (checkGameClear)
         {
-            GameClear();
             audio_warning.PlaySound(SoundType.Stop);
             audio_player.PlaySound(SoundType.Stop);
+            m_Engine = false;
+            GameClear();
 
         }
         CheckTimeScale();
-        AddSoundEngine();
         checkTimeToWarning();
     }
+
+    //Add Engine SE
+    void AddEngineSE()
+    {
+        if (checkEngine)
+        {
+            audio_player.PlaySound(SoundType.Engine);
+            checkEngine = false;
+        }
+    }
+
     //Disable Animation when boost fail
     private void DisableAnimation()
     {
@@ -360,10 +373,14 @@ public class UIManager : MonoBehaviour
         countBoostNumber_Text.text = boostCount + "";
         if (boostCount == 0)
         {
-            boostSpeedButton.gameObject.SetActive(false);
-            changeToRocketStart.gameObject.SetActive(true);
-            audio_warning.PlaySound(SoundType.Stroke);
-            checkDashBoost = true;
+            if (boostSuccess)
+            {
+                boostSpeedButton.gameObject.SetActive(false);
+                changeToRocketStart.gameObject.SetActive(true);
+                audio_source.PlaySound(SoundType.DashBoost);
+                checkDashBoost = true;
+                boostSuccess = false;
+            }
         }
         else
         {
@@ -385,7 +402,7 @@ public class UIManager : MonoBehaviour
         {
             checkRunning = true;
             timeValue = 0;
-            charColl.m_Engine = true;
+            //charInput.m_Engine = true;
         }
         DisplayTimer(timeValue);
     }
@@ -403,21 +420,18 @@ public class UIManager : MonoBehaviour
 
         countdownTimer_Text.text = seconds + "";
     }
-    //Add sound engine
-    void AddSoundEngine()
-    {
-        if (charColl.m_Engine)
-        {
-            audio_player.PlaySound(SoundType.Engine);
-            charColl.m_Engine = false;
-        }
-    }
 
     public void DisableEngineSound()
     {
-        audio_player.PlaySound(SoundType.Stop);
+        StartCoroutine(EngineSE());
     }
 
+    IEnumerator EngineSE()
+    {
+        audio_player.PlaySound(SoundType.Stop);
+        yield return new WaitForSeconds(1f);
+        audio_player.PlaySound(SoundType.Engine);
+    }
     //Timer
     private void TimeUp()
     {

@@ -250,13 +250,13 @@ public class CharacterController : StateMachine
 
 #if UNITY_EDITOR || UNITY_STANDALONE
         /*if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns && !m_IsBoostSuccess)*/
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_IsBoostSuccess)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_IsBoostSuccess && m_Character.m_Flip == false)
         {
             ChangeLane(-slideLength);
             laneNumber -= 1;
         }
         /*else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_Stuns && !m_IsBoostSuccess)*/
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_IsBoostSuccess)
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_IsBoostSuccess && m_Character.m_Flip == false)
         {
             ChangeLane(slideLength);
             laneNumber += 1;
@@ -277,13 +277,13 @@ public class CharacterController : StateMachine
                 if (diff.magnitude > 0.01f)
                 {
                     /*if (!m_Stuns && diff.x < 0 && laneNumber > 1 && m_IsChangeLine && !m_IsBoostSuccess)*/
-                    if (diff.x < 0 && laneNumber > 1 && m_IsChangeLine && !m_IsBoostSuccess)
+                    if (diff.x < 0 && laneNumber > 1 && m_IsChangeLine && !m_IsBoostSuccess && m_Character.m_Flip == false)
                     {
                         ChangeLane(-slideLength);
                         laneNumber -= 1;
                     }
                     /*else if (!m_Stuns && diff.x >= 0 && laneNumber < 3 && m_IsChangeLine && !m_IsBoostSuccess)*/
-                    else if (diff.x >= 0 && laneNumber < 3 && m_IsChangeLine && !m_IsBoostSuccess)
+                    else if (diff.x >= 0 && laneNumber < 3 && m_IsChangeLine && !m_IsBoostSuccess && m_Character.m_Flip == false)
                     {
                         ChangeLane(slideLength);
                         laneNumber += 1;
@@ -332,6 +332,10 @@ public class CharacterController : StateMachine
             StartCoroutine(State.ReturnNormal());
 
     }
+
+    //
+
+    //
     void ChangeLane(int _direction)
     {
         m_CharacterPosition = _direction;

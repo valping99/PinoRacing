@@ -515,7 +515,7 @@ RectTransform:
   m_GameObject: {fileID: 178204703}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9417287, y: 1.0416379, z: 1.1618681}
+  m_LocalScale: {x: 1.0267445, y: 1.135673, z: 1.2667571}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 449337012}
@@ -523,7 +523,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.2489624, y: 6.0841064}
+  m_AnchoredPosition: {x: -1.2489624, y: -1.7}
   m_SizeDelta: {x: 0, y: -19.900024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &178204705
@@ -1962,6 +1962,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8546220098116206806, guid: 5d500ebe70c413c4e93687dba2e8cf79,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546220098116206806, guid: 5d500ebe70c413c4e93687dba2e8cf79,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546220098116206806, guid: 5d500ebe70c413c4e93687dba2e8cf79,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546220098116206806, guid: 5d500ebe70c413c4e93687dba2e8cf79,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2090,7 +2105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413048337}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -758.3624, y: 541.169, z: 281.8484}
+  m_LocalPosition: {x: -758.3624, y: 541.169, z: 120.2}
   m_LocalScale: {x: 4.0133286, y: 1.311223, z: 2.2939851}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2157,7 +2172,7 @@ Camera:
   far clip plane: 1185.1
   field of view: 60
   orthographic: 1
-  orthographic size: 1200
+  orthographic size: 1000
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -5186,6 +5201,7 @@ MonoBehaviour:
   iceSound: {fileID: 0}
   dashBoardSound: {fileID: 0}
   stickSound: {fileID: 0}
+  damageSE: {fileID: 0}
   tapSound: {fileID: 0}
   countDownSound: {fileID: 0}
   finishSound: {fileID: 0}
@@ -8013,6 +8029,11 @@ PrefabInstance:
       objectReference: {fileID: 1455621044}
     - target: {fileID: 22586968516271797, guid: f151432db6208db4881342731ffc4264,
         type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22586968516271797, guid: f151432db6208db4881342731ffc4264,
+        type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 24300002, guid: 6986ad3214ab8084f9bd5e49fb2f8416,
@@ -8030,18 +8051,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1455621041}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1455621043 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 22586968516271796, guid: f151432db6208db4881342731ffc4264,
-    type: 3}
-  m_PrefabInstance: {fileID: 1455621041}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddb6a20cfee1d4a4791885a18a2d7305, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &1455621044 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 22586968516271797, guid: f151432db6208db4881342731ffc4264,
@@ -8844,7 +8853,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288, y: -346}
+  m_AnchoredPosition: {x: 288, y: -360}
   m_SizeDelta: {x: 500, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1576937937
@@ -9494,6 +9503,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6058430241997577320, guid: 885dc05bde9a7b4458bf406560c24bac,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.88325
       objectReference: {fileID: 0}
     - target: {fileID: 6058430241997577320, guid: 885dc05bde9a7b4458bf406560c24bac,
         type: 3}
@@ -11292,18 +11306,6 @@ MonoBehaviour:
       - m_Target: {fileID: 2131492078}
         m_TargetAssemblyTypeName: BoostCount, Assembly-CSharp
         m_MethodName: Count
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1455621043}
-        m_TargetAssemblyTypeName: SoundManagers, Assembly-CSharp
-        m_MethodName: TapSE
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
