@@ -110,6 +110,9 @@ public class Character : MonoBehaviour
             {
                 if (child.CompareTag("Ice"))
                 {
+                    m_CurrentSpeed = m_InitialSpeed;
+                    m_CharacterController.m_CurrentSpeed = m_InitialSpeed;
+                    
                     StartCoroutine(Flip());
                     if (m_WaterDrop.enableAnim)
                     {
@@ -121,8 +124,6 @@ public class Character : MonoBehaviour
 
                     if (!m_CharacterController.m_Stuns)
                     {
-                        m_CurrentSpeed = m_InitialSpeed;
-                        m_CharacterController.m_CurrentSpeed = m_InitialSpeed;
 
                         m_CharacterController.m_Stuns = true;
                         m_CharacterController.ChangeSpeed();
@@ -245,4 +246,4 @@ public class Character : MonoBehaviour
         m_Flip = false;
     }
 }
-    #endregion
+#endregion
