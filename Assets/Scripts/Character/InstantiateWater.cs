@@ -10,6 +10,7 @@ public class InstantiateWater : MonoBehaviour
     public Waterdrop waterObjects;
     private UIManager managers;
     private CharacterController charInput;
+    private bool activeAnim = true;
     #endregion
     #region Unity Method
     void Start()
@@ -23,17 +24,30 @@ public class InstantiateWater : MonoBehaviour
 
     private void Update()
     {
-        if (managers.timeValueUp >= 180)
+        if (activeAnim == true && managers.timeValueUp >= waterObjects.timeToDrip)
         {
-            if (charInput.m_Stuns)
-            {
-                //waterObjects.gameObject.SetActive(false);
-            }
-            else
-            {
-                waterObjects.gameObject.SetActive(true);
-            }
+            waterObjects.enableAnim = true;
+            activeAnim = false;
+        }
+        if (waterObjects.enableAnim)
+        {
+            waterObjects.gameObject.SetActive(true);
+        }
+        else
+        {
+            waterObjects.gameObject.SetActive(false);
         }
     }
     #endregion
+    public void DisableWater()
+    {
+        StartCoroutine(EnableWater());
+    }
+    IEnumerator EnableWater()
+    {
+        waterObjects.enableAnim = false;
+        yield return new WaitForSeconds(.8f);
+        waterObjects.enableAnim = true;
+
+    }
 }

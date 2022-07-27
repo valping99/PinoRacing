@@ -14,7 +14,7 @@ public class SoundManagers : MonoBehaviour
     public AudioClip clearBGM, gameBGM, topScreenBGM, gameOverBGM;
 
     [Tooltip("Item Sound Effect")]
-    public AudioClip milkSound, iceSound, dashBoardSound, stickSound;
+    public AudioClip milkSound, iceSound, dashBoardSound, stickSound, damageSE;
 
     [Tooltip("UI Sound Effect")]
     public AudioClip tapSound, countDownSound, finishSound, itemIndication, rankDisplay, strokeSound, warningSound, laneMoveSound, engineSound, finishLapSound;
@@ -51,6 +51,7 @@ public class SoundManagers : MonoBehaviour
         engineSound = Resources.Load<AudioClip>("Audio/No16");
         gameOverBGM = Resources.Load<AudioClip>("Audio/No17");
         finishLapSound = Resources.Load<AudioClip>("Audio/No18");
+        damageSE = Resources.Load<AudioClip>("Audio/No19");
 
         hit = new PlaySound();
         stop = new StopSound();
@@ -92,7 +93,7 @@ public class SoundManagers : MonoBehaviour
                 hit.Execute(m_AudioSource, rankDisplay, 0.5f);
                 break;
             case SoundType.DashBoost:
-                hit.Execute(m_AudioSource, dashBoardSound, 0.3f);
+                hit.Execute(m_AudioSource, dashBoardSound, .8f);
                 break;
             case SoundType.Stop:
                 stop.Execute(m_AudioSource, null, 0);
@@ -101,7 +102,7 @@ public class SoundManagers : MonoBehaviour
                 hit.Execute(m_AudioSource, stickSound, 1f);
                 break;
             case SoundType.Stroke:
-                hit.Execute(m_AudioSource, strokeSound, 0.5f);
+                hit.Execute(m_AudioSource, strokeSound, .1f);
                 break;
             case SoundType.FinishLap:
                 hit.Execute(m_AudioSource, finishLapSound, 0.5f);
@@ -116,7 +117,10 @@ public class SoundManagers : MonoBehaviour
                 loop.Execute(m_AudioSource, engineSound, 1f);
                 break;
             case SoundType.GameOver:
-                loop.Execute(m_AudioSource, gameOverBGM, 0.2f);
+                loop.Execute(m_AudioSource, gameOverBGM, 1f);
+                break;
+            case SoundType.Damaged:
+                hit.Execute(m_AudioSource, damageSE, .2f);
                 break;
         }
     }

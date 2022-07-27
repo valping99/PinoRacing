@@ -11,6 +11,8 @@ public class Character : MonoBehaviour
     public CharacterController m_CharacterController;
     public Animator animStuns;
     public Animator animShadow;
+    InstantiateWater waterDrops;
+    Waterdrop m_WaterDrop;
 
 
     [Header("Items")]
@@ -31,7 +33,7 @@ public class Character : MonoBehaviour
     [Range(0, 300)] public float m_CurrentSpeed;
     public bool m_IsEnoughBoost;
     public bool m_Stuns;
-    public bool m_Engine;
+    public bool m_Flip;
 
     [Range(0, 300)] float m_SpeedMilk;
     [Range(0, 300)] float m_InitialMaxSpeed;
@@ -75,6 +77,8 @@ public class Character : MonoBehaviour
     {
         m_CharacterController = GetComponentInParent<CharacterController>();
         m_Audio = GetComponent<AudioSource>();
+        waterDrops = FindObjectOfType<InstantiateWater>();
+        m_WaterDrop = FindObjectOfType<Waterdrop>();
     }
     void InitialComponent()
     {
@@ -105,14 +109,20 @@ public class Character : MonoBehaviour
             {
                 if (child.CompareTag("Ice"))
                 {
-                    IcePickup ice = m_RootItem.GetComponent<IcePickup>();
+                    m_CurrentSpeed = m_InitialSpeed;
+                    m_CharacterController.m_CurrentSpeed = m_InitialSpeed;
+                    
+                    StartCoroutine(Flip());
+                    if (m_WaterDrop.enableAnim)
+                    {
+                        waterDrops.DisableWater();
+                    }
+                    m_CharacterController.stunTimer = 10;
 
-                    MediatorPlayer.DisableEngineSound();
+                    //MediatorPlayer.DisableEngineSound();
 
                     if (!m_CharacterController.m_Stuns)
                     {
-                        m_CurrentSpeed = 0;
-                        m_CharacterController.m_CurrentSpeed = 0;
 
                         m_CharacterController.m_Stuns = true;
                         m_CharacterController.ChangeSpeed();
@@ -123,7 +133,6 @@ public class Character : MonoBehaviour
                     }
 
                     Destroy(m_RootItem.gameObject);
-                    Invoke("EnableEngine", 4f);
                 }
 
                 if (child.CompareTag("Stick"))
@@ -160,10 +169,6 @@ public class Character : MonoBehaviour
         }
     }
 
-    void EnableEngine()
-    {
-        m_Engine = true;
-    }
     void Item(Collider other)
     {
         if (other.gameObject.tag == "Item")
@@ -191,7 +196,7 @@ public class Character : MonoBehaviour
 
                 if (child.CompareTag("SpeedPads"))
                 {
-                    m_CharacterController.timer = m_CharacterController.delay;
+                    m_CharacterController.padTimer = m_CharacterController.delay;
 
                     if (m_CurrentSpeed < m_MaxSpeed)
                         m_CurrentSpeed = m_MaxSpeed;
@@ -228,5 +233,11 @@ public class Character : MonoBehaviour
         yield return new WaitForSeconds(.01f);
         m_MaxSpeed = (m_InitialMaxSpeed * m_SpeedMilk * m_CurrentBottleMilk) + m_InitialMaxSpeed;
     }
-    #endregion
+    IEnumerator Flip()
+    {
+        m_Flip = true;
+        yield return new WaitForSeconds(.1f);
+        m_Flip = false;
+    }
 }
+#endregion
