@@ -67,7 +67,9 @@ public class Character : MonoBehaviour
             StartCoroutine(Flip());
             if(m_WaterDrop == null)
             {
-                m_WaterDrop = GetComponent<Waterdrop>();
+                waterDrops.waterObjects.gameObject.SetActive(true);
+
+                 m_WaterDrop = FindObjectOfType<Waterdrop>();
             }
 
             if (m_WaterDrop.enableAnim)
@@ -154,6 +156,15 @@ public class Character : MonoBehaviour
                     m_CharacterController.m_CurrentSpeed = m_InitialSpeed;
                     
                     StartCoroutine(Flip());
+                    //
+
+                    if (m_WaterDrop == null)
+                    {
+                        waterDrops.waterObjects.gameObject.SetActive(true);
+
+                        m_WaterDrop = FindObjectOfType<Waterdrop>();
+                    }
+                    //
                     if (m_WaterDrop.enableAnim)
                     {
                         waterDrops.DisableWater();
