@@ -12,7 +12,7 @@ public class Character : MonoBehaviour
     public Animator animStuns;
     public Animator animShadow;
     InstantiateWater waterDrops;
-    Waterdrop m_WaterDrop;
+    public Waterdrop m_WaterDrop;
 
 
     [Header("Items")]
@@ -54,6 +54,47 @@ public class Character : MonoBehaviour
     {
         FixSpeedUpdate();
     }
+
+
+    //
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            m_CurrentSpeed = m_InitialSpeed;
+            m_CharacterController.m_CurrentSpeed = m_InitialSpeed;
+
+            StartCoroutine(Flip());
+            if(m_WaterDrop == null)
+            {
+                m_WaterDrop = GetComponent<Waterdrop>();
+            }
+
+            if (m_WaterDrop.enableAnim)
+            {
+                waterDrops.DisableWater();
+            }
+            m_CharacterController.stunTimer = 10;
+
+            //MediatorPlayer.DisableEngineSound();
+
+            if (!m_CharacterController.m_Stuns)
+            {
+
+                m_CharacterController.m_Stuns = true;
+                m_CharacterController.ChangeSpeed();
+
+                if (m_CurrentBottleMilk <= 0)
+                    m_MaxSpeed = m_InitialMaxSpeed;
+
+            }
+
+        }
+    }
+    //
+
+
+
 
     void OnTriggerEnter(Collider other)
     {
