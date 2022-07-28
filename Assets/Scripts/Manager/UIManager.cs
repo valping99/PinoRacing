@@ -452,6 +452,7 @@ public class UIManager : MonoBehaviour
     {
         if (checkSoundOver)
         {
+            audio_source.PlaySound(SoundType.GameOverSE);
             audio_BGM.PlaySound(SoundType.Stop);
             audio_BGM.PlaySound(SoundType.GameOver);
             checkSoundOver = false;
