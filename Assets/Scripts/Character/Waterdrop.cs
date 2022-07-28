@@ -10,6 +10,7 @@ public class Waterdrop : MonoBehaviour
     public GameObject waterDrop;
     public Animator animWaterDrop;
     public CharacterController charInput;
+    public Character m_Char;
 
     public float timeToDrip;
     public float timeToFaster = 60f;
@@ -17,6 +18,7 @@ public class Waterdrop : MonoBehaviour
     public bool enableAnim = false;
     public bool fasterAnim = false;
     private bool activeAnim = true;
+    public GameObject rootObject;
 
     const string k_AnimDropWater = "WaterDrop";
     const string k_AnimStun = "Stun";
@@ -77,5 +79,6 @@ public class Waterdrop : MonoBehaviour
         animWaterDrop.SetBool(k_AnimStun, charInput.m_Stuns);
         animWaterDrop.SetBool(k_AnimFaster, fasterAnim);
     }
+
     #endregion
 }

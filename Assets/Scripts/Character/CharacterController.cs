@@ -33,7 +33,7 @@ public class CharacterController : StateMachine
     [HideInInspector] public bool m_UpSpeed;
     [HideInInspector] public bool m_IsBoosting;
     [HideInInspector] public bool m_PadsIsBoosting;
-    [HideInInspector] public bool m_Stuns;
+     public bool m_Stuns;
     [HideInInspector] public bool m_IsChangeLine;
     [HideInInspector] public bool m_IsGotMilk;
     [HideInInspector] public bool m_VelocityUp;
