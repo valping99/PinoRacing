@@ -11,12 +11,15 @@ public class InstantiateWater : MonoBehaviour
     private UIManager managers;
     private CharacterController charInput;
     private bool activeAnim = true;
+    public GameObject rootObject;
+    private bool checkStun = false;
     #endregion
     #region Unity Method
     void Start()
     {
         //transformParent = GameObject.FindGameObjectWithTag("RootObject").transform;
         //Instantiate(waterDrop, transformParent.transform.position, transformParent.transform.rotation, transformParent);
+        rootObject = GameObject.FindGameObjectWithTag("Root");
         charInput = FindObjectOfType<CharacterController>();
         managers = FindObjectOfType<UIManager>();
         waterObjects = FindObjectOfType<Waterdrop>();
@@ -29,6 +32,15 @@ public class InstantiateWater : MonoBehaviour
             waterObjects.enableAnim = true;
             activeAnim = false;
         }
+        if (charInput.m_Stuns)
+        {
+            checkStun = true;
+        }
+        if(checkStun && charInput.m_Stuns == false)
+        {
+            StartCoroutine(FixPosition());
+            checkStun = false;
+        }
         CheckEnable();
     }
     #endregion
@@ -36,23 +48,21 @@ public class InstantiateWater : MonoBehaviour
     {
         if (waterObjects.enableAnim)
         {
-            StartCoroutine(CheckEnableWater());
+            waterObjects.gameObject.SetActive(true);
         }
         else
         {
-            StartCoroutine(CheckDisableWater());
+            waterObjects.gameObject.SetActive(false);
         }
     }
     IEnumerator CheckEnableWater()
     {
         yield return new WaitForSeconds(.8f);
-        waterObjects.gameObject.SetActive(true);
 
     }
     IEnumerator CheckDisableWater()
     {
         yield return new WaitForSeconds(.8f);
-        waterObjects.gameObject.SetActive(false);
 
     }
     public void DisableWater()
@@ -65,5 +75,11 @@ public class InstantiateWater : MonoBehaviour
         yield return new WaitForSeconds(.8f);
         waterObjects.enableAnim = true;
 
+    }
+    IEnumerator FixPosition()
+    {
+        yield return new WaitForSeconds(.45f);
+        rootObject.transform.localPosition = new Vector3(0,0,0);
+        rootObject.transform.localRotation = Quaternion.identity;
     }
 }

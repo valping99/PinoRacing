@@ -41,6 +41,7 @@ TagManager:
   - SE_Player
   - SE_ChangeLane
   - Description
+  - Root
   layers:
   - Default
   - TransparentFX
