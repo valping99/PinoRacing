@@ -76,7 +76,7 @@ public class Character : MonoBehaviour
             {
                 waterDrops.DisableWater();
             }
-            m_CharacterController.stunTimer = 10;
+            m_CharacterController.stunTimer = 3;
 
             //MediatorPlayer.DisableEngineSound();
 
