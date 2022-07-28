@@ -26,6 +26,7 @@ public class RaceCourse : MonoBehaviour
         if (lapCourse == lapToWin)
         {
             Invoke("ShowFinishLap", 2f);
+            audio_BGM.m_AudioSource.pitch = 1.08f;
         }
         else
         {

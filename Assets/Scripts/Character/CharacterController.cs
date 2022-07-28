@@ -74,6 +74,7 @@ public class CharacterController : StateMachine
     {
         WheelRotation();
         ChangePosition();
+        
     }
 
     void FixedUpdate()

@@ -15,8 +15,8 @@ public class InstantiateWater : MonoBehaviour
     #region Unity Method
     void Start()
     {
-        transformParent = GameObject.FindGameObjectWithTag("RootObject").transform;
-        Instantiate(waterDrop, transformParent.transform.position, transformParent.transform.rotation, transformParent);
+        //transformParent = GameObject.FindGameObjectWithTag("RootObject").transform;
+        //Instantiate(waterDrop, transformParent.transform.position, transformParent.transform.rotation, transformParent);
         charInput = FindObjectOfType<CharacterController>();
         managers = FindObjectOfType<UIManager>();
         waterObjects = FindObjectOfType<Waterdrop>();
@@ -29,16 +29,32 @@ public class InstantiateWater : MonoBehaviour
             waterObjects.enableAnim = true;
             activeAnim = false;
         }
+        CheckEnable();
+    }
+    #endregion
+    void CheckEnable()
+    {
         if (waterObjects.enableAnim)
         {
-            waterObjects.gameObject.SetActive(true);
+            StartCoroutine(CheckEnableWater());
         }
         else
         {
-            waterObjects.gameObject.SetActive(false);
+            StartCoroutine(CheckDisableWater());
         }
     }
-    #endregion
+    IEnumerator CheckEnableWater()
+    {
+        yield return new WaitForSeconds(.8f);
+        waterObjects.gameObject.SetActive(true);
+
+    }
+    IEnumerator CheckDisableWater()
+    {
+        yield return new WaitForSeconds(.8f);
+        waterObjects.gameObject.SetActive(false);
+
+    }
     public void DisableWater()
     {
         StartCoroutine(EnableWater());
