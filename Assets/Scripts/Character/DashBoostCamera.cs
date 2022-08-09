@@ -39,24 +39,24 @@ public class DashBoostCamera : MonoBehaviour
         }
         if (charInput.m_IsRemainBoost && charInput.m_PadsIsBoosting)
         {
-            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 120, 3f * Time.deltaTime);
+            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 85f, 3f * Time.deltaTime);
         }
         
         else if (charInput.m_IsRemainBoost || charInput.m_PadsIsBoosting)
         {
-            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 100, 3f * Time.deltaTime);
+            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 80f, 3f * Time.deltaTime);
         }
         else if (charInput.m_PadsIsBoosting && checkSpeed)
         {
-            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 120, 3f * Time.deltaTime);
+            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 90f, 3f * Time.deltaTime);
         }
         else if (charInput.m_Stuns)
         {
-            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 60, 2.5f * Time.deltaTime);
+            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 60f, 2.5f * Time.deltaTime);
         }
         else
         {
-            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 70, 1.5f * Time.deltaTime);
+            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 70f, 1.5f * Time.deltaTime);
         }
 
     }
