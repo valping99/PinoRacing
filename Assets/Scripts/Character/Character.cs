@@ -28,8 +28,9 @@ public class Character : MonoBehaviour
     [Tooltip("Max speed of the character"), Range(0, 300)]
     public float m_MaxSpeed;
 
+
     [Header("Controls")]
-    [Range(0, 10)] public int m_CurrentBottleMilk;
+    [Range(0, 99)] public int m_CurrentBottleMilk; // Change Current milk from 10 to 99
     [Range(0, 300)] public float m_CurrentSpeed;
     public bool m_IsEnoughBoost;
     public bool m_Stuns;
@@ -236,7 +237,9 @@ public class Character : MonoBehaviour
 
                     MilkPickup milk = other.GetComponent<MilkPickup>();
 
-                    if (m_CurrentBottleMilk < 10)
+                    //m_CurrentBottleMilk += milk.amountMilkBottle;
+
+                    if (m_CurrentBottleMilk < 99)
                     {
                         m_CurrentBottleMilk += milk.amountMilkBottle;
                     }
@@ -282,8 +285,13 @@ public class Character : MonoBehaviour
     }
     IEnumerator SpeedUp()
     {
+        //yield return new WaitForSeconds(.01f);
+        //m_MaxSpeed = (m_InitialMaxSpeed * m_SpeedMilk * m_CurrentBottleMilk) + m_InitialMaxSpeed;
+
+        // ---> New Speed Up
+
         yield return new WaitForSeconds(.01f);
-        m_MaxSpeed = (m_InitialMaxSpeed * m_SpeedMilk * m_CurrentBottleMilk) + m_InitialMaxSpeed;
+        m_MaxSpeed = m_CurrentBottleMilk + m_InitialMaxSpeed;
     }
     IEnumerator Flip()
     {
