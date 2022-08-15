@@ -47,17 +47,18 @@ public class ObstaclesManager : MonoBehaviour
     #region Class
     IEnumerator SpawnObstacles()
     {
+        // -1 CD spawn
         if (m_Character.m_Stuns)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(4f);
         }
         else if (m_Character.m_CurrentSpeed < 20f)
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
         }
         else
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
         StartCoroutine(SpawnObstacles());
 

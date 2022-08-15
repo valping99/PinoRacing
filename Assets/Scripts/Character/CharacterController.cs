@@ -33,7 +33,7 @@ public class CharacterController : StateMachine
     [HideInInspector] public bool m_UpSpeed;
     [HideInInspector] public bool m_IsBoosting;
     [HideInInspector] public bool m_PadsIsBoosting;
-    [HideInInspector] public bool m_Stuns;
+     public bool m_Stuns;
     [HideInInspector] public bool m_IsChangeLine;
     [HideInInspector] public bool m_IsGotMilk;
     [HideInInspector] public bool m_VelocityUp;
@@ -42,7 +42,8 @@ public class CharacterController : StateMachine
     [HideInInspector] public bool m_IsBoostSuccess;
     [HideInInspector, Range(0, 300)] public float m_CurrentSpeed;
     [HideInInspector, Range(0, 300)] public float m_MilkCollectSpeed;
-    [HideInInspector] public float timer;
+    [HideInInspector] public float padTimer;
+    [HideInInspector] public float stunTimer;
     [HideInInspector] public float delay;
     [Range(0, 30000)] public float m_DistanceLength;
     [Range(0, 4)] public float m_CharacterPosition;
@@ -73,6 +74,7 @@ public class CharacterController : StateMachine
     {
         WheelRotation();
         ChangePosition();
+        
     }
 
     void FixedUpdate()
@@ -110,7 +112,8 @@ public class CharacterController : StateMachine
         m_MilkCollectSpeed = m_Character.m_InitialSpeed;
 
         m_CharacterPosition = 0;
-        timer = 0;
+        padTimer = 0;
+        stunTimer = 0;
         laneNumber = 2;
         delay = 2;
         repeatRate = delay;
@@ -139,7 +142,8 @@ public class CharacterController : StateMachine
     }
     void WheelRotation()
     {
-        if (!m_Stuns && m_CurrentSpeed >= 1f)
+        /*if (!m_Stuns && m_CurrentSpeed >= 1f)*/
+        if (m_CurrentSpeed >= 1f)
         {
             foreach (var wheel in m_Character.wheelCream)
             {
@@ -163,14 +167,33 @@ public class CharacterController : StateMachine
             m_Character.animStuns.applyRootMotion = false;
             m_Character.animShadow.applyRootMotion = false;
             m_Character.animStuns.SetBool("isCrash", m_Stuns);
+            m_Character.animStuns.SetBool("FlipAgain", m_Character.m_Flip);
             m_Character.animShadow.SetBool("isCrash", m_Stuns);
 
-            StartCoroutine(State.FallenStuns());
+            if (stunTimer < 0)
+            {
+                stunTimer = repeatRate;
+
+                m_Character.m_Stuns = false;
+                m_Stuns = false;
+                m_Character.animStuns.applyRootMotion = true;
+                m_Character.animShadow.applyRootMotion = true;
+
+                m_Character.rootObject.transform.localRotation = Quaternion.identity;
+
+                m_Character.animStuns.SetBool("isCrash", m_Stuns);
+                m_Character.animStuns.SetBool("FlipAgain", m_Character.m_Flip);
+                m_Character.animShadow.SetBool("isCrash", m_Stuns);
+
+                // StartCoroutine(State.FallenStuns());
+            }
+
         }
     }
     void SpeedUp()
     {
-        if (m_VelocityUp && !m_Stuns && m_CurrentSpeed < m_Character.m_MaxSpeed && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
+        //if (m_VelocityUp && !m_Stuns && m_CurrentSpeed < m_Character.m_MaxSpeed && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
+        if (m_VelocityUp && m_CurrentSpeed < m_Character.m_MaxSpeed && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
         {
             m_Character.m_CurrentSpeed += m_Character.m_InitialAcceleration;
             m_MilkCollectSpeed += m_Character.m_InitialAcceleration;
@@ -226,12 +249,14 @@ public class CharacterController : StateMachine
             DebugLog();
 
 #if UNITY_EDITOR || UNITY_STANDALONE
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns && !m_IsBoostSuccess)
+        /*if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns && !m_IsBoostSuccess)*/
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_IsBoostSuccess && m_Character.m_Flip == false)
         {
             ChangeLane(-slideLength);
             laneNumber -= 1;
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_Stuns && !m_IsBoostSuccess)
+        /*else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_Stuns && !m_IsBoostSuccess)*/
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_IsBoostSuccess && m_Character.m_Flip == false)
         {
             ChangeLane(slideLength);
             laneNumber += 1;
@@ -251,12 +276,14 @@ public class CharacterController : StateMachine
                 // we set the swip distance to trigger movement to 1% of the screen width
                 if (diff.magnitude > 0.01f)
                 {
-                    if (!m_Stuns && diff.x < 0 && laneNumber > 1 && m_IsChangeLine && !m_IsBoostSuccess)
+                    /*if (!m_Stuns && diff.x < 0 && laneNumber > 1 && m_IsChangeLine && !m_IsBoostSuccess)*/
+                    if (diff.x < 0 && laneNumber > 1 && m_IsChangeLine && !m_IsBoostSuccess && m_Character.m_Flip == false)
                     {
                         ChangeLane(-slideLength);
                         laneNumber -= 1;
                     }
-                    else if (!m_Stuns && diff.x >= 0 && laneNumber < 3 && m_IsChangeLine && !m_IsBoostSuccess)
+                    /*else if (!m_Stuns && diff.x >= 0 && laneNumber < 3 && m_IsChangeLine && !m_IsBoostSuccess)*/
+                    else if (diff.x >= 0 && laneNumber < 3 && m_IsChangeLine && !m_IsBoostSuccess && m_Character.m_Flip == false)
                     {
                         ChangeLane(slideLength);
                         laneNumber += 1;
@@ -298,12 +325,17 @@ public class CharacterController : StateMachine
             }
         }
 
-        timer -= Time.deltaTime;
+        padTimer -= Time.deltaTime;
+        stunTimer -= Time.deltaTime;
 
         if (m_IsBoostSuccess)
             StartCoroutine(State.ReturnNormal());
 
     }
+
+    //
+
+    //
     void ChangeLane(int _direction)
     {
         m_CharacterPosition = _direction;
@@ -363,9 +395,9 @@ public class CharacterController : StateMachine
     }
     void CheckBoostPad()
     {
-        if (timer < 0)
+        if (padTimer < 0)
         {
-            timer = repeatRate;
+            padTimer = repeatRate;
             m_PadsIsBoosting = false;
         }
     }
