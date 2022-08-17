@@ -51,7 +51,7 @@ public class UIManager : MonoBehaviour
     [HideInInspector] public bool m_Engine;
     private bool checkCount = true;
     private bool checkSoundOver = true;
-    private bool boostFail = true;
+    [SerializeField] private bool boostFail = true;
     private bool checkWarning = true;
     private bool checkEngine = true;
     private bool boostSuccess = true;
@@ -67,7 +67,7 @@ public class UIManager : MonoBehaviour
     private GameObject gameOverUI;
 
     [Header("PlayingUI")]
-    //UI Gameplaying
+    //UI Game playing
     public Slider healthPoint;
     public GameObject boostSpeedGObj;
     public GameObject isBoosting;
@@ -216,7 +216,7 @@ public class UIManager : MonoBehaviour
                 if (boostFail && b_count.boostCount != 0)
                 {
                     charColl.animStuns.SetBool("boostFail", boostFail);
-                    Invoke("DisableAnimation", .5f);
+                    Invoke("DisableAnimation", 10f);
                     charInput.m_IsBoostSuccess = true;
                 }
             }
