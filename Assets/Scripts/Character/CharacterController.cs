@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using PathCreation;
+using System;
+using UnityEngine;
 
 public class CharacterController : StateMachine
 {
@@ -16,24 +14,28 @@ public class CharacterController : StateMachine
 
     [Header("Variables")]
     public Character m_Character;
+
     public PathCreator m_PathCreator;
     public GameObject spawnerObject;
     public GameObject[] listSpawner;
-    GameObject m_WallClearLag;
-    UIManager uiManagers;
+    private GameObject m_WallClearLag;
+    private UIManager uiManagers;
 
     [Header("Controls")]
     [Tooltip("The more you press, the faster the character will change lines"), Range(0, 1)]
     public float m_SecondChangeLine;
+
     [Tooltip("Speed of the character when you click boost"), Range(0, 300)]
     public float m_BoostSpeed;
+
     [Tooltip("Range of the character move when you swipe"), Range(0, 10)]
     public int slideLength;
+
     [HideInInspector] public bool m_IsRemainBoost;
     [HideInInspector] public bool m_UpSpeed;
     [HideInInspector] public bool m_IsBoosting;
     [HideInInspector] public bool m_PadsIsBoosting;
-     public bool m_Stuns;
+    public bool m_Stuns;
     [HideInInspector] public bool m_IsChangeLine;
     [HideInInspector] public bool m_IsGotMilk;
     [HideInInspector] public bool m_VelocityUp;
@@ -51,33 +53,31 @@ public class CharacterController : StateMachine
 
     [Tooltip("Sound Manager")]
     public SoundManagers m_audioSource;
+
     public SoundManagers m_audioSource_ChangeLane;
 
+    private Vector3 m_Direction;
+    private Quaternion m_Rotation;
 
+    private float repeatRate;
 
-    Vector3 m_Direction;
-    Quaternion m_Rotation;
-
-    float repeatRate;
-
-    #endregion
+    #endregion Variables
 
     #region Unity Methods
 
-    void Start()
+    private void Start()
     {
         GetComponentInGame();
         InitialComponent();
     }
 
-    void Update()
+    private void Update()
     {
         WheelRotation();
         ChangePosition();
-        
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (!spawnerObject && !m_Character && !m_WallClearLag)
             GetComponentInGame();
@@ -94,17 +94,18 @@ public class CharacterController : StateMachine
 #endif
     }
 
-    #endregion
+    #endregion Unity Methods
 
     #region Class
 
-    void DebugLog()
+    private void DebugLog()
     {
         Debug.Log("Current Speed Controller: " + m_CurrentSpeed +
         "\nCurrent Speed: " + m_Character.m_CurrentSpeed +
         "\nDistance Length: " + m_DistanceLength + "\nMax Speed: " + m_Character.m_MaxSpeed);
     }
-    void InitialComponent()
+
+    private void InitialComponent()
     {
         // Initialize the state machine
         SetState(new PlayerBehavior(this));
@@ -132,15 +133,16 @@ public class CharacterController : StateMachine
 
         listSpawner[1].gameObject.transform.localPosition = new Vector3(slideLength, 0, 0);
         listSpawner[2].gameObject.transform.localPosition = new Vector3(-slideLength, 0, 0);
-
     }
-    void MoveInput()
+
+    private void MoveInput()
     {
         CharacterMove();
         GotStuns();
         SpeedUp();
     }
-    void WheelRotation()
+
+    private void WheelRotation()
     {
         /*if (!m_Stuns && m_CurrentSpeed >= 1f)*/
         if (m_CurrentSpeed >= 1f)
@@ -150,9 +152,9 @@ public class CharacterController : StateMachine
                 wheel.transform.Rotate(Vector3.right, 360 * m_Character.m_CurrentSpeed * Time.deltaTime);
             }
         }
-
     }
-    void GetComponentInGame()
+
+    private void GetComponentInGame()
     {
         m_WallClearLag = GameObject.FindGameObjectWithTag("ClearLag");
         spawnerObject = GameObject.FindGameObjectWithTag("Spawner");
@@ -160,7 +162,8 @@ public class CharacterController : StateMachine
         m_audioSource_ChangeLane = GameObject.FindGameObjectWithTag("SE_ChangeLane").GetComponent<SoundManagers>();
         m_Character = gameObject.GetComponentInChildren<Character>();
     }
-    void GotStuns()
+
+    private void GotStuns()
     {
         if (m_Stuns)
         {
@@ -187,10 +190,10 @@ public class CharacterController : StateMachine
 
                 // StartCoroutine(State.FallenStuns());
             }
-
         }
     }
-    void SpeedUp()
+
+    private void SpeedUp()
     {
         //if (m_VelocityUp && !m_Stuns && m_CurrentSpeed < m_Character.m_MaxSpeed && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
         if (m_VelocityUp && m_CurrentSpeed < m_Character.m_MaxSpeed && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
@@ -201,7 +204,8 @@ public class CharacterController : StateMachine
             StartCoroutine(State.AccelerationUp());
         }
     }
-    void CharacterMove()
+
+    private void CharacterMove()
     {
         CheckSpeed();
 
@@ -220,7 +224,6 @@ public class CharacterController : StateMachine
         m_Character.transform.localPosition = _tempDistance;
         spawnerObject.transform.position = _tempDistanceSpawner;
         m_WallClearLag.transform.localPosition = _tempDistanceClearLag;
-
 
         m_Character.transform.localRotation = Quaternion.Lerp(m_Character.transform.localRotation, _tempRotation, 7f * Time.deltaTime);
         spawnerObject.transform.localRotation = Quaternion.Lerp(spawnerObject.transform.localRotation, _tempRotationSpawner, 2f * Time.deltaTime);
@@ -306,7 +309,8 @@ public class CharacterController : StateMachine
         }
 #endif
     }
-    void CheckSpeed()
+
+    private void CheckSpeed()
     {
         if (m_Character.m_CurrentSpeed > m_Character.m_MaxSpeed)
             m_Character.m_CurrentSpeed = m_Character.m_MaxSpeed;
@@ -330,13 +334,12 @@ public class CharacterController : StateMachine
 
         if (m_IsBoostSuccess)
             StartCoroutine(State.ReturnNormal());
-
     }
 
     //
 
     //
-    void ChangeLane(int _direction)
+    private void ChangeLane(int _direction)
     {
         m_CharacterPosition = _direction;
 
@@ -349,15 +352,16 @@ public class CharacterController : StateMachine
 
         m_audioSource_ChangeLane.PlaySound(SoundType.LaneMove);
     }
-    void ChangeRotation(int _direction)
+
+    private void ChangeRotation(int _direction)
     {
         m_Character.rootObject.transform.localRotation = Quaternion.Euler(0, _direction * 2f, 0);
 
         m_Character.wheelCream[0].transform.localRotation = Quaternion.Euler(0, _direction * 7f, 0);
         m_Character.wheelCream[1].transform.localRotation = Quaternion.Euler(0, _direction * 7f, 0);
-
     }
-    void ChangePosition()
+
+    private void ChangePosition()
     {
         if (m_IsChangePosition)
         {
@@ -379,6 +383,7 @@ public class CharacterController : StateMachine
             }
         }
     }
+
     public void ChangeSpeed()
     {
         if (m_PadsIsBoosting || m_Stuns)
@@ -386,6 +391,7 @@ public class CharacterController : StateMachine
 
         m_UpSpeed = true;
     }
+
     public void DashBoost()
     {
         if (!m_IsBoosting)
@@ -393,7 +399,8 @@ public class CharacterController : StateMachine
 
         m_IsRemainBoost = true;
     }
-    void CheckBoostPad()
+
+    private void CheckBoostPad()
     {
         if (padTimer < 0)
         {
@@ -402,5 +409,5 @@ public class CharacterController : StateMachine
         }
     }
 
-    #endregion
+    #endregion Class
 }

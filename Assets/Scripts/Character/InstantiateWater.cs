@@ -38,7 +38,7 @@ public class InstantiateWater : MonoBehaviour
         }
         if(checkStun && charInput.m_Stuns == false)
         {
-            StartCoroutine(FixPosition());
+            //StartCoroutine(FixPosition());
             checkStun = false;
         }
         CheckEnable();
