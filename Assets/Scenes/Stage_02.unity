@@ -25855,7 +25855,7 @@ PrefabInstance:
     - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
         type: 3}
       propertyPath: maxTimeValue
-      value: 270
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
         type: 3}
@@ -25870,7 +25870,7 @@ PrefabInstance:
     - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
         type: 3}
       propertyPath: timeToWarning
-      value: 240
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
         type: 3}

@@ -15,8 +15,8 @@ public class GimmickChangeColor : MonoBehaviour
     public GameObject currentSticker;
     public UIManager uiManagers;
     public Animator animator;
-
-    const string m_AnimTimer = "Timer";
+    public bool warning;
+    const string m_AnimTimer = "CheckTimer";
 
     #endregion
     #region Unity Method
@@ -42,9 +42,11 @@ public class GimmickChangeColor : MonoBehaviour
 
     void CheckTimeUI()
     {
-        if (uiManagers.timeValueUp > 240)
+        if (uiManagers.timeValueUp > uiManagers.timeToWarning)
         {
-            animator.SetFloat(m_AnimTimer, uiManagers.timeValueUp);
+            warning = true;
+            animator.SetBool(m_AnimTimer, warning);
+            //animator.SetFloat(m_AnimTimer, uiManagers.timeValueUp);
         }
     }
     #endregion
