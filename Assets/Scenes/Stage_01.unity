@@ -21753,6 +21753,11 @@ PrefabInstance:
       objectReference: {fileID: 1078368019}
     - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
         type: 3}
+      propertyPath: maxTimeValue
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
+        type: 3}
       propertyPath: resumeButton
       value: 
       objectReference: {fileID: 1760652695}
@@ -21764,7 +21769,7 @@ PrefabInstance:
     - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
         type: 3}
       propertyPath: timeToWarning
-      value: 240
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7201900232121991468, guid: 0ba6220d5676d0440922d1dc5fa1983f,
         type: 3}
@@ -22056,6 +22061,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1968838555}
     m_Modifications:
+    - target: {fileID: 3512661206096041806, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8674238104440327604, guid: d0a807eaa2daf134485f73596a9c3f27,
         type: 3}
       propertyPath: m_Name

@@ -7,22 +7,26 @@ public class Waterdrop : MonoBehaviour
     #region Variables
     private UIManager managers;
 
-    public GameObject waterDrop;
-    public Animator animWaterDrop;
-    public CharacterController charInput;
-    public Character m_Char;
+    [SerializeField] private Animator animWaterDrop;
+    [SerializeField] private GameObject waterDrop;
+    [SerializeField] private CharacterController charInput;
+    [SerializeField] private Character m_Char;
 
     public float timeToDrip;
-    public float timeToFaster = 60f;
+    [SerializeField] private float TimedStage1;
+    [SerializeField] private float TimedStage2;
+    [SerializeField] private float timeToFaster;
+    [HideInInspector] private int SelectedStage;
 
     public bool enableAnim = false;
     public bool fasterAnim = false;
     private bool activeAnim = true;
-    public GameObject rootObject;
+    [SerializeField] private GameObject rootObject;
 
     const string k_AnimDropWater = "WaterDrop";
     const string k_AnimStun = "Stun";
     const string k_AnimFaster = "Faster";
+
     #endregion
 
     #region Unity Method
@@ -31,6 +35,7 @@ public class Waterdrop : MonoBehaviour
         managers = FindObjectOfType<UIManager>();
         waterDrop.gameObject.SetActive(false);
         charInput = FindObjectOfType<CharacterController>();
+        TimeToDrip();
     }
 
     // Update is called once per frame
@@ -80,5 +85,18 @@ public class Waterdrop : MonoBehaviour
         animWaterDrop.SetBool(k_AnimFaster, fasterAnim);
     }
 
+    void TimeToDrip()
+    {
+        SelectedStage = SelectManager.selectedStage;
+        Debug.Log(SelectedStage);
+        if(SelectedStage == 1)
+        {
+            timeToDrip = TimedStage1;
+        }
+        else
+        {
+            timeToDrip = TimedStage2;
+        }
+    }
     #endregion
 }
