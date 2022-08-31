@@ -47,14 +47,14 @@ public class ObstaclesManager : MonoBehaviour
     #region Class
     IEnumerator SpawnObstacles()
     {
-        // -1 CD spawn
+        // -2 CD spawn 
         if (m_Character.m_Stuns)
         {
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(2.5f);
         }
         else if (m_Character.m_CurrentSpeed < 20f)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.25f);
         }
         else
         {
