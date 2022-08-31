@@ -195,7 +195,8 @@ public class CharacterController : StateMachine
         //if (m_VelocityUp && !m_Stuns && m_CurrentSpeed < m_Character.m_MaxSpeed && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
         if (m_VelocityUp && m_CurrentSpeed < m_Character.m_MaxSpeed && m_Character.m_CurrentSpeed < m_Character.m_MaxSpeed)
         {
-            m_Character.m_CurrentSpeed += m_Character.m_InitialAcceleration;
+            //m_Character.m_CurrentSpeed += m_Character.m_InitialAcceleration; // Feedback 69
+            m_Character.m_CurrentSpeed += m_Character.m_InitialAcceleration * 1.25f;
             m_MilkCollectSpeed += m_Character.m_InitialAcceleration;
             m_VelocityUp = false;
             StartCoroutine(State.AccelerationUp());
@@ -205,7 +206,7 @@ public class CharacterController : StateMachine
     {
         CheckSpeed();
 
-        m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_Character.m_CurrentSpeed, Time.deltaTime);
+        m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_Character.m_CurrentSpeed,Time.deltaTime);
 
         m_DistanceLength += (m_CurrentSpeed * Time.deltaTime) / 10;
 

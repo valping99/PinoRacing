@@ -10,7 +10,7 @@ public class GetScore : PinoArBehaviour
     private UIManager managers;
 
     [Header("Timer & Score")]
-    public float m_score;
+    public static float m_score;
     public float m_timeRemaining;
     public float m_currentTimer;
     public float m_maxTimer;
