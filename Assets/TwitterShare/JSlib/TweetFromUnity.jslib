@@ -66,7 +66,7 @@
           fetch(targetUrl, requestOptions)
             .then(response => response.text())
             .then(result => {
-              console.log(result);
+              
 		localStorage.removeItem("pino_media_base64");
               localStorage.removeItem("pino_media_id");
               localStorage.setItem("pino_media_id", JSON.parse(result).media_id_string);
@@ -99,7 +99,10 @@
                 .then(response => {if(response.status == 200){
                   alert("Share completed!");
                 } })
-                .then(result => localStorage.removeItem("pino_media_id"))
+                .then(result =>{
+                  localStorage.removeItem("pino_media_id");
+                  console.log(result);
+                } )
                 .catch(error => console.log('error', error));
 
 
@@ -129,7 +132,13 @@ localStorage.setItem("pino_media_id",media_base64);
 
   GetURLCallBack: function()
 {
-var returnStr = window.top.location.href;
+
+if(window.location.href.includes("?oauth")){
+  var returnStr = window.location.href.split("?")[0];
+}else{
+  var returnStr = window.location.href;
+};
+
 var bufferSize = lengthBytesUTF8(returnStr) + 1
 var buffer = _malloc(bufferSize);
 stringToUTF8(returnStr, buffer, bufferSize);
@@ -159,6 +168,12 @@ return buffer;
 mediaBase64= UTF8ToString(mediaBase64);
 localStorage.removeItem("pino_media_base64");
     localStorage.setItem("pino_media_base64",mediaBase64);
+},
+
+
+GetURL: function()
+{
+return window.location.href;
 },
 
  TweetWithUnity: function(rawMessage)
