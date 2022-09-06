@@ -17,9 +17,6 @@ public class ShareConfiguration
     [Header("Proxy Server ")]
     public string proxyURL;
 
-
-    public string webURL;
-
     [Header("Quality")]
     public ImageQuality imageQuality;
 

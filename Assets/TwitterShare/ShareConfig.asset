@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shareConfiguration:
     proxyURL: https://pino-twitter.herokuapp.com
-    webURL: https://indigames.github.io/Pino-Racing/
     imageQuality: 1
     ShareMessage: Test Pino-Racing!!!

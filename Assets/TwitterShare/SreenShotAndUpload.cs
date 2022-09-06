@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Text;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.InteropServices;
+using UnityEngine.UI;
 
 #if !UNITY_EDITOR && UNITY_WEBGL
 using System.Runtime.InteropServices;
@@ -17,9 +18,10 @@ using System.Runtime.InteropServices;
 public class SreenShotAndUpload : MonoBehaviour
 {
     public ShareConfig config;
+    //public Image resultCG;
+    
     int screenshotSize;
     string proxyURL;
-    string webURL;
     UnityWebRequest request;
 
 
@@ -35,6 +37,9 @@ public class SreenShotAndUpload : MonoBehaviour
 
     [DllImport("__Internal")]
     private static extern string GetURLCallBack();
+
+    [DllImport("__Internal")]
+    private static extern string GetURL();
 
 #endif
 
@@ -65,14 +70,12 @@ public class SreenShotAndUpload : MonoBehaviour
 
     IEnumerator UploadPicture()
     {
-        
+
         yield return new WaitForEndOfFrame();
         Texture2D tex = ScreenCapture.CaptureScreenshotAsTexture();
         float ratio = (float)tex.width / (float)tex.height;
-        TextureScale.Scale(tex,(int)(screenshotSize ), (int)(screenshotSize /ratio));
+        TextureScale.Scale(tex, (int)(screenshotSize), (int)(screenshotSize / ratio));
         var img64 = Convert.ToBase64String(tex.EncodeToJPG());
-        byte[] png = tex.EncodeToPNG();
-
 #if !UNITY_EDITOR && UNITY_WEBGL
         SaveMediaBase64(img64);
 #endif
@@ -85,8 +88,9 @@ public class SreenShotAndUpload : MonoBehaviour
         string REQUEST_URL = "";
         REQUEST_URL = proxyURL + "/oauth/request_token";
         WWWForm form = new WWWForm();
-        form.AddField("callbackURL", webURL);
-
+#if !UNITY_EDITOR && UNITY_WEBGL
+        form.AddField("callbackURL", GetURLCallBack());
+#endif
         request = UnityWebRequest.Post(REQUEST_URL, form);
         request.SetRequestHeader("Cookie", "lang=en");
 
@@ -104,23 +108,18 @@ public class SreenShotAndUpload : MonoBehaviour
                 {
                     RequestToken rq = RequestToken.CreateFromJSON(request.downloadHandler.text);
 
-                #if !UNITY_EDITOR && UNITY_WEBGL
+#if !UNITY_EDITOR && UNITY_WEBGL
                     Redirect("https://api.twitter.com/oauth/authenticate?oauth_token=" + rq.oauth_token);
-                #endif
+#endif
                    
-                }
-                
+                }   
                 break;
         }
-
-
     }
 
     void Config()
     {
         proxyURL = config.shareConfiguration.proxyURL;
-        webURL = config.shareConfiguration.webURL;
-
 
         if (config.shareConfiguration.imageQuality == ImageQuality.SD)
         {
