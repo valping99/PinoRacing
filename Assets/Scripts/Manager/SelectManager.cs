@@ -22,7 +22,7 @@ public class SelectManager : MonoBehaviour
     public SoundManagers audio_source;
 
     [Header("Variables")]
-    public int selectedStage;
+    public static int selectedStage;
     public int selectedPino;
 
     [Header("Selected Scene")]

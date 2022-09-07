@@ -14,7 +14,7 @@ public class SelectScreen : MonoBehaviour
 
     public void AcceptStage(int level)
     {
-        level = manager.selectedStage;
+        level = SelectManager.selectedStage;
         Debug.Log("Selected " + level);
         SceneManager.LoadScene(level);
     }
