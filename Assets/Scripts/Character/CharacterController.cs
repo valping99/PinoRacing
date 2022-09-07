@@ -251,13 +251,13 @@ public class CharacterController : StateMachine
 
 #if UNITY_EDITOR || UNITY_STANDALONE
         /*if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_Stuns && !m_IsBoostSuccess)*/
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine && !m_IsBoostSuccess && m_Character.m_Flip == false)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && laneNumber > 1 && m_IsChangeLine /*&& !m_IsBoostSuccess*/ && m_Character.m_Flip == false)
         {
             ChangeLane(-slideLength);
             laneNumber -= 1;
         }
         /*else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_Stuns && !m_IsBoostSuccess)*/
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine && !m_IsBoostSuccess && m_Character.m_Flip == false)
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && laneNumber < 3 && m_IsChangeLine /*&& !m_IsBoostSuccess*/ && m_Character.m_Flip == false)
         {
             ChangeLane(slideLength);
             laneNumber += 1;
