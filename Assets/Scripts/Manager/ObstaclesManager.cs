@@ -51,7 +51,7 @@ public class ObstaclesManager : MonoBehaviour
         // -2 CD spawn 
         if (m_Character.m_Stuns)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.25f);
         }
         else if (m_Character.m_CurrentSpeed < 20f)
         {
@@ -59,7 +59,7 @@ public class ObstaclesManager : MonoBehaviour
         }
         else
         {
-            yield return new WaitForSeconds(.7f);
+            yield return new WaitForSeconds(1f);
         }
         StartCoroutine(SpawnObstacles());
 
@@ -75,7 +75,7 @@ public class ObstaclesManager : MonoBehaviour
             SpawnObstaclesInSky(m_Character.listSpawner[m_NextSpawner]), _Rotation);
             if (m_Character.listSpawner[m_NextSpawner] == m_Character.listSpawner[m_NextSpawner_1])
             {
-                Debug.Log("Same Result");
+                Debug.Log("Same Location");
             }
             else
             {
@@ -93,12 +93,16 @@ public class ObstaclesManager : MonoBehaviour
             SpawnObstaclesNormal(m_Character.listSpawner[m_NextSpawner]), _Rotation);
             if (m_Character.listSpawner[m_NextSpawner] == m_Character.listSpawner[m_NextSpawner_1])
             {
-                Debug.Log("Same Result");
+                Debug.Log("Same Location");
             }
             else
             {
                 m_ItemPosition = Random.Range(0, listObstacles.Length);
-                if(m_ItemPosition != positionOfStickCreamInTheSky || m_ItemPosition != positionOfStickCreamInTheSky + 6)
+                if(m_ItemPosition == positionOfStickCreamInTheSky || m_ItemPosition == positionOfStickCreamInTheSky + 6)
+                {
+                    Debug.Log("Spawn Stick");
+                }
+                else
                 {
                     Instantiate(listObstacles[m_ItemPosition],
                     SpawnObstaclesNormal(m_Character.listSpawner[m_NextSpawner_1]), _Rotation);
