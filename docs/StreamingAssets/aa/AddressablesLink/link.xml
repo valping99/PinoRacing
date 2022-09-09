@@ -5,7 +5,6 @@
     <type fullname="BoostPopUp" preserve="all" />
     <type fullname="ButtonManager" preserve="all" />
     <type fullname="ButtonSelectedUI" preserve="all" />
-    <type fullname="CallbackHandler" preserve="all" />
     <type fullname="Character" preserve="all" />
     <type fullname="CharacterController" preserve="all" />
     <type fullname="CharacterSelected" preserve="all" />

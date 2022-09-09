@@ -278,7 +278,7 @@ public class CharacterController : StateMachine
                 if (diff.magnitude > 0.01f)
                 {
                     /*if (!m_Stuns && diff.x < 0 && laneNumber > 1 && m_IsChangeLine && !m_IsBoostSuccess)*/
-                    if (diff.x < 0 && laneNumber > 1 && m_IsChangeLine &&  && m_Character.m_Flip == false)
+                    if (diff.x < 0 && laneNumber > 1 && m_IsChangeLine && m_Character.m_Flip == false)
                     {
                         ChangeLane(-slideLength);
                         laneNumber -= 1;
