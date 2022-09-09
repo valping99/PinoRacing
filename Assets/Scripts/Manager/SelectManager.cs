@@ -21,8 +21,9 @@ public class SelectManager : MonoBehaviour
     [Header("Sound Managers")]
     public SoundManagers audio_source;
 
-    [Header("Variables")]
+    [Header("Variables")]       
     public static int selectedStage;
+    public static string levelMode;
     public int selectedPino;
 
     [Header("Selected Scene")]
@@ -209,6 +210,7 @@ public class SelectManager : MonoBehaviour
             isSelectStage_03 = false;
             isSelectScene_02 = false;
             isSelectScene_03 = true;
+            levelMode = "Normal";
         }
         else if (isSelectStage_02)
         {
@@ -217,6 +219,7 @@ public class SelectManager : MonoBehaviour
             isSelectStage_03 = false;
             isSelectScene_02 = false;
             isSelectScene_03 = true;
+            levelMode = "Hard";
         }
         else if (isSelectStage_03)
         {
@@ -225,6 +228,7 @@ public class SelectManager : MonoBehaviour
             isSelectStage_01 = false;
             isSelectScene_02 = false;
             isSelectScene_03 = true;
+            levelMode = "Nightmare";
         }
         else
         {

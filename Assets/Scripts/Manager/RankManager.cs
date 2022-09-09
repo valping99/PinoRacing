@@ -83,8 +83,8 @@ public class RankManager : PinoArBehaviour
         //RegisterRankingKey(textRank[values]);
         //RegisterScore(GetScore.m_score);
         score = (int)GetScore.m_score;
-        GetHighscore(textRank[values]);
-        RegisterRanking(textRank[values], score);
+        GetHighscore(SelectManager.levelMode);
+        RegisterRanking(SelectManager.levelMode, score);
         Invoke("check", .1f);
     }
 
@@ -99,6 +99,11 @@ public class RankManager : PinoArBehaviour
         PinoArBehaviour.RegisterRankingKey(key);
         PinoArBehaviour.RegisterScore(score);
     }
+
+    protected void GetHighscore(string key)
+    {
+        PinoArBehaviour.GetHighscore(key);
+    }
     override protected void OnRegisteredRanking(int ranking, bool isHighScore)
     {
         base.OnRegisteredRanking(ranking, isHighScore);
@@ -112,11 +117,6 @@ public class RankManager : PinoArBehaviour
         {
             outRank = true;
         }
-    }
-
-    protected void GetHighscore(string key)
-    {
-        PinoArBehaviour.GetHighscore(key);
     }
     #endregion
 }
