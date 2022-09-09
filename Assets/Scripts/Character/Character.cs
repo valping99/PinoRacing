@@ -291,7 +291,7 @@ public class Character : MonoBehaviour
         // ---> New Speed Up
 
         yield return new WaitForSeconds(.01f);
-        m_MaxSpeed = m_CurrentBottleMilk + m_InitialMaxSpeed;
+        m_MaxSpeed = (m_CurrentBottleMilk * 2) + m_InitialMaxSpeed;
     }
     IEnumerator Flip()
     {

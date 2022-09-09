@@ -9125,7 +9125,7 @@ PrefabInstance:
         type: 3}
       propertyPath: listObstacles.Array.data[13]
       value: 
-      objectReference: {fileID: 8077980517131866237, guid: 98963e14ad200ff44bb873b7942d69a8,
+      objectReference: {fileID: 1154960059834158301, guid: 1218f3cb31f26404f896a755ddc08a32,
         type: 3}
     - target: {fileID: 1300960298686953967, guid: e974722fcb5685f48bdc619d599490a2,
         type: 3}
