@@ -17,6 +17,7 @@ public class MilkPickup : Pickup
     #region Class
     protected override void OnPicked(Character player)
     {
+        SpeedUp();
         PlayPickupFeedback();
         Destroy(gameObject);
     }

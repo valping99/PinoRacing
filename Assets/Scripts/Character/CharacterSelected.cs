@@ -47,6 +47,7 @@ public class CharacterSelected : MonoBehaviour
 
             }
         }
+        Debug.Log(SelectManager.levelMode);
     }
 
 
