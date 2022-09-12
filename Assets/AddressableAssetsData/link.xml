@@ -14,6 +14,7 @@
     <type fullname="DashBoostCamera" preserve="all" />
     <type fullname="Description" preserve="all" />
     <type fullname="DescriptionSE" preserve="all" />
+    <type fullname="Destroy" preserve="all" />
     <type fullname="DestroyWater" preserve="all" />
     <type fullname="GetControllerInput" preserve="all" />
     <type fullname="GetScore" preserve="all" />
@@ -29,6 +30,7 @@
     <type fullname="PinoAnimatorRotate" preserve="all" />
     <type fullname="PinoArBehaviour" preserve="all" />
     <type fullname="PinoShow" preserve="all" />
+    <type fullname="PopupSpeed" preserve="all" />
     <type fullname="PositionSticker" preserve="all" />
     <type fullname="RaceCourse" preserve="all" />
     <type fullname="RankManager" preserve="all" />
