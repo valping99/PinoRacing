@@ -14,6 +14,9 @@ public class Pickup : MonoBehaviour
     public CharacterController m_CharacterController;
     public SoundManagers m_SoundManager;
 
+    //!Add new (Dat)
+    public PopupSpeed m_PopupSpeed;
+    //
     [Header("Effects")]
 
     [Tooltip("Frequency at which the item will move up and down")]
@@ -51,6 +54,7 @@ public class Pickup : MonoBehaviour
         m_CharacterController = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
         m_CharacterCollider = m_CharacterController.GetComponentInChildren<Character>();
         m_SoundManager = GameObject.FindGameObjectWithTag("SoundManagers").GetComponent<SoundManagers>();
+        m_PopupSpeed = FindObjectOfType<PopupSpeed>();
 
         // ensure the physics setup is a kinematic rigidbody trigger
         PickupRigidbody.isKinematic = true;
@@ -105,6 +109,20 @@ public class Pickup : MonoBehaviour
         // Check distance
     }
 
+
+    //!Add New (Dat)
+    public void SpeedUp()
+    {
+        Debug.Log("Up");
+        m_PopupSpeed.PopupSpeedUp();
+    }
+    public void SpeedDown()
+    {
+        Debug.Log("Down");
+        m_PopupSpeed.PopupSpeedDown();
+    }
+
+    //
     public void PlayPickupFeedback()
     {
         if (PickupSfx.name == "No19")

@@ -84,7 +84,7 @@ MonoBehaviour:
   RotatingSpeed: 360
   PickupSfx: {fileID: 8300000, guid: 6b685c37075223442b5175c43f40d7a7, type: 3}
   m_RootModel: {fileID: 9220407134902506963}
-  m_Distance: 10
+  m_Distance: 35
   HurtAmount: 10
   StickAmount: 2
   m_DropSpeed: 7
