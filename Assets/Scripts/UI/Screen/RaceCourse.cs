@@ -12,6 +12,10 @@ public class RaceCourse : MonoBehaviour
     private UIManager uiManagers;
     private LapsNumber lapNums;
     public int lapToWin = 3;
+
+    public CPU _CPUInput;
+    public int _CPUCourse = 1;
+    [SerializeField]private Rigidbody _CPURigid;
     #endregion
 
     #region UnityMethod
@@ -59,6 +63,16 @@ public class RaceCourse : MonoBehaviour
                 lapNums.checkLaps();
             }
 
+        }
+
+        if (other.CompareTag("CPU"))
+        {
+            _CPUCourse += 1;
+            if(_CPUCourse > lapToWin)
+            {
+                _CPUInput.CurrentSpeed = 0;
+                Debug.Log("CPU finished!");
+            }
         }
     }
     #endregion

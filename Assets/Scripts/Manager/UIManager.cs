@@ -118,6 +118,9 @@ public class UIManager : MonoBehaviour
     public int lapsToGameOver;
     public float timeGo = 0.5f;
     public float timeToWarning;
+    
+    [Header("CPU")]
+    [SerializeField] private CPU cpuInput;
     #endregion
     #region Unity Method
     //Game Start
@@ -230,6 +233,7 @@ public class UIManager : MonoBehaviour
 
             mainSceneUI.gameObject.SetActive(true);
             charInput.GetComponent<CharacterController>().enabled = true;
+            cpuInput.GetComponent<CPU>().enabled = true;
             boostSpeedButton.gameObject.SetActive(false);
             changeToRocketStart.gameObject.SetActive(false);
 
@@ -264,6 +268,7 @@ public class UIManager : MonoBehaviour
             BoostStart();
             mainSceneUI.gameObject.SetActive(false);
             charInput.GetComponent<CharacterController>().enabled = false;
+            cpuInput.GetComponent<CPU>().enabled = false;
         }
 
         if (checkGameOver)

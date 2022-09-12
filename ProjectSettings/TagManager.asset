@@ -42,6 +42,7 @@ TagManager:
   - SE_ChangeLane
   - Description
   - Root
+  - CPU
   layers:
   - Default
   - TransparentFX

@@ -75,7 +75,7 @@ public class ObstaclesManager : MonoBehaviour
             SpawnObstaclesInSky(m_Character.listSpawner[m_NextSpawner]), _Rotation);
             if (m_Character.listSpawner[m_NextSpawner] == m_Character.listSpawner[m_NextSpawner_1])
             {
-                Debug.Log("Same Location");
+                //Debug.Log("Same Location");
             }
             else
             {
@@ -93,14 +93,14 @@ public class ObstaclesManager : MonoBehaviour
             SpawnObstaclesNormal(m_Character.listSpawner[m_NextSpawner]), _Rotation);
             if (m_Character.listSpawner[m_NextSpawner] == m_Character.listSpawner[m_NextSpawner_1])
             {
-                Debug.Log("Same Location");
+                //Debug.Log("Same Location");
             }
             else
             {
                 m_ItemPosition = Random.Range(0, listObstacles.Length);
                 if(m_ItemPosition == positionOfStickCreamInTheSky || m_ItemPosition == positionOfStickCreamInTheSky + 6)
                 {
-                    Debug.Log("Spawn Stick");
+                    //Debug.Log("Spawn Stick");
                 }
                 else
                 {
