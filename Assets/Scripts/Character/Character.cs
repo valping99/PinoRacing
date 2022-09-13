@@ -41,6 +41,9 @@ public class Character : MonoBehaviour
     GameObject m_RootItem;
     AudioSource m_Audio;
 
+    //!Add new (Dat)
+    public PopupSpeed m_PopupSpeed;
+    //
     #endregion
 
     #region Unity Methods
@@ -97,6 +100,17 @@ public class Character : MonoBehaviour
     //
 
 
+    //!Add New (Dat)
+    public void PopupSpeedUp()
+    {
+        m_PopupSpeed.PopupSpeedUp();
+    }
+    public void PopupSpeedDown()
+    {
+        m_PopupSpeed.PopupSpeedDown();
+    }
+
+    //
 
 
     void OnTriggerEnter(Collider other)
@@ -123,6 +137,8 @@ public class Character : MonoBehaviour
         m_Audio = GetComponent<AudioSource>();
         waterDrops = FindObjectOfType<InstantiateWater>();
         m_WaterDrop = FindObjectOfType<Waterdrop>();
+        m_PopupSpeed = FindObjectOfType<PopupSpeed>();
+
     }
     void InitialComponent()
     {
@@ -199,12 +215,14 @@ public class Character : MonoBehaviour
                         rootObject.transform.rotation);
                         Instantiate(m_MilkPrefabs, new Vector3(rootObject.transform.position.x - (m_CharacterController.slideLength / 2), rootObject.transform.position.y + 2f, rootObject.transform.position.z),
                         rootObject.transform.rotation);
+                        PopupSpeedDown();
                     }
                     else if (m_CurrentBottleMilk == 1)
                     {
                         m_CurrentBottleMilk -= 1;
                         Instantiate(m_MilkPrefabs, new Vector3(rootObject.transform.position.x, rootObject.transform.position.y + 2f, rootObject.transform.position.z),
                         rootObject.transform.rotation);
+                        PopupSpeedDown();
                     }
 
                     if (m_CurrentBottleMilk <= 0)
@@ -242,6 +260,7 @@ public class Character : MonoBehaviour
                     if (m_CurrentBottleMilk < 99)
                     {
                         m_CurrentBottleMilk += milk.amountMilkBottle;
+                        PopupSpeedUp();
                     }
                     m_CharacterController.ChangeSpeed();
 

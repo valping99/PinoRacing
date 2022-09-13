@@ -22,7 +22,7 @@ public class StickPickup : Pickup
 
     protected override void OnPicked(Character player)
     {
-        SpeedDown();
+        //SpeedDown();
         PlayPickupFeedback();
         Destroy(gameObject);
     }
