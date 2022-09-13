@@ -10,6 +10,7 @@
     <type fullname="CharacterSelected" preserve="all" />
     <type fullname="ClearLag" preserve="all" />
     <type fullname="ClickAnimation" preserve="all" />
+    <type fullname="CPU" preserve="all" />
     <type fullname="Crash" preserve="all" />
     <type fullname="DashBoostCamera" preserve="all" />
     <type fullname="Description" preserve="all" />
