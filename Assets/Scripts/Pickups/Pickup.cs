@@ -113,12 +113,10 @@ public class Pickup : MonoBehaviour
     //!Add New (Dat)
     public void SpeedUp()
     {
-        Debug.Log("Up");
         m_PopupSpeed.PopupSpeedUp();
     }
     public void SpeedDown()
     {
-        Debug.Log("Down");
         m_PopupSpeed.PopupSpeedDown();
     }
 
