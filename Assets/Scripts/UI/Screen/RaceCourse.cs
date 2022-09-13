@@ -68,6 +68,7 @@ public class RaceCourse : MonoBehaviour
         if (other.CompareTag("CPU"))
         {
             _CPUCourse += 1;
+            Debug.Log("+1 Race Course");
             if(_CPUCourse > lapToWin)
             {
                 _CPUInput.CurrentSpeed = 0;
@@ -75,6 +76,9 @@ public class RaceCourse : MonoBehaviour
             }
         }
     }
+
+
+
     #endregion
 
     #region Class
