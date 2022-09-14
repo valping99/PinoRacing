@@ -14,12 +14,18 @@ public class PopupSpeed : MonoBehaviour
     {
         GameObject SpeedUp = Instantiate(_SpeedUp, _SpeedUp.transform.localPosition, Quaternion.identity, _TransformParent);
         RectTransform rt = SpeedUp.GetComponent<RectTransform>();
-        rt.localPosition = new Vector3(0, 600, 0);
+        rt.anchorMin = new Vector2(.5f, 1f);
+        rt.anchorMax = new Vector2(.5f, 1f);
+        rt.pivot = new Vector2(.5f, .5f);
+        rt.localPosition = new Vector3(0, 200f, 0);
     }
     public void PopupSpeedDown()
     {
         GameObject SpeedDown = Instantiate(_SpeedDown, _SpeedDown.transform.localPosition, Quaternion.identity, _TransformParent);
         RectTransform rt = SpeedDown.GetComponent<RectTransform>();
-        rt.localPosition = new Vector3(0, 600, 0);
+        rt.anchorMin = new Vector2(.5f, 1f);
+        rt.anchorMax = new Vector2(.5f, 1f);
+        rt.pivot = new Vector2(.5f, .5f);
+        rt.localPosition = new Vector3(0, 200f, 0);
     }
 }
