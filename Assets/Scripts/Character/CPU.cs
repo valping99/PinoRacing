@@ -9,7 +9,14 @@ public class CPU : MonoBehaviour
     [Range(0, 30000)] public float m_DistanceLength;
     public GameObject _CPU;
     [SerializeField] public float CurrentSpeed;
-
+#if UNITY_EDITOR
+    private void OnGUI()
+    {
+        float t = m_PathCreator.path.length;
+        //Debug.Log(t);
+        GUILayout.Label(t.ToString());
+    }
+#endif
     private void FixedUpdate()
     {
         CharacterMove();
