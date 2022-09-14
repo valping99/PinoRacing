@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RankManager : PinoArBehaviour
 {
@@ -83,16 +84,20 @@ public class RankManager : PinoArBehaviour
         //RegisterRankingKey(textRank[values]);
         //RegisterScore(GetScore.m_score);
         score = (int)GetScore.m_score;
-        GetHighscore(SelectManager.levelMode);
+        //GetHighscore(SelectManager.levelMode);
         RegisterRanking(SelectManager.levelMode, score);
         Invoke("check", .1f);
     }
-
 
     //protected void RegisterRankingKey(string key)
     //{
     //    PinoArBehaviour.RegisterRankingKey(key);
     //}
+
+    protected static void ShareResult(string text)
+    {
+        PinoArBehaviour.ShareResult(text);
+    }
 
     protected void RegisterRanking(string key, int score)
     {
@@ -100,10 +105,10 @@ public class RankManager : PinoArBehaviour
         PinoArBehaviour.RegisterScore(score);
     }
 
-    protected void GetHighscore(string key)
-    {
-        PinoArBehaviour.GetHighscore(key);
-    }
+    //protected void GetHighscore(string key)
+    //{
+    //    PinoArBehaviour.GetHighscore(key);
+    //}
     override protected void OnRegisteredRanking(int ranking, bool isHighScore)
     {
         base.OnRegisteredRanking(ranking, isHighScore);
