@@ -15,7 +15,6 @@
     <type fullname="DashBoostCamera" preserve="all" />
     <type fullname="Description" preserve="all" />
     <type fullname="DescriptionSE" preserve="all" />
-    <type fullname="Destroy" preserve="all" />
     <type fullname="DestroyWater" preserve="all" />
     <type fullname="GetControllerInput" preserve="all" />
     <type fullname="GetScore" preserve="all" />
