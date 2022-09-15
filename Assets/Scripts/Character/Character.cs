@@ -103,11 +103,13 @@ public class Character : MonoBehaviour
     //!Add New (Dat)
     public void PopupSpeedUp()
     {
-        m_PopupSpeed.PopupSpeedUp();
+        //m_PopupSpeed.PopupSpeedUp();
+        m_PopupSpeed.EnableSpeedUp();
     }
     public void PopupSpeedDown()
     {
-        m_PopupSpeed.PopupSpeedDown();
+        //m_PopupSpeed.PopupSpeedDown();
+        m_PopupSpeed.EnableSpeedDown();
     }
 
     //

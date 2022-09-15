@@ -29,14 +29,14 @@ public class CPU : MonoBehaviour
         Vector3 _tempDistanceClearLag = m_PathCreator.path.GetPointAtDistance(m_DistanceLength - 20f);
         Vector3 _tempDistanceSpawner = m_PathCreator.path.GetPointAtDistance(m_DistanceLength + 60f);
 
-        Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DistanceLength + 7f);
-        Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DistanceLength + 60f);
-        Quaternion _tempRotationClearLag = m_PathCreator.path.GetRotationAtDistance(m_DistanceLength - 7f);
+        //Quaternion _tempRotation = m_PathCreator.path.GetRotationAtDistance(m_DistanceLength + 7f);
+        //Quaternion _tempRotationSpawner = m_PathCreator.path.GetRotationAtDistance(m_DistanceLength + 60f);
+        //Quaternion _tempRotationClearLag = m_PathCreator.path.GetRotationAtDistance(m_DistanceLength - 7f);
 
         _CPU.transform.localPosition = _tempDistance;
 
 
-        _CPU.transform.localRotation = Quaternion.Lerp(_CPU.transform.localRotation, _tempRotation, 7f * Time.deltaTime);
+        //_CPU.transform.localRotation = Quaternion.Lerp(_CPU.transform.localRotation, _tempRotation, 7f * Time.deltaTime);
     }
 }
 
