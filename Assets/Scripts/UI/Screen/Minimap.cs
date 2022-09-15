@@ -30,7 +30,7 @@ public class Minimap : MonoBehaviour
         Vector3 playerPosition = charColl.transform.position;
         MainRoad.transform.position = charPosition;
         playerMinimap.transform.position = playerPosition;
-        playerMinimap.transform.eulerAngles = new Vector3(90, charColl.transform.eulerAngles.y, charColl.transform.eulerAngles.z);
+        //playerMinimap.transform.eulerAngles = new Vector3(90, charColl.transform.eulerAngles.y, charColl.transform.eulerAngles.z);
         transform.eulerAngles = charColl.transform.eulerAngles;
     }
     #endregion
