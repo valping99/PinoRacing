@@ -109,6 +109,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI messageText;
     public TextMeshProUGUI countBoostNumber_Text;
     //public TextMeshProUGUI popUpNumber_Text;
+    public string _TimeMessage;
 
     [Header("Minimap")]
     public GameObject miniMap;
@@ -497,6 +498,7 @@ public class UIManager : MonoBehaviour
 
         limitedTimer_Text.text = string.Format("{0:0}:{1:00}:{2:000}", minutes, seconds, milliSeconds);
         gameOverScoreText.text = string.Format("{0:0}:{1:00}:{2:000}", minutes, seconds, milliSeconds);
+        _TimeMessage = string.Format("{0:0}:{1:00}:{2:000}", minutes, seconds, milliSeconds);
     }
 
     //Check GameOver

@@ -9477,13 +9477,13 @@ MonoBehaviour:
   - {fileID: 6993428252251226603, guid: b5c19e1b95f9e8f4e81ad35ec6498e9b, type: 3}
   rectTransform: {fileID: 1943016263}
   textRank:
-  - Rank F
-  - Rank E
-  - Rank D
-  - Rank C
-  - Rank B
-  - Rank A
-  - Rank S
+  - "\u30E9\u30F3\u30AFF\uFF01"
+  - "\u30E9\u30F3\u30AFE\uFF01"
+  - "\u30E9\u30F3\u30AFD\uFF01"
+  - "\u30E9\u30F3\u30AFC\uFF01"
+  - "\u30E9\u30F3\u30AFB\uFF01"
+  - "\u30E9\u30F3\u30AFA\uFF01"
+  - "\u30E9\u30F3\u30AFS\uFF01"
   transformParent: {fileID: 2062574113}
   setRankByTimed: e8030000aa000000a0000000960000008c0000008200000078000000
   checkRank: 1

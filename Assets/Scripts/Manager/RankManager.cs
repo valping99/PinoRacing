@@ -24,6 +24,10 @@ public class RankManager : PinoArBehaviour
 
     private int score;
 
+    private string _CourseName;
+    private string _Ranking;
+    private string _TimeResult;
+
     [SerializeField] private GameObject RankNumber;
     [SerializeField] private GameObject OutRankNumber;
 
@@ -49,6 +53,25 @@ public class RankManager : PinoArBehaviour
             OutRankNumber.gameObject.SetActive(false);
         }
     }
+
+
+    void TwitterMessage()
+    {
+        if (SelectManager.selectedStage == 1)
+        {
+            _CourseName = "ピノシェイプ";
+        }
+        else
+        {
+            _CourseName = "ピノ文字";
+        }
+        string TwitterResult = _CourseName + "コースを " + _TimeResult + " でゴール！" + _Ranking +
+            " \n楽しさ増量中！あそべるピノ！「 #ピノゲー 」";
+        //Debug.Log(TwitterResult);
+        ShareResult(TwitterResult);
+    }
+
+
     public void setRank()
     {
         int values = listRanking.Count - 1;
@@ -77,22 +100,18 @@ public class RankManager : PinoArBehaviour
         
         //managers.messageText.text = textRank[values];
         Instantiate(listRanking[values], rectTransform.transform.position, Quaternion.identity, transformParent);
+        _Ranking = textRank[values];
         checkRank = false;
 
         // Pino AR
 
-        //RegisterRankingKey(textRank[values]);
-        //RegisterScore(GetScore.m_score);
         score = (int)GetScore.m_score;
-        //GetHighscore(SelectManager.levelMode);
+        _TimeResult = managers._TimeMessage;
         RegisterRanking(SelectManager.levelMode, score);
+        TwitterMessage();
         Invoke("check", .1f);
     }
 
-    //protected void RegisterRankingKey(string key)
-    //{
-    //    PinoArBehaviour.RegisterRankingKey(key);
-    //}
 
     protected static void ShareResult(string text)
     {
@@ -105,10 +124,6 @@ public class RankManager : PinoArBehaviour
         PinoArBehaviour.RegisterScore(score);
     }
 
-    //protected void GetHighscore(string key)
-    //{
-    //    PinoArBehaviour.GetHighscore(key);
-    //}
     override protected void OnRegisteredRanking(int ranking, bool isHighScore)
     {
         base.OnRegisteredRanking(ranking, isHighScore);
