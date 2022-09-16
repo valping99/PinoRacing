@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GetScore : PinoArBehaviour
 {
@@ -15,6 +17,8 @@ public class GetScore : PinoArBehaviour
     public float m_currentTimer;
     public float m_maxTimer;
     public float m_tempScore;
+
+    //public TextMeshProUGUI _Text;
     #endregion
     #region Unity Method
     void Start()
@@ -30,6 +34,7 @@ public class GetScore : PinoArBehaviour
         if(managers.endGame){
             RegisterScore((int)m_score);
             managers.endGame = false;
+            //_Text.text = m_score.ToString().Replace(".",",");
         }
     }
     #endregion

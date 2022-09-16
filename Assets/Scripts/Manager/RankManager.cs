@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -115,7 +115,7 @@ public class RankManager : PinoArBehaviour
         if (ranking < 10000)
         {
             outRank = false;
-            managers.messageText.text = ranking.ToString();
+            managers.messageText.text = ranking.ToString()/*+ " 位"*/;
             Debug.Log(ranking.ToString());
         }
         else

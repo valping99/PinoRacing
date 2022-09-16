@@ -27125,6 +27125,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RankManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8674238104440327604, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8674238104440327606, guid: d0a807eaa2daf134485f73596a9c3f27,
         type: 3}
       propertyPath: RankNumber
@@ -27285,7 +27290,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8674238104812357036, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: _Text
+      value: 
+      objectReference: {fileID: 8708391114151745871}
+    m_RemovedComponents:
+    - {fileID: 3512661206096041806, guid: d0a807eaa2daf134485f73596a9c3f27, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d0a807eaa2daf134485f73596a9c3f27, type: 3}
 --- !u!224 &8674238104812357034 stripped
 RectTransform:
@@ -27462,8 +27473,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 0}
-  m_SizeDelta: {x: 390, y: 120}
+  m_AnchoredPosition: {x: -125, y: 0}
+  m_SizeDelta: {x: 600, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8708391114151745869
 GameObject:
@@ -27513,8 +27524,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 9999
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0fd0754920946c34ea37684298f6c0f1, type: 2}
-  m_sharedMaterial: {fileID: 8854386276225975810, guid: 0fd0754920946c34ea37684298f6c0f1,
+  m_fontAsset: {fileID: 11400000, guid: 1ff2739dd1b1ecf419a2f349d97af44c, type: 2}
+  m_sharedMaterial: {fileID: 8973756745155493966, guid: 1ff2739dd1b1ecf419a2f349d97af44c,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -27546,7 +27557,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -27730,7 +27741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 460, y: 80}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8811122068465660230
