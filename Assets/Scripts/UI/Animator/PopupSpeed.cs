@@ -24,13 +24,14 @@ public class PopupSpeed : MonoBehaviour
     [Tooltip("Check Enable")]
     [HideInInspector] private bool _SpeedUpCheck;
     [HideInInspector] private bool _SpeedDownCheck;
+
     #endregion
 
     #region Unity Method
     private void Start()
     {
-        _SpeedDownCheck = false;
-        _SpeedUpCheck = false;
+        _SpeedUpEnable.gameObject.SetActive(false);
+        _SpeedDownEnable.gameObject.SetActive(false);
     }
     #endregion
 
