@@ -28,7 +28,7 @@
     <type fullname="Minimap" preserve="all" />
     <type fullname="ObstaclesManager" preserve="all" />
     <type fullname="PinoAnimatorRotate" preserve="all" />
-    <type fullname="PinoArBehaviour" preserve="all" />
+    <type fullname="PinoArBehaviourSingleton" preserve="all" />
     <type fullname="PinoShow" preserve="all" />
     <type fullname="PopupSpeed" preserve="all" />
     <type fullname="PositionSticker" preserve="all" />

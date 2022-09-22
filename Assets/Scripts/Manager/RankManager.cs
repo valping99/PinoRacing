@@ -99,12 +99,12 @@ public class RankManager : MonoBehaviour
 
     protected static void ShareResult(string text)
     {
-        PinoArBehaviorSingleton.ShareResultPublic(text);
+        PinoArBehaviourSingleton.ShareResultPublic(text);
     }
 
     protected void RegisterRanking(string key, int score)
     {
-        PinoArBehaviorSingleton.RegisterRankingPublic(key, score, OnRegisteredRanking);
+        PinoArBehaviourSingleton.RegisterRankingPublic(key, score, OnRegisteredRanking);
     }
 
     protected void OnRegisteredRanking(int ranking, bool isHighScore)
