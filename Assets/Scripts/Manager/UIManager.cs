@@ -356,10 +356,7 @@ public class UIManager : MonoBehaviour
             mainSceneUI.gameObject.SetActive(false);
             miniMap.gameObject.SetActive(false);
             screenShot.checkUI();
-            if (rankManagers.checkRank)
-            {
-                rankManagers.setRank();
-            }
+            rankManagers.setRank();
             Time.timeScale = 0f;
             endGame = true;
             checkGameClear = false;

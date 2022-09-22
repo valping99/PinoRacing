@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class GetScore : PinoArBehaviour
+public class GetScore : MonoBehaviour
 {
     #region Variables
     [Tooltip("Get Component")]
@@ -32,7 +32,7 @@ public class GetScore : PinoArBehaviour
         GetValue();
         SetScore();
         if(managers.endGame){
-            RegisterScore((int)m_score);
+            //RegisterScore((int)m_score);
             managers.endGame = false;
             //_Text.text = m_score.ToString().Replace(".",",");
         }
@@ -50,9 +50,5 @@ public class GetScore : PinoArBehaviour
         m_score = m_tempScore * m_timeRemaining;
     }
 
-    public void RegisterScore(int score)
-    {
-        PinoArBehaviour.RegisterScore(score);
-    }
     #endregion
 }

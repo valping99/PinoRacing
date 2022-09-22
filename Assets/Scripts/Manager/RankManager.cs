@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RankManager : PinoArBehaviour
+public class RankManager : MonoBehaviour
 {
     #region Variables
     public List<GameObject> listRanking;
@@ -17,8 +17,6 @@ public class RankManager : PinoArBehaviour
     private UIManager managers;
 
     public int[] setRankByTimed;
-
-    public bool checkRank = true;
 
     private bool outRank;
 
@@ -40,22 +38,7 @@ public class RankManager : PinoArBehaviour
     #endregion
     #region class
 
-    public void check()
-    {
-        if (outRank)
-        {
-            RankNumber.gameObject.SetActive(false);
-            OutRankNumber.gameObject.SetActive(true);
-        }
-        else
-        {
-            RankNumber.gameObject.SetActive(true);
-            OutRankNumber.gameObject.SetActive(false);
-        }
-    }
-
-
-    void TwitterMessage()
+    public void TwitterMessage()
     {
         if (SelectManager.selectedStage == 1)
         {
@@ -101,41 +84,42 @@ public class RankManager : PinoArBehaviour
         //managers.messageText.text = textRank[values];
         Instantiate(listRanking[values], rectTransform.transform.position, Quaternion.identity, transformParent);
         _Ranking = textRank[values];
-        checkRank = false;
+        RankNumber.gameObject.SetActive(false);
+        OutRankNumber.gameObject.SetActive(false);
 
         // Pino AR
 
         score = (int)GetScore.m_score;
         _TimeResult = managers._TimeMessage;
         RegisterRanking(SelectManager.levelMode, score);
-        TwitterMessage();
-        Invoke("check", .1f);
+        //TwitterMessage();
+        //Invoke("check", .1f);
     }
 
 
     protected static void ShareResult(string text)
     {
-        PinoArBehaviour.ShareResult(text);
+        PinoArBehaviorSingleton.ShareResultPublic(text);
     }
 
     protected void RegisterRanking(string key, int score)
     {
-        PinoArBehaviour.RegisterRankingKey(key);
-        PinoArBehaviour.RegisterScore(score);
+        PinoArBehaviorSingleton.RegisterRankingPublic(key, score, OnRegisteredRanking);
     }
 
-    override protected void OnRegisteredRanking(int ranking, bool isHighScore)
+    protected void OnRegisteredRanking(int ranking, bool isHighScore)
     {
-        base.OnRegisteredRanking(ranking, isHighScore);
         if (ranking < 10000)
         {
-            outRank = false;
+            RankNumber.gameObject.SetActive(true);
+            OutRankNumber.gameObject.SetActive(false);
             managers.messageText.text = ranking.ToString()/*+ " 位"*/;
             Debug.Log(ranking.ToString());
         }
         else
         {
-            outRank = true;
+            RankNumber.gameObject.SetActive(false);
+            OutRankNumber.gameObject.SetActive(true);
         }
     }
     #endregion

@@ -1,7 +1,8 @@
 mergeInto(LibraryManager.library, {
   RegisterRankingKey: function (rankingKey) {
     if (window.pinoGameJSLibRegisterRankingKey) {
-      window.pinoGameJSLibRegisterRankingKey(Pointer_stringify(rankingKey));
+//      window.pinoGameJSLibRegisterRankingKey(Pointer_stringify(rankingKey));
+      window.pinoGameJSLibRegisterRankingKey(UTF8ToString(rankingKey));
     }
   },
   RegisterScore: function (score) {

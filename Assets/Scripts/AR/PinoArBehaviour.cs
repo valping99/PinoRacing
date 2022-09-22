@@ -56,16 +56,31 @@ public class PinoArBehaviour : MonoBehaviour
 
     public void SetCameraX(float x)
     {
+        if (null==arCamera)
+        {
+            Debug.LogWarning("SetCameraX : arCamera not used.");
+            return;
+        }
         arCamera.transform.position = new Vector3(x, arCamera.transform.position.y, arCamera.transform.position.z);
         Debug.Log("SetCameraX:" + x + " / " + arCamera.transform.position);
     }
     public void SetCameraY(float y)
     {
+        if (null == arCamera)
+        {
+            Debug.LogWarning("SetCameraY : arCamera not used.");
+            return;
+        }
         arCamera.transform.position = new Vector3(arCamera.transform.position.x, y, arCamera.transform.position.z);
         Debug.Log("SetCameraY:" + y + " / " + arCamera.transform.position);
     }
     public void SetCameraZ(float z)
     {
+        if (null == arCamera)
+        {
+            Debug.LogWarning("SetCameraZ : arCamera not used.");
+            return;
+        }
         arCamera.transform.position = new Vector3(arCamera.transform.position.x, arCamera.transform.position.y, z);
         Debug.Log("SetCameraZ:" + z + " / " + arCamera.transform.position);
     }
@@ -92,6 +107,11 @@ public class PinoArBehaviour : MonoBehaviour
 
     public void ApplyCameraQuaternion()
     {
+        if (null == arCamera)
+        {
+            Debug.LogWarning("ApplyCameraQuaternion : arCamera not used.");
+            return;
+        }
         Quaternion q = new Quaternion(
             cameraQuaternionX,
             cameraQuaternionY,
@@ -104,22 +124,42 @@ public class PinoArBehaviour : MonoBehaviour
 
     public void SetFOV(float fov)
     {
+        if (null == arCamera)
+        {
+            Debug.LogWarning("SetFOV : arCamera not used.");
+            return;
+        }
         arCamera.fieldOfView = fov;
         Debug.Log("SetFOV:" + fov);
     }
 
     public void SetBoxX(float x)
     {
+        if (null == box)
+        {
+            Debug.LogWarning("SetBoxX : box not used.");
+            return;
+        }
         box.transform.position = new Vector3(x, box.transform.position.y, box.transform.position.z);
         Debug.Log("SetBoxX:" + x + " / " + box.transform.position);
     }
     public void SetBoxY(float y)
     {
+        if (null == box)
+        {
+            Debug.LogWarning("SetBoxY : box not used.");
+            return;
+        }
         box.transform.position = new Vector3(box.transform.position.x, y, box.transform.position.z);
         Debug.Log("SetBoxY:" + y + " / " + box.transform.position);
     }
     public void SetBoxZ(float z)
     {
+        if (null == box)
+        {
+            Debug.LogWarning("SetBoxZ : box not used.");
+            return;
+        }
         box.transform.position = new Vector3(box.transform.position.x, box.transform.position.y, z);
         Debug.Log("SetBoxZ:" + z + " / " + box.transform.position);
     }
@@ -146,6 +186,11 @@ public class PinoArBehaviour : MonoBehaviour
 
     public void ApplyBoxQuaternion()
     {
+        if (null == box)
+        {
+            Debug.LogWarning("ApplyBoxQuaternion : box not used.");
+            return;
+        }
         Quaternion q = new Quaternion(
             boxQuaternionX,
             boxQuaternionY,
@@ -158,6 +203,11 @@ public class PinoArBehaviour : MonoBehaviour
 
     public void SetBoxScale(float s)
     {
+        if (null == box)
+        {
+            Debug.LogWarning("SetBoxScale : box not used.");
+            return;
+        }
         box.transform.localScale = new Vector3(s, s, s);
     }
 
