@@ -48,7 +48,7 @@ public class RankManager : MonoBehaviour
         {
             _CourseName = "ピノ文字";
         }
-        string TwitterResult = "その時、ピノは世界を置き去りにする。 #ピノノレーシング プレイ！ 走行タイムは「" + _TimeResult + "」ランク「" + _Ranking + "」！　#ピノゲー     https://www.pinoice.com/pino-game/";
+        string TwitterResult = "その時、ピノは世界を置き去りにする。 #ピノノレーシング プレイ！ 走行タイムは「" + _TimeResult + "」ランク「" + _Ranking + "」！　#ピノゲー";
         ShareResult(TwitterResult);
     }
 
