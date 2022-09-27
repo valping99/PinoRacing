@@ -53,6 +53,9 @@ public class CharacterController : StateMachine
     public SoundManagers m_audioSource;
     public SoundManagers m_audioSource_ChangeLane;
 
+    //!Add new (Dat)
+    [SerializeField] private PopupSpeed m_PopupSpeed;
+    //
 
 
     Vector3 m_Direction;
@@ -281,12 +284,14 @@ public class CharacterController : StateMachine
                     if (diff.x < 0 && laneNumber > 1 && m_IsChangeLine && m_Character.m_Flip == false)
                     {
                         ChangeLane(-slideLength);
+                        //m_PopupSpeed.MoveLeft();
                         laneNumber -= 1;
                     }
                     /*else if (!m_Stuns && diff.x >= 0 && laneNumber < 3 && m_IsChangeLine && !m_IsBoostSuccess)*/
                     else if (diff.x >= 0 && laneNumber < 3 && m_IsChangeLine && m_Character.m_Flip == false)
                     {
                         ChangeLane(slideLength);
+                        //m_PopupSpeed.MoveRight();
                         laneNumber += 1;
                     }
                     m_IsSwiping = false;

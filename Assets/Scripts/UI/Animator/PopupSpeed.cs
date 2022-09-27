@@ -17,6 +17,7 @@ public class PopupSpeed : MonoBehaviour
     [Header("Popup Objects")]
     [SerializeField] private GameObject _SpeedUpEnable;
     [SerializeField] private GameObject _SpeedDownEnable;
+    [SerializeField] private GameObject _PopupObject;
 
     [Tooltip("Time")]
     [SerializeField] private float _Time;
@@ -25,14 +26,26 @@ public class PopupSpeed : MonoBehaviour
     [HideInInspector] private bool _SpeedUpCheck;
     [HideInInspector] private bool _SpeedDownCheck;
 
+    [SerializeField] private CharacterController _CharController; 
+    [SerializeField] private Character _Char; 
+
     #endregion
 
     #region Unity Method
     private void Start()
     {
+        _Char = FindObjectOfType<Character>();
         _SpeedUpEnable.gameObject.SetActive(false);
         _SpeedDownEnable.gameObject.SetActive(false);
+        _PopupObject.transform.SetParent(_Char.transform);
+        
     }
+    private void Update()
+    {
+        _PopupObject.transform.position = _Char.GetComponentInChildren<BoxCollider>().transform.position;
+    }
+
+
     #endregion
 
     #region Function

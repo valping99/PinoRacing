@@ -15,6 +15,7 @@
     <type fullname="DashBoostCamera" preserve="all" />
     <type fullname="Description" preserve="all" />
     <type fullname="DescriptionSE" preserve="all" />
+    <type fullname="Destroy" preserve="all" />
     <type fullname="DestroyWater" preserve="all" />
     <type fullname="GetControllerInput" preserve="all" />
     <type fullname="GetScore" preserve="all" />
@@ -84,6 +85,7 @@
     <type fullname="UnityEditor.Audio.AudioMixerSnapshotController" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Animation" preserve="all" />
     <type fullname="UnityEngine.AnimationClip" preserve="all" />
     <type fullname="UnityEngine.Animator" preserve="all" />
     <type fullname="UnityEngine.RuntimeAnimatorController" preserve="all" />
