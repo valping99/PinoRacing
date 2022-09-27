@@ -9631,12 +9631,8 @@ MonoBehaviour:
   _SpeedDownEnable: {fileID: 3841058452196816204}
   _PopupObject: {fileID: 3841058452299098212}
   _Time: 0.7
-  _AnimLeft: 0
-  _AnimRight: 0
-  _AnimMid: 0
   _CharController: {fileID: 0}
   _Char: {fileID: 0}
-  _AnimPopup: {fileID: 0}
 --- !u!1 &1633853000
 GameObject:
   m_ObjectHideFlags: 0
@@ -27176,6 +27172,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7201900233457568430, guid: 0ba6220d5676d0440922d1dc5fa1983f,
+        type: 3}
+      propertyPath: transformParent
+      value: 
+      objectReference: {fileID: 1977057667}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ba6220d5676d0440922d1dc5fa1983f, type: 3}
 --- !u!4 &7201900233457568428 stripped
