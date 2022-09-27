@@ -140,7 +140,7 @@ MonoBehaviour:
   m_timeRemaining: 0
   m_currentTimer: 0
   m_maxTimer: 0
-  m_tempScore: 80
+  m_tempScore: 100
 --- !u!1 &4089730
 GameObject:
   m_ObjectHideFlags: 0
@@ -17554,12 +17554,8 @@ MonoBehaviour:
   _SpeedDownEnable: {fileID: 153050192}
   _PopupObject: {fileID: 2002780536}
   _Time: 0.7
-  _AnimLeft: 0
-  _AnimRight: 0
-  _AnimMid: 0
   _CharController: {fileID: 7651326599288477482}
   _Char: {fileID: 0}
-  _AnimPopup: {fileID: 1176426823}
 --- !u!1001 &1633142334
 PrefabInstance:
   m_ObjectHideFlags: 0

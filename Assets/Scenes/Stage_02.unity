@@ -27568,6 +27568,11 @@ PrefabInstance:
       propertyPath: _Text
       value: 
       objectReference: {fileID: 8708391114151745871}
+    - target: {fileID: 8674238104812357036, guid: d0a807eaa2daf134485f73596a9c3f27,
+        type: 3}
+      propertyPath: m_tempScore
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3512661206096041806, guid: d0a807eaa2daf134485f73596a9c3f27, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d0a807eaa2daf134485f73596a9c3f27, type: 3}
